@@ -1,11 +1,17 @@
 [package]
 name = "handy"
 version = "0.10.1"
-description = "Handy"
+description = "Unmute"
 authors = ["cjpais"]
 edition = "2021"
 license = "MIT"
-default-run = "handy"
+default-run = "unmute"
+
+# The crate keeps Handy's name so upstream changes still merge; the program
+# the user sees, in Activity Monitor or the Accessibility list, is Unmute.
+[[bin]]
+name = "unmute"
+path = "src/main.rs"
 
 [profile.dev]
 incremental = true # Compile your binary in smaller steps.

@@ -843,13 +843,15 @@ pub fn run(cli_args: CliArgs) {
             notices::NoticesChanged,
         ]);
 
-    #[cfg(debug_assertions)] // <- Only export on non-release builds
-    specta_builder
-        .export(
-            Typescript::default().bigint(BigIntExportBehavior::Number),
-            "../src/bindings.ts",
-        )
-        .expect("Failed to export typescript bindings");
+    // Only on non-release builds. Not fatal: a debug build opened from the
+    // Finder runs outside the source tree, where there is nothing to write to.
+    #[cfg(debug_assertions)]
+    if let Err(err) = specta_builder.export(
+        Typescript::default().bigint(BigIntExportBehavior::Number),
+        "../src/bindings.ts",
+    ) {
+        eprintln!("Could not export typescript bindings: {err}");
+    }
 
     let invoke_handler = specta_builder.invoke_handler();
 
@@ -886,11 +888,11 @@ pub fn run(cli_args: CliArgs) {
                     Target::new(if let Some(data_dir) = portable::data_dir() {
                         TargetKind::Folder {
                             path: data_dir.join("logs"),
-                            file_name: Some("handy".into()),
+                            file_name: Some("unmute".into()),
                         }
                     } else {
                         TargetKind::LogDir {
-                            file_name: Some("handy".into()),
+                            file_name: Some("unmute".into()),
                         }
                     })
                     .filter(|metadata| {
