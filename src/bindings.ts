@@ -1141,7 +1141,7 @@ selected_channel?: number | null; clamshell_microphone?: string | null; selected
  * Every language the person dictates in (codes, e.g. ["en", "zh"]),
  * picked during onboarding. Empty until then.
  */
-spoken_languages?: string[]; overlay_position?: OverlayPosition; debug_mode?: boolean; log_level?: LogLevel; custom_words?: string[]; model_unload_timeout?: ModelUnloadTimeout; word_correction_threshold?: number; history_limit?: number; recording_retention_period?: RecordingRetentionPeriod; paste_method?: PasteMethod; clipboard_handling?: ClipboardHandling; auto_submit?: boolean; auto_submit_key?: AutoSubmitKey; post_process_enabled?: boolean; post_process_provider_id?: string; post_process_providers?: PostProcessProvider[]; post_process_api_keys?: SecretMap; post_process_models?: Partial<{ [key in string]: string }>; post_process_prompts?: LLMPrompt[]; post_process_selected_prompt_id?: string | null; mute_while_recording?: boolean; append_trailing_space?: boolean; app_language?: string; theme?: Theme; experimental_enabled?: boolean; lazy_stream_close?: boolean; 
+spoken_languages?: string[]; overlay_position?: OverlayPosition; debug_mode?: boolean; log_level?: LogLevel; custom_words?: string[]; model_unload_timeout?: ModelUnloadTimeout; word_correction_threshold?: number; history_limit?: number; recording_retention_period?: RecordingRetentionPeriod; audio_retention_period?: AudioRetentionPeriod; paste_method?: PasteMethod; clipboard_handling?: ClipboardHandling; auto_submit?: boolean; auto_submit_key?: AutoSubmitKey; post_process_enabled?: boolean; post_process_provider_id?: string; post_process_providers?: PostProcessProvider[]; post_process_api_keys?: SecretMap; post_process_models?: Partial<{ [key in string]: string }>; post_process_prompts?: LLMPrompt[]; post_process_selected_prompt_id?: string | null; mute_while_recording?: boolean; append_trailing_space?: boolean; app_language?: string; theme?: Theme; experimental_enabled?: boolean; lazy_stream_close?: boolean; 
 /**
  * Experimental, macOS only: move a Bluetooth headset (AirPods) to this
  * Mac while recording, so its microphone does not return silence while
@@ -1187,6 +1187,14 @@ language_detection_window_secs?: number;
  */
 overlay_style?: OverlayStyle }
 export type AudioDevice = { index: string; name: string; is_default: boolean }
+/**
+ * How long a dictation's recording is kept, separately from its text.
+ */
+export type AudioRetentionPeriod = 
+/**
+ * The recording goes when its history entry does.
+ */
+"same_as_history" | "days_3" | "weeks_2" | "months_3"
 export type AutoSubmitKey = "enter" | "ctrl_enter" | "cmd_enter"
 export type AutoUnavailableReason = 
 /**
@@ -1236,7 +1244,27 @@ language: string | null;
 /**
  * How that language was chosen; `None` before it was recorded.
  */
-language_source: LanguageSource | null }
+language_source: LanguageSource | null; 
+/**
+ * The application that had focus when the dictation started.
+ */
+app_bundle_id: string | null; app_name: string | null; 
+/**
+ * How much audio was transcribed, silence removed when VAD is on.
+ */
+audio_duration_ms: number | null; 
+/**
+ * Words in `transcription_text`; `None` when nothing was transcribed.
+ */
+word_count: number | null; 
+/**
+ * The model that produced `transcription_text`.
+ */
+model_id: string | null; 
+/**
+ * From the end of the recording to the text being pasted.
+ */
+latency_ms: number | null }
 export type HistoryUpdatePayload = { action: "added"; entry: HistoryEntry } | { action: "updated"; entry: HistoryEntry } | { action: "deleted"; id: number } | { action: "toggled"; id: number }
 /**
  * Result of changing keyboard implementation

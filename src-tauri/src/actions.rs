@@ -3,7 +3,7 @@ use crate::apple_intelligence;
 use crate::audio_feedback::{play_feedback_sound, play_feedback_sound_blocking, SoundType};
 use crate::audio_toolkit::VadPolicy;
 use crate::managers::audio::{recording_notice_code, AudioRecordingManager};
-use crate::managers::history::HistoryManager;
+use crate::managers::history::{DictationMetadata, HistoryManager};
 use crate::managers::model::ModelManager;
 use crate::managers::transcription::policy::{live_decode, LiveDecode, ModelTraits};
 use crate::managers::transcription::StreamWorkKind;
@@ -517,6 +517,8 @@ impl ShortcutAction for TranscribeAction {
     fn start(&self, app: &AppHandle, binding_id: &str, _shortcut_str: &str) {
         let start_time = Instant::now();
         debug!("TranscribeAction::start called for binding: {}", binding_id);
+        // Before anything else: the user may switch windows while dictating.
+        crate::frontmost_app::capture();
 
         // Load model in the background
         let tm = app.state::<Arc<TranscriptionManager>>();
@@ -738,6 +740,7 @@ impl ShortcutAction for TranscribeAction {
         let binding_id = binding_id.to_string(); // Clone binding_id for the async task
         let post_process = self.post_process;
         let cancel_generation = rm.cancel_generation();
+        let frontmost_app = crate::frontmost_app::take();
 
         tauri::async_runtime::spawn(async move {
             let _guard = FinishGuard(ah.clone(), Arc::clone(&tm));
@@ -774,6 +777,16 @@ impl ShortcutAction for TranscribeAction {
                 } else {
                     // Save WAV concurrently with transcription
                     let sample_count = samples.len();
+                    let mut metadata = DictationMetadata {
+                        language: None,
+                        app: frontmost_app,
+                        audio_duration_ms: i64::try_from(
+                            sample_count as u64 * 1000
+                                / u64::from(crate::audio_toolkit::constants::WHISPER_SAMPLE_RATE),
+                        )
+                        .ok(),
+                        model_id: tm.get_current_model(),
+                    };
                     let file_name = format!("handy-{}.wav", chrono::Utc::now().timestamp());
                     let wav_path = hm.recordings_dir().join(&file_name);
                     let wav_path_for_verify = wav_path.clone();
@@ -858,16 +871,19 @@ impl ShortcutAction for TranscribeAction {
                             }
 
                             // Save to history if WAV was saved
+                            let mut saved_entry_id = None;
+                            metadata.language = language;
                             if wav_saved {
-                                if let Err(err) = hm.save_entry(
+                                match hm.save_entry(
                                     file_name,
                                     transcription,
                                     post_process,
                                     processed.post_processed_text.clone(),
                                     processed.post_process_prompt.clone(),
-                                    language,
+                                    metadata,
                                 ) {
-                                    error!("Failed to save history entry: {}", err);
+                                    Ok(entry) => saved_entry_id = Some(entry.id),
+                                    Err(err) => error!("Failed to save history entry: {}", err),
                                 }
                             }
 
@@ -892,6 +908,7 @@ impl ShortcutAction for TranscribeAction {
                                 let paste_time = Instant::now();
                                 let post_process_failed = processed.post_process_failed;
                                 let rm_for_paste = Arc::clone(&rm);
+                                let hm_for_paste = Arc::clone(&hm);
                                 // Taken before the paste thread exists, and so
                                 // before the next session can start.
                                 let session = RECORDING_SESSION.load(Ordering::SeqCst);
@@ -920,6 +937,20 @@ impl ShortcutAction for TranscribeAction {
                                                         "Text pasted successfully in {:?}",
                                                         paste_time.elapsed()
                                                     );
+                                                    if let Some(id) = saved_entry_id {
+                                                        let latency_ms = i64::try_from(
+                                                            stop_time.elapsed().as_millis(),
+                                                        )
+                                                        .unwrap_or(i64::MAX);
+                                                        if let Err(err) =
+                                                            hm_for_paste.set_latency(id, latency_ms)
+                                                        {
+                                                            error!(
+                                                                "Failed to record latency: {}",
+                                                                err
+                                                            );
+                                                        }
+                                                    }
                                                     // Leave a newer session's notice alone.
                                                     if owns_ui() {
                                                         notices::clear(
@@ -1016,7 +1047,7 @@ impl ShortcutAction for TranscribeAction {
                                     post_process,
                                     None,
                                     None,
-                                    None,
+                                    metadata,
                                 ) {
                                     error!("Failed to save failed history entry: {}", save_err);
                                 }

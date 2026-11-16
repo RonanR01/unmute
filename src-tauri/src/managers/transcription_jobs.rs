@@ -342,6 +342,7 @@ impl TranscriptionJobManager {
             processed.post_processed_text,
             processed.post_process_prompt,
             language,
+            tm.get_current_model(),
         )?;
         Ok(JobEnd::Finished {
             post_process_failed,

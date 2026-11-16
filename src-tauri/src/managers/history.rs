@@ -10,7 +10,9 @@ use std::path::PathBuf;
 use tauri::AppHandle;
 use tauri_specta::Event;
 
+use crate::frontmost_app::FrontmostApp;
 use crate::language_detection::{LanguageDecision, LanguageSource};
+use crate::settings::{AudioRetentionPeriod, RecordingRetentionPeriod};
 
 /// Database migrations for transcription history.
 /// Each migration is applied in order. The library tracks which migrations
@@ -37,12 +39,22 @@ static MIGRATIONS: &[M] = &[
 
 /// Nullable columns added outside [`MIGRATIONS`]; see
 /// [`HistoryManager::apply_migrations`].
-const ADDED_COLUMNS: &[&str] = &["source_name", "language", "language_source"];
+const ADDED_COLUMNS: &[(&str, &str)] = &[
+    ("source_name", "TEXT"),
+    ("language", "TEXT"),
+    ("language_source", "TEXT"),
+    ("app_bundle_id", "TEXT"),
+    ("app_name", "TEXT"),
+    ("audio_duration_ms", "INTEGER"),
+    ("word_count", "INTEGER"),
+    ("model_id", "TEXT"),
+    ("latency_ms", "INTEGER"),
+];
 
 /// Every column a [`HistoryEntry`] is read from.
 const ENTRY_COLUMNS: &str = "id, file_name, timestamp, saved, title, transcription_text, \
     post_processed_text, post_process_prompt, post_process_requested, source_name, language, \
-    language_source";
+    language_source, app_bundle_id, app_name, audio_duration_ms, word_count, model_id, latency_ms";
 
 #[derive(Clone, Debug, Serialize, Deserialize, Type)]
 pub struct PaginatedHistory {
@@ -81,6 +93,46 @@ pub struct HistoryEntry {
     pub language: Option<String>,
     /// How that language was chosen; `None` before it was recorded.
     pub language_source: Option<LanguageSource>,
+    /// The application that had focus when the dictation started.
+    pub app_bundle_id: Option<String>,
+    pub app_name: Option<String>,
+    /// How much audio was transcribed, silence removed when VAD is on.
+    pub audio_duration_ms: Option<i64>,
+    /// Words in `transcription_text`; `None` when nothing was transcribed.
+    pub word_count: Option<i64>,
+    /// The model that produced `transcription_text`.
+    pub model_id: Option<String>,
+    /// From the end of the recording to the text being pasted.
+    pub latency_ms: Option<i64>,
+}
+
+/// What is known about a dictation besides its text.
+#[derive(Clone, Debug, Default)]
+pub struct DictationMetadata {
+    pub language: Option<LanguageDecision>,
+    pub app: Option<FrontmostApp>,
+    pub audio_duration_ms: Option<i64>,
+    pub model_id: Option<String>,
+}
+
+/// The number of words in `text`, or `None` when it has none.
+fn count_words(text: &str) -> Option<i64> {
+    match text.split_whitespace().count() {
+        0 => None,
+        count => i64::try_from(count).ok(),
+    }
+}
+
+/// The oldest timestamp `period` keeps, or `None` when it is not a duration.
+fn retention_cutoff(period: RecordingRetentionPeriod, now: i64) -> Option<i64> {
+    const DAY: i64 = 24 * 60 * 60;
+    match period {
+        RecordingRetentionPeriod::Days3 => Some(now - 3 * DAY),
+        RecordingRetentionPeriod::Weeks2 => Some(now - 14 * DAY),
+        // A month is counted as 30 days.
+        RecordingRetentionPeriod::Months3 => Some(now - 90 * DAY),
+        RecordingRetentionPeriod::Never | RecordingRetentionPeriod::PreserveLimit => None,
+    }
 }
 
 pub struct HistoryManager {
@@ -173,10 +225,14 @@ impl HistoryManager {
 
         // Not a migration: a higher user_version makes released builds refuse
         // the database, while an extra nullable column is invisible to them.
-        for column in ADDED_COLUMNS {
+        Self::add_missing_columns(conn)
+    }
+
+    fn add_missing_columns(conn: &Connection) -> Result<()> {
+        for (column, sql_type) in ADDED_COLUMNS {
             if !Self::has_column(conn, column)? {
                 conn.execute(
-                    &format!("ALTER TABLE transcription_history ADD COLUMN {column} TEXT"),
+                    &format!("ALTER TABLE transcription_history ADD COLUMN {column} {sql_type}"),
                     [],
                 )?;
                 info!("Added the {column} column to transcription history");
@@ -272,6 +328,12 @@ impl HistoryManager {
                 .get::<_, Option<String>>("language_source")?
                 .as_deref()
                 .and_then(LanguageSource::parse),
+            app_bundle_id: row.get("app_bundle_id")?,
+            app_name: row.get("app_name")?,
+            audio_duration_ms: row.get("audio_duration_ms")?,
+            word_count: row.get("word_count")?,
+            model_id: row.get("model_id")?,
+            latency_ms: row.get("latency_ms")?,
         })
     }
 
@@ -288,9 +350,11 @@ impl HistoryManager {
         post_process_requested: bool,
         post_processed_text: Option<String>,
         post_process_prompt: Option<String>,
-        language: Option<LanguageDecision>,
+        metadata: DictationMetadata,
     ) -> Result<HistoryEntry> {
-        let (language, language_source) = split_language(language);
+        let (language, language_source) = split_language(metadata.language);
+        let app = metadata.app.unwrap_or_default();
+        let word_count = count_words(&transcription_text);
         let entry = self.insert_entry(HistoryEntry {
             id: 0,
             file_name,
@@ -304,6 +368,12 @@ impl HistoryManager {
             source_name: None,
             language,
             language_source,
+            app_bundle_id: app.bundle_id,
+            app_name: app.name,
+            audio_duration_ms: metadata.audio_duration_ms,
+            word_count,
+            model_id: metadata.model_id,
+            latency_ms: None,
         })?;
 
         self.cleanup_old_entries()?;
@@ -328,6 +398,12 @@ impl HistoryManager {
             source_name: Some(source_name),
             language: None,
             language_source: None,
+            app_bundle_id: None,
+            app_name: None,
+            audio_duration_ms: None,
+            word_count: None,
+            model_id: None,
+            latency_ms: None,
         })
     }
 
@@ -348,8 +424,14 @@ impl HistoryManager {
                 post_process_requested,
                 source_name,
                 language,
-                language_source
-            ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)",
+                language_source,
+                app_bundle_id,
+                app_name,
+                audio_duration_ms,
+                word_count,
+                model_id,
+                latency_ms
+            ) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17)",
             params![
                 &entry.file_name,
                 entry.timestamp,
@@ -362,6 +444,12 @@ impl HistoryManager {
                 &entry.source_name,
                 &entry.language,
                 entry.language_source.map(LanguageSource::as_str),
+                &entry.app_bundle_id,
+                &entry.app_name,
+                entry.audio_duration_ms,
+                entry.word_count,
+                &entry.model_id,
+                entry.latency_ms,
             ],
         )?;
         entry.id = conn.last_insert_rowid();
@@ -388,8 +476,10 @@ impl HistoryManager {
         post_processed_text: Option<String>,
         post_process_prompt: Option<String>,
         language: Option<LanguageDecision>,
+        model_id: Option<String>,
     ) -> Result<HistoryEntry> {
         let (language, language_source) = split_language(language);
+        let word_count = count_words(&transcription_text);
         let conn = self.get_connection()?;
         let updated = conn.execute(
             "UPDATE transcription_history
@@ -397,14 +487,18 @@ impl HistoryManager {
                  post_processed_text = ?2,
                  post_process_prompt = ?3,
                  language = ?4,
-                 language_source = ?5
-             WHERE id = ?6",
+                 language_source = ?5,
+                 word_count = ?6,
+                 model_id = ?7
+             WHERE id = ?8",
             params![
                 transcription_text,
                 post_processed_text,
                 post_process_prompt,
                 language,
                 language_source.map(LanguageSource::as_str),
+                word_count,
+                model_id,
                 id
             ],
         )?;
@@ -432,7 +526,67 @@ impl HistoryManager {
         Ok(entry)
     }
 
+    /// Record how long a dictation took to reach the user, once it is pasted.
+    pub fn set_latency(&self, id: i64, latency_ms: i64) -> Result<()> {
+        let conn = self.get_connection()?;
+        conn.execute(
+            "UPDATE transcription_history SET latency_ms = ?1 WHERE id = ?2",
+            params![latency_ms, id],
+        )?;
+        Ok(())
+    }
+
     pub fn cleanup_old_entries(&self) -> Result<()> {
+        self.cleanup_entries()?;
+        self.cleanup_old_audio()
+    }
+
+    /// Delete the recordings older than the audio retention period, keeping
+    /// their text. Saved entries and transcribed files keep their audio.
+    fn cleanup_old_audio(&self) -> Result<()> {
+        let period = match crate::settings::get_settings(&self.app_handle).audio_retention_period {
+            AudioRetentionPeriod::SameAsHistory => return Ok(()),
+            AudioRetentionPeriod::Days3 => RecordingRetentionPeriod::Days3,
+            AudioRetentionPeriod::Weeks2 => RecordingRetentionPeriod::Weeks2,
+            AudioRetentionPeriod::Months3 => RecordingRetentionPeriod::Months3,
+        };
+        let Some(cutoff) = retention_cutoff(period, Utc::now().timestamp()) else {
+            return Ok(());
+        };
+
+        let conn = self.get_connection()?;
+        let file_names = Self::expired_audio_files(&conn, cutoff)?;
+        let mut deleted_count = 0;
+        for file_name in file_names {
+            let file_path = self.recordings_dir.join(&file_name);
+            if !file_path.exists() {
+                continue;
+            }
+            match fs::remove_file(&file_path) {
+                Ok(()) => deleted_count += 1,
+                Err(e) => error!("Failed to delete WAV file {}: {}", file_name, e),
+            }
+        }
+        if deleted_count > 0 {
+            debug!(
+                "Deleted {} recordings past the audio retention period",
+                deleted_count
+            );
+        }
+
+        Ok(())
+    }
+
+    /// The recordings of unsaved dictations older than `cutoff`.
+    fn expired_audio_files(conn: &Connection, cutoff: i64) -> Result<Vec<String>> {
+        let mut stmt = conn.prepare(
+            "SELECT file_name FROM transcription_history WHERE saved = 0 AND source_name IS NULL AND timestamp < ?1",
+        )?;
+        let rows = stmt.query_map(params![cutoff], |row| row.get::<_, String>(0))?;
+        Ok(rows.collect::<rusqlite::Result<Vec<_>>>()?)
+    }
+
+    fn cleanup_entries(&self) -> Result<()> {
         let retention_period = crate::settings::get_recording_retention_period(&self.app_handle);
 
         match retention_period {
@@ -518,13 +672,9 @@ impl HistoryManager {
     ) -> Result<()> {
         let conn = self.get_connection()?;
 
-        // Calculate cutoff timestamp (current time minus retention period)
-        let now = Utc::now().timestamp();
-        let cutoff_timestamp = match retention_period {
-            crate::settings::RecordingRetentionPeriod::Days3 => now - (3 * 24 * 60 * 60), // 3 days in seconds
-            crate::settings::RecordingRetentionPeriod::Weeks2 => now - (2 * 7 * 24 * 60 * 60), // 2 weeks in seconds
-            crate::settings::RecordingRetentionPeriod::Months3 => now - (3 * 30 * 24 * 60 * 60), // 3 months in seconds (approximate)
-            _ => unreachable!("Should not reach here"),
+        let Some(cutoff_timestamp) = retention_cutoff(retention_period, Utc::now().timestamp())
+        else {
+            return Ok(());
         };
 
         // Unsaved dictations older than the cutoff; transcribed files are only
@@ -754,6 +904,7 @@ mod tests {
             );",
         )
         .expect("create transcription_history table");
+        HistoryManager::add_missing_columns(&conn).expect("add the newer columns");
         conn
     }
 
@@ -792,7 +943,7 @@ mod tests {
     fn migrating_adds_columns_without_raising_the_version() {
         let mut conn = Connection::open_in_memory().expect("open in-memory db");
         HistoryManager::apply_migrations(&mut conn).expect("migrate");
-        for column in ADDED_COLUMNS {
+        for (column, _) in ADDED_COLUMNS {
             assert!(HistoryManager::has_column(&conn, column).expect("read table info"));
         }
         assert_eq!(user_version(&conn), MIGRATIONS.len() as i32);
@@ -876,6 +1027,73 @@ mod tests {
 
         assert_eq!(entry.timestamp, 100);
         assert_eq!(entry.transcription_text, "completed");
+    }
+
+    #[test]
+    fn words_are_counted_and_no_text_has_no_count() {
+        assert_eq!(count_words("Bonjour  tout le\nmonde"), Some(4));
+        assert_eq!(count_words("   "), None);
+    }
+
+    #[test]
+    fn only_durations_have_a_retention_cutoff() {
+        let day = 24 * 60 * 60;
+        assert_eq!(
+            retention_cutoff(RecordingRetentionPeriod::Days3, 10 * day),
+            Some(7 * day)
+        );
+        assert_eq!(
+            retention_cutoff(RecordingRetentionPeriod::Never, 10 * day),
+            None
+        );
+        assert_eq!(
+            retention_cutoff(RecordingRetentionPeriod::PreserveLimit, 10 * day),
+            None
+        );
+    }
+
+    #[test]
+    fn expired_audio_spares_saved_entries_and_files() {
+        let conn = setup_conn();
+        for (file_name, timestamp, saved, source_name) in [
+            ("old.wav", 100, false, None),
+            ("recent.wav", 900, false, None),
+            ("old-saved.wav", 100, true, None),
+            ("old-file.wav", 100, false, Some("talk.mp3")),
+        ] {
+            conn.execute(
+                "INSERT INTO transcription_history (file_name, timestamp, saved, title, transcription_text, source_name)
+                 VALUES (?1, ?2, ?3, '', 'text', ?4)",
+                params![file_name, timestamp, saved, source_name],
+            )
+            .expect("insert entry");
+        }
+
+        let expired = HistoryManager::expired_audio_files(&conn, 500).expect("list expired audio");
+
+        assert_eq!(expired, vec!["old.wav".to_string()]);
+    }
+
+    #[test]
+    fn metadata_columns_round_trip() {
+        let conn = setup_conn();
+        conn.execute(
+            "INSERT INTO transcription_history (file_name, timestamp, title, transcription_text, app_bundle_id, app_name, audio_duration_ms, word_count, model_id, latency_ms)
+             VALUES ('a.wav', 100, '', 'deux mots', 'com.apple.mail', 'Mail', 1500, 2, 'parakeet-ultra', 420)",
+            [],
+        )
+        .expect("insert entry");
+
+        let entry = HistoryManager::get_latest_completed_entry_with_conn(&conn)
+            .expect("fetch entry")
+            .expect("entry exists");
+
+        assert_eq!(entry.app_bundle_id.as_deref(), Some("com.apple.mail"));
+        assert_eq!(entry.app_name.as_deref(), Some("Mail"));
+        assert_eq!(entry.audio_duration_ms, Some(1500));
+        assert_eq!(entry.word_count, Some(2));
+        assert_eq!(entry.model_id.as_deref(), Some("parakeet-ultra"));
+        assert_eq!(entry.latency_ms, Some(420));
     }
 
     #[test]

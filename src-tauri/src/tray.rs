@@ -974,6 +974,12 @@ mod tests {
             source_name: None,
             language: None,
             language_source: None,
+            app_bundle_id: None,
+            app_name: None,
+            audio_duration_ms: None,
+            word_count: None,
+            model_id: None,
+            latency_ms: None,
         }
     }
 
