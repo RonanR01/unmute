@@ -1465,6 +1465,10 @@ fn self_update_possible() -> bool {
     true
 }
 
+/// Unmute is a fork of Handy: the updater would fetch upstream's release and
+/// install it over this build, so it stays off for good.
+const FORK_DISABLES_UPDATER: bool = true;
+
 /// Update checks are forced off (without touching the persisted setting) when
 /// `HANDY_DISABLE_UPDATER` is set — e.g. by the Nix package, since self-update
 /// can't work against an immutable /nix/store install — or when this build
@@ -1472,8 +1476,11 @@ fn self_update_possible() -> bool {
 pub fn update_checks_forced_disabled() -> bool {
     use std::sync::OnceLock;
     static IS_UPDATER_DISABLED: OnceLock<bool> = OnceLock::new();
-    *IS_UPDATER_DISABLED
-        .get_or_init(|| utils::env_flag_enabled("HANDY_DISABLE_UPDATER") || !self_update_possible())
+    *IS_UPDATER_DISABLED.get_or_init(|| {
+        FORK_DISABLES_UPDATER
+            || utils::env_flag_enabled("HANDY_DISABLE_UPDATER")
+            || !self_update_possible()
+    })
 }
 
 /// Effective updater state: the user's stored preference, overridden to `false`
