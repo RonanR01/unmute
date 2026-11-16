@@ -1019,7 +1019,10 @@
     "words": "Words dictated",
     "pace": "Average pace",
     "wordsPerMinute": "words per minute",
-    "duration": "Time dictating"
+    "duration": "Time dictating",
+    "play": "Play the recording",
+    "pause": "Pause",
+    "audioUnavailable": "This Recording Is No Longer Available"
   },
   "insights": {
     "title": "Insights",
@@ -1029,7 +1032,7 @@
     "activity": "Activity",
     "less": "Less",
     "more": "More",
-    "heatmapLabel": "Dictation time per day over the last twelve months",
+    "heatmapLabel": "Dictation time per day",
     "dayTooltip": "{{duration}} of dictation, {{words}} words",
     "noActivity": "No dictation",
     "voiceProfile": "My voice profile",
@@ -1058,7 +1061,12 @@
       "noProvider": "To write it, turn on post-processing in Settings, then pick a provider and a model.",
       "failed": "Couldn't Write the Portrait",
       "badAnswer": "The model's answer couldn't be read. Try again or pick another model."
-    }
+    },
+    "activeDays": "Active days",
+    "overWeeks": "over the last {{weeks}} weeks",
+    "bestDay": "Longest day",
+    "streak": "Current streak",
+    "streakNote": "days in a row"
   },
   "dictionary": {
     "title": "Dictionary",

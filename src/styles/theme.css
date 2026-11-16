@@ -133,6 +133,8 @@
 
   /* Unmute: fir-green surfaces, and the one accent. Signal yellow is for
      measured values only (words, pace, duration, heatmap intensity). */
+  /* The window itself, behind the sidebar and around the content panel. */
+  --color-chrome: #0a211b;
   --color-surface: #143629;
   --color-surface-raised: #1b4435;
   --color-edge: #1f4a3a;

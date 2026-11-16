@@ -1019,7 +1019,10 @@
     "words": "Mots dictés",
     "pace": "Débit moyen",
     "wordsPerMinute": "mots par minute",
-    "duration": "Durée d'usage"
+    "duration": "Durée d'usage",
+    "play": "Réécouter l'enregistrement",
+    "pause": "Mettre en pause",
+    "audioUnavailable": "Cet enregistrement n'est plus disponible"
   },
   "insights": {
     "title": "Insights",
@@ -1029,7 +1032,7 @@
     "activity": "Activité",
     "less": "Moins",
     "more": "Plus",
-    "heatmapLabel": "Durée de dictée par jour sur les douze derniers mois",
+    "heatmapLabel": "Durée de dictée par jour",
     "dayTooltip": "{{duration}} de dictée, {{words}} mots",
     "noActivity": "Aucune dictée",
     "voiceProfile": "Mon profil de voix",
@@ -1058,7 +1061,12 @@
       "noProvider": "Pour le rédiger, activez le post-traitement dans les Paramètres, puis choisissez un fournisseur et un modèle.",
       "failed": "Portrait impossible à rédiger",
       "badAnswer": "La réponse du modèle est illisible. Réessayez ou choisissez un autre modèle."
-    }
+    },
+    "activeDays": "Jours actifs",
+    "overWeeks": "sur les {{weeks}} dernières semaines",
+    "bestDay": "Plus longue journée",
+    "streak": "Série en cours",
+    "streakNote": "jours d'affilée"
   },
   "dictionary": {
     "title": "Dictionnaire",

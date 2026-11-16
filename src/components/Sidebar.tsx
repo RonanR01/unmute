@@ -113,7 +113,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <nav
       aria-label={t("sidebar.navigation")}
-      className="flex flex-col w-52 shrink-0 h-full border-e border-edge px-3 py-6 gap-7"
+      data-tauri-drag-region
+      className="flex flex-col w-52 shrink-0 h-full px-3 pb-6 pt-[calc(var(--titlebar-inset)+20px)] gap-7"
     >
       <UnmuteLogo className="px-3" />
       <div className="flex flex-col gap-1">

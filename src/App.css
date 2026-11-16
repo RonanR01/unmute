@@ -25,6 +25,7 @@
   --color-ink-3: var(--color-ink-3);
   --color-line: var(--color-line);
   --color-line-strong: var(--color-line-strong);
+  --color-chrome: var(--color-chrome);
   --color-surface: var(--color-surface);
   --color-surface-raised: var(--color-surface-raised);
   --color-edge: var(--color-edge);
@@ -233,6 +234,15 @@
     /* Just a bit darker than the (already dark) background, keeping its warm tint */
     --color-log-surface: color-mix(in srgb, var(--color-background), black 15%);
   }
+}
+
+/* Room for the window buttons, which macOS overlays on the content. Matches
+   TITLE_BAR_INSET in utils.rs. */
+:root {
+  --titlebar-inset: 0px;
+}
+:root[data-platform="macos"] {
+  --titlebar-inset: 40px;
 }
 
 /* macOS's own CJK fonts already share their weights. */

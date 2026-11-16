@@ -333,7 +333,7 @@ function App() {
     content = (
       <div
         dir={direction}
-        className="h-screen flex flex-col select-none cursor-default"
+        className="h-screen flex flex-col bg-chrome select-none cursor-default"
       >
         <ErrorBoundary context="What's New">
           <WhatsNewGate />
@@ -344,9 +344,16 @@ function App() {
             activeScreen={currentScreen}
             onScreenChange={setCurrentScreen}
           />
-          {/* Scrollable content area */}
-          <div className="flex-1 flex flex-col overflow-hidden">
-            <div ref={settingsScrollRef} className="flex-1 overflow-y-auto">
+          {/* The content sits in a panel set into the window; the gap above
+              it drags the window, like the sidebar. */}
+          <div
+            data-tauri-drag-region
+            className="flex-1 flex flex-col overflow-hidden pt-2.5 pe-2.5"
+          >
+            <div
+              ref={settingsScrollRef}
+              className="flex-1 overflow-y-auto rounded-2xl border border-edge bg-background"
+            >
               <div className="empty:hidden px-4 pt-4">
                 <SecureInputWarning />
               </div>

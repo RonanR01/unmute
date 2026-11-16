@@ -5,7 +5,9 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Check, Copy } from "lucide-react";
+import { convertFileSrc } from "@tauri-apps/api/core";
+import { readFile } from "@tauri-apps/plugin-fs";
+import { Check, Copy, Pause, Play } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   commands,
@@ -13,6 +15,7 @@ import {
   type DictationStats,
   type HistoryEntry,
 } from "@/bindings";
+import { useOsType } from "@/hooks/useOsType";
 import { notify } from "@/stores/noticeStore";
 import { dayKey, formatCount, formatDuration } from "@/lib/utils/measures";
 import { TopoLines } from "../shared/TopoLines";
@@ -47,10 +50,15 @@ const StatCard: React.FC<{ label: string; value: string; unit?: string }> = ({
   </div>
 );
 
-const DictationRow: React.FC<{ entry: HistoryEntry; locale: string }> = ({
-  entry,
-  locale,
-}) => {
+const ICON_BUTTON =
+  "size-9 shrink-0 flex items-center justify-center rounded-[10px] text-ink-3 cursor-pointer transition-colors hover:text-text hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-text";
+
+const DictationRow: React.FC<{
+  entry: HistoryEntry;
+  locale: string;
+  playing: boolean;
+  onTogglePlay: () => void;
+}> = ({ entry, locale, playing, onTogglePlay }) => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | undefined>(undefined);
@@ -72,28 +80,40 @@ const DictationRow: React.FC<{ entry: HistoryEntry; locale: string }> = ({
     }
   };
 
+  const playLabel = playing ? t("dictations.pause") : t("dictations.play");
+  const copyLabel = copied ? t("dictations.copied") : t("dictations.copy");
+
   return (
-    <article className="flex items-start gap-5 px-5 py-4 border-t border-edge first:border-t-0">
-      <span className="w-11 shrink-0 pt-0.5 text-sm text-ink-3 tabular-nums">
+    <article className="flex items-start gap-4 ps-5 pe-3 py-3.5 border-t border-edge first:border-t-0">
+      <span className="w-11 shrink-0 pt-2 text-sm text-ink-3 tabular-nums">
         {time}
       </span>
-      <p className="flex-1 min-w-0 text-[15px] leading-relaxed select-text cursor-text whitespace-pre-wrap break-words">
+      <p className="flex-1 min-w-0 pt-1.5 text-[15px] leading-relaxed select-text cursor-text whitespace-pre-wrap break-words">
         {text}
       </p>
-      <button
-        type="button"
-        onClick={copy}
-        className={`shrink-0 min-h-11 px-3.5 flex items-center gap-2 rounded-[10px] border text-sm cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-text ${
-          copied
-            ? "bg-text border-text text-background font-semibold"
-            : "border-line-strong text-text font-medium hover:bg-surface-raised"
-        }`}
-      >
-        {copied ? <Check size={16} /> : <Copy size={16} />}
-        <span aria-live="polite">
-          {copied ? t("dictations.copied") : t("dictations.copy")}
+      <div className="flex shrink-0">
+        <button
+          type="button"
+          onClick={onTogglePlay}
+          aria-label={playLabel}
+          title={playLabel}
+          className={`${ICON_BUTTON} ${playing ? "text-text bg-surface-raised" : ""}`}
+        >
+          {playing ? <Pause size={17} /> : <Play size={17} />}
+        </button>
+        <button
+          type="button"
+          onClick={copy}
+          aria-label={copyLabel}
+          title={copyLabel}
+          className={`${ICON_BUTTON} ${copied ? "text-text" : ""}`}
+        >
+          {copied ? <Check size={17} /> : <Copy size={17} />}
+        </button>
+        <span aria-live="polite" className="sr-only">
+          {copied ? t("dictations.copied") : ""}
         </span>
-      </button>
+      </div>
     </article>
   );
 };
@@ -105,6 +125,9 @@ export const DictationsScreen: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(false);
   const [stats, setStats] = useState<DictationStats | null>(null);
+  const osType = useOsType();
+  const [playingId, setPlayingId] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const loadingRef = useRef(false);
   const entriesRef = useRef<HistoryEntry[]>([]);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -182,6 +205,53 @@ export const DictationsScreen: React.FC = () => {
     return () => observer.disconnect();
   }, [hasMore, loadPage, entries.length]);
 
+  // One recording at a time: starting another stops the one playing.
+  const stopPlayback = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.pause();
+      if (audio.src.startsWith("blob:")) URL.revokeObjectURL(audio.src);
+    }
+    audioRef.current = null;
+    setPlayingId(null);
+  }, []);
+
+  useEffect(() => stopPlayback, [stopPlayback]);
+
+  const togglePlay = useCallback(
+    async (entry: HistoryEntry) => {
+      const wasPlaying = audioRef.current && playingId === entry.id;
+      stopPlayback();
+      if (wasPlaying) return;
+
+      const unavailable = () => {
+        stopPlayback();
+        notify({ title: t("dictations.audioUnavailable") });
+      };
+      try {
+        const result = await commands.getAudioFilePath(entry.file_name);
+        if (result.status !== "ok") return unavailable();
+        // Linux's webview can't read the asset protocol for audio.
+        const source =
+          osType === "linux"
+            ? URL.createObjectURL(
+                new Blob([await readFile(result.data)], { type: "audio/wav" }),
+              )
+            : convertFileSrc(result.data, "asset");
+        const audio = new Audio(source);
+        audio.onended = stopPlayback;
+        audio.onerror = unavailable;
+        audioRef.current = audio;
+        setPlayingId(entry.id);
+        await audio.play();
+      } catch (error) {
+        console.error("Failed to play the recording:", error);
+        unavailable();
+      }
+    },
+    [osType, playingId, stopPlayback, t],
+  );
+
   const days = useMemo(() => {
     const today = dayKey(new Date());
     const yesterday = dayKey(new Date(Date.now() - 24 * 60 * 60 * 1000));
@@ -245,7 +315,13 @@ export const DictationsScreen: React.FC = () => {
             </h2>
             <div className="flex flex-col bg-surface border border-edge rounded-[14px]">
               {day.entries.map((entry) => (
-                <DictationRow key={entry.id} entry={entry} locale={locale} />
+                <DictationRow
+                  key={entry.id}
+                  entry={entry}
+                  locale={locale}
+                  playing={playingId === entry.id}
+                  onTogglePlay={() => togglePlay(entry)}
+                />
               ))}
             </div>
           </div>

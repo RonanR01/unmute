@@ -1037,6 +1037,14 @@ pub fn run(cli_args: CliArgs) {
                     .maximizable(true)
                     .visible(false);
 
+            // Unmute draws under the title bar: no title, no separate strip,
+            // the window buttons sit on the app's own chrome.
+            #[cfg(target_os = "macos")]
+            let mut win_builder = win_builder
+                .title_bar_style(tauri::TitleBarStyle::Overlay)
+                .hidden_title(true)
+                .traffic_light_position(tauri::LogicalPosition::new(18.0, 22.0));
+
             if let Some(data_dir) = portable::data_dir() {
                 win_builder = win_builder.data_directory(data_dir.join("webview"));
             }
@@ -1049,10 +1057,11 @@ pub fn run(cli_args: CliArgs) {
             )]
             let main_window = win_builder.build()?;
 
-            // macOS draws the title bar inside the inner size; grow the window to fit it.
+            // The window buttons take a strip at the top of the content (the
+            // `--titlebar-inset` of App.css); grow the window to make up for it.
             #[cfg(target_os = "macos")]
             {
-                let bar = utils::measure_title_bar(&main_window);
+                let bar = utils::TITLE_BAR_INSET;
                 if bar > 0.0 {
                     let (width, height) = utils::MAIN_WINDOW_SIZE;
                     let size = tauri::LogicalSize::new(width, height + bar);
