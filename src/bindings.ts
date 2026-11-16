@@ -1037,6 +1037,41 @@ async updateRecordingRetentionPeriod(period: string) : Promise<Result<null, stri
     else return { status: "error", error: e  as any };
 }
 },
+async getDictationStats() : Promise<Result<DictationStats, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_dictation_stats") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async getDailyActivity() : Promise<Result<DailyActivity[], string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_daily_activity") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
+ * The profile from the last refresh; `None` before the first one.
+ */
+async getVoiceProfile() : Promise<Result<VoiceProfile | null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_voice_profile") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async refreshVoiceProfile() : Promise<Result<VoiceProfile, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("refresh_voice_profile") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 /**
  * Checks if the Mac is a laptop by detecting battery presence
  * 
@@ -1230,6 +1265,22 @@ export type ChineseScript =
 "traditional_hk"
 export type ClipboardHandling = "dont_modify" | "copy_to_clipboard"
 export type CustomSounds = { start: boolean; stop: boolean }
+/**
+ * One day of dictation, in the user's time zone.
+ */
+export type DailyActivity = { 
+/**
+ * `YYYY-MM-DD`.
+ */
+date: string; dictation_count: number; word_count: number; duration_ms: number }
+/**
+ * Totals over every dictation still in the history.
+ */
+export type DictationStats = { dictation_count: number; word_count: number; duration_ms: number; 
+/**
+ * `None` until a dictation has both its words and its duration.
+ */
+words_per_minute: number | null }
 export type GpuDeviceOption = { id: string; name: string; total_vram_mb: number }
 export type HistoryEntry = { id: number; file_name: string; timestamp: number; saved: boolean; title: string; transcription_text: string; post_processed_text: string | null; post_process_prompt: string | null; post_process_requested: boolean; 
 /**
@@ -1420,6 +1471,7 @@ export type OverlayStyle = "none" | "minimal" | "live"
 export type PaginatedHistory = { entries: HistoryEntry[]; has_more: boolean }
 export type PasteMethod = "ctrl_v" | "direct" | "none" | "shift_insert" | "ctrl_shift_v" | "external_script"
 export type PermissionAccess = "allowed" | "denied" | "unknown"
+export type PhraseCount = { text: string; count: number }
 /**
  * Request format a post-processing endpoint speaks. Built-in providers have a
  * fixed format; only the custom provider lets the user change it.
@@ -1595,6 +1647,22 @@ export type TranscriptionOutcome =
 "failed"
 export type TypingTool = "auto" | "wtype" | "kwtype" | "dotool" | "ydotool" | "xdotool"
 export type VadBackend = "silero" | "earshot"
+/**
+ * How the user speaks, as of `computed_at`.
+ */
+export type VoiceProfile = { computed_at: number; dictation_count: number; word_count: number; 
+/**
+ * Most used words, leaving out the ones every sentence needs.
+ */
+top_words: PhraseCount[]; 
+/**
+ * Most repeated expressions; the first is the catchphrase.
+ */
+catchphrases: PhraseCount[]; fillers: PhraseCount[]; 
+/**
+ * Share of dictations in English, among those whose language is known.
+ */
+english_share: number | null }
 export type WindowsMicrophonePermissionStatus = { supported: boolean; overall_access: PermissionAccess; device_access: PermissionAccess; app_access: PermissionAccess; desktop_app_access: PermissionAccess }
 
 /** tauri-specta globals **/

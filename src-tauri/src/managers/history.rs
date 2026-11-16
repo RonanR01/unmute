@@ -116,7 +116,7 @@ pub struct DictationMetadata {
 }
 
 /// The number of words in `text`, or `None` when it has none.
-fn count_words(text: &str) -> Option<i64> {
+pub(super) fn count_words(text: &str) -> Option<i64> {
     match text.split_whitespace().count() {
         0 => None,
         count => i64::try_from(count).ok(),
@@ -170,6 +170,7 @@ impl HistoryManager {
 
         // Initialize database and run migrations synchronously
         manager.init_database()?;
+        manager.backfill_metadata();
 
         Ok(manager)
     }
@@ -307,7 +308,7 @@ impl HistoryManager {
         Ok(())
     }
 
-    fn get_connection(&self) -> Result<Connection> {
+    pub(super) fn get_connection(&self) -> Result<Connection> {
         Ok(Connection::open(&self.db_path)?)
     }
 
