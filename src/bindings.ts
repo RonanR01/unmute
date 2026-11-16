@@ -1037,6 +1037,17 @@ async updateRecordingRetentionPeriod(period: string) : Promise<Result<null, stri
     else return { status: "error", error: e  as any };
 }
 },
+/**
+ * Set how long recordings are kept apart from their text, and apply it now.
+ */
+async updateAudioRetentionPeriod(period: AudioRetentionPeriod) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("update_audio_retention_period", { period }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getDictationStats() : Promise<Result<DictationStats, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_dictation_stats") };

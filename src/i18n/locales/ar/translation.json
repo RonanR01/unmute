@@ -19,13 +19,18 @@
     "postProcessing": "معالجة لاحقة",
     "history": "السجل",
     "debug": "تصحيح الأخطاء",
-    "about": "حول"
+    "about": "حول",
+    "navigation": "Main navigation",
+    "dictations": "Dictations",
+    "insights": "Insights",
+    "dictionary": "Dictionary",
+    "settings": "Settings"
   },
   "onboarding": {
     "customModelDescription": "غير مدعوم رسميًا",
     "migration": {
       "title": "نماذجك بحاجة إلى تحديث",
-      "description": "يستخدم Handy الآن نوعًا أحدث من النماذج. نزّل الإصدار الجديد لمواصلة التفريغ الصوتي. ستتم إزالة الإصدارات القديمة.",
+      "description": "يستخدم Unmute الآن نوعًا أحدث من النماذج. نزّل الإصدار الجديد لمواصلة التفريغ الصوتي. ستتم إزالة الإصدارات القديمة.",
       "replaces": "يحل محل {{name}}",
       "oldFormat": "تنسيق قديم",
       "failed": "فشل التنزيل",
@@ -62,11 +67,11 @@
     "permissions": {
       "microphone": {
         "name": "الميكروفون",
-        "why": "ليتمكن Handy من سماعك. يُحوَّل الصوت إلى نص على هذا الكمبيوتر ولا يُرفع أبدًا."
+        "why": "ليتمكن Unmute من سماعك. يُحوَّل الصوت إلى نص على هذا الكمبيوتر ولا يُرفع أبدًا."
       },
       "accessibility": {
         "name": "إمكانية الوصول",
-        "why": "ليعمل اختصارك في كل التطبيقات، ويتمكن Handy من كتابة النص حيث يوجد المؤشر."
+        "why": "ليعمل اختصارك في كل التطبيقات، ويتمكن Unmute من كتابة النص حيث يوجد المؤشر."
       },
       "errors": {
         "checkFailed": "فشل التحقق من الأذونات. يرجير المحاولة مرة أخرى.",
@@ -80,12 +85,12 @@
       "openSettings": "فتح الإعدادات",
       "allowed": "تم السماح",
       "waiting": "في الانتظار",
-      "turnOnMac": "فعّل Handy في «إعدادات النظام»، ثم عد إلى هنا.",
+      "turnOnMac": "فعّل Unmute في «إعدادات النظام»، ثم عد إلى هنا.",
       "turnOnWindows": "فعّل الوصول إلى الميكروفون في «إعدادات Windows»، ثم عد إلى هنا.",
       "hintBoth": "اسمح بالإذنين للمتابعة",
       "hintMicrophone": "اسمح بالوصول إلى الميكروفون للمتابعة",
       "welcomeBack": "أهلًا بعودتك. سنكمل من حيث توقفت.",
-      "relaunch": "الاختصار لا يستجيب بعد هذا؟ <relaunch>أعد تشغيل Handy</relaunch> وستعود إلى هنا مباشرة."
+      "relaunch": "الاختصار لا يستجيب بعد هذا؟ <relaunch>أعد تشغيل Unmute</relaunch> وستعود إلى هنا مباشرة."
     },
     "shell": {
       "back": "رجوع",
@@ -96,11 +101,11 @@
       "title": "تحدّث بدل أن تكتب، في أي تطبيق",
       "subtitle": "اختر اللغات التي ستُملي بها",
       "languagesLabel": "اللغات",
-      "noMatch": "لا توجد لغة تطابق «{{query}}». تغطي نماذج Handy نحو 100 لغة، والمزيد في الإعدادات.",
+      "noMatch": "لا توجد لغة تطابق «{{query}}». تغطي نماذج Unmute نحو 100 لغة، والمزيد في الإعدادات.",
       "appLanguage": "لغة التطبيق",
       "menusIn": "القوائم بـ<b>{{language}}</b>",
       "chinese": {
-        "question": "أنت تتحدث {{languages}}. بأي حروف يجب أن يكتب Handy؟",
+        "question": "أنت تتحدث {{languages}}. بأي حروف يجب أن يكتب Unmute؟",
         "label": "الحروف الصينية",
         "zh-Hans": "المبسّطة",
         "zh-Hant": "تايوان",
@@ -170,7 +175,7 @@
     },
     "try": {
       "title": "جرّبه الآن!",
-      "subtitle": "Handy في الزاوية ليرشدك خطوة بخطوة",
+      "subtitle": "Unmute في الزاوية ليرشدك خطوة بخطوة",
       "noteLabel": "ملاحظة",
       "placeholder": "ملاحظة جديدة",
       "hold": "اضغط مطوّلًا على <keys/> وتحدّث.",
@@ -198,14 +203,14 @@
     },
     "done": {
       "title": "كل شيء جاهز",
-      "subMac": "Handy الآن في شريط القوائم. اضغط مطوّلًا أو انقر على <keys/> في أي تطبيق لتتحدث.",
-      "subTray": "Handy الآن في صينية النظام. اضغط مطوّلًا أو انقر على <keys/> في أي تطبيق لتتحدث.",
+      "subMac": "Unmute الآن في شريط القوائم. اضغط مطوّلًا أو انقر على <keys/> في أي تطبيق لتتحدث.",
+      "subTray": "Unmute الآن في صينية النظام. اضغط مطوّلًا أو انقر على <keys/> في أي تطبيق لتتحدث.",
       "hint": "يمكنك تغيير هذه لاحقًا من الإعدادات",
       "highFiveLabel": "كفّك",
-      "atLogin": "تشغيل Handy عند تسجيل الدخول",
+      "atLogin": "تشغيل Unmute عند تسجيل الدخول",
       "finish": "تم",
       "panel": {
-        "name": "Handy",
+        "name": "Unmute",
         "ready": "جاهز",
         "languages": "اللغات",
         "model": "نموذج الكلام",
@@ -330,7 +335,7 @@
     "general": {
       "title": "عام",
       "shortcut": {
-        "title": "اختصارات Handy",
+        "title": "اختصارات Unmute",
         "description": "إعداد اختصارات لوحة المفاتيح لبدء تسجيل التفريغ الصوتي",
         "loading": "جاري تحميل الاختصارات...",
         "none": "لا توجد اختصارات مجهزة",
@@ -372,7 +377,7 @@
       },
       "preferredLanguages": {
         "title": "اللغات المفضلة",
-        "description": "اللغات التي تتحدثها. يستخدمها Handy للتوصية بالنماذج.",
+        "description": "اللغات التي تتحدثها. يستخدمها Unmute للتوصية بالنماذج.",
         "noMatch": "لا توجد لغة تطابق «{{query}}»",
         "weak": "لا يوجد نموذج يتعرف على {{languages}} جيدًا بعد."
       },
@@ -399,17 +404,17 @@
         "fits": "للغاتك",
         "untested": "غير مختبرة"
       },
-      "untestedNote": "لم تُختبر مع Handy. قد تكون أبطأ أو ترتكب أخطاء أكثر.",
+      "untestedNote": "لم تُختبر مع Unmute. قد تكون أبطأ أو ترتكب أخطاء أكثر.",
       "untestedHidden_one": "نموذج آخر ({{count}}) غير مضبوط للإملاء. ابحث للعثور عليه.",
       "untestedHidden_other": "{{count}} من النماذج الأخرى غير مضبوطة للإملاء. ابحث للعثور على أحدها.",
-      "emptyYours": "لا توجد نماذج بعد. اختر واحدًا أدناه: يُنزَّل ثم يستخدمه Handy.",
+      "emptyYours": "لا توجد نماذج بعد. اختر واحدًا أدناه: يُنزَّل ثم يستخدمه Unmute.",
       "showMore": "عرض {{count}} أخرى",
       "showFewer": "عرض أقل",
       "download": "تنزيل واستخدام",
       "downloadingThenUse": "{{percent}}% من {{total}}، ثم يتم التبديل",
       "loading": "جارٍ التحميل…",
       "deleteAsk": "حذف {{name}}؟ سيحرر {{size}}.",
-      "deleteAskActive": "حذف {{name}}؟ لن يستطيع Handy التفريغ الصوتي حتى تختار نموذجًا آخر.",
+      "deleteAskActive": "حذف {{name}}؟ لن يستطيع Unmute التفريغ الصوتي حتى تختار نموذجًا آخر.",
       "cancel": "إلغاء",
       "deleteModel": "حذف {{name}}",
       "cancelDownload": "إيقاف تنزيل {{name}}",
@@ -423,14 +428,14 @@
         "marks": "? لم يُقَس بعد. — لا يسمع تلك اللغة."
       },
       "retiredNotice": {
-        "title": "النماذج القديمة لم تعد تعمل مع Handy",
+        "title": "النماذج القديمة لم تعد تعمل مع Unmute",
         "description": "إنها تشغل {{size}} على جهاز الكمبيوتر الخاص بك.",
         "delete": "حذف النماذج",
         "deleteFailed": "تعذّر حذف بعض النماذج القديمة. تحقق من السجل لمزيد من التفاصيل."
       },
       "rescan": {
         "label": "إعادة الفحص",
-        "tooltip": "إعادة الفحص بحثًا عن النماذج المضافة إلى مجلد النماذج أو ذاكرة Hugging Face التخزينية المؤقتة خارج Handy"
+        "tooltip": "إعادة الفحص بحثًا عن النماذج المضافة إلى مجلد النماذج أو ذاكرة Hugging Face التخزينية المؤقتة خارج Unmute"
       }
     },
     "languages": {
@@ -500,11 +505,11 @@
       },
       "autostart": {
         "label": "التشغيل عند بدء التشغيل",
-        "description": ".بدء تشغيل Handy تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
+        "description": ".بدء تشغيل Unmute تلقائياً عند تسجيل الدخول إلى جهاز الكمبيوتر الخاص بك"
       },
       "showTrayIcon": {
         "label": "إظهار أيقونة شريط النظام",
-        "description": ".عرض أيقونة Handy في شريط النظام"
+        "description": ".عرض أيقونة Unmute في شريط النظام"
       },
       "overlay": {
         "style": {
@@ -741,7 +746,7 @@
       },
       "updateChecks": {
         "label": "التحقق من وجود تحديثات",
-        "description": "التحقق تلقائياً من وجود إصدارات جديدة من Handy",
+        "description": "التحقق تلقائياً من وجود إصدارات جديدة من Unmute",
         "lockedDescription": "معطّل بواسطة إعدادات النظام (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -847,7 +852,7 @@
       },
       "keyboardDiagnostic": {
         "title": "تشخيص لوحة المفاتيح",
-        "description": "يتحقق مما إذا كانت أحداث لوحة المفاتيح تصل إلى Handy. يُسجَّل عدد الأحداث فقط — ولا تُسجَّل أبدًا المفاتيح التي تضغط عليها.",
+        "description": "يتحقق مما إذا كانت أحداث لوحة المفاتيح تصل إلى Unmute. يُسجَّل عدد الأحداث فقط — ولا تُسجَّل أبدًا المفاتيح التي تضغط عليها.",
         "run": "تشغيل تشخيص لمدة 10 ثوانٍ",
         "running": "جارٍ الاستماع… اضغط اختصارك عدة مرات (مثل Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -861,41 +866,47 @@
         "mouse": "الماوس",
         "verdictBlocked": "يحجب Secure Input أحداث المفاتيح — لا يمكن للاختصارات التي تتضمن مفتاحًا عاديًا أن تعمل حتى تُحلّ المشكلة.",
         "verdictSuspicious": "وصلت أحداث مفاتيح التعديل لكن لم يصل أي حدث مفتاح — هناك شيء يمنع المفاتيح رغم أن Secure Input يظهر معطلاً. يُرجى الإبلاغ عن ذلك على GitHub.",
-        "verdictOk": "أحداث المفاتيح تصل إلى Handy بشكل طبيعي.",
+        "verdictOk": "أحداث المفاتيح تصل إلى Unmute بشكل طبيعي.",
         "verdictNoEvents": "لم يُسجَّل أي حدث — هل ضغطت أي مفاتيح أثناء الاختبار؟",
         "failed": "فشل التشخيص: {{error}}"
+      },
+      "audioRetention": {
+        "title": "Delete Audio Recordings",
+        "description": "Delete the audio of older dictations while keeping their text. Saved dictations keep their audio.",
+        "sameAsHistory": "With the history entry"
       }
     },
     "about": {
       "title": "حول",
       "version": {
         "title": "الإصدار",
-        "description": "الإصدار الحالي من Handy"
+        "description": "الإصدار الحالي من Unmute"
       },
       "whatsNewUpdates": {
         "label": "إظهار الجديد",
-        "description": "إظهار ملاحظات الإصدار بعد تحديثات Handy"
+        "description": "إظهار ملاحظات الإصدار بعد تحديثات Unmute"
       },
       "appDataDirectory": {
         "title": "مجلد بيانات التطبيق",
-        "description": "الموقع الذي يخزن فيه Handy بياناته"
+        "description": "الموقع الذي يخزن فيه Unmute بياناته"
       },
       "sourceCode": {
         "title": "كود المصدر",
         "description": "عرض كود المصدر والمساهمة",
         "button": "عرض على GitHub"
       },
-      "supportDevelopment": {
-        "title": "دعم التطوير",
-        "description": "ساعدنا في مواصلة بناء Handy",
-        "button": "تبرع"
-      },
       "acknowledgments": {
         "title": "شكر وتقدير",
         "ggml": {
           "title": "ggml",
           "description": "استنتاج عالي الأداء لنموذج التعرف التلقائي على الكلام Whisper من OpenAI",
-          "details": ".يستخدم Handy برنامج ggml لمعالجة سريعة ومحلية لتحويل الكلام إلى نص. شكراً للعمل الرائع الذي قام به Georgi Gerganov والمساهمون"
+          "details": ".يستخدم Unmute برنامج ggml لمعالجة سريعة ومحلية لتحويل الكلام إلى نص. شكراً للعمل الرائع الذي قام به Georgi Gerganov والمساهمون"
+        },
+        "handy": {
+          "title": "Handy",
+          "description": "The open source speech-to-text app Unmute is built on",
+          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "button": "View Handy on GitHub"
         }
       }
     }
@@ -916,7 +927,7 @@
     "portableUpdateBrowseButton": "فتح GitHub Releases"
   },
   "whatsNew": {
-    "title": "الجديد في Handy v{{version}}"
+    "title": "الجديد في Unmute v{{version}}"
   },
   "common": {
     "playbackPosition": "موضع التشغيل",
@@ -943,7 +954,7 @@
     "microphoneSilentTitle": "الميكروفون صامت",
     "microphoneSilent": "لم يرسل الميكروفون سوى الصمت. تأكد من أنه غير مكتوم، أو اختر ميكروفونًا آخر من الإعدادات.",
     "recordingFailedTitle": "فشل في بدء التسجيل",
-    "modelLoadFailed": "تعذر على Handy تحميل هذا النموذج. حاول مرة أخرى أو اختر نموذجًا آخر.",
+    "modelLoadFailed": "تعذر على Unmute تحميل هذا النموذج. حاول مرة أخرى أو اختر نموذجًا آخر.",
     "modelLoadFailedTitle": "فشل في تحميل النموذج",
     "noModelSelected": "نزّل نموذجًا أو اختره من الإعدادات > النماذج.",
     "noModelSelectedTitle": "لم يتم اختيار نموذج",
@@ -951,7 +962,7 @@
     "pasteFailedTitle": "فشل لصق النص",
     "pasteFailed": "تعذر لصق النص في التطبيق النشط.",
     "pasteBlockedElevatedTitle": "تعذر اللصق في تطبيقات المسؤول",
-    "pasteBlockedElevated": "التطبيق النشط يعمل بصلاحيات المسؤول، لذا لا يستطيع Handy اللصق فيه. يمكنك نسخ النص من السجل.",
+    "pasteBlockedElevated": "التطبيق النشط يعمل بصلاحيات المسؤول، لذا لا يستطيع Unmute اللصق فيه. يمكنك نسخ النص من السجل.",
     "postProcessFailedTitle": "لُصق بدون معالجة لاحقة",
     "postProcessFailed": "لم تكتمل المعالجة اللاحقة، لذا لُصق النص المنسوخ كما هو.",
     "filePostProcessFailedTitle": "نُسخ بدون معالجة لاحقة",
@@ -968,11 +979,11 @@
   },
   "appLanguage": {
     "title": "لغة التطبيق",
-    "description": "تغيير لغة واجهة Handy"
+    "description": "تغيير لغة واجهة Unmute"
   },
   "theme": {
     "title": "سمة التطبيق",
-    "description": "اختر ما إذا كان Handy يتبع مظهر النظام أو يبقى فاتحًا أو داكنًا",
+    "description": "اختر ما إذا كان Unmute يتبع مظهر النظام أو يبقى فاتحًا أو داكنًا",
     "options": {
       "system": "النظام",
       "light": "فاتح",
@@ -994,5 +1005,55 @@
     "learnMore": "كيفية الإصلاح",
     "recorderBlocked": "لا يمكن تسجيل الاختصارات الآن — يحجب Secure Input في macOS أحداث المفاتيح. عالج تحذير Secure Input أولاً.",
     "dismiss": "تجاهل"
+  },
+  "dictations": {
+    "title": "Dictations",
+    "subtitle": "Everything you dictated, newest first.",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Couldn't Copy the Text",
+    "empty": "Nothing dictated yet. Press your shortcut in any app and start speaking.",
+    "statsTitle": "Since the beginning",
+    "words": "Words dictated",
+    "pace": "Average pace",
+    "wordsPerMinute": "words per minute",
+    "duration": "Time dictating"
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "How you use dictation, computed on this machine.",
+    "keyNumbers": "Key numbers",
+    "pace": "Pace",
+    "activity": "Activity",
+    "less": "Less",
+    "more": "More",
+    "heatmapLabel": "Dictation time per day over the last twelve months",
+    "dayTooltip": "{{duration}} of dictation, {{words}} words",
+    "noActivity": "No dictation",
+    "voiceProfile": "My voice profile",
+    "lastRefresh": "Last refreshed: {{date}}",
+    "neverRefreshed": "Never refreshed",
+    "refresh": "Refresh my profile",
+    "refreshFailed": "Couldn't Refresh the Profile",
+    "catchphrase": "My catchphrase",
+    "saidTimes": "Said <m>{{n}}</m> times",
+    "topWord": "My most used word",
+    "usedTimes": "Used <m>{{n}}</m> times",
+    "englishShare": "Share of English",
+    "ofMyDictations": "of my dictations",
+    "languageUnknown": "The language of your dictations isn't known yet.",
+    "notEnoughData": "Not enough dictations yet.",
+    "noProfile": "Refresh your profile to see your catchphrase and your most used word."
+  },
+  "dictionary": {
+    "title": "Dictionary",
+    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "newWord": "New word",
+    "empty": "No words yet. Add the names and terms that come out wrong.",
+    "edit": "Edit {{word}}",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

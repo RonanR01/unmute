@@ -28,7 +28,16 @@ import {
 import { DebugSettings, ModelsSettings } from "./components/settings";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { FileDropOverlay } from "./components/FileDropOverlay";
-import { Sidebar, SidebarSection, SECTIONS_CONFIG } from "./components/Sidebar";
+import {
+  Sidebar,
+  SECTIONS_CONFIG,
+  type Screen,
+  type SidebarSection,
+} from "./components/Sidebar";
+import { DictationsScreen } from "./components/dictations/DictationsScreen";
+import { InsightsScreen } from "./components/insights/InsightsScreen";
+import { DictionaryScreen } from "./components/dictionary/DictionaryScreen";
+import { SettingsScreen } from "./components/settings/SettingsScreen";
 import { WhatsNewGate } from "./components/whats-new";
 import { useSettings } from "./hooks/useSettings";
 import { useSettingsStore } from "./stores/settingsStore";
@@ -82,9 +91,14 @@ function App() {
   // Set when a returning user's selected model is a retired (ONNX) model that
   // is still on disk: they must update it before the app can transcribe.
   const [migrationModelId, setMigrationModelId] = useState<string | null>(null);
+  const [currentScreen, setCurrentScreen] = useState<Screen>("dictations");
   const [currentSection, setCurrentSection] =
     useState<SidebarSection>("general");
-  const showHistory = useCallback(() => setCurrentSection("history"), []);
+  // Files and failed takes live in the full history, a Settings tab.
+  const showHistory = useCallback(() => {
+    setCurrentSection("history");
+    setCurrentScreen("settings");
+  }, []);
   const { settings, updateSetting } = useSettings();
   const direction = getLanguageDirection(i18n.language);
   const refreshAudioDevices = useSettingsStore(
@@ -98,7 +112,7 @@ function App() {
   // Reset the scroll position whenever the active section changes.
   useLayoutEffect(() => {
     settingsScrollRef.current?.scrollTo({ top: 0 });
-  }, [currentSection]);
+  }, [currentScreen, currentSection]);
 
   useEffect(() => {
     checkOnboardingStatus();
@@ -327,25 +341,33 @@ function App() {
         {/* Main content area that takes remaining space */}
         <div className="flex-1 flex overflow-hidden">
           <Sidebar
-            activeSection={currentSection}
-            onSectionChange={setCurrentSection}
+            activeScreen={currentScreen}
+            onScreenChange={setCurrentScreen}
           />
           {/* Scrollable content area */}
           <div className="flex-1 flex flex-col overflow-hidden">
             <div ref={settingsScrollRef} className="flex-1 overflow-y-auto">
-              {/* Models fills the window: its table scrolls, not the page. */}
-              <div
-                className={`flex flex-col items-center p-4 gap-4 ${currentSection === "models" ? "h-full" : ""}`}
-              >
+              <div className="empty:hidden px-4 pt-4">
                 <SecureInputWarning />
-                {renderSettingsContent(
-                  currentSection,
-                  setOnboardingPreview,
-                  runOnboarding,
-                  runModelMigration,
-                  setCurrentSection,
-                )}
               </div>
+              {currentScreen === "dictations" && <DictationsScreen />}
+              {currentScreen === "insights" && <InsightsScreen />}
+              {currentScreen === "dictionary" && <DictionaryScreen />}
+              {currentScreen === "settings" && (
+                // Models fills the window: its table scrolls, not the page.
+                <SettingsScreen
+                  section={currentSection}
+                  onSectionChange={setCurrentSection}
+                >
+                  {renderSettingsContent(
+                    currentSection,
+                    setOnboardingPreview,
+                    runOnboarding,
+                    runModelMigration,
+                    setCurrentSection,
+                  )}
+                </SettingsScreen>
+              )}
             </div>
           </div>
         </div>

@@ -25,6 +25,10 @@
   --color-ink-3: var(--color-ink-3);
   --color-line: var(--color-line);
   --color-line-strong: var(--color-line-strong);
+  --color-surface: var(--color-surface);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-edge: var(--color-edge);
+  --color-signal: var(--color-signal);
 }
 
 /* Noto Sans CJK subset (see src/lib/utils/cjkFont.ts): Windows' CJK fonts
@@ -40,11 +44,11 @@
    Names avoid Tailwind's defaults, which Settings still uses. */
 @theme {
   --font-display:
-    ui-rounded, "SF Pro Rounded", system-ui, -apple-system,
+    "Rethink Sans Variable", system-ui, -apple-system,
     "Segoe UI Variable Display", "Segoe UI", sans-serif;
   --font-ui:
-    system-ui, -apple-system, "Segoe UI Variable Text", "Segoe UI", Roboto,
-    "Noto Sans", sans-serif;
+    "Rethink Sans Variable", system-ui, -apple-system, "Segoe UI Variable Text",
+    "Segoe UI", Roboto, "Noto Sans", sans-serif;
   --font-cjk-subset:
     "Handy CJK Subset", -apple-system, "Segoe UI Variable Text", "Segoe UI",
     system-ui, sans-serif;
@@ -203,11 +207,12 @@
   background-color: var(--color-background);
 
   /* Without this, Windows draws a <select> popup white under light text. */
-  color-scheme: light dark;
+  color-scheme: dark;
+  font-family: var(--font-ui);
 }
 
 :root[data-theme="light"] {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 :root[data-theme="dark"] {

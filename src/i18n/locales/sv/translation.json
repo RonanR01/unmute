@@ -19,13 +19,18 @@
     "postProcessing": "Efterbearbetning",
     "history": "Historik",
     "debug": "Felsökning",
-    "about": "Om"
+    "about": "Om",
+    "navigation": "Main navigation",
+    "dictations": "Dictations",
+    "insights": "Insights",
+    "dictionary": "Dictionary",
+    "settings": "Settings"
   },
   "onboarding": {
     "customModelDescription": "Stöds inte officiellt",
     "migration": {
       "title": "Dina modeller behöver uppdateras",
-      "description": "Handy använder nu en nyare typ av modell. Ladda ner den nya versionen för att fortsätta transkribera. Gamla versioner kommer att tas bort.",
+      "description": "Unmute använder nu en nyare typ av modell. Ladda ner den nya versionen för att fortsätta transkribera. Gamla versioner kommer att tas bort.",
       "replaces": "Ersätter {{name}}",
       "oldFormat": "Gammalt format",
       "failed": "Nedladdningen misslyckades",
@@ -62,11 +67,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Så att Handy kan höra dig. Ljudet omvandlas till text på den här datorn och laddas aldrig upp."
+        "why": "Så att Unmute kan höra dig. Ljudet omvandlas till text på den här datorn och laddas aldrig upp."
       },
       "accessibility": {
         "name": "Hjälpmedel",
-        "why": "Så att din genväg fungerar i alla appar och Handy kan skriva texten där markören står."
+        "why": "Så att din genväg fungerar i alla appar och Unmute kan skriva texten där markören står."
       },
       "errors": {
         "checkFailed": "Misslyckades med att kontrollera behörigheter. Försök igen.",
@@ -80,12 +85,12 @@
       "openSettings": "Öppna inställningar",
       "allowed": "Tillåten",
       "waiting": "Väntar",
-      "turnOnMac": "Slå på Handy i Systeminställningar och kom sedan tillbaka hit.",
+      "turnOnMac": "Slå på Unmute i Systeminställningar och kom sedan tillbaka hit.",
       "turnOnWindows": "Slå på mikrofonåtkomst i Inställningar i Windows och kom sedan tillbaka hit.",
       "hintBoth": "Tillåt båda för att fortsätta",
       "hintMicrophone": "Tillåt mikrofonen för att fortsätta",
       "welcomeBack": "Välkommen tillbaka. Vi fortsätter där du slutade.",
-      "relaunch": "Svarar inte genvägen efter detta? <relaunch>Starta om Handy</relaunch> så hamnar du direkt här igen."
+      "relaunch": "Svarar inte genvägen efter detta? <relaunch>Starta om Unmute</relaunch> så hamnar du direkt här igen."
     },
     "shell": {
       "back": "Tillbaka",
@@ -100,7 +105,7 @@
       "appLanguage": "Appspråk",
       "menusIn": "Menyer på <b>{{language}}</b>",
       "chinese": {
-        "question": "Du talar {{languages}}. Vilka tecken ska Handy skriva?",
+        "question": "Du talar {{languages}}. Vilka tecken ska Unmute skriva?",
         "label": "Kinesiska tecken",
         "zh-Hans": "Förenklad",
         "zh-Hant": "Taiwan",
@@ -170,7 +175,7 @@
     },
     "try": {
       "title": "Testa nu!",
-      "subtitle": "Handy finns i hörnet och guidar dig",
+      "subtitle": "Unmute finns i hörnet och guidar dig",
       "noteLabel": "Anteckning",
       "placeholder": "Ny anteckning",
       "hold": "Håll in <keys/> och tala.",
@@ -198,14 +203,14 @@
     },
     "done": {
       "title": "Nu är allt klart",
-      "subMac": "Handy finns nu i menyraden. Håll in eller tryck på <keys/> i valfri app för att tala.",
-      "subTray": "Handy finns nu i systemfältet. Håll in eller tryck på <keys/> i valfri app för att tala.",
+      "subMac": "Unmute finns nu i menyraden. Håll in eller tryck på <keys/> i valfri app för att tala.",
+      "subTray": "Unmute finns nu i systemfältet. Håll in eller tryck på <keys/> i valfri app för att tala.",
       "hint": "Du kan ändra detta senare i Inställningar",
       "highFiveLabel": "Femman",
-      "atLogin": "Starta Handy när jag loggar in",
+      "atLogin": "Starta Unmute när jag loggar in",
       "finish": "Klar",
       "panel": {
-        "name": "Handy",
+        "name": "Unmute",
         "ready": "Redo",
         "languages": "Språk",
         "model": "Talmodell",
@@ -330,7 +335,7 @@
     "general": {
       "title": "Allmänt",
       "shortcut": {
-        "title": "Handy-kortkommandon",
+        "title": "Unmute-kortkommandon",
         "description": "Konfigurera kortkommandon för att starta tal-till-text-inspelning",
         "loading": "Laddar kortkommandon...",
         "none": "Inga kortkommandon konfigurerade",
@@ -372,7 +377,7 @@
       },
       "preferredLanguages": {
         "title": "Föredragna språk",
-        "description": "Språken du talar. Handy använder dem för att rekommendera modeller.",
+        "description": "Språken du talar. Unmute använder dem för att rekommendera modeller.",
         "noMatch": "Inget språk matchar ”{{query}}”",
         "weak": "Ingen modell känner igen {{languages}} bra ännu."
       },
@@ -399,17 +404,17 @@
         "fits": "För dina språk",
         "untested": "Ej testade"
       },
-      "untestedNote": "Inte testade med Handy. De kan vara långsammare eller göra fler fel.",
+      "untestedNote": "Inte testade med Unmute. De kan vara långsammare eller göra fler fel.",
       "untestedHidden_one": "{{count}} modell till är inte anpassad för diktering. Sök för att hitta den.",
       "untestedHidden_other": "{{count}} modeller till är inte anpassade för diktering. Sök för att hitta en.",
-      "emptyYours": "Inga modeller ännu. Välj en nedan: den laddas ner och sedan använder Handy den.",
+      "emptyYours": "Inga modeller ännu. Välj en nedan: den laddas ner och sedan använder Unmute den.",
       "showMore": "Visa {{count}} till",
       "showFewer": "Visa färre",
       "download": "Ladda ner och använd",
       "downloadingThenUse": "{{percent}} % av {{total}}, sedan byts modell",
       "loading": "Laddar…",
       "deleteAsk": "Ta bort {{name}}? Det frigör {{size}}.",
-      "deleteAskActive": "Ta bort {{name}}? Handy kan inte transkribera förrän du väljer en annan.",
+      "deleteAskActive": "Ta bort {{name}}? Unmute kan inte transkribera förrän du väljer en annan.",
       "cancel": "Avbryt",
       "deleteModel": "Ta bort {{name}}",
       "cancelDownload": "Stoppa nedladdningen av {{name}}",
@@ -423,14 +428,14 @@
         "marks": "? har inte mätts ännu. — hör inte det språket."
       },
       "retiredNotice": {
-        "title": "Gamla modeller fungerar inte längre med Handy",
+        "title": "Gamla modeller fungerar inte längre med Unmute",
         "description": "De tar upp {{size}} på din dator.",
         "delete": "Ta bort modeller",
         "deleteFailed": "Vissa gamla modeller kunde inte tas bort. Se loggen för mer information."
       },
       "rescan": {
         "label": "Skanna om",
-        "tooltip": "Skanna om efter modeller som lagts till i modellmappen eller Hugging Face-cachen utanför Handy"
+        "tooltip": "Skanna om efter modeller som lagts till i modellmappen eller Hugging Face-cachen utanför Unmute"
       }
     },
     "languages": {
@@ -500,11 +505,11 @@
       },
       "autostart": {
         "label": "Starta vid uppstart",
-        "description": "Starta Handy automatiskt när du loggar in på din dator."
+        "description": "Starta Unmute automatiskt när du loggar in på din dator."
       },
       "showTrayIcon": {
         "label": "Visa ikon i systemfältet",
-        "description": "Visa Handy-ikonen i systemfältet."
+        "description": "Visa Unmute-ikonen i systemfältet."
       },
       "overlay": {
         "style": {
@@ -741,7 +746,7 @@
       },
       "updateChecks": {
         "label": "Sök efter uppdateringar",
-        "description": "Sök automatiskt efter nya versioner av Handy",
+        "description": "Sök automatiskt efter nya versioner av Unmute",
         "lockedDescription": "Inaktiverad av systemkonfiguration (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -847,7 +852,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Tangentbordsdiagnostik",
-        "description": "Kontrollerar om tangentbordshändelser når Handy. Endast antalet händelser registreras — aldrig vilka tangenter du trycker på.",
+        "description": "Kontrollerar om tangentbordshändelser når Unmute. Endast antalet händelser registreras — aldrig vilka tangenter du trycker på.",
         "run": "Kör 10 s diagnostik",
         "running": "Lyssnar… tryck på ditt kortkommando några gånger (t.ex. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -861,41 +866,47 @@
         "mouse": "Mus",
         "verdictBlocked": "Secure Input blockerar tangenthändelser — kortkommandon med en vanlig tangent kan inte fungera förrän det är löst.",
         "verdictSuspicious": "Modifierarhändelser kom fram men inga tangenthändelser — något undertrycker tangenter trots att Secure Input rapporteras som inaktiverat. Rapportera gärna detta på GitHub.",
-        "verdictOk": "Tangenthändelser når Handy som vanligt.",
+        "verdictOk": "Tangenthändelser når Unmute som vanligt.",
         "verdictNoEvents": "Inga händelser fångades — tryckte du på några tangenter under testet?",
         "failed": "Diagnostiken misslyckades: {{error}}"
+      },
+      "audioRetention": {
+        "title": "Delete Audio Recordings",
+        "description": "Delete the audio of older dictations while keeping their text. Saved dictations keep their audio.",
+        "sameAsHistory": "With the history entry"
       }
     },
     "about": {
       "title": "Om",
       "version": {
         "title": "Version",
-        "description": "Nuvarande version av Handy"
+        "description": "Nuvarande version av Unmute"
       },
       "whatsNewUpdates": {
         "label": "Visa nyheter",
-        "description": "Visa versionsinformation efter Handy-uppdateringar"
+        "description": "Visa versionsinformation efter Unmute-uppdateringar"
       },
       "appDataDirectory": {
         "title": "Mapp för appdata",
-        "description": "Plats där Handy lagrar sina data"
+        "description": "Plats där Unmute lagrar sina data"
       },
       "sourceCode": {
         "title": "Källkod",
         "description": "Visa källkod och bidra",
         "button": "Visa på GitHub"
       },
-      "supportDevelopment": {
-        "title": "Stöd utvecklingen",
-        "description": "Hjälp oss att fortsätta bygga Handy",
-        "button": "Donera"
-      },
       "acknowledgments": {
         "title": "Tack till",
         "ggml": {
           "title": "ggml",
           "description": "Högpresterande inferens av OpenAI:s Whisper-modell för automatisk taligenkänning",
-          "details": "Handy använder ggml för snabb, lokal tal-till-text-behandling. Tack till det fantastiska arbete som utförts av Georgi Gerganov med medarbetare."
+          "details": "Unmute använder ggml för snabb, lokal tal-till-text-behandling. Tack till det fantastiska arbete som utförts av Georgi Gerganov med medarbetare."
+        },
+        "handy": {
+          "title": "Handy",
+          "description": "The open source speech-to-text app Unmute is built on",
+          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "button": "View Handy on GitHub"
         }
       }
     }
@@ -916,7 +927,7 @@
     "portableUpdateBrowseButton": "Öppna GitHub Releases"
   },
   "whatsNew": {
-    "title": "Nytt i Handy v{{version}}"
+    "title": "Nytt i Unmute v{{version}}"
   },
   "common": {
     "playbackPosition": "Uppspelningsposition",
@@ -943,7 +954,7 @@
     "microphoneSilentTitle": "Mikrofonen är tyst",
     "microphoneSilent": "Mikrofonen skickade bara tystnad. Kontrollera att den inte är avstängd, eller välj en annan mikrofon under Inställningar.",
     "recordingFailedTitle": "Inspelningen kunde inte starta",
-    "modelLoadFailed": "Handy kunde inte läsa in den här modellen. Försök igen eller välj en annan.",
+    "modelLoadFailed": "Unmute kunde inte läsa in den här modellen. Försök igen eller välj en annan.",
     "modelLoadFailedTitle": "Misslyckades med att ladda modell",
     "noModelSelected": "Ladda ned eller välj en modell under Inställningar > Modeller.",
     "noModelSelectedTitle": "Ingen modell vald",
@@ -951,7 +962,7 @@
     "pasteFailedTitle": "Det gick inte att klistra in texten",
     "pasteFailed": "Texten kunde inte klistras in i det aktiva programmet.",
     "pasteBlockedElevatedTitle": "Kan inte klistra in i admin-appar",
-    "pasteBlockedElevated": "Det aktiva programmet körs som administratör, så Handy kan inte klistra in i det. Du kan kopiera transkriptionen från Historik.",
+    "pasteBlockedElevated": "Det aktiva programmet körs som administratör, så Unmute kan inte klistra in i det. Du kan kopiera transkriptionen från Historik.",
     "postProcessFailedTitle": "Inklistrat utan efterbearbetning",
     "postProcessFailed": "Efterbearbetningen slutfördes inte, så transkriptionen klistrades in som den är.",
     "filePostProcessFailedTitle": "Transkriberat utan efterbearbetning",
@@ -968,11 +979,11 @@
   },
   "appLanguage": {
     "title": "Applikationsspråk",
-    "description": "Ändra språket i Handy-gränssnittet"
+    "description": "Ändra språket i Unmute-gränssnittet"
   },
   "theme": {
     "title": "Apptema",
-    "description": "Välj om Handy ska följa systemets tema eller förbli ljust eller mörkt",
+    "description": "Välj om Unmute ska följa systemets tema eller förbli ljust eller mörkt",
     "options": {
       "system": "System",
       "light": "Ljust",
@@ -994,5 +1005,55 @@
     "learnMore": "Så här löser du det",
     "recorderBlocked": "Det går inte att spela in kortkommandon just nu — macOS Secure Input blockerar tangenthändelser. Lös varningen om Secure Input först.",
     "dismiss": "Avfärda"
+  },
+  "dictations": {
+    "title": "Dictations",
+    "subtitle": "Everything you dictated, newest first.",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Couldn't Copy the Text",
+    "empty": "Nothing dictated yet. Press your shortcut in any app and start speaking.",
+    "statsTitle": "Since the beginning",
+    "words": "Words dictated",
+    "pace": "Average pace",
+    "wordsPerMinute": "words per minute",
+    "duration": "Time dictating"
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "How you use dictation, computed on this machine.",
+    "keyNumbers": "Key numbers",
+    "pace": "Pace",
+    "activity": "Activity",
+    "less": "Less",
+    "more": "More",
+    "heatmapLabel": "Dictation time per day over the last twelve months",
+    "dayTooltip": "{{duration}} of dictation, {{words}} words",
+    "noActivity": "No dictation",
+    "voiceProfile": "My voice profile",
+    "lastRefresh": "Last refreshed: {{date}}",
+    "neverRefreshed": "Never refreshed",
+    "refresh": "Refresh my profile",
+    "refreshFailed": "Couldn't Refresh the Profile",
+    "catchphrase": "My catchphrase",
+    "saidTimes": "Said <m>{{n}}</m> times",
+    "topWord": "My most used word",
+    "usedTimes": "Used <m>{{n}}</m> times",
+    "englishShare": "Share of English",
+    "ofMyDictations": "of my dictations",
+    "languageUnknown": "The language of your dictations isn't known yet.",
+    "notEnoughData": "Not enough dictations yet.",
+    "noProfile": "Refresh your profile to see your catchphrase and your most used word."
+  },
+  "dictionary": {
+    "title": "Dictionary",
+    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "newWord": "New word",
+    "empty": "No words yet. Add the names and terms that come out wrong.",
+    "edit": "Edit {{word}}",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

@@ -51,7 +51,9 @@ For detailed platform-specific build setup, see [BUILD.md](BUILD.md).
 
 ## Architecture Overview
 
-Handy is a cross-platform desktop speech-to-text application built with Tauri 2.x (Rust backend + React/TypeScript frontend).
+Unmute is a fork of [Handy](https://github.com/cjpais/Handy), a cross-platform desktop speech-to-text application built with Tauri 2.x (Rust backend + React/TypeScript frontend). The engine is Handy's and keeps its names (the `handy` crate, `HANDY_*` variables, comments) so upstream changes still merge; what the user sees is Unmute. "Handy" below means that inherited engine.
+
+Unmute's own screens are `src/components/dictations/`, `src/components/insights/`, `src/components/dictionary/` and `src/components/settings/SettingsScreen.tsx`; its insights are computed in `src-tauri/src/managers/insights.rs`. The palette (fir green, signal yellow for measured values only) is in `src/styles/theme.css`.
 
 ### Backend Structure (src-tauri/src/)
 
@@ -231,7 +233,7 @@ Access debug features: `Cmd+Shift+D` (macOS) or `Ctrl+Shift+D` (Windows/Linux)
 
 ## Troubleshooting
 
-See the [Troubleshooting](README.md#troubleshooting) section in README.md.
+See the [Dépannage](README.md#dépannage) section in README.md, which points to Handy's troubleshooting guide.
 
 ## GitHub workflow for AI coding assistants
 

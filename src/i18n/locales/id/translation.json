@@ -19,13 +19,18 @@
     "postProcessing": "Pascaproses",
     "history": "Riwayat",
     "debug": "Debug",
-    "about": "Tentang"
+    "about": "Tentang",
+    "navigation": "Main navigation",
+    "dictations": "Dictations",
+    "insights": "Insights",
+    "dictionary": "Dictionary",
+    "settings": "Settings"
   },
   "onboarding": {
     "customModelDescription": "Tidak didukung secara resmi",
     "migration": {
       "title": "Model Anda perlu diperbarui",
-      "description": "Handy kini menggunakan jenis model yang lebih baru. Unduh versi baru untuk terus mentranskripsi. Versi lama akan dihapus.",
+      "description": "Unmute kini menggunakan jenis model yang lebih baru. Unduh versi baru untuk terus mentranskripsi. Versi lama akan dihapus.",
       "replaces": "Menggantikan {{name}}",
       "oldFormat": "Format lama",
       "failed": "Unduhan gagal",
@@ -62,11 +67,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Agar Handy dapat mendengar Anda. Audio diubah menjadi teks di komputer ini dan tidak pernah diunggah."
+        "why": "Agar Unmute dapat mendengar Anda. Audio diubah menjadi teks di komputer ini dan tidak pernah diunggah."
       },
       "accessibility": {
         "name": "Aksesibilitas",
-        "why": "Agar pintasan Anda berfungsi di semua aplikasi, dan Handy dapat mengetik teks di tempat kursor Anda berada."
+        "why": "Agar pintasan Anda berfungsi di semua aplikasi, dan Unmute dapat mengetik teks di tempat kursor Anda berada."
       },
       "errors": {
         "checkFailed": "Gagal memeriksa izin. Silakan coba lagi.",
@@ -80,12 +85,12 @@
       "openSettings": "Buka pengaturan",
       "allowed": "Diizinkan",
       "waiting": "Menunggu",
-      "turnOnMac": "Aktifkan Handy di Pengaturan Sistem, lalu kembali ke sini.",
+      "turnOnMac": "Aktifkan Unmute di Pengaturan Sistem, lalu kembali ke sini.",
       "turnOnWindows": "Aktifkan akses mikrofon di Setelan Windows, lalu kembali ke sini.",
       "hintBoth": "Izinkan keduanya untuk melanjutkan",
       "hintMicrophone": "Izinkan mikrofon untuk melanjutkan",
       "welcomeBack": "Selamat datang kembali. Kita lanjutkan dari tadi.",
-      "relaunch": "Pintasan tidak merespons setelah ini? <relaunch>Luncurkan ulang Handy</relaunch> dan Anda akan kembali tepat ke sini."
+      "relaunch": "Pintasan tidak merespons setelah ini? <relaunch>Luncurkan ulang Unmute</relaunch> dan Anda akan kembali tepat ke sini."
     },
     "shell": {
       "back": "Kembali",
@@ -96,11 +101,11 @@
       "title": "Bicara, bukan mengetik, di aplikasi apa pun",
       "subtitle": "Pilih bahasa yang akan Anda gunakan untuk mendikte",
       "languagesLabel": "Bahasa",
-      "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”. Model Handy mencakup sekitar 100 bahasa; sisanya ada di pengaturan.",
+      "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”. Model Unmute mencakup sekitar 100 bahasa; sisanya ada di pengaturan.",
       "appLanguage": "Bahasa aplikasi",
       "menusIn": "Menu dalam <b>{{language}}</b>",
       "chinese": {
-        "question": "Anda berbicara {{languages}}. Aksara mana yang harus ditulis Handy?",
+        "question": "Anda berbicara {{languages}}. Aksara mana yang harus ditulis Unmute?",
         "label": "Aksara Mandarin",
         "zh-Hans": "Sederhana",
         "zh-Hant": "Taiwan",
@@ -170,7 +175,7 @@
     },
     "try": {
       "title": "Coba sekarang!",
-      "subtitle": "Handy ada di pojok untuk memandu Anda",
+      "subtitle": "Unmute ada di pojok untuk memandu Anda",
       "noteLabel": "Catatan",
       "placeholder": "Catatan baru",
       "hold": "Tahan <keys/> dan bicara.",
@@ -198,14 +203,14 @@
     },
     "done": {
       "title": "Semua siap",
-      "subMac": "Handy kini ada di bilah menu Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
-      "subTray": "Handy kini ada di baki sistem Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
+      "subMac": "Unmute kini ada di bilah menu Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
+      "subTray": "Unmute kini ada di baki sistem Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
       "hint": "Anda dapat mengubahnya nanti di Pengaturan",
       "highFiveLabel": "Tos",
-      "atLogin": "Jalankan Handy saat saya masuk",
+      "atLogin": "Jalankan Unmute saat saya masuk",
       "finish": "Selesai",
       "panel": {
-        "name": "Handy",
+        "name": "Unmute",
         "ready": "Siap",
         "languages": "Bahasa",
         "model": "Model ucapan",
@@ -330,7 +335,7 @@
     "general": {
       "title": "Umum",
       "shortcut": {
-        "title": "Pintasan Handy",
+        "title": "Pintasan Unmute",
         "description": "Atur pintasan keyboard untuk memulai perekaman ucapan-ke-teks",
         "loading": "Memuat pintasan...",
         "none": "Belum ada pintasan yang diatur",
@@ -372,7 +377,7 @@
       },
       "preferredLanguages": {
         "title": "Bahasa Pilihan",
-        "description": "Bahasa yang Anda gunakan. Handy memakainya untuk merekomendasikan model.",
+        "description": "Bahasa yang Anda gunakan. Unmute memakainya untuk merekomendasikan model.",
         "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”",
         "weak": "Belum ada model yang mengenali {{languages}} dengan baik."
       },
@@ -399,17 +404,17 @@
         "fits": "Untuk bahasa Anda",
         "untested": "Belum diuji"
       },
-      "untestedNote": "Belum diuji dengan Handy. Mungkin lebih lambat atau lebih banyak salah.",
+      "untestedNote": "Belum diuji dengan Unmute. Mungkin lebih lambat atau lebih banyak salah.",
       "untestedHidden_one": "{{count}} model lagi tidak disetel untuk dikte. Cari untuk menemukannya.",
       "untestedHidden_other": "{{count}} model lagi tidak disetel untuk dikte. Cari untuk menemukannya.",
-      "emptyYours": "Belum ada model. Pilih satu di bawah: model diunduh, lalu Handy menggunakannya.",
+      "emptyYours": "Belum ada model. Pilih satu di bawah: model diunduh, lalu Unmute menggunakannya.",
       "showMore": "Tampilkan {{count}} lagi",
       "showFewer": "Tampilkan lebih sedikit",
       "download": "Unduh dan gunakan",
       "downloadingThenUse": "{{percent}}% dari {{total}}, lalu beralih",
       "loading": "Memuat…",
       "deleteAsk": "Hapus {{name}}? Ini membebaskan {{size}}.",
-      "deleteAskActive": "Hapus {{name}}? Handy tidak dapat mentranskripsi sampai Anda memilih model lain.",
+      "deleteAskActive": "Hapus {{name}}? Unmute tidak dapat mentranskripsi sampai Anda memilih model lain.",
       "cancel": "Batal",
       "deleteModel": "Hapus {{name}}",
       "cancelDownload": "Hentikan unduhan {{name}}",
@@ -423,14 +428,14 @@
         "marks": "? belum diukur. — tidak mengenali bahasa itu."
       },
       "retiredNotice": {
-        "title": "Model lama tidak lagi berfungsi dengan Handy",
+        "title": "Model lama tidak lagi berfungsi dengan Unmute",
         "description": "Model tersebut memakan {{size}} di komputer Anda.",
         "delete": "Hapus model",
         "deleteFailed": "Beberapa model lama tidak dapat dihapus. Periksa log untuk detailnya."
       },
       "rescan": {
         "label": "Pindai Ulang",
-        "tooltip": "Pindai ulang model yang ditambahkan ke folder model atau cache Hugging Face dari luar Handy"
+        "tooltip": "Pindai ulang model yang ditambahkan ke folder model atau cache Hugging Face dari luar Unmute"
       }
     },
     "languages": {
@@ -500,11 +505,11 @@
       },
       "autostart": {
         "label": "Jalankan saat Komputer Dinyalakan",
-        "description": "Mulai Handy secara otomatis saat Anda masuk ke komputer."
+        "description": "Mulai Unmute secara otomatis saat Anda masuk ke komputer."
       },
       "showTrayIcon": {
         "label": "Tampilkan Ikon Baki Sistem",
-        "description": "Tampilkan ikon Handy di baki sistem."
+        "description": "Tampilkan ikon Unmute di baki sistem."
       },
       "overlay": {
         "style": {
@@ -741,7 +746,7 @@
       },
       "updateChecks": {
         "label": "Periksa Pembaruan",
-        "description": "Periksa versi baru Handy secara otomatis",
+        "description": "Periksa versi baru Unmute secara otomatis",
         "lockedDescription": "Dinonaktifkan oleh konfigurasi sistem (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -847,7 +852,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnostik Keyboard",
-        "description": "Memeriksa apakah peristiwa keyboard mencapai Handy. Hanya jumlah peristiwa yang dicatat — bukan tombol yang Anda tekan.",
+        "description": "Memeriksa apakah peristiwa keyboard mencapai Unmute. Hanya jumlah peristiwa yang dicatat — bukan tombol yang Anda tekan.",
         "run": "Jalankan diagnostik 10 dtk",
         "running": "Mendengarkan… tekan pintasan Anda beberapa kali (mis. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -861,41 +866,47 @@
         "mouse": "Mouse",
         "verdictBlocked": "Secure Input memblokir peristiwa tombol — pintasan keyboard tidak dapat berfungsi sampai masalah ini diselesaikan.",
         "verdictSuspicious": "Peristiwa tombol pengubah diterima, tetapi tidak ada peristiwa tombol — sesuatu memblokir input tombol meskipun Secure Input dilaporkan nonaktif. Harap laporkan ini di GitHub.",
-        "verdictOk": "Peristiwa tombol mencapai Handy secara normal.",
+        "verdictOk": "Peristiwa tombol mencapai Unmute secara normal.",
         "verdictNoEvents": "Tidak ada peristiwa yang tertangkap — apakah Anda menekan tombol selama pengujian?",
         "failed": "Diagnostik gagal: {{error}}"
+      },
+      "audioRetention": {
+        "title": "Delete Audio Recordings",
+        "description": "Delete the audio of older dictations while keeping their text. Saved dictations keep their audio.",
+        "sameAsHistory": "With the history entry"
       }
     },
     "about": {
       "title": "Tentang",
       "version": {
         "title": "Versi",
-        "description": "Versi Handy saat ini"
+        "description": "Versi Unmute saat ini"
       },
       "whatsNewUpdates": {
         "label": "Tampilkan Yang Baru",
-        "description": "Tampilkan catatan rilis setelah Handy diperbarui"
+        "description": "Tampilkan catatan rilis setelah Unmute diperbarui"
       },
       "appDataDirectory": {
         "title": "Direktori Data Aplikasi",
-        "description": "Lokasi Handy menyimpan datanya"
+        "description": "Lokasi Unmute menyimpan datanya"
       },
       "sourceCode": {
         "title": "Kode Sumber",
         "description": "Lihat kode sumber dan berkontribusi",
         "button": "Lihat di GitHub"
       },
-      "supportDevelopment": {
-        "title": "Dukung Pengembangan",
-        "description": "Bantu kami terus mengembangkan Handy",
-        "button": "Donasi"
-      },
       "acknowledgments": {
         "title": "Ucapan Terima Kasih",
         "ggml": {
           "title": "ggml",
           "description": "Pustaka tensor berkinerja tinggi untuk inferensi pembelajaran mesin di perangkat",
-          "details": "Fitur ucapan-ke-teks lokal Handy dibangun menggunakan transcribe.cpp dan ggml. Terima kasih kepada Georgi Gerganov dan para kontributor atas karya luar biasa mereka."
+          "details": "Fitur ucapan-ke-teks lokal Unmute dibangun menggunakan transcribe.cpp dan ggml. Terima kasih kepada Georgi Gerganov dan para kontributor atas karya luar biasa mereka."
+        },
+        "handy": {
+          "title": "Handy",
+          "description": "The open source speech-to-text app Unmute is built on",
+          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "button": "View Handy on GitHub"
         }
       }
     }
@@ -916,7 +927,7 @@
     "portableUpdateBrowseButton": "Buka GitHub Releases"
   },
   "whatsNew": {
-    "title": "Baru di Handy v{{version}}"
+    "title": "Baru di Unmute v{{version}}"
   },
   "common": {
     "playbackPosition": "Posisi pemutaran",
@@ -943,7 +954,7 @@
     "microphoneSilentTitle": "Mikrofon Senyap",
     "microphoneSilent": "Mikrofon Anda hanya mengirim keheningan. Pastikan mikrofon tidak dibisukan, atau pilih mikrofon lain di Pengaturan.",
     "recordingFailedTitle": "Gagal Memulai Perekaman",
-    "modelLoadFailed": "Handy tidak dapat memuat model ini. Coba lagi atau pilih model lain.",
+    "modelLoadFailed": "Unmute tidak dapat memuat model ini. Coba lagi atau pilih model lain.",
     "modelLoadFailedTitle": "Gagal Memuat Model",
     "noModelSelected": "Unduh atau pilih model di Pengaturan > Model.",
     "noModelSelectedTitle": "Tidak Ada Model Dipilih",
@@ -951,7 +962,7 @@
     "pasteFailedTitle": "Gagal Menempelkan Teks",
     "pasteFailed": "Teks tidak dapat ditempelkan ke aplikasi aktif.",
     "pasteBlockedElevatedTitle": "Gagal Tempel ke Aplikasi Admin",
-    "pasteBlockedElevated": "Aplikasi aktif berjalan sebagai administrator, jadi Handy tidak dapat menempel ke dalamnya. Anda dapat menyalin transkrip dari Riwayat.",
+    "pasteBlockedElevated": "Aplikasi aktif berjalan sebagai administrator, jadi Unmute tidak dapat menempel ke dalamnya. Anda dapat menyalin transkrip dari Riwayat.",
     "postProcessFailedTitle": "Ditempel Tanpa Pascaproses",
     "postProcessFailed": "Pascaproses tidak selesai, jadi transkrip ditempelkan apa adanya.",
     "filePostProcessFailedTitle": "Ditranskripsi Tanpa Pascaproses",
@@ -968,11 +979,11 @@
   },
   "appLanguage": {
     "title": "Bahasa Aplikasi",
-    "description": "Ubah bahasa antarmuka Handy"
+    "description": "Ubah bahasa antarmuka Unmute"
   },
   "theme": {
     "title": "Tema Aplikasi",
-    "description": "Pilih apakah Handy mengikuti tema sistem atau selalu menggunakan tema terang atau gelap",
+    "description": "Pilih apakah Unmute mengikuti tema sistem atau selalu menggunakan tema terang atau gelap",
     "options": {
       "system": "Sistem",
       "light": "Terang",
@@ -994,5 +1005,55 @@
     "learnMore": "Cara memperbaiki",
     "recorderBlocked": "Pintasan tidak dapat direkam saat ini — macOS Secure Input memblokir peristiwa tombol. Selesaikan peringatan Secure Input terlebih dahulu.",
     "dismiss": "Tutup"
+  },
+  "dictations": {
+    "title": "Dictations",
+    "subtitle": "Everything you dictated, newest first.",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Couldn't Copy the Text",
+    "empty": "Nothing dictated yet. Press your shortcut in any app and start speaking.",
+    "statsTitle": "Since the beginning",
+    "words": "Words dictated",
+    "pace": "Average pace",
+    "wordsPerMinute": "words per minute",
+    "duration": "Time dictating"
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "How you use dictation, computed on this machine.",
+    "keyNumbers": "Key numbers",
+    "pace": "Pace",
+    "activity": "Activity",
+    "less": "Less",
+    "more": "More",
+    "heatmapLabel": "Dictation time per day over the last twelve months",
+    "dayTooltip": "{{duration}} of dictation, {{words}} words",
+    "noActivity": "No dictation",
+    "voiceProfile": "My voice profile",
+    "lastRefresh": "Last refreshed: {{date}}",
+    "neverRefreshed": "Never refreshed",
+    "refresh": "Refresh my profile",
+    "refreshFailed": "Couldn't Refresh the Profile",
+    "catchphrase": "My catchphrase",
+    "saidTimes": "Said <m>{{n}}</m> times",
+    "topWord": "My most used word",
+    "usedTimes": "Used <m>{{n}}</m> times",
+    "englishShare": "Share of English",
+    "ofMyDictations": "of my dictations",
+    "languageUnknown": "The language of your dictations isn't known yet.",
+    "notEnoughData": "Not enough dictations yet.",
+    "noProfile": "Refresh your profile to see your catchphrase and your most used word."
+  },
+  "dictionary": {
+    "title": "Dictionary",
+    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "newWord": "New word",
+    "empty": "No words yet. Add the names and terms that come out wrong.",
+    "edit": "Edit {{word}}",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

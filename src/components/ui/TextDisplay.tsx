@@ -42,7 +42,7 @@ export const TextDisplay: React.FC<TextDisplayProps> = ({
   };
 
   const displayValue = value || placeholder;
-  const textClasses = monospace ? "font-mono break-all" : "break-words";
+  const textClasses = monospace ? "break-all" : "break-words";
 
   return (
     <SettingContainer

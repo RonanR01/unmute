@@ -1,4 +1,8 @@
-/* Handy Colors: every color the app uses comes from here. Pick by job:
+/* Unmute Colors: every color the app uses comes from here. Unmute has one
+ * look, deep fir green, so the active palette is the dark set whatever the OS
+ * or the `theme` setting says; the light set is kept only so upstream changes
+ * to this file still merge.
+ * Pick by job:
  * greys (ink-2, ink-3, line-strong, line, wash) for text, edges and fills;
  * logo-primary / background-ui for brand and primary actions; plum for keys
  * and picks (onboarding); moss / warning / error (+ -wash) for status.
@@ -14,9 +18,9 @@
   --light-color-logo-primary: #faa2ca;
   --light-color-logo-stroke: #382731;
 
-  --dark-color-text: #fbfbfb;
-  --dark-color-background: #2c2b29;
-  --dark-color-logo-primary: #f28cbb;
+  --dark-color-text: #f4f7f6;
+  --dark-color-background: #0e2a22;
+  --dark-color-logo-primary: #2e6450;
 
   /* Status colors. Each has a -wash tint below. */
   --light-color-warning: #d97706;
@@ -124,30 +128,37 @@
   );
 
   /* Tokens that do not change between light and dark */
-  --color-background-ui: #da5893;
-  --color-mid-gray: #808080;
+  --color-background-ui: #2e6450;
+  --color-mid-gray: #a8c0b6;
+
+  /* Unmute: fir-green surfaces, and the one accent. Signal yellow is for
+     measured values only (words, pace, duration, heatmap intensity). */
+  --color-surface: #143629;
+  --color-surface-raised: #1b4435;
+  --color-edge: #1f4a3a;
+  --color-signal: #ffd60a;
 
   /* Active palette — defaults to light, follows the OS via the media query
      below, or is forced by `data-theme` (see the overrides below). */
-  --color-text: var(--light-color-text);
-  --color-background: var(--light-color-background);
-  --color-logo-primary: var(--light-color-logo-primary);
-  --color-warning: var(--light-color-warning);
-  --color-error: var(--light-color-error);
-  --color-moss: var(--light-color-moss);
-  --color-plum: var(--light-color-plum);
-  --demo-pill-shadow: var(--light-demo-pill-shadow);
-  --color-demo-window: var(--light-color-demo-window);
-  --color-demo-lid: var(--light-color-demo-lid);
-  --color-demo-alu-hi: var(--light-color-demo-alu-hi);
-  --color-demo-alu-lo: var(--light-color-demo-alu-lo);
-  --demo-wallpaper: var(--light-demo-wallpaper);
-  --color-wordmark: var(--light-color-wordmark);
-  --color-wordmark-stroke: var(--light-color-wordmark-stroke);
-  --color-mascot-line: var(--light-color-mascot-line);
-  --color-moss-wash: var(--light-color-moss-wash);
-  --color-warning-wash: var(--light-color-warning-wash);
-  --color-error-wash: var(--light-color-error-wash);
+  --color-text: var(--dark-color-text);
+  --color-background: var(--dark-color-background);
+  --color-logo-primary: var(--dark-color-logo-primary);
+  --color-warning: var(--dark-color-warning);
+  --color-error: var(--dark-color-error);
+  --color-moss: var(--dark-color-moss);
+  --color-plum: var(--dark-color-plum);
+  --demo-pill-shadow: var(--dark-demo-pill-shadow);
+  --color-demo-window: var(--dark-color-demo-window);
+  --color-demo-lid: var(--dark-color-demo-lid);
+  --color-demo-alu-hi: var(--dark-color-demo-alu-hi);
+  --color-demo-alu-lo: var(--dark-color-demo-alu-lo);
+  --demo-wallpaper: var(--dark-demo-wallpaper);
+  --color-wordmark: var(--dark-color-wordmark);
+  --color-wordmark-stroke: var(--dark-color-wordmark-stroke);
+  --color-mascot-line: var(--dark-color-mascot-line);
+  --color-moss-wash: var(--dark-color-moss-wash);
+  --color-warning-wash: var(--dark-color-warning-wash);
+  --color-error-wash: var(--dark-color-error-wash);
 
   /* Grey steps: secondary text, hints/icons, control edges, dividers, hover fill. */
   --color-ink-2: color-mix(in srgb, var(--color-text) 60%, transparent);
@@ -200,25 +211,25 @@
  * the settings window and the recording overlay alike — honours the override.
  */
 :root[data-theme="light"] {
-  --color-text: var(--light-color-text);
-  --color-background: var(--light-color-background);
-  --color-logo-primary: var(--light-color-logo-primary);
-  --color-warning: var(--light-color-warning);
-  --color-error: var(--light-color-error);
-  --color-moss: var(--light-color-moss);
-  --color-plum: var(--light-color-plum);
-  --demo-pill-shadow: var(--light-demo-pill-shadow);
-  --color-demo-window: var(--light-color-demo-window);
-  --color-demo-lid: var(--light-color-demo-lid);
-  --color-demo-alu-hi: var(--light-color-demo-alu-hi);
-  --color-demo-alu-lo: var(--light-color-demo-alu-lo);
-  --demo-wallpaper: var(--light-demo-wallpaper);
-  --color-wordmark: var(--light-color-wordmark);
-  --color-wordmark-stroke: var(--light-color-wordmark-stroke);
-  --color-mascot-line: var(--light-color-mascot-line);
-  --color-moss-wash: var(--light-color-moss-wash);
-  --color-warning-wash: var(--light-color-warning-wash);
-  --color-error-wash: var(--light-color-error-wash);
+  --color-text: var(--dark-color-text);
+  --color-background: var(--dark-color-background);
+  --color-logo-primary: var(--dark-color-logo-primary);
+  --color-warning: var(--dark-color-warning);
+  --color-error: var(--dark-color-error);
+  --color-moss: var(--dark-color-moss);
+  --color-plum: var(--dark-color-plum);
+  --demo-pill-shadow: var(--dark-demo-pill-shadow);
+  --color-demo-window: var(--dark-color-demo-window);
+  --color-demo-lid: var(--dark-color-demo-lid);
+  --color-demo-alu-hi: var(--dark-color-demo-alu-hi);
+  --color-demo-alu-lo: var(--dark-color-demo-alu-lo);
+  --demo-wallpaper: var(--dark-demo-wallpaper);
+  --color-wordmark: var(--dark-color-wordmark);
+  --color-wordmark-stroke: var(--dark-color-wordmark-stroke);
+  --color-mascot-line: var(--dark-color-mascot-line);
+  --color-moss-wash: var(--dark-color-moss-wash);
+  --color-warning-wash: var(--dark-color-warning-wash);
+  --color-error-wash: var(--dark-color-error-wash);
 }
 
 :root[data-theme="dark"] {

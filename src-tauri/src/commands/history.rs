@@ -111,6 +111,23 @@ pub async fn update_history_limit(
     Ok(())
 }
 
+/// Set how long recordings are kept apart from their text, and apply it now.
+#[tauri::command]
+#[specta::specta]
+pub async fn update_audio_retention_period(
+    app: AppHandle,
+    history_manager: State<'_, Arc<HistoryManager>>,
+    period: crate::settings::AudioRetentionPeriod,
+) -> Result<(), String> {
+    let mut settings = crate::settings::get_settings(&app);
+    settings.audio_retention_period = period;
+    crate::settings::write_settings(&app, settings);
+
+    history_manager
+        .cleanup_old_entries()
+        .map_err(|e| e.to_string())
+}
+
 #[tauri::command]
 #[specta::specta]
 pub async fn update_recording_retention_period(

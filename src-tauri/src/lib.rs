@@ -819,6 +819,7 @@ pub fn run(cli_args: CliArgs) {
             commands::history::transcribe_file,
             commands::history::update_history_limit,
             commands::history::update_recording_retention_period,
+            commands::history::update_audio_retention_period,
             commands::insights::get_dictation_stats,
             commands::insights::get_daily_activity,
             commands::insights::get_voice_profile,

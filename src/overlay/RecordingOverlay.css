@@ -1,18 +1,17 @@
 @import "../styles/theme.css";
 
 :root {
-  --s-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --s-font:
+    "Rethink Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   /* Near-opaque app surface (theme.css --color-background at 98%). Auto-flips
      light/dark with --color-background, so no dark-mode override is needed. */
   --s-surface: color-mix(in srgb, var(--color-background) 98%, transparent);
-  /* Accent = logo pink; flips automatically via --color-logo-primary. */
-  --s-accent: var(--color-logo-primary);
+  /* Unmute draws the overlay in its light ink; signal yellow is kept for the
+     one thing being measured here, the open microphone. */
+  --s-accent: var(--color-text);
   /* The rest come from theme.css, which already follows the theme setting. */
-  --s-accent-soft: color-mix(
-    in srgb,
-    var(--color-logo-primary) 20%,
-    transparent
-  );
+  --s-accent-soft: color-mix(in srgb, var(--color-signal) 28%, transparent);
   --s-muted: var(--color-ink-2);
   --s-faint: var(--color-ink-3);
   --s-border: var(--color-line);
@@ -314,7 +313,7 @@
     opacity 180ms ease;
 }
 .sdot.ready {
-  background: var(--s-accent);
+  background: var(--color-signal);
   opacity: 1;
   animation: sdot-pulse 1.9s infinite;
 }
@@ -348,54 +347,51 @@
    a muted travelling pulse acknowledges the shortcut without pretending that
    audio levels are already being received. */
 .swave {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  padding-right: 8px;
+  width: 76px;
   height: 18px;
+  margin-right: 8px;
+  overflow: hidden;
   flex: none;
 }
-.swave i {
-  width: 4px;
-  min-height: 3px;
-  max-height: 18px;
-  border-radius: 2px;
-  background: var(--s-accent);
+/* Topographic lines: three waves drifting at their own pace, as tall as the
+   voice is loud. One period is 60px, so a 60px slide loops unseen. */
+.swave svg {
+  display: block;
+  width: 240px;
+  height: 18px;
+  overflow: visible;
+  transform-origin: center;
   transition:
-    height 80ms linear,
-    background-color 180ms ease,
+    transform 110ms linear,
     opacity 180ms ease;
 }
-.swave.arming i {
-  height: 6px !important;
-  background: var(--s-muted);
-  opacity: 0.35;
-  animation: swave-arming 900ms ease-in-out infinite;
+.swave path {
+  fill: none;
+  stroke: var(--s-accent);
+  stroke-linecap: round;
+  animation: swave-drift 2.4s linear infinite;
 }
-.swave.arming i:nth-child(2),
-.swave.arming i:nth-child(8) {
-  animation-delay: 75ms;
+.swave path:nth-child(2) {
+  opacity: 0.7;
+  animation-duration: 3.6s;
+  animation-direction: reverse;
 }
-.swave.arming i:nth-child(3),
-.swave.arming i:nth-child(7) {
-  animation-delay: 150ms;
+.swave path:nth-child(3) {
+  opacity: 0.45;
+  animation-duration: 3s;
 }
-.swave.arming i:nth-child(4),
-.swave.arming i:nth-child(6) {
-  animation-delay: 225ms;
+.swave.arming svg {
+  transform: scaleY(0.3) !important;
+  opacity: 0.4;
 }
-.swave.arming i:nth-child(5) {
-  animation-delay: 300ms;
-}
-@keyframes swave-arming {
-  0%,
-  100% {
-    transform: scaleY(0.55);
-    opacity: 0.25;
+@keyframes swave-drift {
+  to {
+    transform: translateX(-60px);
   }
-  50% {
-    transform: scaleY(1.5);
-    opacity: 0.7;
+}
+@media (prefers-reduced-motion: reduce) {
+  .swave path {
+    animation: none;
   }
 }
 .sx {

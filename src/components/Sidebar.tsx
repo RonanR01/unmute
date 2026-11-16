@@ -1,9 +1,18 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Cog, FlaskConical, History, Info, Sparkles, Cpu } from "lucide-react";
-import HandyTextLogo from "./icons/HandyTextLogo";
-import HandyHand from "./icons/HandyHand";
-import { useSettings } from "../hooks/useSettings";
+import {
+  BarChart3,
+  BookOpen,
+  Cog,
+  Cpu,
+  FlaskConical,
+  History,
+  Info,
+  Mic,
+  SlidersHorizontal,
+  Sparkles,
+} from "lucide-react";
+import { UnmuteLogo } from "./icons/UnmuteLogo";
 import {
   GeneralSettings,
   AdvancedSettings,
@@ -13,8 +22,6 @@ import {
   ModelsSettings,
 } from "./settings";
 
-export type SidebarSection = keyof typeof SECTIONS_CONFIG;
-
 interface IconProps {
   width?: number | string;
   height?: number | string;
@@ -22,6 +29,19 @@ interface IconProps {
   className?: string;
   [key: string]: any;
 }
+
+/** The four screens of the app, in menu order. */
+export const SCREENS = {
+  dictations: { labelKey: "sidebar.dictations", icon: Mic },
+  insights: { labelKey: "sidebar.insights", icon: BarChart3 },
+  dictionary: { labelKey: "sidebar.dictionary", icon: BookOpen },
+  settings: { labelKey: "sidebar.settings", icon: SlidersHorizontal },
+} as const satisfies Record<
+  string,
+  { labelKey: string; icon: React.ComponentType<IconProps> }
+>;
+
+export type Screen = keyof typeof SCREENS;
 
 interface SectionConfig {
   labelKey: string;
@@ -31,17 +51,12 @@ interface SectionConfig {
   enabled: (settings: any) => boolean;
 }
 
+/** The tabs of the Settings screen. */
 export const SECTIONS_CONFIG = {
   general: {
     labelKey: "sidebar.general",
-    icon: HandyHand,
+    icon: Cog,
     component: GeneralSettings,
-    enabled: () => true,
-  },
-  history: {
-    labelKey: "sidebar.history",
-    icon: History,
-    component: HistorySettings,
     enabled: () => true,
   },
   models: {
@@ -52,7 +67,7 @@ export const SECTIONS_CONFIG = {
   },
   advanced: {
     labelKey: "sidebar.advanced",
-    icon: Cog,
+    icon: SlidersHorizontal,
     component: AdvancedSettings,
     enabled: () => true,
   },
@@ -61,6 +76,12 @@ export const SECTIONS_CONFIG = {
     icon: Sparkles,
     component: PostProcessingSettings,
     enabled: (settings) => settings?.post_process_enabled ?? false,
+  },
+  history: {
+    labelKey: "sidebar.history",
+    icon: History,
+    component: HistorySettings,
+    enabled: () => true,
   },
   debug: {
     labelKey: "sidebar.debug",
@@ -76,51 +97,47 @@ export const SECTIONS_CONFIG = {
   },
 } as const satisfies Record<string, SectionConfig>;
 
+export type SidebarSection = keyof typeof SECTIONS_CONFIG;
+
 interface SidebarProps {
-  activeSection: SidebarSection;
-  onSectionChange: (section: SidebarSection) => void;
+  activeScreen: Screen;
+  onScreenChange: (screen: Screen) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  activeSection,
-  onSectionChange,
+  activeScreen,
+  onScreenChange,
 }) => {
   const { t } = useTranslation();
-  const { settings } = useSettings();
-
-  const availableSections = Object.entries(SECTIONS_CONFIG)
-    .filter(([_, config]) => config.enabled(settings))
-    .map(([id, config]) => ({ id: id as SidebarSection, ...config }));
 
   return (
-    <div className="flex flex-col w-40 h-full border-e border-line items-center px-2">
-      <HandyTextLogo width={120} className="m-4" />
-      <div className="flex flex-col w-full items-center gap-1 pt-2 border-t border-line">
-        {availableSections.map((section) => {
-          const Icon = section.icon;
-          const isActive = activeSection === section.id;
-
+    <nav
+      aria-label={t("sidebar.navigation")}
+      className="flex flex-col w-52 shrink-0 h-full border-e border-edge px-3 py-6 gap-7"
+    >
+      <UnmuteLogo className="px-3" />
+      <div className="flex flex-col gap-1">
+        {(Object.keys(SCREENS) as Screen[]).map((id) => {
+          const { labelKey, icon: Icon } = SCREENS[id];
+          const isActive = activeScreen === id;
           return (
-            <div
-              key={section.id}
-              className={`flex gap-2 items-center p-2 w-full rounded-lg cursor-pointer transition-colors ${
+            <button
+              key={id}
+              type="button"
+              aria-current={isActive ? "page" : undefined}
+              onClick={() => onScreenChange(id)}
+              className={`flex items-center gap-3 min-h-11 px-3 rounded-[10px] text-start text-[15px] cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-text ${
                 isActive
-                  ? "bg-logo-primary/80"
-                  : "hover:bg-line hover:opacity-100 opacity-85"
+                  ? "bg-surface-raised text-text font-semibold"
+                  : "text-ink-3 font-medium hover:text-text hover:bg-surface"
               }`}
-              onClick={() => onSectionChange(section.id)}
             >
-              <Icon width={24} height={24} className="shrink-0" />
-              <p
-                className="text-sm font-medium truncate"
-                title={t(section.labelKey)}
-              >
-                {t(section.labelKey)}
-              </p>
-            </div>
+              <Icon size={18} strokeWidth={1.75} className="shrink-0" />
+              <span className="truncate">{t(labelKey)}</span>
+            </button>
           );
         })}
       </div>
-    </div>
+    </nav>
   );
 };

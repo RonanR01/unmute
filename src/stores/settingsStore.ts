@@ -11,7 +11,7 @@ import type {
   VadBackend,
   LanguageDetectionMode,
 } from "@/bindings";
-import { commands } from "@/bindings";
+import { commands, type AudioRetentionPeriod } from "@/bindings";
 import { notify } from "@/stores/noticeStore";
 
 interface SettingsStore {
@@ -136,6 +136,8 @@ const settingUpdaters: {
     ),
   recording_retention_period: (value) =>
     commands.updateRecordingRetentionPeriod(value as string),
+  audio_retention_period: (value) =>
+    commands.updateAudioRetentionPeriod(value as AudioRetentionPeriod),
   translate_to_english: (value) =>
     commands.changeTranslateToEnglishSetting(value as boolean),
   selected_language: (value) =>

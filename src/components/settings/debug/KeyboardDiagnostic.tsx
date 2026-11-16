@@ -100,7 +100,7 @@ export const KeyboardDiagnostic: React.FC = () => {
         </p>
       )}
       {report !== null && (
-        <div className="text-sm font-mono space-y-1">
+        <div className="text-sm space-y-1">
           <p>
             {t("settings.debug.keyboardDiagnostic.secureInputLabel")}:{" "}
             {secureInputLine(report)}

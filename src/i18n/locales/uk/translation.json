@@ -19,13 +19,18 @@
     "postProcessing": "Постобробка",
     "history": "Історія",
     "debug": "Дебаг",
-    "about": "Інфо"
+    "about": "Інфо",
+    "navigation": "Main navigation",
+    "dictations": "Dictations",
+    "insights": "Insights",
+    "dictionary": "Dictionary",
+    "settings": "Settings"
   },
   "onboarding": {
     "customModelDescription": "Офіційно не підтримується",
     "migration": {
       "title": "Ваші моделі потребують оновлення",
-      "description": "Handy тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
+      "description": "Unmute тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
       "replaces": "Замінює {{name}}",
       "oldFormat": "Старий формат",
       "failed": "Помилка завантаження",
@@ -62,11 +67,11 @@
     "permissions": {
       "microphone": {
         "name": "Мікрофон",
-        "why": "Щоб Handy міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
+        "why": "Щоб Unmute міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
       },
       "accessibility": {
         "name": "Універсальний доступ",
-        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Handy міг вводити текст там, де стоїть курсор."
+        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Unmute міг вводити текст там, де стоїть курсор."
       },
       "errors": {
         "checkFailed": "Не вдалося перевірити дозволи. Будь ласка, спробуйте ще раз.",
@@ -80,12 +85,12 @@
       "openSettings": "Відкрити налаштування",
       "allowed": "Дозволено",
       "waiting": "Очікування",
-      "turnOnMac": "Увімкніть Handy в Системних налаштуваннях і поверніться сюди.",
+      "turnOnMac": "Увімкніть Unmute в Системних налаштуваннях і поверніться сюди.",
       "turnOnWindows": "Увімкніть доступ до мікрофона в Параметрах Windows і поверніться сюди.",
       "hintBoth": "Дозвольте обидва, щоб продовжити",
       "hintMicrophone": "Дозвольте мікрофон, щоб продовжити",
       "welcomeBack": "З поверненням. Продовжуємо з того місця, де ви зупинилися.",
-      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Handy</relaunch>, і ви повернетеся просто сюди."
+      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Unmute</relaunch>, і ви повернетеся просто сюди."
     },
     "shell": {
       "back": "Назад",
@@ -96,11 +101,11 @@
       "title": "Говоріть замість друку, в будь-якій програмі",
       "subtitle": "Оберіть мови, якими ви диктуватимете",
       "languagesLabel": "Мови",
-      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Handy охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
+      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Unmute охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
       "appLanguage": "Мова застосунку",
       "menusIn": "Меню мовою: <b>{{language}}</b>",
       "chinese": {
-        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Handy має писати?",
+        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Unmute має писати?",
         "label": "Китайські ієрогліфи",
         "zh-Hans": "Спрощені",
         "zh-Hant": "Тайвань",
@@ -170,7 +175,7 @@
     },
     "try": {
       "title": "Спробуйте!",
-      "subtitle": "Handy в кутку допоможе вам пройти цей шлях",
+      "subtitle": "Unmute в кутку допоможе вам пройти цей шлях",
       "noteLabel": "Нотатка",
       "placeholder": "Нова нотатка",
       "hold": "Утримуйте <keys/> і говоріть.",
@@ -198,14 +203,14 @@
     },
     "done": {
       "title": "Усе готово",
-      "subMac": "Handy тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
-      "subTray": "Handy тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subMac": "Unmute тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subTray": "Unmute тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
       "hint": "Ви можете змінити це пізніше в налаштуваннях",
       "highFiveLabel": "Дай п'ять",
-      "atLogin": "Запускати Handy під час входу в систему",
+      "atLogin": "Запускати Unmute під час входу в систему",
       "finish": "Готово",
       "panel": {
-        "name": "Handy",
+        "name": "Unmute",
         "ready": "Готово",
         "languages": "Мови",
         "model": "Модель розпізнавання мовлення",
@@ -372,7 +377,7 @@
       },
       "preferredLanguages": {
         "title": "Бажані мови",
-        "description": "Мови, якими ви говорите. Handy використовує їх, щоб рекомендувати моделі.",
+        "description": "Мови, якими ви говорите. Unmute використовує їх, щоб рекомендувати моделі.",
         "noMatch": "Жодна мова не відповідає «{{query}}»",
         "weak": "Жодна модель поки що не розпізнає добре: {{languages}}."
       },
@@ -399,17 +404,17 @@
         "fits": "Для ваших мов",
         "untested": "Не перевірені"
       },
-      "untestedNote": "Не перевірені з Handy. Вони можуть працювати повільніше або робити більше помилок.",
+      "untestedNote": "Не перевірені з Unmute. Вони можуть працювати повільніше або робити більше помилок.",
       "untestedHidden_one": "Ще {{count}} модель не налаштована для диктування. Скористайтеся пошуком, щоб її знайти.",
       "untestedHidden_other": "Ще {{count}} моделей не налаштовано для диктування. Скористайтеся пошуком, щоб знайти потрібну.",
-      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Handy її використає.",
+      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Unmute її використає.",
       "showMore": "Показати ще {{count}}",
       "showFewer": "Показати менше",
       "download": "Завантажити й використовувати",
       "downloadingThenUse": "{{percent}}% з {{total}}, потім перемкнеться",
       "loading": "Завантаження…",
       "deleteAsk": "Видалити {{name}}? Це звільнить {{size}}.",
-      "deleteAskActive": "Видалити {{name}}? Handy не зможе транскрибувати, доки ви не оберете іншу модель.",
+      "deleteAskActive": "Видалити {{name}}? Unmute не зможе транскрибувати, доки ви не оберете іншу модель.",
       "cancel": "Скасувати",
       "deleteModel": "Видалити {{name}}",
       "cancelDownload": "Зупинити завантаження {{name}}",
@@ -423,14 +428,14 @@
         "marks": "? ще не виміряно. — не розпізнає цю мову."
       },
       "retiredNotice": {
-        "title": "Старі моделі більше не працюють з Handy",
+        "title": "Старі моделі більше не працюють з Unmute",
         "description": "Вони займають {{size}} на вашому комп'ютері.",
         "delete": "Видалити моделі",
         "deleteFailed": "Не вдалося видалити деякі старі моделі. Подробиці дивіться в журналі."
       },
       "rescan": {
         "label": "Пересканувати",
-        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Handy"
+        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Unmute"
       }
     },
     "languages": {
@@ -500,11 +505,11 @@
       },
       "autostart": {
         "label": "Запуск при старті системи",
-        "description": "Автоматично запускати Handy при вході в систему"
+        "description": "Автоматично запускати Unmute при вході в систему"
       },
       "showTrayIcon": {
         "label": "Показати значок у треї",
-        "description": "Відображати значок Handy у системному треї."
+        "description": "Відображати значок Unmute у системному треї."
       },
       "overlay": {
         "style": {
@@ -741,7 +746,7 @@
       },
       "updateChecks": {
         "label": "Перевірка оновлень",
-        "description": "Автоматично перевіряти наявність нових версій Handy",
+        "description": "Автоматично перевіряти наявність нових версій Unmute",
         "lockedDescription": "Вимкнено системною конфігурацією (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -847,7 +852,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Діагностика клавіатури",
-        "description": "Перевіряє, чи доходять події клавіатури до Handy. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
+        "description": "Перевіряє, чи доходять події клавіатури до Unmute. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
         "run": "Запустити 10-секундну діагностику",
         "running": "Прослуховування… натисніть свою комбінацію кілька разів (наприклад, Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -861,41 +866,47 @@
         "mouse": "Миша",
         "verdictBlocked": "Secure Input блокує події клавіш — комбінації зі звичайною клавішею не працюватимуть, доки це не буде усунуто.",
         "verdictSuspicious": "Події модифікаторів надходять, а події клавіш — ні: щось пригнічує клавіші, хоча Secure Input позначено як вимкнений. Будь ласка, повідомте про це на GitHub.",
-        "verdictOk": "Події клавіш надходять до Handy нормально.",
+        "verdictOk": "Події клавіш надходять до Unmute нормально.",
         "verdictNoEvents": "Подій не зафіксовано — ви натискали клавіші під час тесту?",
         "failed": "Не вдалося виконати діагностику: {{error}}"
+      },
+      "audioRetention": {
+        "title": "Delete Audio Recordings",
+        "description": "Delete the audio of older dictations while keeping their text. Saved dictations keep their audio.",
+        "sameAsHistory": "With the history entry"
       }
     },
     "about": {
       "title": "Інфо",
       "version": {
         "title": "Версія",
-        "description": "Поточна версія Handy"
+        "description": "Поточна версія Unmute"
       },
       "whatsNewUpdates": {
         "label": "Показувати новини",
-        "description": "Показувати примітки до випуску після оновлень Handy"
+        "description": "Показувати примітки до випуску після оновлень Unmute"
       },
       "appDataDirectory": {
         "title": "Папка даних програми",
-        "description": "Розташування даних Handy"
+        "description": "Розташування даних Unmute"
       },
       "sourceCode": {
         "title": "Вихідний код",
         "description": "Переглянути вихідний код та зробити внесок",
         "button": "Переглянути на GitHub"
       },
-      "supportDevelopment": {
-        "title": "Підтримати розробку",
-        "description": "Допоможіть нам продовжувати розвивати Handy",
-        "button": "Підтримати"
-      },
       "acknowledgments": {
         "title": "Подяки",
         "ggml": {
           "title": "ggml",
           "description": "Високопродуктивний інференс моделі автоматичного розпізнавання мовлення Whisper від OpenAI",
-          "details": "Handy використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
+          "details": "Unmute використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
+        },
+        "handy": {
+          "title": "Handy",
+          "description": "The open source speech-to-text app Unmute is built on",
+          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "button": "View Handy on GitHub"
         }
       }
     }
@@ -916,7 +927,7 @@
     "portableUpdateBrowseButton": "Відкрити GitHub Releases"
   },
   "whatsNew": {
-    "title": "Нове в Handy v{{version}}"
+    "title": "Нове в Unmute v{{version}}"
   },
   "common": {
     "playbackPosition": "Позиція відтворення",
@@ -943,7 +954,7 @@
     "microphoneSilentTitle": "Мікрофон мовчить",
     "microphoneSilent": "Мікрофон передає лише тишу. Перевірте, чи не вимкнено звук, або виберіть інший мікрофон у Налаштуваннях.",
     "recordingFailedTitle": "Не вдалося розпочати запис",
-    "modelLoadFailed": "Handy не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
+    "modelLoadFailed": "Unmute не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
     "modelLoadFailedTitle": "Не вдалося завантажити модель",
     "noModelSelected": "Завантажте або виберіть модель у розділі Налаштування > Моделі.",
     "noModelSelectedTitle": "Модель не вибрано",
@@ -951,7 +962,7 @@
     "pasteFailedTitle": "Не вдалося вставити текст",
     "pasteFailed": "Не вдалося вставити текст до активної програми.",
     "pasteBlockedElevatedTitle": "Вставлення заблоковано",
-    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Handy не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
+    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Unmute не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
     "postProcessFailedTitle": "Вставлено без постобробки",
     "postProcessFailed": "Постобробка не завершилася, тому розшифровку вставлено як є.",
     "filePostProcessFailedTitle": "Розшифровано без постобробки",
@@ -968,11 +979,11 @@
   },
   "appLanguage": {
     "title": "Мова інтерфейсу",
-    "description": "Змінити мову інтерфейсу Handy"
+    "description": "Змінити мову інтерфейсу Unmute"
   },
   "theme": {
     "title": "Тема застосунку",
-    "description": "Виберіть, чи має Handy слідувати темі системи, чи залишатися світлою або темною",
+    "description": "Виберіть, чи має Unmute слідувати темі системи, чи залишатися світлою або темною",
     "options": {
       "system": "Системна",
       "light": "Світла",
@@ -994,5 +1005,55 @@
     "learnMore": "Як це виправити",
     "recorderBlocked": "Зараз неможливо записати комбінацію — Secure Input у macOS блокує події клавіш. Спершу усуньте попередження про Secure Input.",
     "dismiss": "Приховати"
+  },
+  "dictations": {
+    "title": "Dictations",
+    "subtitle": "Everything you dictated, newest first.",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Couldn't Copy the Text",
+    "empty": "Nothing dictated yet. Press your shortcut in any app and start speaking.",
+    "statsTitle": "Since the beginning",
+    "words": "Words dictated",
+    "pace": "Average pace",
+    "wordsPerMinute": "words per minute",
+    "duration": "Time dictating"
+  },
+  "insights": {
+    "title": "Insights",
+    "subtitle": "How you use dictation, computed on this machine.",
+    "keyNumbers": "Key numbers",
+    "pace": "Pace",
+    "activity": "Activity",
+    "less": "Less",
+    "more": "More",
+    "heatmapLabel": "Dictation time per day over the last twelve months",
+    "dayTooltip": "{{duration}} of dictation, {{words}} words",
+    "noActivity": "No dictation",
+    "voiceProfile": "My voice profile",
+    "lastRefresh": "Last refreshed: {{date}}",
+    "neverRefreshed": "Never refreshed",
+    "refresh": "Refresh my profile",
+    "refreshFailed": "Couldn't Refresh the Profile",
+    "catchphrase": "My catchphrase",
+    "saidTimes": "Said <m>{{n}}</m> times",
+    "topWord": "My most used word",
+    "usedTimes": "Used <m>{{n}}</m> times",
+    "englishShare": "Share of English",
+    "ofMyDictations": "of my dictations",
+    "languageUnknown": "The language of your dictations isn't known yet.",
+    "notEnoughData": "Not enough dictations yet.",
+    "noProfile": "Refresh your profile to see your catchphrase and your most used word."
+  },
+  "dictionary": {
+    "title": "Dictionary",
+    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "newWord": "New word",
+    "empty": "No words yet. Add the names and terms that come out wrong.",
+    "edit": "Edit {{word}}",
+    "save": "Save",
+    "cancel": "Cancel"
   }
 }

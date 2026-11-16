@@ -280,16 +280,31 @@ const RecordingOverlay: React.FC = () => {
     : t("overlay.transcribing");
 
   // ---- Shared building blocks (one visual language for every overlay form) ----
+  // How loud the voice is, 0 to 1: the waves stand as tall as it.
+  const energy = Math.min(
+    1,
+    (levels.reduce((sum, level) => sum + level, 0) / levels.length) * 2.4,
+  );
   const waveform = (
     <div className={`swave ${captureReady ? "ready" : "arming"}`}>
-      {levels.map((v, i) => (
-        <i
-          key={i}
-          style={{
-            height: `${Math.max(3, Math.min(18, 3 + Math.pow(v, 0.7) * 15))}px`,
-          }}
+      <svg
+        viewBox="0 0 240 18"
+        aria-hidden="true"
+        style={{ transform: `scaleY(${0.3 + Math.pow(energy, 0.7) * 0.9})` }}
+      >
+        <path
+          strokeWidth="1.2"
+          d="M0 5c10-5 20 5 30 0s20-5 30 0 20 5 30 0 20-5 30 0 20 5 30 0 20-5 30 0 20 5 30 0 20-5 30 0"
         />
-      ))}
+        <path
+          strokeWidth="1"
+          d="M0 9c10-4 20 4 30 0s20-4 30 0 20 4 30 0 20-4 30 0 20 4 30 0 20-4 30 0 20 4 30 0 20-4 30 0"
+        />
+        <path
+          strokeWidth="1"
+          d="M0 13c10-3 20 3 30 0s20-3 30 0 20 3 30 0 20-3 30 0 20 3 30 0 20-3 30 0 20 3 30 0 20-3 30 0"
+        />
+      </svg>
     </div>
   );
 
