@@ -185,7 +185,9 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
 
   useEffect(() => {
     load();
-    commands.getVoiceProfile().then((result) => {
+    // Counting is quick and local: the profile is fresh every time the
+    // screen opens, and the button recounts on demand.
+    commands.refreshVoiceProfile().then((result) => {
       if (result.status === "ok") setProfile(result.data);
     });
   }, [load]);
@@ -341,6 +343,47 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
                 ? t("insights.ofMyWords")
                 : t("insights.languageUnknown")}
             </ProfileCard>
+          </div>
+        )}
+        {profile && profile.top_words.length > 0 && (
+          <div className="flex flex-col gap-4 p-6 bg-surface border border-edge rounded-2xl">
+            <div className="flex flex-col gap-1">
+              <h3 className="text-[15px] font-semibold">
+                {t("insights.topWords")}
+              </h3>
+              <span className="text-[13px] text-ink-3">
+                {t("insights.topWordsNote")}
+              </span>
+            </div>
+            <ol className="grid grid-flow-col grid-rows-[repeat(30,auto)] gap-x-10 gap-y-1.5 lg:grid-rows-[repeat(15,auto)] 2xl:grid-rows-[repeat(10,auto)]">
+              {profile.top_words.map((word, index) => (
+                <li
+                  key={word.text}
+                  className="flex items-center gap-3 text-[14px]"
+                >
+                  <span className="w-5 shrink-0 text-end text-[12px] text-ink-3 tabular-nums">
+                    {index + 1}
+                  </span>
+                  <span className="w-28 shrink-0 truncate" title={word.text}>
+                    {word.text}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-raised"
+                  >
+                    <span
+                      className="block h-full rounded-full bg-signal"
+                      style={{
+                        width: `${(word.count / profile.top_words[0].count) * 100}%`,
+                      }}
+                    />
+                  </span>
+                  <span className="w-9 shrink-0 text-end font-semibold text-signal tabular-nums">
+                    {formatCount(word.count, locale)}
+                  </span>
+                </li>
+              ))}
+            </ol>
           </div>
         )}
         {!profile && (

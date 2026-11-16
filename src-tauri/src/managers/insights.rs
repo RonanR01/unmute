@@ -31,7 +31,7 @@ const PORTRAIT_APPS: usize = 5;
 const WAV_HEADER_BYTES: u64 = 44;
 const WAV_BYTES_PER_MS: u64 = 32;
 
-const TOP_WORDS: usize = 10;
+const TOP_WORDS: usize = 30;
 const TOP_CATCHPHRASES: usize = 5;
 /// A phrase said only once is not a habit.
 const MIN_CATCHPHRASE_COUNT: u32 = 2;

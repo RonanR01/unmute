@@ -1068,7 +1068,9 @@
     "bestDay": "Plus longue journée",
     "streak": "Série en cours",
     "streakNote": "jours d'affilée",
-    "ofMyWords": "de mes mots dictés"
+    "ofMyWords": "de mes mots dictés",
+    "topWords": "Mes 30 mots les plus utilisés",
+    "topWordsNote": "Avec leur nombre d'occurrences, hors mots de liaison comme « le », « de » ou « et »."
   },
   "dictionary": {
     "title": "Dictionnaire",

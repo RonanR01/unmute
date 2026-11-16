@@ -1068,7 +1068,9 @@
     "bestDay": "Longest day",
     "streak": "Current streak",
     "streakNote": "days in a row",
-    "ofMyWords": "of the words I dictate"
+    "ofMyWords": "of the words I dictate",
+    "topWords": "My 30 most used words",
+    "topWordsNote": "With how often each came up, leaving out linking words like “the”, “of” or “and”."
   },
   "dictionary": {
     "title": "Dictionary",
