@@ -828,6 +828,7 @@ pub fn run(cli_args: CliArgs) {
             commands::insights::get_voice_portrait,
             commands::insights::get_voice_portrait_provider,
             commands::insights::refresh_voice_portrait,
+            commands::insights::get_badge_board,
             helpers::clamshell::is_laptop,
             notices::get_active_notices,
             notices::dismiss_notice,

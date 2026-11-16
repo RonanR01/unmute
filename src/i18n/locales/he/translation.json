@@ -24,7 +24,8 @@
     "dictations": "Dictations",
     "insights": "Insights",
     "dictionary": "Dictionary",
-    "settings": "Settings"
+    "settings": "Settings",
+    "badges": "Badges"
   },
   "onboarding": {
     "customModelDescription": "לא נתמך באופן רשמי",
@@ -1077,5 +1078,156 @@
     "edit": "Edit {{word}}",
     "save": "Save",
     "cancel": "Cancel"
+  },
+  "badges": {
+    "title": "Badges",
+    "subtitle": "What your voice has already done, and what is left to earn.",
+    "status": "My standing",
+    "lifetimeWords": "Words dictated in all",
+    "earnedCount": "Badges earned",
+    "beltsLabel": "The seven belts",
+    "nextBelt": "{{words}} more words to the {{belt}}",
+    "topBelt": "You wear the highest belt.",
+    "earnedOn": "Earned on {{date}}",
+    "toEarn": "To earn",
+    "soon": "Soon",
+    "newBadge": "New",
+    "secretName": "Secret badge",
+    "secretDescription": "It stays hidden until you find it.",
+    "belts": {
+      "0": "White belt of speech",
+      "1": "Yellow belt of speech",
+      "2": "Orange belt of speech",
+      "3": "Green belt of speech",
+      "4": "Blue belt of speech",
+      "5": "Brown belt of speech",
+      "6": "Black belt of speech"
+    },
+    "categories": {
+      "volume": "Volume and regularity",
+      "style": "Style and language",
+      "moments": "Moments and habits",
+      "progress": "Progress and coaching",
+      "together": "Together",
+      "secret": "The secret"
+    },
+    "items": {
+      "first_draft": {
+        "name": "First Draft",
+        "description": "Your very first dictation."
+      },
+      "big_talker": {
+        "name": "The Big Talker",
+        "description": "10,000 words in a week."
+      },
+      "tour_de_france": {
+        "name": "Tour de France",
+        "description": "3,500 words in a day, one per kilometre."
+      },
+      "eternal_flame": {
+        "name": "Eternal Flame",
+        "description": "100 days in a row."
+      },
+      "comeback": {
+        "name": "Back to the Source",
+        "description": "You come back after two weeks away."
+      },
+      "inbox_zero": {
+        "name": "Vocal Inbox Zero",
+        "description": "20 emails dictated in a day."
+      },
+      "shakespeare": {
+        "name": "The Shakespeare of Slack",
+        "description": "1,000 different words in a week."
+      },
+      "laconic": {
+        "name": "The Laconic",
+        "description": "10 messages of ten words or fewer in a day."
+      },
+      "diesel": {
+        "name": "The Diesel",
+        "description": "A slow start, then a pace that picks up late in the day."
+      },
+      "tgv": {
+        "name": "TGV",
+        "description": "More than 180 words a minute."
+      },
+      "philosopher": {
+        "name": "The Philosopher",
+        "description": "A sentence of more than 60 words."
+      },
+      "no_net": {
+        "name": "No Safety Net",
+        "description": "A long dictation without a single “um”."
+      },
+      "franglais": {
+        "name": "Franglais Master",
+        "description": "“On fait un call ASAP pour aligner la roadmap.”"
+      },
+      "neologist": {
+        "name": "Neologist",
+        "description": "A word your history had never heard."
+      },
+      "early_bird": {
+        "name": "The Early Bird",
+        "description": "A dictation before 7 a.m."
+      },
+      "afterwork": {
+        "name": "Afterwork",
+        "description": "A dictation on Friday after 6 p.m."
+      },
+      "sunday_night": {
+        "name": "Anxious Sunday Night",
+        "description": "The week prepared on Sunday evening."
+      },
+      "coffee_break": {
+        "name": "Coffee Break",
+        "description": "5 dictations in 15 minutes."
+      },
+      "nomad": {
+        "name": "The Nomad",
+        "description": "Dictations in 10 different apps."
+      },
+      "phoenix": {
+        "name": "The Phoenix",
+        "description": "Your hesitation rate halved in a month."
+      },
+      "metronome": {
+        "name": "Metronome",
+        "description": "A steady pace through a whole presentation."
+      },
+      "perfect_pitch": {
+        "name": "Perfect Pitch",
+        "description": "A pitch held to its target time, within five seconds."
+      },
+      "chef_breath": {
+        "name": "Conductor's Breath",
+        "description": "Well-placed pauses all through the pitch."
+      },
+      "remontada": {
+        "name": "Remontada",
+        "description": "Your best score after three failed rehearsals."
+      },
+      "ambassador": {
+        "name": "Ambassador",
+        "description": "Three colleagues invited."
+      },
+      "influencer": {
+        "name": "Word Influencer",
+        "description": "A card shared on LinkedIn."
+      },
+      "silver_glossary": {
+        "name": "Silver Glossary",
+        "description": "Ten terms added to the team's vocabulary."
+      },
+      "team_spirit": {
+        "name": "Team Spirit",
+        "description": "A team challenge completed."
+      },
+      "easter_egg": {
+        "name": "Easter Egg",
+        "description": "You said “Unmute” three times in one dictation."
+      }
+    }
   }
 }

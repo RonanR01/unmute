@@ -37,6 +37,7 @@ import {
 import { DictationsScreen } from "./components/dictations/DictationsScreen";
 import { InsightsScreen } from "./components/insights/InsightsScreen";
 import { DictionaryScreen } from "./components/dictionary/DictionaryScreen";
+import { BadgesScreen } from "./components/badges/BadgesScreen";
 import { SettingsScreen } from "./components/settings/SettingsScreen";
 import { WhatsNewGate } from "./components/whats-new";
 import { useSettings } from "./hooks/useSettings";
@@ -366,6 +367,7 @@ function App() {
                   }}
                 />
               )}
+              {currentScreen === "badges" && <BadgesScreen />}
               {currentScreen === "dictionary" && <DictionaryScreen />}
               {currentScreen === "settings" && (
                 // Models fills the window: its table scrolls, not the page.

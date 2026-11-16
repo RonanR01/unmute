@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import {
+  Award,
   BarChart3,
   BookOpen,
   Cog,
@@ -34,6 +35,7 @@ interface IconProps {
 export const SCREENS = {
   dictations: { labelKey: "sidebar.dictations", icon: Mic },
   insights: { labelKey: "sidebar.insights", icon: BarChart3 },
+  badges: { labelKey: "sidebar.badges", icon: Award },
   dictionary: { labelKey: "sidebar.dictionary", icon: BookOpen },
   settings: { labelKey: "sidebar.settings", icon: SlidersHorizontal },
 } as const satisfies Record<

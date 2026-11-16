@@ -171,6 +171,7 @@ impl HistoryManager {
         // Initialize database and run migrations synchronously
         manager.init_database()?;
         manager.backfill_metadata();
+        manager.record_badges();
 
         Ok(manager)
     }
@@ -538,6 +539,8 @@ impl HistoryManager {
     }
 
     pub fn cleanup_old_entries(&self) -> Result<()> {
+        // Before anything is purged: badges and lifetime totals outlive it.
+        self.record_badges();
         self.cleanup_entries()?;
         self.cleanup_old_audio()
     }

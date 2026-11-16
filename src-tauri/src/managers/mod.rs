@@ -1,4 +1,5 @@
 pub mod audio;
+pub mod badges;
 pub mod gguf_meta;
 pub mod history;
 pub mod insights;

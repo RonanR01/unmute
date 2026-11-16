@@ -446,7 +446,7 @@ fn ranked(counts: impl Iterator<Item = (String, u32)>, limit: usize) -> Vec<Phra
 }
 
 /// Lowercased words, grouped by clause so that no phrase spans a pause.
-fn clauses(text: &str) -> Vec<Vec<String>> {
+pub(super) fn clauses(text: &str) -> Vec<Vec<String>> {
     text.split(['.', '!', '?', ';', ':', ',', '\n', '(', ')', '«', '»', '"'])
         .map(|clause| {
             clause
@@ -485,7 +485,7 @@ const FILLERS: &[&str] = &[
 
 /// Words every French sentence needs. Elided forms ("l'", "qu'") reach here
 /// as their bare letters.
-const FRENCH_STOPWORDS: &[&str] = &[
+pub(super) const FRENCH_STOPWORDS: &[&str] = &[
     "a", "à", "ai", "as", "au", "aux", "avec", "avez", "avons", "c", "ce", "cela", "ces", "cet",
     "cette", "ça", "d", "dans", "de", "des", "donc", "du", "elle", "elles", "en", "es", "est",
     "et", "été", "être", "eu", "il", "ils", "j", "je", "l", "la", "le", "les", "leur", "leurs",
@@ -498,7 +498,7 @@ const FRENCH_STOPWORDS: &[&str] = &[
 ];
 
 /// Words every English sentence needs.
-const ENGLISH_STOPWORDS: &[&str] = &[
+pub(super) const ENGLISH_STOPWORDS: &[&str] = &[
     "the", "and", "an", "of", "to", "in", "is", "it", "that", "this", "for", "on", "with", "be",
     "are", "was", "were", "i", "you", "he", "she", "we", "they", "them", "my", "your", "our",
     "their", "his", "her", "its", "at", "by", "from", "or", "but", "not", "have", "has", "had",

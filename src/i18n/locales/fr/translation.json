@@ -24,7 +24,8 @@
     "dictations": "Dictées",
     "insights": "Insights",
     "dictionary": "Dictionnaire",
-    "settings": "Paramètres"
+    "settings": "Paramètres",
+    "badges": "Badges"
   },
   "onboarding": {
     "customModelDescription": "Non officiellement pris en charge",
@@ -1077,5 +1078,156 @@
     "edit": "Modifier {{word}}",
     "save": "Enregistrer",
     "cancel": "Annuler"
+  },
+  "badges": {
+    "title": "Badges",
+    "subtitle": "Ce que votre voix a déjà accompli, et ce qui reste à décrocher.",
+    "status": "Mon statut",
+    "lifetimeWords": "Mots dictés depuis toujours",
+    "earnedCount": "Badges obtenus",
+    "beltsLabel": "Les sept ceintures",
+    "nextBelt": "Encore {{words}} mots avant la {{belt}}",
+    "topBelt": "Vous portez la plus haute ceinture.",
+    "earnedOn": "Obtenu le {{date}}",
+    "toEarn": "À décrocher",
+    "soon": "Bientôt",
+    "newBadge": "Nouveau",
+    "secretName": "Badge secret",
+    "secretDescription": "Il reste caché jusqu'à ce que vous le trouviez.",
+    "belts": {
+      "0": "Ceinture blanche de l'oral",
+      "1": "Ceinture jaune de l'oral",
+      "2": "Ceinture orange de l'oral",
+      "3": "Ceinture verte de l'oral",
+      "4": "Ceinture bleue de l'oral",
+      "5": "Ceinture marron de l'oral",
+      "6": "Ceinture noire de l'oral"
+    },
+    "categories": {
+      "volume": "Volume et régularité",
+      "style": "Style et langage",
+      "moments": "Moments et habitudes",
+      "progress": "Progression et coach",
+      "together": "Collectif et partage",
+      "secret": "Le secret"
+    },
+    "items": {
+      "first_draft": {
+        "name": "Premier jet",
+        "description": "Votre toute première dictée."
+      },
+      "big_talker": {
+        "name": "Le Grand Bavard",
+        "description": "10 000 mots dans la semaine."
+      },
+      "tour_de_france": {
+        "name": "Tour de France",
+        "description": "3 500 mots en une journée, un par kilomètre."
+      },
+      "eternal_flame": {
+        "name": "Flamme éternelle",
+        "description": "100 jours d'affilée."
+      },
+      "comeback": {
+        "name": "Retour aux sources",
+        "description": "Vous revenez après deux semaines d'absence."
+      },
+      "inbox_zero": {
+        "name": "Inbox Zero vocal",
+        "description": "20 mails dictés dans la journée."
+      },
+      "shakespeare": {
+        "name": "Le Shakespeare du Slack",
+        "description": "1 000 mots différents dans la semaine."
+      },
+      "laconic": {
+        "name": "Le Laconique",
+        "description": "10 messages de dix mots ou moins dans la journée."
+      },
+      "diesel": {
+        "name": "Le Diesel",
+        "description": "Un démarrage lent, puis un débit qui accélère en fin de journée."
+      },
+      "tgv": {
+        "name": "TGV",
+        "description": "Plus de 180 mots par minute."
+      },
+      "philosopher": {
+        "name": "Le Philosophe",
+        "description": "Une phrase de plus de 60 mots."
+      },
+      "no_net": {
+        "name": "Sans filet",
+        "description": "Une longue dictée sans aucun « euh »."
+      },
+      "franglais": {
+        "name": "Franglais Master",
+        "description": "« On fait un call ASAP pour aligner la roadmap. »"
+      },
+      "neologist": {
+        "name": "Néologue",
+        "description": "Un mot jamais entendu dans votre historique."
+      },
+      "early_bird": {
+        "name": "Le Lève-tôt",
+        "description": "Une dictée avant 7 h."
+      },
+      "afterwork": {
+        "name": "Afterwork",
+        "description": "Une dictée le vendredi après 18 h."
+      },
+      "sunday_night": {
+        "name": "Dimanche soir anxieux",
+        "description": "La semaine préparée le dimanche soir."
+      },
+      "coffee_break": {
+        "name": "Pause café",
+        "description": "5 dictées en 15 minutes."
+      },
+      "nomad": {
+        "name": "Le Nomade",
+        "description": "Des dictées dans 10 applis différentes."
+      },
+      "phoenix": {
+        "name": "Le Phénix",
+        "description": "Votre taux d'hésitations divisé par deux en un mois."
+      },
+      "metronome": {
+        "name": "Métronome",
+        "description": "Un débit stable pendant toute une présentation."
+      },
+      "perfect_pitch": {
+        "name": "Pitch parfait",
+        "description": "Un pitch tenu dans le temps visé, à cinq secondes près."
+      },
+      "chef_breath": {
+        "name": "Respiration de chef",
+        "description": "Des pauses bien placées tout au long du pitch."
+      },
+      "remontada": {
+        "name": "Remontada",
+        "description": "Votre meilleur score après trois répétitions ratées."
+      },
+      "ambassador": {
+        "name": "Ambassadeur",
+        "description": "Trois collègues invités."
+      },
+      "influencer": {
+        "name": "Influenceur du verbe",
+        "description": "Une carte partagée sur LinkedIn."
+      },
+      "silver_glossary": {
+        "name": "Glossaire d'argent",
+        "description": "Dix termes ajoutés au vocabulaire de l'équipe."
+      },
+      "team_spirit": {
+        "name": "Esprit d'équipe",
+        "description": "Un défi collectif réussi."
+      },
+      "easter_egg": {
+        "name": "Easter egg",
+        "description": "Vous avez dit « Unmute » trois fois dans une dictée."
+      }
+    }
   }
 }

@@ -1,4 +1,5 @@
 use crate::managers::{
+    badges::BadgeBoard,
     history::HistoryManager,
     insights::{DailyActivity, DictationStats, VoicePortrait, VoiceProfile},
 };
@@ -65,4 +66,13 @@ pub async fn get_voice_portrait_provider(
 #[specta::specta]
 pub async fn refresh_voice_portrait(app: AppHandle) -> Result<VoicePortrait, String> {
     voice_portrait::refresh(&app).await
+}
+
+/// Badges and the belt, checked against the history as it is now.
+#[tauri::command]
+#[specta::specta]
+pub async fn get_badge_board(
+    history_manager: State<'_, Arc<HistoryManager>>,
+) -> Result<BadgeBoard, String> {
+    history_manager.badge_board().map_err(|e| e.to_string())
 }

@@ -1048,6 +1048,14 @@ async updateAudioRetentionPeriod(period: AudioRetentionPeriod) : Promise<Result<
     else return { status: "error", error: e  as any };
 }
 },
+async getBadgeBoard() : Promise<Result<BadgeBoard, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_badge_board") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
 async getDictationStats() : Promise<Result<DictationStats, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_dictation_stats") };
@@ -1275,6 +1283,11 @@ export type AudioRetentionPeriod =
  * The recording goes when its history entry does.
  */
 "same_as_history" | "days_3" | "weeks_2" | "months_3"
+export type BadgeBoard = { standing: Standing; badges: BadgeStatus[]; newly_earned: string[] }
+export type BadgeCategory = "volume" | "style" | "moments" | "progress" | "together" | "secret"
+export type BadgeProgress = { current: number; target: number }
+export type BadgeStatus = { id: string; category: BadgeCategory; available: boolean; earned_at: number | null; progress: BadgeProgress | null }
+export type Standing = { belt: number; lifetime_words: number; lifetime_dictations: number; belt_words: number; next_belt_words: number | null }
 export type AutoSubmitKey = "enter" | "ctrl_enter" | "cmd_enter"
 export type AutoUnavailableReason = 
 /**
