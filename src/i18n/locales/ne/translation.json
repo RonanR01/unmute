@@ -1045,7 +1045,20 @@
     "ofMyDictations": "of my dictations",
     "languageUnknown": "The language of your dictations isn't known yet.",
     "notEnoughData": "Not enough dictations yet.",
-    "noProfile": "Refresh your profile to see your catchphrase and your most used word."
+    "noProfile": "Refresh your profile to see your catchphrase and your most used word.",
+    "portrait": {
+      "label": "My profile",
+      "empty": "A short portrait of how you dictate: what you use your voice for, and where.",
+      "write": "Write my portrait",
+      "rewrite": "Rewrite my portrait",
+      "writing": "Writing…",
+      "writtenBy": "Written by {{provider}}, {{date}}",
+      "sendsTo": "Sends excerpts of your dictations to {{provider}}.",
+      "staysLocal": "Written on this machine by {{provider}}. Nothing is sent.",
+      "noProvider": "To write it, turn on post-processing in Settings, then pick a provider and a model.",
+      "failed": "Couldn't Write the Portrait",
+      "badAnswer": "The model's answer couldn't be read. Try again or pick another model."
+    }
   },
   "dictionary": {
     "title": "Dictionary",

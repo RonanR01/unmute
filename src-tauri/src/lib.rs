@@ -34,6 +34,7 @@ mod transcription_hook;
 mod tray;
 mod tray_i18n;
 mod utils;
+mod voice_portrait;
 pub mod webkit_renderer;
 
 pub use cli::CliArgs;
@@ -824,6 +825,9 @@ pub fn run(cli_args: CliArgs) {
             commands::insights::get_daily_activity,
             commands::insights::get_voice_profile,
             commands::insights::refresh_voice_profile,
+            commands::insights::get_voice_portrait,
+            commands::insights::get_voice_portrait_provider,
+            commands::insights::refresh_voice_portrait,
             helpers::clamshell::is_laptop,
             notices::get_active_notices,
             notices::dismiss_notice,

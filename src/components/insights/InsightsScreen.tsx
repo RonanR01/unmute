@@ -1,11 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { RefreshCw } from "lucide-react";
+import { PenLine, RefreshCw } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import {
   commands,
   events,
   type DailyActivity,
   type DictationStats,
+  type PortraitProvider,
+  type VoicePortrait,
   type VoiceProfile,
 } from "@/bindings";
 import { notify } from "@/stores/noticeStore";
@@ -50,6 +52,108 @@ const ProfileCard: React.FC<{
     <span className="text-sm text-ink-3">{children}</span>
   </div>
 );
+
+/** Why a portrait wasn't written, for the codes the backend sends. */
+const PORTRAIT_ERRORS: Record<string, string> = {
+  no_provider: "insights.portrait.noProvider",
+  no_dictations: "insights.notEnoughData",
+  bad_answer: "insights.portrait.badAnswer",
+};
+
+/** The written profile: an archetype and how the user dictates. */
+const PortraitCard: React.FC<{ locale: string }> = ({ locale }) => {
+  const { t } = useTranslation();
+  const [portrait, setPortrait] = useState<VoicePortrait | null>(null);
+  const [provider, setProvider] = useState<PortraitProvider | null>(null);
+  const [writing, setWriting] = useState(false);
+
+  useEffect(() => {
+    commands.getVoicePortrait().then((result) => {
+      if (result.status === "ok") setPortrait(result.data);
+    });
+    commands.getVoicePortraitProvider().then((result) => {
+      if (result.status === "ok") setProvider(result.data);
+    });
+  }, []);
+
+  const write = async () => {
+    setWriting(true);
+    try {
+      const result = await commands.refreshVoicePortrait();
+      if (result.status === "ok") {
+        setPortrait(result.data);
+      } else {
+        const known = PORTRAIT_ERRORS[result.error];
+        notify({
+          title: t("insights.portrait.failed"),
+          detail: known ? t(known) : result.error,
+        });
+      }
+    } finally {
+      setWriting(false);
+    }
+  };
+
+  const writtenOn =
+    portrait &&
+    new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(
+      new Date(portrait.computed_at * 1000),
+    );
+
+  return (
+    <div className="relative overflow-hidden flex flex-col gap-3 p-7 bg-surface border border-edge rounded-2xl">
+      <TopoLines hill className="h-full" />
+      <span className="relative text-sm text-ink-3">
+        {t("insights.portrait.label")}
+      </span>
+      {portrait ? (
+        <>
+          <span className="relative text-[32px] leading-tight font-bold tracking-tight">
+            {portrait.title}
+          </span>
+          <p className="relative max-w-2xl text-[15px] leading-relaxed text-text/85 select-text cursor-text">
+            {portrait.description}
+          </p>
+          <span className="relative text-[13px] text-ink-3">
+            {t("insights.portrait.writtenBy", {
+              provider: portrait.provider_label,
+              date: writtenOn,
+            })}
+          </span>
+        </>
+      ) : (
+        <p className="relative max-w-2xl text-[15px] leading-relaxed text-ink-3">
+          {t("insights.portrait.empty")}
+        </p>
+      )}
+      <div className="relative flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
+        <button
+          type="button"
+          onClick={write}
+          disabled={writing || !provider}
+          className="min-h-11 px-4 flex items-center gap-2 rounded-[10px] border border-line-strong text-sm font-medium cursor-pointer transition-colors hover:bg-surface-raised disabled:opacity-50 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-text"
+        >
+          <PenLine
+            size={16}
+            className={writing ? "animate-pulse" : undefined}
+          />
+          {writing
+            ? t("insights.portrait.writing")
+            : portrait
+              ? t("insights.portrait.rewrite")
+              : t("insights.portrait.write")}
+        </button>
+        <span className="flex-1 min-w-52 text-[13px] text-ink-3">
+          {!provider
+            ? t("insights.portrait.noProvider")
+            : provider.local
+              ? t("insights.portrait.staysLocal", { provider: provider.label })
+              : t("insights.portrait.sendsTo", { provider: provider.label })}
+        </span>
+      </div>
+    </div>
+  );
+};
 
 const Measured: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <span className="text-signal font-semibold tabular-nums">{children}</span>
@@ -184,6 +288,8 @@ export const InsightsScreen: React.FC = () => {
             {t("insights.refresh")}
           </button>
         </div>
+
+        <PortraitCard locale={locale} />
 
         {profile && (
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">

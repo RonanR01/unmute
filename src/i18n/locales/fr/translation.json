@@ -1045,7 +1045,20 @@
     "ofMyDictations": "de mes dictées",
     "languageUnknown": "La langue de vos dictées n'est pas encore connue.",
     "notEnoughData": "Pas encore assez de dictées.",
-    "noProfile": "Actualisez votre profil pour voir votre catchphrase et votre mot le plus utilisé."
+    "noProfile": "Actualisez votre profil pour voir votre catchphrase et votre mot le plus utilisé.",
+    "portrait": {
+      "label": "Mon profil",
+      "empty": "Un court portrait de votre façon de dicter : à quoi vous sert votre voix, et dans quelles apps.",
+      "write": "Rédiger mon portrait",
+      "rewrite": "Réécrire mon portrait",
+      "writing": "Rédaction…",
+      "writtenBy": "Rédigé par {{provider}}, le {{date}}",
+      "sendsTo": "Envoie des extraits de vos dictées à {{provider}}.",
+      "staysLocal": "Rédigé sur cette machine par {{provider}}. Rien n'est envoyé.",
+      "noProvider": "Pour le rédiger, activez le post-traitement dans les Paramètres, puis choisissez un fournisseur et un modèle.",
+      "failed": "Portrait impossible à rédiger",
+      "badAnswer": "La réponse du modèle est illisible. Réessayez ou choisissez un autre modèle."
+    }
   },
   "dictionary": {
     "title": "Dictionnaire",

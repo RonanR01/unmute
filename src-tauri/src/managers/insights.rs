@@ -21,6 +21,11 @@ use super::history::HistoryManager;
 const DICTATIONS: &str = "source_name IS NULL AND transcription_text != ''";
 
 const VOICE_PROFILE_FILE: &str = "voice_profile.json";
+const VOICE_PORTRAIT_FILE: &str = "voice_portrait.json";
+
+/// How far back a portrait looks, and how many apps it is told about.
+const PORTRAIT_DICTATIONS: usize = 400;
+const PORTRAIT_APPS: usize = 5;
 
 /// Recordings are 16 kHz mono 16-bit PCM behind a 44-byte header.
 const WAV_HEADER_BYTES: u64 = 44;
@@ -73,7 +78,47 @@ pub struct VoiceProfile {
     pub english_share: Option<f64>,
 }
 
+/// The written part of the profile, as a language model put it.
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, Type)]
+pub struct VoicePortrait {
+    /// An archetype, e.g. "Detail Refiner".
+    pub title: String,
+    pub description: String,
+    pub computed_at: i64,
+    /// The provider that wrote it.
+    pub provider_label: String,
+}
+
+/// What a language model reads to write a [`VoicePortrait`].
+pub struct PortraitMaterial {
+    /// Recent dictations, newest first, with the app each was made in.
+    pub excerpts: Vec<(Option<String>, String)>,
+    pub top_apps: Vec<PhraseCount>,
+}
+
 impl HistoryManager {
+    /// Recent dictations up to `max_chars` of text, and the most used apps.
+    pub fn portrait_material(&self, max_chars: usize) -> Result<PortraitMaterial> {
+        portrait_material(&self.get_connection()?, max_chars)
+    }
+
+    /// The portrait from the last time one was written.
+    pub fn voice_portrait(&self) -> Option<VoicePortrait> {
+        let content = fs::read_to_string(self.data_file(VOICE_PORTRAIT_FILE)?).ok()?;
+        serde_json::from_str(&content).ok()
+    }
+
+    pub fn save_voice_portrait(&self, portrait: &VoicePortrait) -> Result<()> {
+        if let Some(path) = self.data_file(VOICE_PORTRAIT_FILE) {
+            fs::write(path, serde_json::to_string(portrait)?)?;
+        }
+        Ok(())
+    }
+
+    fn data_file(&self, name: &str) -> Option<PathBuf> {
+        Some(self.recordings_dir().parent()?.join(name))
+    }
+
     pub fn dictation_stats(&self) -> Result<DictationStats> {
         dictation_stats(&self.get_connection()?)
     }
@@ -84,21 +129,17 @@ impl HistoryManager {
 
     /// The profile from the last refresh, if there was one.
     pub fn voice_profile(&self) -> Option<VoiceProfile> {
-        let content = fs::read_to_string(self.voice_profile_path()?).ok()?;
+        let content = fs::read_to_string(self.data_file(VOICE_PROFILE_FILE)?).ok()?;
         serde_json::from_str(&content).ok()
     }
 
     pub fn refresh_voice_profile(&self) -> Result<VoiceProfile> {
         let dictations = load_dictations(&self.get_connection()?)?;
         let profile = build_voice_profile(&dictations, Utc::now().timestamp());
-        if let Some(path) = self.voice_profile_path() {
+        if let Some(path) = self.data_file(VOICE_PROFILE_FILE) {
             fs::write(path, serde_json::to_string(&profile)?)?;
         }
         Ok(profile)
-    }
-
-    fn voice_profile_path(&self) -> Option<PathBuf> {
-        Some(self.recordings_dir().parent()?.join(VOICE_PROFILE_FILE))
     }
 
     /// Fill in the word count and duration of dictations saved before those
@@ -113,6 +154,44 @@ impl HistoryManager {
             Err(e) => warn!("Could not fill in the metadata of older dictations: {e}"),
         }
     }
+}
+
+fn portrait_material(conn: &Connection, max_chars: usize) -> Result<PortraitMaterial> {
+    let mut stmt = conn.prepare(&format!(
+        "SELECT app_name, transcription_text FROM transcription_history
+         WHERE {DICTATIONS} ORDER BY timestamp DESC LIMIT {PORTRAIT_DICTATIONS}"
+    ))?;
+    let rows = stmt.query_map([], |row| {
+        Ok((row.get::<_, Option<String>>(0)?, row.get::<_, String>(1)?))
+    })?;
+    let mut excerpts = Vec::new();
+    let mut used = 0;
+    for row in rows {
+        let (app, text) = row?;
+        let length = text.chars().count();
+        // Always keep the newest one, however long it is.
+        if !excerpts.is_empty() && used + length > max_chars {
+            break;
+        }
+        used += length;
+        excerpts.push((app, text.chars().take(max_chars).collect()));
+    }
+
+    let mut stmt = conn.prepare(&format!(
+        "SELECT app_name, COUNT(*) FROM transcription_history
+         WHERE {DICTATIONS} AND app_name IS NOT NULL
+         GROUP BY app_name ORDER BY COUNT(*) DESC, app_name LIMIT {PORTRAIT_APPS}"
+    ))?;
+    let top_apps = stmt
+        .query_map([], |row| {
+            Ok(PhraseCount {
+                text: row.get(0)?,
+                count: row.get(1)?,
+            })
+        })?
+        .collect::<rusqlite::Result<Vec<_>>>()?;
+
+    Ok(PortraitMaterial { excerpts, top_apps })
 }
 
 fn dictation_stats(conn: &Connection) -> Result<DictationStats> {
@@ -441,6 +520,7 @@ mod tests {
                 transcription_text TEXT NOT NULL,
                 source_name TEXT,
                 language TEXT,
+                app_name TEXT,
                 audio_duration_ms INTEGER,
                 word_count INTEGER
             );",
@@ -502,6 +582,37 @@ mod tests {
         assert_eq!(stats.word_count, 200);
         assert_eq!(stats.duration_ms, 60_000);
         assert_eq!(stats.words_per_minute, Some(150.0));
+    }
+
+    #[test]
+    fn portrait_material_is_recent_dictations_within_the_budget() {
+        let conn = setup_conn();
+        insert(&conn, 100, "oldest text", Some(2), None, None);
+        insert(&conn, 200, "middle", Some(1), None, None);
+        insert(&conn, 300, "newest", Some(1), None, None);
+        insert(&conn, 400, "a file", Some(2), None, Some("talk.mp3"));
+        conn.execute(
+            "UPDATE transcription_history SET app_name = 'Mail' WHERE timestamp >= 200",
+            [],
+        )
+        .expect("set apps");
+
+        let material = portrait_material(&conn, 12).expect("gather material");
+
+        assert_eq!(
+            material.excerpts,
+            vec![
+                (Some("Mail".to_string()), "newest".to_string()),
+                (Some("Mail".to_string()), "middle".to_string()),
+            ]
+        );
+        assert_eq!(
+            material.top_apps,
+            vec![PhraseCount {
+                text: "Mail".to_string(),
+                count: 2
+            }]
+        );
     }
 
     #[test]

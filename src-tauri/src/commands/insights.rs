@@ -1,9 +1,10 @@
 use crate::managers::{
     history::HistoryManager,
-    insights::{DailyActivity, DictationStats, VoiceProfile},
+    insights::{DailyActivity, DictationStats, VoicePortrait, VoiceProfile},
 };
+use crate::voice_portrait::{self, PortraitProvider};
 use std::sync::Arc;
-use tauri::State;
+use tauri::{AppHandle, State};
 
 #[tauri::command]
 #[specta::specta]
@@ -38,4 +39,30 @@ pub async fn refresh_voice_profile(
     history_manager
         .refresh_voice_profile()
         .map_err(|e| e.to_string())
+}
+
+/// The portrait from the last time one was written; `None` before the first.
+#[tauri::command]
+#[specta::specta]
+pub async fn get_voice_portrait(
+    history_manager: State<'_, Arc<HistoryManager>>,
+) -> Result<Option<VoicePortrait>, String> {
+    Ok(history_manager.voice_portrait())
+}
+
+/// The model a portrait would be written with; `None` when none is set up.
+#[tauri::command]
+#[specta::specta]
+pub async fn get_voice_portrait_provider(
+    app: AppHandle,
+) -> Result<Option<PortraitProvider>, String> {
+    Ok(voice_portrait::provider(&app))
+}
+
+/// Have the post-processing provider write the portrait. Sends excerpts of the
+/// dictations to it, so call this only when the user asks.
+#[tauri::command]
+#[specta::specta]
+pub async fn refresh_voice_portrait(app: AppHandle) -> Result<VoicePortrait, String> {
+    voice_portrait::refresh(&app).await
 }

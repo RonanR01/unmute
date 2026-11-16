@@ -1084,6 +1084,40 @@ async refreshVoiceProfile() : Promise<Result<VoiceProfile, string>> {
 }
 },
 /**
+ * The portrait from the last time one was written; `None` before the first.
+ */
+async getVoicePortrait() : Promise<Result<VoicePortrait | null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_voice_portrait") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
+ * The model a portrait would be written with; `None` when none is set up.
+ */
+async getVoicePortraitProvider() : Promise<Result<PortraitProvider | null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("get_voice_portrait_provider") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
+ * Have the post-processing provider write the portrait. Sends excerpts of the
+ * dictations to it, so call this only when the user asks.
+ */
+async refreshVoicePortrait() : Promise<Result<VoicePortrait, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("refresh_voice_portrait") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
  * Checks if the Mac is a laptop by detecting battery presence
  * 
  * This uses pmset to check for battery information.
@@ -1484,6 +1518,14 @@ export type PasteMethod = "ctrl_v" | "direct" | "none" | "shift_insert" | "ctrl_
 export type PermissionAccess = "allowed" | "denied" | "unknown"
 export type PhraseCount = { text: string; count: number }
 /**
+ * The model that would write the portrait, named so the user can decide.
+ */
+export type PortraitProvider = { label: string; 
+/**
+ * Whether the excerpts stay on this machine.
+ */
+local: boolean }
+/**
  * Request format a post-processing endpoint speaks. Built-in providers have a
  * fixed format; only the custom provider lets the user change it.
  */
@@ -1658,6 +1700,18 @@ export type TranscriptionOutcome =
 "failed"
 export type TypingTool = "auto" | "wtype" | "kwtype" | "dotool" | "ydotool" | "xdotool"
 export type VadBackend = "silero" | "earshot"
+/**
+ * The written part of the profile, as a language model put it.
+ */
+export type VoicePortrait = { 
+/**
+ * An archetype, e.g. "Detail Refiner".
+ */
+title: string; description: string; computed_at: number; 
+/**
+ * The provider that wrote it.
+ */
+provider_label: string }
 /**
  * How the user speaks, as of `computed_at`.
  */
