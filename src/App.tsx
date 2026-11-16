@@ -358,7 +358,14 @@ function App() {
                 <SecureInputWarning />
               </div>
               {currentScreen === "dictations" && <DictationsScreen />}
-              {currentScreen === "insights" && <InsightsScreen />}
+              {currentScreen === "insights" && (
+                <InsightsScreen
+                  onChooseModel={() => {
+                    setCurrentSection("postprocessing");
+                    setCurrentScreen("settings");
+                  }}
+                />
+              )}
               {currentScreen === "dictionary" && <DictionaryScreen />}
               {currentScreen === "settings" && (
                 // Models fills the window: its table scrolls, not the page.

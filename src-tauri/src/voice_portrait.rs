@@ -85,14 +85,16 @@ pub fn provider(app: &AppHandle) -> Option<PortraitProvider> {
 
 fn system_prompt(language: &str) -> String {
     format!(
-        "You write a short voice profile for the user of a dictation app, from excerpts of \
-         what they dictated. Answer with a JSON object holding two strings: \"{TITLE_FIELD}\", \
-         a two-to-four-word archetype for how they use dictation (in the spirit of \"Detail \
-         Refiner\"), and \"{DESCRIPTION_FIELD}\", two sentences addressed to the user as \
-         \"you\" that say what they mostly dictate, to what end, and in which apps. Rely only \
-         on the excerpts. Do not quote them, and leave out names and other private details. \
-         Write both strings in the language whose code is \"{language}\". Output the JSON \
-         object and nothing else."
+        "You read excerpts of everything one person dictated into a dictation app and sum \
+         up how they speak. Answer with a JSON object holding two strings: \
+         \"{TITLE_FIELD}\", a two-to-four-word archetype for their way of dictating (in the \
+         spirit of \"Detail Refiner\"), and \"{DESCRIPTION_FIELD}\", two or three sentences \
+         addressed to them as \"you\". The description says what they talk about most, what \
+         they mainly use dictation for, and how they tell it: their tone, how they build \
+         their sentences, whether they instruct, explain, think aloud or converse. Rely only \
+         on the excerpts as a whole. Do not quote them, and leave out names and other \
+         private details. Write both strings in the language whose code is \"{language}\". \
+         Output the JSON object and nothing else."
     )
 }
 

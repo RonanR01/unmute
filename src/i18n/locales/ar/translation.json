@@ -1045,28 +1045,29 @@
     "topWord": "My most used word",
     "usedTimes": "Used <m>{{n}}</m> times",
     "englishShare": "Share of English",
-    "ofMyDictations": "of my dictations",
-    "languageUnknown": "The language of your dictations isn't known yet.",
+    "languageUnknown": "Not enough French or English yet to tell.",
     "notEnoughData": "Not enough dictations yet.",
     "noProfile": "Refresh your profile to see your catchphrase and your most used word.",
     "portrait": {
       "label": "My profile",
-      "empty": "A short portrait of how you dictate: what you use your voice for, and where.",
+      "empty": "A short portrait of how you speak: what you talk about, what you use dictation for, and your way of telling it.",
       "write": "Write my portrait",
       "rewrite": "Rewrite my portrait",
       "writing": "Writing…",
       "writtenBy": "Written by {{provider}}, {{date}}",
       "sendsTo": "Sends excerpts of your dictations to {{provider}}.",
       "staysLocal": "Written on this machine by {{provider}}. Nothing is sent.",
-      "noProvider": "To write it, turn on post-processing in Settings, then pick a provider and a model.",
+      "noProvider": "A language model writes this portrait. Choose one in Settings, under Post Process: a cloud provider or a local one.",
       "failed": "Couldn't Write the Portrait",
-      "badAnswer": "The model's answer couldn't be read. Try again or pick another model."
+      "badAnswer": "The model's answer couldn't be read. Try again or pick another model.",
+      "chooseModel": "Choose a model"
     },
     "activeDays": "Active days",
     "overWeeks": "over the last {{weeks}} weeks",
     "bestDay": "Longest day",
     "streak": "Current streak",
-    "streakNote": "days in a row"
+    "streakNote": "days in a row",
+    "ofMyWords": "of the words I dictate"
   },
   "dictionary": {
     "title": "Dictionary",

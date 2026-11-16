@@ -235,8 +235,13 @@ pub enum AudioRetentionPeriod {
     /// The recording goes when its history entry does.
     #[default]
     SameAsHistory,
+    // Spelled out: serde's snake_case gives "days3", the generated bindings
+    // "days_3", and the frontend sends what the bindings say.
+    #[serde(rename = "days_3")]
     Days3,
+    #[serde(rename = "weeks_2")]
     Weeks2,
+    #[serde(rename = "months_3")]
     Months3,
 }
 
@@ -709,7 +714,9 @@ fn default_history_limit() -> usize {
 }
 
 fn default_recording_retention_period() -> RecordingRetentionPeriod {
-    RecordingRetentionPeriod::PreserveLimit
+    // Unmute's insights are computed from the history, so it keeps a season
+    // of it. Handy kept the latest few.
+    RecordingRetentionPeriod::Months3
 }
 
 fn default_audio_feedback_volume() -> f32 {
@@ -2192,5 +2199,26 @@ mod tests {
         ));
         assert!(!linux_self_update_possible(Some(BundleKind::Other), all));
         assert!(!linux_self_update_possible(None, all));
+    }
+}
+
+#[cfg(test)]
+mod audio_retention_tests {
+    use super::AudioRetentionPeriod;
+
+    #[test]
+    fn audio_retention_is_spelled_as_the_bindings_spell_it() {
+        for (period, spelling) in [
+            (AudioRetentionPeriod::SameAsHistory, "\"same_as_history\""),
+            (AudioRetentionPeriod::Days3, "\"days_3\""),
+            (AudioRetentionPeriod::Weeks2, "\"weeks_2\""),
+            (AudioRetentionPeriod::Months3, "\"months_3\""),
+        ] {
+            assert_eq!(serde_json::to_string(&period).unwrap(), spelling);
+            assert_eq!(
+                serde_json::from_str::<AudioRetentionPeriod>(spelling).unwrap(),
+                period
+            );
+        }
     }
 }

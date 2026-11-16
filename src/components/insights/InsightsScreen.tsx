@@ -61,7 +61,10 @@ const PORTRAIT_ERRORS: Record<string, string> = {
 };
 
 /** The written profile: an archetype and how the user dictates. */
-const PortraitCard: React.FC<{ locale: string }> = ({ locale }) => {
+const PortraitCard: React.FC<{
+  locale: string;
+  onChooseModel: () => void;
+}> = ({ locale, onChooseModel }) => {
   const { t } = useTranslation();
   const [portrait, setPortrait] = useState<VoicePortrait | null>(null);
   const [provider, setProvider] = useState<PortraitProvider | null>(null);
@@ -129,8 +132,8 @@ const PortraitCard: React.FC<{ locale: string }> = ({ locale }) => {
       <div className="relative flex flex-wrap items-center gap-x-4 gap-y-2 pt-1">
         <button
           type="button"
-          onClick={write}
-          disabled={writing || !provider}
+          onClick={provider ? write : onChooseModel}
+          disabled={writing}
           className="min-h-11 px-4 flex items-center gap-2 rounded-[10px] border border-line-strong text-sm font-medium cursor-pointer transition-colors hover:bg-surface-raised disabled:opacity-50 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-text"
         >
           <PenLine
@@ -139,9 +142,11 @@ const PortraitCard: React.FC<{ locale: string }> = ({ locale }) => {
           />
           {writing
             ? t("insights.portrait.writing")
-            : portrait
-              ? t("insights.portrait.rewrite")
-              : t("insights.portrait.write")}
+            : !provider
+              ? t("insights.portrait.chooseModel")
+              : portrait
+                ? t("insights.portrait.rewrite")
+                : t("insights.portrait.write")}
         </button>
         <span className="flex-1 min-w-52 text-[13px] text-ink-3">
           {!provider
@@ -159,7 +164,9 @@ const Measured: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
   <span className="text-signal font-semibold tabular-nums">{children}</span>
 );
 
-export const InsightsScreen: React.FC = () => {
+export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
+  onChooseModel,
+}) => {
   const { t, i18n } = useTranslation();
   const locale = i18n.language;
   const [stats, setStats] = useState<DictationStats | null>(null);
@@ -289,7 +296,7 @@ export const InsightsScreen: React.FC = () => {
           </button>
         </div>
 
-        <PortraitCard locale={locale} />
+        <PortraitCard locale={locale} onChooseModel={onChooseModel} />
 
         {profile && (
           <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4">
@@ -331,7 +338,7 @@ export const InsightsScreen: React.FC = () => {
               }
             >
               {profile.english_share != null
-                ? t("insights.ofMyDictations")
+                ? t("insights.ofMyWords")
                 : t("insights.languageUnknown")}
             </ProfileCard>
           </div>

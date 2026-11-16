@@ -75,7 +75,9 @@ export const SECTIONS_CONFIG = {
     labelKey: "sidebar.postProcessing",
     icon: Sparkles,
     component: PostProcessingSettings,
-    enabled: (settings) => settings?.post_process_enabled ?? false,
+    // Always there: the voice portrait is written by the model chosen here,
+    // whether or not dictations are post-processed.
+    enabled: () => true,
   },
   history: {
     labelKey: "sidebar.history",

@@ -33,8 +33,8 @@ const WAV_BYTES_PER_MS: u64 = 32;
 
 const TOP_WORDS: usize = 10;
 const TOP_CATCHPHRASES: usize = 5;
-/// A phrase said fewer times than this is not a habit.
-const MIN_CATCHPHRASE_COUNT: u32 = 3;
+/// A phrase said only once is not a habit.
+const MIN_CATCHPHRASE_COUNT: u32 = 2;
 const MAX_CATCHPHRASE_WORDS: usize = 4;
 
 /// Totals over every dictation still in the history.
@@ -74,7 +74,8 @@ pub struct VoiceProfile {
     /// Most repeated expressions; the first is the catchphrase.
     pub catchphrases: Vec<PhraseCount>,
     pub fillers: Vec<PhraseCount>,
-    /// Share of dictations in English, among those whose language is known.
+    /// Share of the words dictated in English, among those told apart from
+    /// French. Read from the text: most models don't report a language.
     pub english_share: Option<f64>,
 }
 
@@ -301,27 +302,21 @@ fn wav_duration_ms(path: &Path) -> Option<i64> {
     i64::try_from(bytes.saturating_sub(WAV_HEADER_BYTES) / WAV_BYTES_PER_MS).ok()
 }
 
-/// A dictation as the voice profile reads it.
-struct Dictation {
-    text: String,
-    language: Option<String>,
-}
-
-fn load_dictations(conn: &Connection) -> Result<Vec<Dictation>> {
+/// The text of every dictation, as the voice profile reads it.
+fn load_dictations(conn: &Connection) -> Result<Vec<String>> {
     let mut stmt = conn.prepare(&format!(
-        "SELECT transcription_text, language FROM transcription_history WHERE {DICTATIONS}"
+        "SELECT transcription_text FROM transcription_history WHERE {DICTATIONS}"
     ))?;
-    let rows = stmt.query_map([], |row| {
-        Ok(Dictation {
-            text: row.get(0)?,
-            language: row.get(1)?,
-        })
-    })?;
+    let rows = stmt.query_map([], |row| row.get(0))?;
     Ok(rows.collect::<rusqlite::Result<Vec<_>>>()?)
 }
 
-fn build_voice_profile(dictations: &[Dictation], now: i64) -> VoiceProfile {
-    let stopwords: HashSet<&str> = STOPWORDS.iter().copied().collect();
+fn build_voice_profile(dictations: &[String], now: i64) -> VoiceProfile {
+    let french: HashSet<&str> = FRENCH_STOPWORDS.iter().copied().collect();
+    let english: HashSet<&str> = ENGLISH_STOPWORDS.iter().copied().collect();
+    let stopwords: HashSet<&str> = french.union(&english).copied().collect();
+    let mut french_words: i64 = 0;
+    let mut english_words: i64 = 0;
     let mut words: HashMap<&str, u32> = HashMap::new();
     let mut phrases: HashMap<Vec<&str>, u32> = HashMap::new();
     let mut fillers: HashMap<&str, u32> = HashMap::new();
@@ -329,11 +324,25 @@ fn build_voice_profile(dictations: &[Dictation], now: i64) -> VoiceProfile {
 
     let clauses: Vec<Vec<String>> = dictations
         .iter()
-        .flat_map(|dictation| clauses(&dictation.text))
+        .flat_map(|dictation| clauses(dictation))
         .collect();
     for clause in &clauses {
         let tokens: Vec<&str> = clause.iter().map(String::as_str).collect();
         word_count += tokens.len() as i64;
+
+        // A clause is in the language whose everyday words it uses most;
+        // words both languages share ("on", "me") say nothing.
+        let votes = |own: &HashSet<&str>, other: &HashSet<&str>| {
+            tokens
+                .iter()
+                .filter(|token| own.contains(*token) && !other.contains(*token))
+                .count()
+        };
+        match votes(&french, &english).cmp(&votes(&english, &french)) {
+            std::cmp::Ordering::Greater => french_words += tokens.len() as i64,
+            std::cmp::Ordering::Less => english_words += tokens.len() as i64,
+            std::cmp::Ordering::Equal => {}
+        }
 
         for token in &tokens {
             if token.chars().count() >= 3 && !stopwords.contains(token) {
@@ -361,14 +370,7 @@ fn build_voice_profile(dictations: &[Dictation], now: i64) -> VoiceProfile {
         }
     }
 
-    let with_language: Vec<&str> = dictations
-        .iter()
-        .filter_map(|dictation| dictation.language.as_deref())
-        .collect();
-    let english = with_language
-        .iter()
-        .filter(|language| language.starts_with("en"))
-        .count();
+    let told_apart = french_words + english_words;
 
     VoiceProfile {
         computed_at: now,
@@ -387,8 +389,7 @@ fn build_voice_profile(dictations: &[Dictation], now: i64) -> VoiceProfile {
                 .map(|(filler, count)| (filler.to_string(), count)),
             FILLERS.len(),
         ),
-        english_share: (!with_language.is_empty())
-            .then(|| english as f64 / with_language.len() as f64),
+        english_share: (told_apart > 0).then(|| english_words as f64 / told_apart as f64),
     }
 }
 
@@ -482,10 +483,9 @@ const FILLERS: &[&str] = &[
     "actually",
 ];
 
-/// Words every sentence needs, in French and English. Elided forms ("l'",
-/// "qu'") reach here as their bare letters.
-const STOPWORDS: &[&str] = &[
-    // French
+/// Words every French sentence needs. Elided forms ("l'", "qu'") reach here
+/// as their bare letters.
+const FRENCH_STOPWORDS: &[&str] = &[
     "a", "à", "ai", "as", "au", "aux", "avec", "avez", "avons", "c", "ce", "cela", "ces", "cet",
     "cette", "ça", "d", "dans", "de", "des", "donc", "du", "elle", "elles", "en", "es", "est",
     "et", "été", "être", "eu", "il", "ils", "j", "je", "l", "la", "le", "les", "leur", "leurs",
@@ -495,7 +495,10 @@ const STOPWORDS: &[&str] = &[
     "vos", "votre", "vous", "y", "était", "avait", "sera", "fait", "faire", "peut", "tout", "tous",
     "toute", "toutes", "très", "aussi", "bien", "comme", "quand", "alors", "sans", "sous", "entre",
     "chez", "vers", "cest", "oui", "non", "là", "ici", "puis", "car", "ni", "dont",
-    // English
+];
+
+/// Words every English sentence needs.
+const ENGLISH_STOPWORDS: &[&str] = &[
     "the", "and", "an", "of", "to", "in", "is", "it", "that", "this", "for", "on", "with", "be",
     "are", "was", "were", "i", "you", "he", "she", "we", "they", "them", "my", "your", "our",
     "their", "his", "her", "its", "at", "by", "from", "or", "but", "not", "have", "has", "had",
@@ -551,13 +554,6 @@ mod tests {
             ],
         )
         .expect("insert entry");
-    }
-
-    fn dictation(text: &str, language: Option<&str>) -> Dictation {
-        Dictation {
-            text: text.to_string(),
-            language: language.map(str::to_string),
-        }
     }
 
     #[test]
@@ -671,10 +667,10 @@ mod tests {
     #[test]
     fn profile_finds_the_catchphrase_and_the_top_word() {
         let dictations = vec![
-            dictation("Du coup, on lance le projet Fruggr demain.", Some("fr")),
-            dictation("Du coup le projet avance. Du coup c'est bien !", Some("fr")),
-            dictation("The Fruggr project is late, du coup.", Some("en")),
-            dictation("Fruggr encore, Fruggr toujours, Fruggr.", None),
+            "Du coup, on lance le projet Fruggr demain.".to_string(),
+            "Du coup le projet avance. Du coup c'est bien !".to_string(),
+            "The Fruggr project is late, du coup.".to_string(),
+            "Fruggr encore, Fruggr toujours, Fruggr.".to_string(),
         ];
 
         let profile = build_voice_profile(&dictations, 42);
@@ -699,14 +695,15 @@ mod tests {
             text: "du coup".to_string(),
             count: 4
         }));
-        assert_eq!(profile.english_share, Some(1.0 / 3.0));
+        // "The Fruggr project is late" is the only English clause: 5 words of 25.
+        assert_eq!(profile.english_share, Some(0.2));
     }
 
     #[test]
     fn a_phrase_never_spans_a_pause_or_ends_on_a_stopword() {
         let dictations = vec![
-            dictation("le client, le client, le client", None),
-            dictation("parle de. parle de. parle de.", None),
+            "le client, le client, le client".to_string(),
+            "parle de. parle de. parle de.".to_string(),
         ];
 
         let profile = build_voice_profile(&dictations, 0);
