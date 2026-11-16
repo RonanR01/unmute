@@ -203,8 +203,8 @@
     },
     "done": {
       "title": "Tout est prêt",
-      "subMac": "Unmute est maintenant dans votre barre des menus. Maintenez ou appuyez sur <keys/> dans n'importe quelle app pour parler.",
-      "subTray": "Unmute est maintenant dans votre zone de notification. Maintenez ou appuyez sur <keys/> dans n'importe quelle app pour parler.",
+      "subMac": "Unmute est dans la barre des menus. Appuyez sur <keys/> pour dicter partout.",
+      "subTray": "Unmute est dans la zone de notification. Appuyez sur <keys/> pour dicter partout.",
       "hint": "Vous pourrez modifier tout cela plus tard dans les Paramètres",
       "highFiveLabel": "Tope là",
       "atLogin": "Lancer Unmute à l'ouverture de ma session",

@@ -346,8 +346,10 @@
 .try-swap {
   animation: try-say-fade 260ms ease both;
 }
+/* One line in most languages; a longer translation wraps instead of sliding
+   under the scene. */
 .try-main > p.try-swap {
-  height: 24px;
+  min-height: 24px;
   line-height: 24px;
 }
 .try-sub-keys {
