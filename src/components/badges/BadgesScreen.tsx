@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
+import { Share2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   commands,
@@ -9,7 +10,12 @@ import {
 } from "@/bindings";
 import { formatCount } from "@/lib/utils/measures";
 import { TopoLines } from "../shared/TopoLines";
+import type { ShareCard } from "@/lib/shareCard";
+import { ShareDialog } from "../share/ShareDialog";
 import { BadgeEmblem } from "./BadgeEmblem";
+
+const SHARE_BUTTON =
+  "self-start min-h-9 px-3 flex items-center gap-2 rounded-[10px] border border-line-strong text-[13px] font-medium cursor-pointer transition-colors hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-text";
 
 const CATEGORIES: BadgeCategory[] = [
   "volume",
@@ -33,7 +39,7 @@ const Meter: React.FC<{ value: number; label: string }> = ({
     aria-valuemin={0}
     aria-valuemax={100}
     aria-valuenow={Math.round(value * 100)}
-    className="h-1.5 w-full overflow-hidden rounded-full bg-surface-raised"
+    className="h-1.5 w-full overflow-hidden rounded-full bg-gauge-track"
   >
     <div
       className="h-full rounded-full bg-signal"
@@ -46,7 +52,8 @@ const BadgeTile: React.FC<{
   badge: BadgeStatus;
   locale: string;
   fresh: boolean;
-}> = ({ badge, locale, fresh }) => {
+  onShare: (card: ShareCard) => void;
+}> = ({ badge, locale, fresh, onShare }) => {
   const { t } = useTranslation();
   const earned = badge.earned_at != null;
   const hidden = badge.category === "secret" && !earned;
@@ -81,7 +88,7 @@ const BadgeTile: React.FC<{
       <div className="flex flex-col gap-1.5">
         <Meter value={current / target} label={name} />
         <span className="text-[12px] text-ink-3 tabular-nums">
-          <span className="text-signal font-semibold">
+          <span className="measure font-semibold">
             {formatCount(Math.floor(current), locale)}
           </span>
           {count.slice(formatCount(Math.floor(current), locale).length)}
@@ -114,6 +121,31 @@ const BadgeTile: React.FC<{
           {description}
         </span>
         <div className="pt-1">{status}</div>
+        {earned && (
+          <button
+            type="button"
+            aria-label={t("share.shareBadge", { name })}
+            onClick={() =>
+              onShare({
+                kind: "badge",
+                badgeId: badge.id,
+                label: t("share.badgeEarned"),
+                name,
+                description,
+                date: t("badges.earnedOn", {
+                  date: new Intl.DateTimeFormat(locale, {
+                    dateStyle: "long",
+                  }).format(new Date((badge.earned_at ?? 0) * 1000)),
+                }),
+                standing: "",
+              })
+            }
+            className={`${SHARE_BUTTON} mt-1`}
+          >
+            <Share2 size={15} />
+            {t("share.share")}
+          </button>
+        )}
       </div>
     </li>
   );
@@ -125,6 +157,10 @@ export const BadgesScreen: React.FC = () => {
   const [board, setBoard] = useState<BadgeBoard | null>(null);
   // Earned while this screen was open: celebrated until the user leaves.
   const [fresh, setFresh] = useState<string[]>([]);
+  const [sharing, setSharing] = useState<{
+    card: ShareCard;
+    fileName: string;
+  } | null>(null);
 
   const load = useCallback(async () => {
     const result = await commands.getBadgeBoard();
@@ -166,8 +202,48 @@ export const BadgesScreen: React.FC = () => {
         }
       : null;
 
+  // What every card signs off with: the belt and the words behind it.
+  const signature = standing
+    ? t("share.dictatedWith", {
+        belt: beltName,
+        words: formatCount(standing.lifetime_words, locale),
+      })
+    : "";
+
+  const shareStanding = () => {
+    if (!standing || !board) return;
+    setSharing({
+      fileName: "unwrite-statut",
+      card: {
+        kind: "insights",
+        title: beltName,
+        figures: [
+          {
+            label: t("badges.lifetimeWords"),
+            value: formatCount(standing.lifetime_words, locale),
+          },
+          {
+            label: t("badges.earnedCount"),
+            value: String(earnedCount),
+            unit: `/ ${board.badges.length}`,
+          },
+        ],
+        standing: t("badges.status"),
+      },
+    });
+  };
+
   return (
     <div className="flex w-full flex-col gap-8 px-8 py-8">
+      <ShareDialog
+        card={sharing?.card ?? null}
+        fileName={sharing?.fileName ?? "unwrite"}
+        onClose={() => {
+          setSharing(null);
+          // Sharing a card is a badge of its own.
+          load();
+        }}
+      />
       <div className="flex flex-col gap-1.5">
         <h1 className="text-[28px] font-bold tracking-tight">
           {t("badges.title")}
@@ -178,6 +254,7 @@ export const BadgesScreen: React.FC = () => {
       {standing && (
         <section
           aria-labelledby="badges-standing"
+          data-theme="fir"
           className="relative overflow-hidden flex flex-col gap-5 p-7 bg-surface border border-edge rounded-2xl"
         >
           <TopoLines hill className="h-full" />
@@ -196,7 +273,7 @@ export const BadgesScreen: React.FC = () => {
                 <span className="text-[13px] text-ink-3">
                   {t("badges.lifetimeWords")}
                 </span>
-                <span className="text-[22px] font-bold tracking-tight text-signal tabular-nums">
+                <span className="text-[22px] font-bold tracking-tight measure tabular-nums">
                   {formatCount(standing.lifetime_words, locale)}
                 </span>
               </div>
@@ -204,7 +281,7 @@ export const BadgesScreen: React.FC = () => {
                 <span className="text-[13px] text-ink-3">
                   {t("badges.earnedCount")}
                 </span>
-                <span className="text-[22px] font-bold tracking-tight text-signal tabular-nums">
+                <span className="text-[22px] font-bold tracking-tight measure tabular-nums">
                   {earnedCount}
                   <span className="text-sm font-medium text-ink-3">
                     {" "}
@@ -247,6 +324,14 @@ export const BadgesScreen: React.FC = () => {
                 {t("badges.topBelt")}
               </span>
             )}
+            <button
+              type="button"
+              onClick={shareStanding}
+              className={`${SHARE_BUTTON} mt-2`}
+            >
+              <Share2 size={15} />
+              {t("share.shareStanding")}
+            </button>
           </div>
         </section>
       )}
@@ -273,6 +358,12 @@ export const BadgesScreen: React.FC = () => {
                     badge={badge}
                     locale={locale}
                     fresh={fresh.includes(badge.id)}
+                    onShare={(card) =>
+                      setSharing({
+                        card: { ...card, standing: signature },
+                        fileName: `unwrite-badge-${badge.id.replace(/_/g, "-")}`,
+                      })
+                    }
                   />
                 ))}
               </ul>

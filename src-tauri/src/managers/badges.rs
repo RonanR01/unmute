@@ -48,7 +48,9 @@ const DIESEL_SIDE_DICTATIONS: usize = 3;
 const DIESEL_GAIN: f64 = 1.2;
 const PHOENIX_PERIOD_DAYS: i64 = 30;
 const PHOENIX_PERIOD_WORDS: i64 = 1_000;
-const SECRET_WORD: &str = "unmute";
+const SECRET_WORD: &str = "unwrite";
+/// The badge for sharing a card.
+const SHARED_BADGE: &str = "influencer";
 const SECRET_TIMES: usize = 3;
 
 /// Sounds of hesitation. Narrower than the profile's fillers: "bon" or
@@ -138,7 +140,7 @@ pub enum BadgeCategory {
 struct Definition {
     id: &'static str,
     category: BadgeCategory,
-    /// `false` for badges that wait on a feature Unmute doesn't have yet.
+    /// `false` for badges that wait on a feature Unwrite doesn't have yet.
     available: bool,
 }
 
@@ -184,7 +186,7 @@ const CATALOGUE: &[Definition] = &[
     soon("chef_breath", BadgeCategory::Progress),
     soon("remontada", BadgeCategory::Progress),
     soon("ambassador", BadgeCategory::Together),
-    soon("influencer", BadgeCategory::Together),
+    badge("influencer", BadgeCategory::Together),
     soon("silver_glossary", BadgeCategory::Together),
     soon("team_spirit", BadgeCategory::Together),
     badge("easter_egg", BadgeCategory::Secret),
@@ -589,6 +591,9 @@ fn evaluate(facts: &[Fact], now: i64) -> HashMap<&'static str, Outcome> {
         ("coffee_break", coffee_break(facts)),
         ("nomad", nomad(facts)),
         ("phoenix", phoenix(facts, now)),
+        // Not read from the history: earned by sharing a card, see
+        // `record_card_shared`.
+        ("influencer", Outcome::default()),
         (
             "easter_egg",
             first(facts, |fact| {
@@ -715,6 +720,24 @@ impl HistoryManager {
             }
         }
         Ok(board)
+    }
+
+    /// The user took a card to a social network: that is a badge of its own.
+    pub fn record_card_shared(&self) -> Result<()> {
+        let Some(path) = self.badges_path() else {
+            return Ok(());
+        };
+        let mut ledger: Ledger = fs::read_to_string(&path)
+            .ok()
+            .and_then(|content| serde_json::from_str(&content).ok())
+            .unwrap_or_default();
+        if !ledger.earned.contains_key(SHARED_BADGE) {
+            ledger
+                .earned
+                .insert(SHARED_BADGE.to_string(), Utc::now().timestamp());
+            fs::write(path, serde_json::to_string(&ledger)?)?;
+        }
+        Ok(())
     }
 
     /// Count what the history holds before any of it is purged.
@@ -871,8 +894,8 @@ mod tests {
 
     #[test]
     fn the_secret_is_the_name_said_three_times() {
-        let found = fact(1, 10 * 3600, "Unmute, unmute et encore Unmute !");
-        let twice = fact(2, 11 * 3600, "Unmute et unmute.");
+        let found = fact(1, 10 * 3600, "Unwrite, unwrite et encore Unwrite !");
+        let twice = fact(2, 11 * 3600, "Unwrite et unwrite.");
 
         assert!(earned_ids(&[found]).contains(&"easter_egg"));
         assert!(!earned_ids(&[twice]).contains(&"easter_egg"));

@@ -76,3 +76,44 @@ pub async fn get_badge_board(
 ) -> Result<BadgeBoard, String> {
     history_manager.badge_board().map_err(|e| e.to_string())
 }
+
+/// Save a share card to the Downloads folder and show it in the file manager.
+/// Returns where it was saved.
+#[tauri::command]
+#[specta::specta]
+pub async fn save_share_card(app: AppHandle, png: Vec<u8>, name: String) -> Result<String, String> {
+    use tauri::Manager;
+    use tauri_plugin_opener::OpenerExt;
+
+    // The name comes from the interface: keep it a plain file name.
+    let stem: String = name
+        .chars()
+        .filter(|c| c.is_ascii_alphanumeric() || *c == '-' || *c == '_')
+        .take(60)
+        .collect();
+    let stem = if stem.is_empty() { "unwrite" } else { &stem };
+
+    let folder = app.path().download_dir().map_err(|e| e.to_string())?;
+    let mut path = folder.join(format!("{stem}.png"));
+    let mut copy = 2;
+    while path.exists() {
+        path = folder.join(format!("{stem}-{copy}.png"));
+        copy += 1;
+    }
+    std::fs::write(&path, png).map_err(|e| e.to_string())?;
+    if let Err(e) = app.opener().reveal_item_in_dir(&path) {
+        log::warn!("Could not show the saved card: {e}");
+    }
+    Ok(path.to_string_lossy().into_owned())
+}
+
+/// The user opened a social network to post a card.
+#[tauri::command]
+#[specta::specta]
+pub async fn record_card_shared(
+    history_manager: State<'_, Arc<HistoryManager>>,
+) -> Result<(), String> {
+    history_manager
+        .record_card_shared()
+        .map_err(|e| e.to_string())
+}

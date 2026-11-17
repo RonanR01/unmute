@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "Sense suport oficial",
     "migration": {
       "title": "Cal actualitzar els vostres models",
-      "description": "Unmute ara utilitza un tipus de model més nou. Baixeu la versió nova per continuar transcrivint. Les versions antigues s'eliminaran.",
+      "description": "Unwrite ara utilitza un tipus de model més nou. Baixeu la versió nova per continuar transcrivint. Les versions antigues s'eliminaran.",
       "replaces": "Substitueix {{name}}",
       "oldFormat": "Format antic",
       "failed": "Ha fallat la baixada",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Micròfon",
-        "why": "Perquè el Unmute us pugui sentir. L'àudio es converteix en text en aquest ordinador i no es puja mai enlloc."
+        "why": "Perquè el Unwrite us pugui sentir. L'àudio es converteix en text en aquest ordinador i no es puja mai enlloc."
       },
       "accessibility": {
         "name": "Accessibilitat",
-        "why": "Perquè la drecera funcioni a totes les aplicacions i el Unmute pugui escriure el text on tingueu el cursor."
+        "why": "Perquè la drecera funcioni a totes les aplicacions i el Unwrite pugui escriure el text on tingueu el cursor."
       },
       "errors": {
         "checkFailed": "No s'han pogut comprovar els permisos. Torneu-ho a provar.",
@@ -86,12 +89,12 @@
       "openSettings": "Obre la configuració",
       "allowed": "Permès",
       "waiting": "En espera",
-      "turnOnMac": "Activeu el Unmute a Configuració del Sistema i torneu aquí.",
+      "turnOnMac": "Activeu el Unwrite a Configuració del Sistema i torneu aquí.",
       "turnOnWindows": "Activeu l'accés al micròfon a Configuració de Windows i torneu aquí.",
       "hintBoth": "Permeteu-los tots dos per continuar",
       "hintMicrophone": "Permeteu el micròfon per continuar",
       "welcomeBack": "Us donem la benvinguda de nou. Continuem on ho havíeu deixat.",
-      "relaunch": "La drecera no respon després d'això? <relaunch>Reinicieu el Unmute</relaunch> i tornareu a aparèixer just aquí."
+      "relaunch": "La drecera no respon després d'això? <relaunch>Reinicieu el Unwrite</relaunch> i tornareu a aparèixer just aquí."
     },
     "shell": {
       "back": "Enrere",
@@ -102,11 +105,11 @@
       "title": "Parleu en lloc d'escriure, a qualsevol aplicació",
       "subtitle": "Trieu les llengües en què dictareu",
       "languagesLabel": "Llengües",
-      "noMatch": "Cap llengua coincideix amb «{{query}}». Els models del Unmute cobreixen unes 100 llengües; en trobareu més a la configuració.",
+      "noMatch": "Cap llengua coincideix amb «{{query}}». Els models del Unwrite cobreixen unes 100 llengües; en trobareu més a la configuració.",
       "appLanguage": "Llengua de l'aplicació",
       "menusIn": "Menús en <b>{{language}}</b>",
       "chinese": {
-        "question": "Parleu {{languages}}. Quins caràcters ha d'escriure el Unmute?",
+        "question": "Parleu {{languages}}. Quins caràcters ha d'escriure el Unwrite?",
         "label": "Caràcters xinesos",
         "zh-Hans": "Simplificat",
         "zh-Hant": "Taiwan",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "Proveu-ho!",
-      "subtitle": "El Unmute és a la cantonada per guiar-vos",
+      "subtitle": "El Unwrite és a la cantonada per guiar-vos",
       "noteLabel": "Nota",
       "placeholder": "Nota nova",
       "hold": "Manteniu premut <keys/> i parleu.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "Tot a punt",
-      "subMac": "El Unmute ja és a la barra de menús. Manteniu premut o premeu <keys/> a qualsevol aplicació per parlar.",
-      "subTray": "El Unmute ja és a la safata del sistema. Manteniu premut o premeu <keys/> a qualsevol aplicació per parlar.",
+      "subMac": "El Unwrite ja és a la barra de menús. Manteniu premut o premeu <keys/> a qualsevol aplicació per parlar.",
+      "subTray": "El Unwrite ja és a la safata del sistema. Manteniu premut o premeu <keys/> a qualsevol aplicació per parlar.",
       "hint": "Podeu canviar-ho més tard a la configuració",
       "highFiveLabel": "Xoqueu-la",
-      "atLogin": "Inicia el Unmute quan entri a la sessió",
+      "atLogin": "Inicia el Unwrite quan entri a la sessió",
       "finish": "Fet",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "A punt",
         "languages": "Llengües",
         "model": "Model de veu",
@@ -336,7 +339,7 @@
     "general": {
       "title": "General",
       "shortcut": {
-        "title": "Dreceres del Unmute",
+        "title": "Dreceres del Unwrite",
         "description": "Configura les dreceres de teclat per iniciar l'enregistrament de veu per a la transcripció",
         "loading": "S'estan carregant les dreceres...",
         "none": "No hi ha cap drecera configurada",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Llengües preferides",
-        "description": "Les llengües que parleu. El Unmute les utilitza per recomanar models.",
+        "description": "Les llengües que parleu. El Unwrite les utilitza per recomanar models.",
         "noMatch": "Cap llengua coincideix amb «{{query}}»",
         "weak": "Cap model reconeix bé {{languages}} encara."
       },
@@ -405,17 +408,17 @@
         "fits": "Per a les vostres llengües",
         "untested": "Sense provar"
       },
-      "untestedNote": "No s'han provat amb el Unmute. Poden ser més lents o cometre més errors.",
+      "untestedNote": "No s'han provat amb el Unwrite. Poden ser més lents o cometre més errors.",
       "untestedHidden_one": "{{count}} model més no està ajustat per al dictat. Cerqueu-lo per trobar-lo.",
       "untestedHidden_other": "{{count}} models més no estan ajustats per al dictat. Cerqueu per trobar-ne algun.",
-      "emptyYours": "Encara no hi ha models. Trieu-ne un a sota: es baixa i el Unmute l'utilitza.",
+      "emptyYours": "Encara no hi ha models. Trieu-ne un a sota: es baixa i el Unwrite l'utilitza.",
       "showMore": "Mostra'n {{count}} més",
       "showFewer": "Mostra'n menys",
       "download": "Baixa i utilitza",
       "downloadingThenUse": "{{percent}} % de {{total}}, i després canvia",
       "loading": "S'està carregant…",
       "deleteAsk": "Voleu suprimir {{name}}? S'alliberen {{size}}.",
-      "deleteAskActive": "Voleu suprimir {{name}}? El Unmute no podrà transcriure fins que en trieu un altre.",
+      "deleteAskActive": "Voleu suprimir {{name}}? El Unwrite no podrà transcriure fins que en trieu un altre.",
       "cancel": "Cancel·la",
       "deleteModel": "Suprimeix {{name}}",
       "cancelDownload": "Atura la baixada de {{name}}",
@@ -429,14 +432,14 @@
         "marks": "? encara no s'ha mesurat. — no entén aquesta llengua."
       },
       "retiredNotice": {
-        "title": "Els models antics ja no funcionen amb Unmute",
+        "title": "Els models antics ja no funcionen amb Unwrite",
         "description": "Ocupen {{size}} a l'ordinador.",
         "delete": "Suprimeix els models",
         "deleteFailed": "No s'han pogut suprimir alguns models antics. Consulteu el registre per a més detalls."
       },
       "rescan": {
         "label": "Torna a cercar",
-        "tooltip": "Torna a cercar models afegits a la carpeta de models o a la memòria cau de Hugging Face des de fora del Unmute"
+        "tooltip": "Torna a cercar models afegits a la carpeta de models o a la memòria cau de Hugging Face des de fora del Unwrite"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "Inicia en entrar a la sessió",
-        "description": "Inicia automàticament el Unmute quan entreu a la sessió de l'ordinador."
+        "description": "Inicia automàticament el Unwrite quan entreu a la sessió de l'ordinador."
       },
       "showTrayIcon": {
         "label": "Mostra la icona a la safata",
-        "description": "Mostra la icona del Unmute a la safata del sistema."
+        "description": "Mostra la icona del Unwrite a la safata del sistema."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Comproveu si hi ha actualitzacions",
-        "description": "Comprova automàticament si hi ha versions noves del Unmute",
+        "description": "Comprova automàticament si hi ha versions noves del Unwrite",
         "lockedDescription": "Desactivat per la configuració del sistema (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnòstic del teclat",
-        "description": "Comprova si els esdeveniments del teclat arriben al Unmute. Només se'n registra el recompte, mai les tecles que premeu.",
+        "description": "Comprova si els esdeveniments del teclat arriben al Unwrite. Només se'n registra el recompte, mai les tecles que premeu.",
         "run": "Executa un diagnòstic de 10 s",
         "running": "S'està escoltant… prema la drecera unes quantes vegades (p. ex., Option+Space)",
         "secureInputLabel": "Entrada segura",
@@ -867,7 +870,7 @@
         "mouse": "Ratolí",
         "verdictBlocked": "L'entrada segura bloca els esdeveniments de tecla. Les dreceres amb tecles no poden funcionar fins que es resolgui.",
         "verdictSuspicious": "Han arribat esdeveniments de modificadors, però no de tecles. Alguna cosa suprimeix les tecles tot i que l'entrada segura consta com a desactivada. Informeu-ne al GitHub.",
-        "verdictOk": "Els esdeveniments de tecla arriben al Unmute amb normalitat.",
+        "verdictOk": "Els esdeveniments de tecla arriben al Unwrite amb normalitat.",
         "verdictNoEvents": "No s'ha capturat cap esdeveniment. Heu premut alguna tecla durant la prova?",
         "failed": "El diagnòstic ha fallat: {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "Quant a",
       "version": {
         "title": "Versió",
-        "description": "Versió actual del Unmute"
+        "description": "Versió actual del Unwrite"
       },
       "whatsNewUpdates": {
         "label": "Mostra les novetats",
-        "description": "Mostra les notes de la versió després d'actualitzar el Unmute"
+        "description": "Mostra les notes de la versió després d'actualitzar el Unwrite"
       },
       "appDataDirectory": {
         "title": "Directori de dades de l'aplicació",
-        "description": "Ubicació on el Unmute desa les dades"
+        "description": "Ubicació on el Unwrite desa les dades"
       },
       "sourceCode": {
         "title": "Codi font",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Biblioteca de tensors d'alt rendiment per a la inferència d'aprenentatge automàtic al dispositiu",
-          "details": "La transcripció local de veu a text del Unmute es basa en el transcribe.cpp i el ggml. Gràcies a la gran feina de Georgi Gerganov i dels col·laboradors."
+          "details": "La transcripció local de veu a text del Unwrite es basa en el transcribe.cpp i el ggml. Gràcies a la gran feina de Georgi Gerganov i dels col·laboradors."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "Obriu GitHub Releases"
   },
   "whatsNew": {
-    "title": "Novetats del Unmute v{{version}}"
+    "title": "Novetats del Unwrite v{{version}}"
   },
   "common": {
     "playbackPosition": "Posició de reproducció",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "El micròfon està en silenci",
     "microphoneSilent": "El micròfon només ha enviat silenci. Comprova que no estigui silenciat o tria un altre micròfon a Configuració.",
     "recordingFailedTitle": "No s'ha pogut iniciar l'enregistrament",
-    "modelLoadFailed": "Unmute no ha pogut carregar aquest model. Torna-ho a provar o tria'n un altre.",
+    "modelLoadFailed": "Unwrite no ha pogut carregar aquest model. Torna-ho a provar o tria'n un altre.",
     "modelLoadFailedTitle": "No s'ha pogut carregar el model",
     "noModelSelected": "Baixa o tria un model a Configuració > Models.",
     "noModelSelectedTitle": "Cap model seleccionat",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "No s'ha pogut enganxar el text",
     "pasteFailed": "No s'ha pogut enganxar el text a l'aplicació activa.",
     "pasteBlockedElevatedTitle": "No es pot enganxar en apps admin",
-    "pasteBlockedElevated": "L'aplicació activa s'executa com a administrador, així que Unmute no hi pot enganxar. Pots copiar la transcripció des d'Historial.",
+    "pasteBlockedElevated": "L'aplicació activa s'executa com a administrador, així que Unwrite no hi pot enganxar. Pots copiar la transcripció des d'Historial.",
     "postProcessFailedTitle": "Enganxat sense postprocessament",
     "postProcessFailed": "El postprocessament no ha acabat, així que la transcripció s'ha enganxat tal qual.",
     "filePostProcessFailedTitle": "Transcrit sense postprocessament",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Llengua de l'aplicació",
-    "description": "Canvia la llengua de la interfície del Unmute"
+    "description": "Canvia la llengua de la interfície del Unwrite"
   },
   "theme": {
     "title": "Tema de l'aplicació",
-    "description": "Tria si el Unmute segueix el tema del sistema o es manté en mode clar o fosc",
+    "description": "Tria si el Unwrite segueix el tema del sistema o es manté en mode clar o fosc",
     "options": {
       "system": "Sistema",
       "light": "Clar",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

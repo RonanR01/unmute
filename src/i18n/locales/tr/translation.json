@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "Resmi olarak desteklenmiyor",
     "migration": {
       "title": "Modellerinizin güncellenmesi gerekiyor",
-      "description": "Unmute artık daha yeni bir model türü kullanıyor. Transkripsiyona devam etmek için yeni sürümü indirin. Eski sürümler kaldırılacak.",
+      "description": "Unwrite artık daha yeni bir model türü kullanıyor. Transkripsiyona devam etmek için yeni sürümü indirin. Eski sürümler kaldırılacak.",
       "replaces": "{{name}} yerine geçer",
       "oldFormat": "Eski format",
       "failed": "İndirme başarısız oldu",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Unmute sizi duyabilsin diye. Ses bu bilgisayarda metne dönüştürülür, hiçbir yere yüklenmez."
+        "why": "Unwrite sizi duyabilsin diye. Ses bu bilgisayarda metne dönüştürülür, hiçbir yere yüklenmez."
       },
       "accessibility": {
         "name": "Erişilebilirlik",
-        "why": "Kısayolunuz her uygulamada çalışsın ve Unmute metni imlecinizin bulunduğu yere yazabilsin diye."
+        "why": "Kısayolunuz her uygulamada çalışsın ve Unwrite metni imlecinizin bulunduğu yere yazabilsin diye."
       },
       "errors": {
         "checkFailed": "İzinler kontrol edilemedi. Lütfen tekrar deneyin.",
@@ -86,12 +89,12 @@
       "openSettings": "Ayarları aç",
       "allowed": "İzin verildi",
       "waiting": "Bekleniyor",
-      "turnOnMac": "Sistem Ayarları'nda Unmute'yi açın, sonra buraya dönün.",
+      "turnOnMac": "Sistem Ayarları'nda Unwrite'yi açın, sonra buraya dönün.",
       "turnOnWindows": "Windows Ayarları'nda mikrofon erişimini açın, sonra buraya dönün.",
       "hintBoth": "Devam etmek için ikisine de izin verin",
       "hintMicrophone": "Devam etmek için mikrofona izin verin",
       "welcomeBack": "Tekrar hoş geldiniz. Kaldığınız yerden devam ediyoruz.",
-      "relaunch": "Bundan sonra kısayol yanıt vermiyor mu? <relaunch>Unmute'yi yeniden başlatın</relaunch>, doğrudan buraya döneceksiniz."
+      "relaunch": "Bundan sonra kısayol yanıt vermiyor mu? <relaunch>Unwrite'yi yeniden başlatın</relaunch>, doğrudan buraya döneceksiniz."
     },
     "shell": {
       "back": "Geri",
@@ -102,11 +105,11 @@
       "title": "Yazmak yerine konuşun, her uygulamada",
       "subtitle": "Konuşacağınız dilleri seçin",
       "languagesLabel": "Diller",
-      "noMatch": "“{{query}}” ile eşleşen dil yok. Unmute'nin modelleri yaklaşık 100 dili kapsıyor; daha fazlası ayarlarda.",
+      "noMatch": "“{{query}}” ile eşleşen dil yok. Unwrite'nin modelleri yaklaşık 100 dili kapsıyor; daha fazlası ayarlarda.",
       "appLanguage": "Uygulama dili",
       "menusIn": "Menüler <b>{{language}}</b> dilinde",
       "chinese": {
-        "question": "{{languages}} konuşuyorsunuz. Unmute hangi karakterleri yazsın?",
+        "question": "{{languages}} konuşuyorsunuz. Unwrite hangi karakterleri yazsın?",
         "label": "Çince karakterler",
         "zh-Hans": "Basitleştirilmiş",
         "zh-Hant": "Tayvan",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "Bir deneyin!",
-      "subtitle": "Unmute köşede, size yol göstermek için hazır",
+      "subtitle": "Unwrite köşede, size yol göstermek için hazır",
       "noteLabel": "Not",
       "placeholder": "Yeni not",
       "hold": "<keys/> tuşlarını basılı tutun ve konuşun.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "Hazırsınız",
-      "subMac": "Unmute artık menü çubuğunuzda. Konuşmak için herhangi bir uygulamada <keys/> tuşlarını basılı tutun veya dokunun.",
-      "subTray": "Unmute artık sistem tepsinizde. Konuşmak için herhangi bir uygulamada <keys/> tuşlarını basılı tutun veya dokunun.",
+      "subMac": "Unwrite artık menü çubuğunuzda. Konuşmak için herhangi bir uygulamada <keys/> tuşlarını basılı tutun veya dokunun.",
+      "subTray": "Unwrite artık sistem tepsinizde. Konuşmak için herhangi bir uygulamada <keys/> tuşlarını basılı tutun veya dokunun.",
       "hint": "Bunları daha sonra Ayarlar'dan değiştirebilirsiniz",
       "highFiveLabel": "Çak bir beşlik",
-      "atLogin": "Oturum açtığımda Unmute'yi başlat",
+      "atLogin": "Oturum açtığımda Unwrite'yi başlat",
       "finish": "Bitti",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "Hazır",
         "languages": "Diller",
         "model": "Konuşma modeli",
@@ -336,7 +339,7 @@
     "general": {
       "title": "Genel",
       "shortcut": {
-        "title": "Unmute Kısayolları",
+        "title": "Unwrite Kısayolları",
         "description": "Sesle yazma kaydını başlatmak için klavye kısayollarını yapılandırın",
         "loading": "Kısayollar yükleniyor...",
         "none": "Kısayol yapılandırılmadı",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Tercih Edilen Diller",
-        "description": "Konuştuğunuz diller. Unmute bunları model önermek için kullanır.",
+        "description": "Konuştuğunuz diller. Unwrite bunları model önermek için kullanır.",
         "noMatch": "“{{query}}” ile eşleşen dil yok",
         "weak": "Henüz hiçbir model {{languages}} dilini iyi tanımıyor."
       },
@@ -405,17 +408,17 @@
         "fits": "Dilleriniz için",
         "untested": "Test edilmemiş"
       },
-      "untestedNote": "Unmute ile test edilmedi. Daha yavaş olabilir veya daha fazla hata yapabilir.",
+      "untestedNote": "Unwrite ile test edilmedi. Daha yavaş olabilir veya daha fazla hata yapabilir.",
       "untestedHidden_one": "{{count}} model daha yazdırma için ayarlanmamış. Bulmak için arama yapın.",
       "untestedHidden_other": "{{count}} model daha yazdırma için ayarlanmamış. Bulmak için arama yapın.",
-      "emptyYours": "Henüz model yok. Aşağıdan birini seçin: iner, sonra Unmute onu kullanır.",
+      "emptyYours": "Henüz model yok. Aşağıdan birini seçin: iner, sonra Unwrite onu kullanır.",
       "showMore": "{{count}} tane daha göster",
       "showFewer": "Daha az göster",
       "download": "İndir ve kullan",
       "downloadingThenUse": "{{total}} içinden %{{percent}}, sonra geçilir",
       "loading": "Yükleniyor…",
       "deleteAsk": "{{name}} silinsin mi? {{size}} yer açılır.",
-      "deleteAskActive": "{{name}} silinsin mi? Başka bir model seçene kadar Unmute transkripsiyon yapamaz.",
+      "deleteAskActive": "{{name}} silinsin mi? Başka bir model seçene kadar Unwrite transkripsiyon yapamaz.",
       "cancel": "İptal",
       "deleteModel": "{{name}} modelini sil",
       "cancelDownload": "{{name}} indirmesini durdur",
@@ -429,14 +432,14 @@
         "marks": "? henüz ölçülmedi. — o dili duymaz."
       },
       "retiredNotice": {
-        "title": "Eski modeller artık Unmute ile çalışmıyor",
+        "title": "Eski modeller artık Unwrite ile çalışmıyor",
         "description": "Bilgisayarınızda {{size}} yer kaplıyorlar.",
         "delete": "Modelleri sil",
         "deleteFailed": "Bazı eski modeller silinemedi. Ayrıntılar için günlüğe bakın."
       },
       "rescan": {
         "label": "Yeniden Tara",
-        "tooltip": "Unmute dışında modeller klasörüne veya Hugging Face önbelleğine eklenen modelleri yeniden tara"
+        "tooltip": "Unwrite dışında modeller klasörüne veya Hugging Face önbelleğine eklenen modelleri yeniden tara"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "Başlangıçta Çalıştır",
-        "description": "Bilgisayara giriş yaptığınızda Unmute otomatik olarak başlatılır."
+        "description": "Bilgisayara giriş yaptığınızda Unwrite otomatik olarak başlatılır."
       },
       "showTrayIcon": {
         "label": "Tepsi Simgesini Göster",
-        "description": "Unmute simgesini sistem tepsisinde göster."
+        "description": "Unwrite simgesini sistem tepsisinde göster."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Güncellemeleri Kontrol Et",
-        "description": "Unmute için yeni sürümleri otomatik olarak kontrol eder",
+        "description": "Unwrite için yeni sürümleri otomatik olarak kontrol eder",
         "lockedDescription": "Sistem yapılandırması tarafından devre dışı bırakıldı (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Klavye Tanılaması",
-        "description": "Klavye olaylarının Unmute'ye ulaşıp ulaşmadığını denetler. Yalnızca olay sayıları kaydedilir — hangi tuşlara bastığınız asla kaydedilmez.",
+        "description": "Klavye olaylarının Unwrite'ye ulaşıp ulaşmadığını denetler. Yalnızca olay sayıları kaydedilir — hangi tuşlara bastığınız asla kaydedilmez.",
         "run": "10 sn'lik tanılamayı çalıştır",
         "running": "Dinleniyor… kısayolunuza birkaç kez basın (ör. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "Fare",
         "verdictBlocked": "Secure Input tuş olaylarını engelliyor — normal tuş içeren kısayollar bu sorun çözülene kadar çalışamaz.",
         "verdictSuspicious": "Değiştirici olayları geldi ancak hiç tuş olayı gelmedi — Secure Input devre dışı görünmesine rağmen bir şey tuşları bastırıyor. Lütfen bunu GitHub'da bildirin.",
-        "verdictOk": "Tuş olayları Unmute'ye normal şekilde ulaşıyor.",
+        "verdictOk": "Tuş olayları Unwrite'ye normal şekilde ulaşıyor.",
         "verdictNoEvents": "Hiç olay yakalanmadı — test sırasında herhangi bir tuşa bastınız mı?",
         "failed": "Tanılama başarısız: {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "Hakkında",
       "version": {
         "title": "Sürüm",
-        "description": "Unmute'nin mevcut sürümü"
+        "description": "Unwrite'nin mevcut sürümü"
       },
       "whatsNewUpdates": {
         "label": "Yenilikleri Göster",
-        "description": "Unmute güncellemelerinden sonra sürüm notlarını göster"
+        "description": "Unwrite güncellemelerinden sonra sürüm notlarını göster"
       },
       "appDataDirectory": {
         "title": "Uygulama Veri Dizini",
-        "description": "Unmute'nin verilerini sakladığı konum"
+        "description": "Unwrite'nin verilerini sakladığı konum"
       },
       "sourceCode": {
         "title": "Kaynak Kodu",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Cihaz üzerinde makine öğrenmesi çıkarımı için yüksek performanslı tensör kütüphanesi",
-          "details": "Unmute'nin yerel konuşmadan metne dönüştürme özelliği transcribe.cpp ve ggml üzerine kuruludur. Georgi Gerganov'a ve katkıda bulunanlara harika çalışmaları için teşekkür ederiz."
+          "details": "Unwrite'nin yerel konuşmadan metne dönüştürme özelliği transcribe.cpp ve ggml üzerine kuruludur. Georgi Gerganov'a ve katkıda bulunanlara harika çalışmaları için teşekkür ederiz."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "GitHub Releases’i aç"
   },
   "whatsNew": {
-    "title": "Unmute v{{version}} yenilikleri"
+    "title": "Unwrite v{{version}} yenilikleri"
   },
   "common": {
     "playbackPosition": "Oynatma konumu",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "Mikrofon sessiz",
     "microphoneSilent": "Mikrofonunuz yalnızca sessizlik gönderdi. Sesinin kapalı olmadığını kontrol edin veya Ayarlar'dan başka bir mikrofon seçin.",
     "recordingFailedTitle": "Kayıt başlatılamadı",
-    "modelLoadFailed": "Unmute bu modeli yükleyemedi. Yeniden deneyin veya başka bir model seçin.",
+    "modelLoadFailed": "Unwrite bu modeli yükleyemedi. Yeniden deneyin veya başka bir model seçin.",
     "modelLoadFailedTitle": "Model yüklenemedi",
     "noModelSelected": "Ayarlar > Modeller bölümünden bir model indirin veya seçin.",
     "noModelSelectedTitle": "Model seçilmedi",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "Metin yapıştırılamadı",
     "pasteFailed": "Metin etkin uygulamaya yapıştırılamadı.",
     "pasteBlockedElevatedTitle": "Yapıştırma engellendi",
-    "pasteBlockedElevated": "Etkin uygulama yönetici olarak çalışıyor, bu yüzden Unmute içine yapıştıramıyor. Metni Geçmiş'ten kopyalayabilirsiniz.",
+    "pasteBlockedElevated": "Etkin uygulama yönetici olarak çalışıyor, bu yüzden Unwrite içine yapıştıramıyor. Metni Geçmiş'ten kopyalayabilirsiniz.",
     "postProcessFailedTitle": "Son işlem olmadan yapıştırıldı",
     "postProcessFailed": "Son işlem tamamlanmadı, bu yüzden metin olduğu gibi yapıştırıldı.",
     "filePostProcessFailedTitle": "Son işlem olmadan yazıya döküldü",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Uygulama Dili",
-    "description": "Unmute arayüzünün dilini değiştirin"
+    "description": "Unwrite arayüzünün dilini değiştirin"
   },
   "theme": {
     "title": "Uygulama Teması",
-    "description": "Unmute'nin sistem temasını izlemesini ya da açık veya koyu kalmasını seçin",
+    "description": "Unwrite'nin sistem temasını izlemesini ya da açık veya koyu kalmasını seçin",
     "options": {
       "system": "Sistem",
       "light": "Açık",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

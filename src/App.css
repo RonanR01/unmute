@@ -30,6 +30,20 @@
   --color-surface-raised: var(--color-surface-raised);
   --color-edge: var(--color-edge);
   --color-signal: var(--color-signal);
+  --color-on-signal: var(--color-on-signal);
+  --color-signal-ink: var(--color-signal-ink);
+  --color-gauge-track: var(--color-gauge-track);
+  --color-nav-active: var(--color-nav-active);
+}
+
+/* A measured value: yellow on fir grounds, fir text over a yellow highlighter
+   stroke on light ones (see theme.css). */
+@utility measure {
+  color: var(--color-signal-ink);
+  background-image: linear-gradient(
+    transparent 60%,
+    var(--color-signal-mark) 60%
+  );
 }
 
 /* Noto Sans CJK subset (see src/lib/utils/cjkFont.ts): Windows' CJK fonts
@@ -208,12 +222,18 @@
   background-color: var(--color-background);
 
   /* Without this, Windows draws a <select> popup white under light text. */
-  color-scheme: dark;
+  color-scheme: light;
   font-family: var(--font-ui);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
 :root[data-theme="light"] {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 :root[data-theme="dark"] {

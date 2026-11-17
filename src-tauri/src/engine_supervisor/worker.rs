@@ -473,7 +473,7 @@ fn ignore_app_signals() {
 fn set_process_name() {
     // SAFETY: PR_SET_NAME copies a NUL-terminated name of up to 16 bytes.
     unsafe {
-        libc::prctl(libc::PR_SET_NAME, c"Unmute-worker".as_ptr());
+        libc::prctl(libc::PR_SET_NAME, c"Unwrite-worker".as_ptr());
     }
 }
 

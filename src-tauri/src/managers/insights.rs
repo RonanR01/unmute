@@ -17,7 +17,7 @@ use specta::Type;
 
 use super::history::HistoryManager;
 
-/// Dictations only: a transcribed file is not the user speaking to Unmute.
+/// Dictations only: a transcribed file is not the user speaking to Unwrite.
 const DICTATIONS: &str = "source_name IS NULL AND transcription_text != ''";
 
 const VOICE_PROFILE_FILE: &str = "voice_profile.json";
@@ -639,7 +639,7 @@ mod tests {
     #[test]
     fn backfill_counts_words_and_reads_durations_from_recordings() {
         let conn = setup_conn();
-        let dir = std::env::temp_dir().join(format!("unmute-backfill-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("unwrite-backfill-{}", std::process::id()));
         fs::create_dir_all(&dir).expect("create recordings dir");
         // One second of 16 kHz mono 16-bit audio.
         fs::write(dir.join("handy-100.wav"), vec![0u8; 44 + 32_000]).expect("write wav");

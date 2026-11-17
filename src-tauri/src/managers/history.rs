@@ -104,6 +104,9 @@ pub struct HistoryEntry {
     pub model_id: Option<String>,
     /// From the end of the recording to the text being pasted.
     pub latency_ms: Option<i64>,
+    /// Whether the recording is still on disk. It goes when the retention
+    /// period ends or when the user deletes it; the text stays.
+    pub has_audio: bool,
 }
 
 /// What is known about a dictation besides its text.
@@ -336,6 +339,8 @@ impl HistoryManager {
             word_count: row.get("word_count")?,
             model_id: row.get("model_id")?,
             latency_ms: row.get("latency_ms")?,
+            // Rows know nothing of the disk: `with_audio` fills this in.
+            has_audio: false,
         })
     }
 
@@ -376,6 +381,7 @@ impl HistoryManager {
             word_count,
             model_id: metadata.model_id,
             latency_ms: None,
+            has_audio: true,
         })?;
 
         self.cleanup_old_entries()?;
@@ -406,6 +412,7 @@ impl HistoryManager {
             word_count: None,
             model_id: None,
             latency_ms: None,
+            has_audio: true,
         })
     }
 
@@ -514,6 +521,7 @@ impl HistoryManager {
             params![id],
             Self::map_history_entry,
         )?;
+        let entry = self.with_audio(entry);
 
         debug!("Updated transcription for history entry {}", id);
 
@@ -761,6 +769,10 @@ impl HistoryManager {
         if has_more {
             entries.pop();
         }
+        let entries = entries
+            .into_iter()
+            .map(|entry| self.with_audio(entry))
+            .collect();
 
         Ok(PaginatedHistory { entries, has_more })
     }
@@ -839,7 +851,33 @@ impl HistoryManager {
 
         let entry = stmt.query_row([id], Self::map_history_entry).optional()?;
 
-        Ok(entry)
+        Ok(entry.map(|entry| self.with_audio(entry)))
+    }
+
+    /// The entry, knowing whether its recording is still on disk.
+    fn with_audio(&self, mut entry: HistoryEntry) -> HistoryEntry {
+        entry.has_audio = self.get_audio_file_path(&entry.file_name).is_file();
+        entry
+    }
+
+    /// Delete an entry's recording and keep its text.
+    pub async fn delete_entry_audio(&self, id: i64) -> Result<()> {
+        let entry = self
+            .get_entry_by_id(id)
+            .await?
+            .ok_or_else(|| anyhow!("History entry {} not found", id))?;
+
+        let file_path = self.get_audio_file_path(&entry.file_name);
+        if file_path.is_file() {
+            fs::remove_file(&file_path)?;
+            debug!("Deleted the recording of history entry {}", id);
+        }
+
+        let entry = self.with_audio(entry);
+        if let Err(e) = (HistoryUpdatePayload::Updated { entry }).emit(&self.app_handle) {
+            error!("Failed to emit history-updated event: {}", e);
+        }
+        Ok(())
     }
 
     pub async fn delete_entry(&self, id: i64) -> Result<()> {

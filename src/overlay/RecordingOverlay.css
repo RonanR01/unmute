@@ -7,7 +7,7 @@
   /* Near-opaque app surface (theme.css --color-background at 98%). Auto-flips
      light/dark with --color-background, so no dark-mode override is needed. */
   --s-surface: color-mix(in srgb, var(--color-background) 98%, transparent);
-  /* Unmute draws the overlay in its light ink; signal yellow is kept for the
+  /* Unwrite draws the overlay in its light ink; signal yellow is kept for the
      one thing being measured here, the open microphone. */
   --s-accent: var(--color-text);
   /* The rest come from theme.css, which already follows the theme setting. */

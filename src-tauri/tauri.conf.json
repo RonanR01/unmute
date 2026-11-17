@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Unmute",
+  "productName": "Unwrite",
   "version": "0.10.1",
-  "identifier": "com.ronan.unmute",
+  "identifier": "com.ronan.unwrite",
   "build": {
     "beforeDevCommand": "bun run dev",
     "devUrl": "http://localhost:1420",

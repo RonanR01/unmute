@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "官方不支援",
     "migration": {
       "title": "您的模型需要更新",
-      "description": "Unmute 現在使用更新的模型類型。請下載新版本以繼續轉錄。舊版本將會移除。",
+      "description": "Unwrite 現在使用更新的模型類型。請下載新版本以繼續轉錄。舊版本將會移除。",
       "replaces": "取代 {{name}}",
       "oldFormat": "舊格式",
       "failed": "下載失敗",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "麥克風",
-        "why": "讓 Unmute 聽得到您說話。音訊只會在這台電腦上轉成文字，絕不會上傳。"
+        "why": "讓 Unwrite 聽得到您說話。音訊只會在這台電腦上轉成文字，絕不會上傳。"
       },
       "accessibility": {
         "name": "輔助使用",
-        "why": "讓快捷鍵在每個應用程式中都能使用，也讓 Unmute 能把文字打在游標所在的位置。"
+        "why": "讓快捷鍵在每個應用程式中都能使用，也讓 Unwrite 能把文字打在游標所在的位置。"
       },
       "errors": {
         "checkFailed": "檢查權限失敗，請重試",
@@ -86,12 +89,12 @@
       "openSettings": "開啟設定",
       "allowed": "已允許",
       "waiting": "等待中",
-      "turnOnMac": "請在「系統設定」中開啟 Unmute，然後回到這裡。",
+      "turnOnMac": "請在「系統設定」中開啟 Unwrite，然後回到這裡。",
       "turnOnWindows": "請在「Windows 設定」中開啟麥克風存取權，然後回到這裡。",
       "hintBoth": "請允許兩項權限以繼續",
       "hintMicrophone": "請允許麥克風以繼續",
       "welcomeBack": "歡迎回來，我們從上次中斷的地方繼續。",
-      "relaunch": "之後快捷鍵沒有反應嗎？<relaunch>重新啟動 Unmute</relaunch>，就會直接回到這裡。"
+      "relaunch": "之後快捷鍵沒有反應嗎？<relaunch>重新啟動 Unwrite</relaunch>，就會直接回到這裡。"
     },
     "shell": {
       "back": "返回",
@@ -102,11 +105,11 @@
       "title": "在任何應用程式中，用說的取代打字",
       "subtitle": "選擇您要用來聽寫的語言",
       "languagesLabel": "語言",
-      "noMatch": "找不到符合「{{query}}」的語言。Unmute 的模型涵蓋約 100 種語言，更多語言可在設定中找到。",
+      "noMatch": "找不到符合「{{query}}」的語言。Unwrite 的模型涵蓋約 100 種語言，更多語言可在設定中找到。",
       "appLanguage": "應用程式語言",
       "menusIn": "選單使用<b>{{language}}</b>",
       "chinese": {
-        "question": "您說{{languages}}。Unmute 該使用哪種字體書寫？",
+        "question": "您說{{languages}}。Unwrite 該使用哪種字體書寫？",
         "label": "中文字體",
         "zh-Hans": "簡體",
         "zh-Hant": "臺灣",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "來試試看吧！",
-      "subtitle": "Unmute 就在角落，陪您一步步操作",
+      "subtitle": "Unwrite 就在角落，陪您一步步操作",
       "noteLabel": "備忘錄",
       "placeholder": "新增備忘錄",
       "hold": "按住 <keys/> 並開始說話。",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "全部設定完成",
-      "subMac": "Unmute 現在位於選單列中。在任何應用程式中按住或輕按 <keys/> 即可開口說話。",
-      "subTray": "Unmute 現在位於系統匣中。在任何應用程式中按住或輕按 <keys/> 即可開口說話。",
+      "subMac": "Unwrite 現在位於選單列中。在任何應用程式中按住或輕按 <keys/> 即可開口說話。",
+      "subTray": "Unwrite 現在位於系統匣中。在任何應用程式中按住或輕按 <keys/> 即可開口說話。",
       "hint": "之後可以隨時在「設定」中變更",
       "highFiveLabel": "擊掌",
-      "atLogin": "登入時啟動 Unmute",
+      "atLogin": "登入時啟動 Unwrite",
       "finish": "完成",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "已就緒",
         "languages": "語言",
         "model": "語音模型",
@@ -336,7 +339,7 @@
     "general": {
       "title": "一般",
       "shortcut": {
-        "title": "Unmute 快捷鍵",
+        "title": "Unwrite 快捷鍵",
         "description": "設定啟動語音轉文字錄製的鍵盤快捷鍵",
         "loading": "載入快捷鍵中...",
         "none": "未設定快捷鍵",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "偏好語言",
-        "description": "您所說的語言。Unmute 會依據這些語言推薦模型。",
+        "description": "您所說的語言。Unwrite 會依據這些語言推薦模型。",
         "noMatch": "找不到符合「{{query}}」的語言",
         "weak": "目前還沒有模型能把{{languages}}辨識得很準。"
       },
@@ -405,17 +408,17 @@
         "fits": "適用於您的語言",
         "untested": "未測試"
       },
-      "untestedNote": "尚未經過 Unmute 測試，可能較慢或錯誤較多。",
+      "untestedNote": "尚未經過 Unwrite 測試，可能較慢或錯誤較多。",
       "untestedHidden_one": "另有 {{count}} 個模型並未針對聽寫調校，請搜尋以找到它。",
       "untestedHidden_other": "另有 {{count}} 個模型並未針對聽寫調校，請搜尋以找到它們。",
-      "emptyYours": "尚無模型。請從下方選擇一個：下載完成後 Unmute 就會使用它。",
+      "emptyYours": "尚無模型。請從下方選擇一個：下載完成後 Unwrite 就會使用它。",
       "showMore": "再顯示 {{count}} 個",
       "showFewer": "顯示較少",
       "download": "下載並使用",
       "downloadingThenUse": "{{percent}}%（共 {{total}}），完成後自動切換",
       "loading": "載入中…",
       "deleteAsk": "要刪除 {{name}} 嗎？這會釋出 {{size}} 的空間。",
-      "deleteAskActive": "要刪除 {{name}} 嗎？在您選擇其他模型之前，Unmute 無法進行轉錄。",
+      "deleteAskActive": "要刪除 {{name}} 嗎？在您選擇其他模型之前，Unwrite 無法進行轉錄。",
       "cancel": "取消",
       "deleteModel": "刪除 {{name}}",
       "cancelDownload": "停止下載 {{name}}",
@@ -429,14 +432,14 @@
         "marks": "? 表示尚未測量。— 表示聽不懂該語言。"
       },
       "retiredNotice": {
-        "title": "舊模型已無法在 Unmute 中使用",
+        "title": "舊模型已無法在 Unwrite 中使用",
         "description": "它們佔用了您電腦上 {{size}} 的空間。",
         "delete": "刪除模型",
         "deleteFailed": "部分舊模型無法刪除。請查看記錄檔以了解詳情。"
       },
       "rescan": {
         "label": "重新掃描",
-        "tooltip": "重新掃描在 Unmute 之外新增到模型資料夾或 Hugging Face 快取中的模型"
+        "tooltip": "重新掃描在 Unwrite 之外新增到模型資料夾或 Hugging Face 快取中的模型"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "開機啟動",
-        "description": "登入電腦時自動啟動 Unmute"
+        "description": "登入電腦時自動啟動 Unwrite"
       },
       "showTrayIcon": {
         "label": "顯示系統匣圖示",
-        "description": "在系統匣中顯示 Unmute 圖示"
+        "description": "在系統匣中顯示 Unwrite 圖示"
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "檢查更新",
-        "description": "自動檢查 Unmute 的新版本",
+        "description": "自動檢查 Unwrite 的新版本",
         "lockedDescription": "已被系統設定停用 (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "鍵盤診斷",
-        "description": "檢查鍵盤事件是否能送達 Unmute。只會記錄事件數量，絕不記錄您按了哪些按鍵。",
+        "description": "檢查鍵盤事件是否能送達 Unwrite。只會記錄事件數量，絕不記錄您按了哪些按鍵。",
         "run": "執行 10 秒診斷",
         "running": "正在監聽… 請按幾次您的快捷鍵（例如 Option+Space）",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "滑鼠",
         "verdictBlocked": "Secure Input 正在阻擋按鍵事件——在問題解決前，包含一般按鍵的快捷鍵無法運作。",
         "verdictSuspicious": "收到了修飾鍵事件，但沒有按鍵事件——即使 Secure Input 回報為已停用，仍有程式在抑制按鍵。請在 GitHub 上回報此問題。",
-        "verdictOk": "按鍵事件正常送達 Unmute。",
+        "verdictOk": "按鍵事件正常送達 Unwrite。",
         "verdictNoEvents": "未擷取到任何事件——測試期間您有按鍵嗎？",
         "failed": "診斷失敗：{{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "關於",
       "version": {
         "title": "版本",
-        "description": "Unmute 的目前版本"
+        "description": "Unwrite 的目前版本"
       },
       "whatsNewUpdates": {
         "label": "顯示新功能",
-        "description": "Unmute 更新後顯示版本資訊"
+        "description": "Unwrite 更新後顯示版本資訊"
       },
       "appDataDirectory": {
         "title": "應用程式資料目錄",
-        "description": "Unmute 儲存資料的位置"
+        "description": "Unwrite 儲存資料的位置"
       },
       "sourceCode": {
         "title": "原始碼",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "針對 OpenAI Whisper 自動語音辨識模型的高效能推理引擎",
-          "details": "Unmute 使用 ggml 進行快速的本機語音轉文字處理。感謝 Georgi Gerganov 和貢獻者們的傑出工作"
+          "details": "Unwrite 使用 ggml 進行快速的本機語音轉文字處理。感謝 Georgi Gerganov 和貢獻者們的傑出工作"
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "開啟 GitHub Releases"
   },
   "whatsNew": {
-    "title": "Unmute v{{version}} 新功能"
+    "title": "Unwrite v{{version}} 新功能"
   },
   "common": {
     "playbackPosition": "播放位置",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "麥克風沒有聲音",
     "microphoneSilent": "麥克風只傳來靜音。請檢查是否已靜音，或在 設定 中選擇其他麥克風。",
     "recordingFailedTitle": "錄音啟動失敗",
-    "modelLoadFailed": "Unmute 無法載入此模型。請再試一次或選擇其他模型。",
+    "modelLoadFailed": "Unwrite 無法載入此模型。請再試一次或選擇其他模型。",
     "modelLoadFailedTitle": "載入模型失敗",
     "noModelSelected": "請在 設定 > 模型 中下載或選擇模型。",
     "noModelSelectedTitle": "未選擇模型",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "貼上文字失敗",
     "pasteFailed": "無法將文字貼上至目前作用中的應用程式。",
     "pasteBlockedElevatedTitle": "無法貼上到系統管理員應用程式",
-    "pasteBlockedElevated": "目前作用中的應用程式以系統管理員身分執行，因此 Unmute 無法貼上到其中。可以從歷史紀錄中複製轉錄內容。",
+    "pasteBlockedElevated": "目前作用中的應用程式以系統管理員身分執行，因此 Unwrite 無法貼上到其中。可以從歷史紀錄中複製轉錄內容。",
     "postProcessFailedTitle": "已貼上，未經後處理",
     "postProcessFailed": "後處理未完成，因此按原樣貼上轉錄內容。",
     "filePostProcessFailedTitle": "已轉錄，未經後處理",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "應用程式語言",
-    "description": "變更 Unmute 介面的語言"
+    "description": "變更 Unwrite 介面的語言"
   },
   "theme": {
     "title": "應用程式主題",
-    "description": "選擇 Unmute 跟隨系統主題，或維持淺色或深色",
+    "description": "選擇 Unwrite 跟隨系統主題，或維持淺色或深色",
     "options": {
       "system": "跟隨系統",
       "light": "淺色",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

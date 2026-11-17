@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "Oficiálně nepodporováno",
     "migration": {
       "title": "Vaše modely potřebují aktualizaci",
-      "description": "Unmute nyní používá novější typ modelů. Stáhněte si novou verzi, abyste mohli dál přepisovat. Staré verze budou odstraněny.",
+      "description": "Unwrite nyní používá novější typ modelů. Stáhněte si novou verzi, abyste mohli dál přepisovat. Staré verze budou odstraněny.",
       "replaces": "Nahrazuje {{name}}",
       "oldFormat": "Starý formát",
       "failed": "Stahování selhalo",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Aby vás Unmute slyšel. Zvuk se mění na text přímo v tomto počítači a nikam se neodesílá."
+        "why": "Aby vás Unwrite slyšel. Zvuk se mění na text přímo v tomto počítači a nikam se neodesílá."
       },
       "accessibility": {
         "name": "Zpřístupnění",
-        "why": "Aby vaše zkratka fungovala v každé aplikaci a Unmute mohl psát text tam, kde máte kurzor."
+        "why": "Aby vaše zkratka fungovala v každé aplikaci a Unwrite mohl psát text tam, kde máte kurzor."
       },
       "errors": {
         "checkFailed": "Nepodařilo se zkontrolovat oprávnění. Zkuste to prosím znovu.",
@@ -86,12 +89,12 @@
       "openSettings": "Otevřít nastavení",
       "allowed": "Povoleno",
       "waiting": "Čeká se",
-      "turnOnMac": "Zapněte Unmute v Nastavení systému a pak se vraťte sem.",
+      "turnOnMac": "Zapněte Unwrite v Nastavení systému a pak se vraťte sem.",
       "turnOnWindows": "Zapněte přístup k mikrofonu v Nastavení Windows a pak se vraťte sem.",
       "hintBoth": "Pro pokračování povolte obojí",
       "hintMicrophone": "Pro pokračování povolte mikrofon",
       "welcomeBack": "Vítejte zpět. Pokračujeme tam, kde jste skončili.",
-      "relaunch": "Zkratka po tomhle nereaguje? <relaunch>Restartujte Unmute</relaunch> a skončíte hned zase tady."
+      "relaunch": "Zkratka po tomhle nereaguje? <relaunch>Restartujte Unwrite</relaunch> a skončíte hned zase tady."
     },
     "shell": {
       "back": "Zpět",
@@ -102,11 +105,11 @@
       "title": "Mluvte místo psaní, v jakékoli aplikaci",
       "subtitle": "Vyberte jazyky, ve kterých budete diktovat",
       "languagesLabel": "Jazyky",
-      "noMatch": "Žádný jazyk neodpovídá „{{query}}“. Modely Unmute pokrývají zhruba 100 jazyků, další najdete v nastavení.",
+      "noMatch": "Žádný jazyk neodpovídá „{{query}}“. Modely Unwrite pokrývají zhruba 100 jazyků, další najdete v nastavení.",
       "appLanguage": "Jazyk aplikace",
       "menusIn": "Nabídky v jazyce: <b>{{language}}</b>",
       "chinese": {
-        "question": "Mluvíte jazykem: {{languages}}. Jaké znaky má Unmute psát?",
+        "question": "Mluvíte jazykem: {{languages}}. Jaké znaky má Unwrite psát?",
         "label": "Čínské znaky",
         "zh-Hans": "Zjednodušené",
         "zh-Hant": "Tchaj-wan",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "Zkuste to!",
-      "subtitle": "Unmute je v rohu a provede vás tím",
+      "subtitle": "Unwrite je v rohu a provede vás tím",
       "noteLabel": "Poznámka",
       "placeholder": "Nová poznámka",
       "hold": "Podržte <keys/> a mluvte.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "Hotovo",
-      "subMac": "Unmute je teď na řádku nabídek. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
-      "subTray": "Unmute je teď v oznamovací oblasti. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
+      "subMac": "Unwrite je teď na řádku nabídek. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
+      "subTray": "Unwrite je teď v oznamovací oblasti. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
       "hint": "Tohle můžete později změnit v Nastavení",
       "highFiveLabel": "Plácnout si",
-      "atLogin": "Spustit Unmute po přihlášení",
+      "atLogin": "Spustit Unwrite po přihlášení",
       "finish": "Hotovo",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "Připraveno",
         "languages": "Jazyky",
         "model": "Model řeči",
@@ -336,7 +339,7 @@
     "general": {
       "title": "Obecné",
       "shortcut": {
-        "title": "Zkratky Unmute",
+        "title": "Zkratky Unwrite",
         "description": "Nastavte klávesové zkratky pro spuštění nahrávání řeči na text",
         "loading": "Načítám zkratky...",
         "none": "Žádné zkratky nejsou nastavené",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Preferované jazyky",
-        "description": "Jazyky, kterými mluvíte. Unmute podle nich doporučuje modely.",
+        "description": "Jazyky, kterými mluvíte. Unwrite podle nich doporučuje modely.",
         "noMatch": "Žádný jazyk neodpovídá „{{query}}“",
         "weak": "Zatím žádný model dobře nerozpoznává: {{languages}}."
       },
@@ -405,17 +408,17 @@
         "fits": "Pro vaše jazyky",
         "untested": "Netestováno"
       },
-      "untestedNote": "Netestováno s Unmute. Mohou být pomalejší nebo dělat více chyb.",
+      "untestedNote": "Netestováno s Unwrite. Mohou být pomalejší nebo dělat více chyb.",
       "untestedHidden_one": "Další {{count}} model není vyladěn pro diktování. Najdete ho hledáním.",
       "untestedHidden_other": "Dalších {{count}} modelů není vyladěno pro diktování. Najdete je hledáním.",
-      "emptyYours": "Zatím žádné modely. Vyberte některý níže: stáhne se a Unmute ho začne používat.",
+      "emptyYours": "Zatím žádné modely. Vyberte některý níže: stáhne se a Unwrite ho začne používat.",
       "showMore": "Zobrazit další ({{count}})",
       "showFewer": "Zobrazit méně",
       "download": "Stáhnout a použít",
       "downloadingThenUse": "{{percent}} % z {{total}}, poté se přepne",
       "loading": "Načítání…",
       "deleteAsk": "Smazat {{name}}? Uvolní se {{size}}.",
-      "deleteAskActive": "Smazat {{name}}? Unmute nebude moci přepisovat, dokud nevyberete jiný model.",
+      "deleteAskActive": "Smazat {{name}}? Unwrite nebude moci přepisovat, dokud nevyberete jiný model.",
       "cancel": "Zrušit",
       "deleteModel": "Smazat {{name}}",
       "cancelDownload": "Zastavit stahování {{name}}",
@@ -429,14 +432,14 @@
         "marks": "? zatím nebylo změřeno. — tomuto jazyku nerozumí."
       },
       "retiredNotice": {
-        "title": "Staré modely už s Unmute nefungují",
+        "title": "Staré modely už s Unwrite nefungují",
         "description": "Zabírají {{size}} na vašem počítači.",
         "delete": "Smazat modely",
         "deleteFailed": "Některé staré modely se nepodařilo smazat. Podrobnosti najdete v protokolu."
       },
       "rescan": {
         "label": "Znovu prohledat",
-        "tooltip": "Znovu prohledat modely přidané do složky modelů nebo mezipaměti Hugging Face mimo Unmute"
+        "tooltip": "Znovu prohledat modely přidané do složky modelů nebo mezipaměti Hugging Face mimo Unwrite"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "Spouštět při startu",
-        "description": "Automaticky spustit Unmute po přihlášení do počítače."
+        "description": "Automaticky spustit Unwrite po přihlášení do počítače."
       },
       "showTrayIcon": {
         "label": "Zobrazit ikonu v systémové liště",
-        "description": "Zobrazit ikonu Unmute v systémové liště."
+        "description": "Zobrazit ikonu Unwrite v systémové liště."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Kontrolovat aktualizace",
-        "description": "Automaticky kontrolovat nové verze Unmute",
+        "description": "Automaticky kontrolovat nové verze Unwrite",
         "lockedDescription": "Zakázáno systémovou konfigurací (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnostika klávesnice",
-        "description": "Ověří, zda události klávesnice dorazí do Unmute. Zaznamenává se pouze počet událostí — nikdy to, které klávesy stisknete.",
+        "description": "Ověří, zda události klávesnice dorazí do Unwrite. Zaznamenává se pouze počet událostí — nikdy to, které klávesy stisknete.",
         "run": "Spustit 10s diagnostiku",
         "running": "Naslouchání… několikrát stiskněte svou zkratku (např. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "Myš",
         "verdictBlocked": "Secure Input blokuje události kláves — zkratky obsahující běžnou klávesu nemohou fungovat, dokud se to nevyřeší.",
         "verdictSuspicious": "Dorazily události modifikátorů, ale žádné události kláves — něco klávesy potlačuje, přestože Secure Input hlásí, že je vypnutý. Nahlaste to prosím na GitHubu.",
-        "verdictOk": "Události kláves dorazí do Unmute normálně.",
+        "verdictOk": "Události kláves dorazí do Unwrite normálně.",
         "verdictNoEvents": "Nebyly zachyceny žádné události — stiskli jste během testu nějaké klávesy?",
         "failed": "Diagnostika selhala: {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "O aplikaci",
       "version": {
         "title": "Verze",
-        "description": "Aktuální verze Unmute"
+        "description": "Aktuální verze Unwrite"
       },
       "whatsNewUpdates": {
         "label": "Zobrazovat novinky",
-        "description": "Zobrazovat poznámky k vydání po aktualizacích Unmute"
+        "description": "Zobrazovat poznámky k vydání po aktualizacích Unwrite"
       },
       "appDataDirectory": {
         "title": "Adresář dat aplikace",
-        "description": "Umístění, kde Unmute ukládá data"
+        "description": "Umístění, kde Unwrite ukládá data"
       },
       "sourceCode": {
         "title": "Zdrojový kód",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Vysoce výkonné inferenční zpracování modelu automatického rozpoznávání řeči Whisper od OpenAI",
-          "details": "Unmute používá ggml pro rychlé lokální zpracování řeči na text. Díky skvělé práci Georgiho Gerganova a přispěvatelů."
+          "details": "Unwrite používá ggml pro rychlé lokální zpracování řeči na text. Díky skvělé práci Georgiho Gerganova a přispěvatelů."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "Otevřít GitHub Releases"
   },
   "whatsNew": {
-    "title": "Novinky v Unmute v{{version}}"
+    "title": "Novinky v Unwrite v{{version}}"
   },
   "common": {
     "playbackPosition": "Pozice přehrávání",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "Mikrofon je tichý",
     "microphoneSilent": "Mikrofon posílá jen ticho. Zkontrolujte, že není ztlumený, nebo vyberte jiný mikrofon v Nastavení.",
     "recordingFailedTitle": "Nepodařilo se spustit nahrávání",
-    "modelLoadFailed": "Unmute nemohl načíst tento model. Zkuste to znovu nebo vyberte jiný.",
+    "modelLoadFailed": "Unwrite nemohl načíst tento model. Zkuste to znovu nebo vyberte jiný.",
     "modelLoadFailedTitle": "Nepodařilo se načíst model",
     "noModelSelected": "Stáhněte nebo vyberte model v Nastavení > Modely.",
     "noModelSelectedTitle": "Není vybrán žádný model",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "Vložení textu se nezdařilo",
     "pasteFailed": "Text nebylo možné vložit do aktivní aplikace.",
     "pasteBlockedElevatedTitle": "Nelze vložit do aplikace správce",
-    "pasteBlockedElevated": "Aktivní aplikace běží jako správce, takže do ní Unmute nemůže vkládat. Přepis můžete zkopírovat z Historie.",
+    "pasteBlockedElevated": "Aktivní aplikace běží jako správce, takže do ní Unwrite nemůže vkládat. Přepis můžete zkopírovat z Historie.",
     "postProcessFailedTitle": "Vloženo bez následného zpracování",
     "postProcessFailed": "Následné zpracování se nedokončilo, takže byl přepis vložen beze změn.",
     "filePostProcessFailedTitle": "Přepsáno bez následného zpracování",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Jazyk aplikace",
-    "description": "Změňte jazyk rozhraní Unmute"
+    "description": "Změňte jazyk rozhraní Unwrite"
   },
   "theme": {
     "title": "Motiv aplikace",
-    "description": "Zvolte, zda má Unmute sledovat motiv systému, nebo zůstat světlý či tmavý",
+    "description": "Zvolte, zda má Unwrite sledovat motiv systému, nebo zůstat světlý či tmavý",
     "options": {
       "system": "Systém",
       "light": "Světlý",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

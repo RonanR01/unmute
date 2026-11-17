@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "Офіційно не підтримується",
     "migration": {
       "title": "Ваші моделі потребують оновлення",
-      "description": "Unmute тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
+      "description": "Unwrite тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
       "replaces": "Замінює {{name}}",
       "oldFormat": "Старий формат",
       "failed": "Помилка завантаження",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Мікрофон",
-        "why": "Щоб Unmute міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
+        "why": "Щоб Unwrite міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
       },
       "accessibility": {
         "name": "Універсальний доступ",
-        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Unmute міг вводити текст там, де стоїть курсор."
+        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Unwrite міг вводити текст там, де стоїть курсор."
       },
       "errors": {
         "checkFailed": "Не вдалося перевірити дозволи. Будь ласка, спробуйте ще раз.",
@@ -86,12 +89,12 @@
       "openSettings": "Відкрити налаштування",
       "allowed": "Дозволено",
       "waiting": "Очікування",
-      "turnOnMac": "Увімкніть Unmute в Системних налаштуваннях і поверніться сюди.",
+      "turnOnMac": "Увімкніть Unwrite в Системних налаштуваннях і поверніться сюди.",
       "turnOnWindows": "Увімкніть доступ до мікрофона в Параметрах Windows і поверніться сюди.",
       "hintBoth": "Дозвольте обидва, щоб продовжити",
       "hintMicrophone": "Дозвольте мікрофон, щоб продовжити",
       "welcomeBack": "З поверненням. Продовжуємо з того місця, де ви зупинилися.",
-      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Unmute</relaunch>, і ви повернетеся просто сюди."
+      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Unwrite</relaunch>, і ви повернетеся просто сюди."
     },
     "shell": {
       "back": "Назад",
@@ -102,11 +105,11 @@
       "title": "Говоріть замість друку, в будь-якій програмі",
       "subtitle": "Оберіть мови, якими ви диктуватимете",
       "languagesLabel": "Мови",
-      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Unmute охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
+      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Unwrite охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
       "appLanguage": "Мова застосунку",
       "menusIn": "Меню мовою: <b>{{language}}</b>",
       "chinese": {
-        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Unmute має писати?",
+        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Unwrite має писати?",
         "label": "Китайські ієрогліфи",
         "zh-Hans": "Спрощені",
         "zh-Hant": "Тайвань",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "Спробуйте!",
-      "subtitle": "Unmute в кутку допоможе вам пройти цей шлях",
+      "subtitle": "Unwrite в кутку допоможе вам пройти цей шлях",
       "noteLabel": "Нотатка",
       "placeholder": "Нова нотатка",
       "hold": "Утримуйте <keys/> і говоріть.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "Усе готово",
-      "subMac": "Unmute тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
-      "subTray": "Unmute тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subMac": "Unwrite тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subTray": "Unwrite тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
       "hint": "Ви можете змінити це пізніше в налаштуваннях",
       "highFiveLabel": "Дай п'ять",
-      "atLogin": "Запускати Unmute під час входу в систему",
+      "atLogin": "Запускати Unwrite під час входу в систему",
       "finish": "Готово",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "Готово",
         "languages": "Мови",
         "model": "Модель розпізнавання мовлення",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Бажані мови",
-        "description": "Мови, якими ви говорите. Unmute використовує їх, щоб рекомендувати моделі.",
+        "description": "Мови, якими ви говорите. Unwrite використовує їх, щоб рекомендувати моделі.",
         "noMatch": "Жодна мова не відповідає «{{query}}»",
         "weak": "Жодна модель поки що не розпізнає добре: {{languages}}."
       },
@@ -405,17 +408,17 @@
         "fits": "Для ваших мов",
         "untested": "Не перевірені"
       },
-      "untestedNote": "Не перевірені з Unmute. Вони можуть працювати повільніше або робити більше помилок.",
+      "untestedNote": "Не перевірені з Unwrite. Вони можуть працювати повільніше або робити більше помилок.",
       "untestedHidden_one": "Ще {{count}} модель не налаштована для диктування. Скористайтеся пошуком, щоб її знайти.",
       "untestedHidden_other": "Ще {{count}} моделей не налаштовано для диктування. Скористайтеся пошуком, щоб знайти потрібну.",
-      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Unmute її використає.",
+      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Unwrite її використає.",
       "showMore": "Показати ще {{count}}",
       "showFewer": "Показати менше",
       "download": "Завантажити й використовувати",
       "downloadingThenUse": "{{percent}}% з {{total}}, потім перемкнеться",
       "loading": "Завантаження…",
       "deleteAsk": "Видалити {{name}}? Це звільнить {{size}}.",
-      "deleteAskActive": "Видалити {{name}}? Unmute не зможе транскрибувати, доки ви не оберете іншу модель.",
+      "deleteAskActive": "Видалити {{name}}? Unwrite не зможе транскрибувати, доки ви не оберете іншу модель.",
       "cancel": "Скасувати",
       "deleteModel": "Видалити {{name}}",
       "cancelDownload": "Зупинити завантаження {{name}}",
@@ -429,14 +432,14 @@
         "marks": "? ще не виміряно. — не розпізнає цю мову."
       },
       "retiredNotice": {
-        "title": "Старі моделі більше не працюють з Unmute",
+        "title": "Старі моделі більше не працюють з Unwrite",
         "description": "Вони займають {{size}} на вашому комп'ютері.",
         "delete": "Видалити моделі",
         "deleteFailed": "Не вдалося видалити деякі старі моделі. Подробиці дивіться в журналі."
       },
       "rescan": {
         "label": "Пересканувати",
-        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Unmute"
+        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Unwrite"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "Запуск при старті системи",
-        "description": "Автоматично запускати Unmute при вході в систему"
+        "description": "Автоматично запускати Unwrite при вході в систему"
       },
       "showTrayIcon": {
         "label": "Показати значок у треї",
-        "description": "Відображати значок Unmute у системному треї."
+        "description": "Відображати значок Unwrite у системному треї."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Перевірка оновлень",
-        "description": "Автоматично перевіряти наявність нових версій Unmute",
+        "description": "Автоматично перевіряти наявність нових версій Unwrite",
         "lockedDescription": "Вимкнено системною конфігурацією (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Діагностика клавіатури",
-        "description": "Перевіряє, чи доходять події клавіатури до Unmute. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
+        "description": "Перевіряє, чи доходять події клавіатури до Unwrite. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
         "run": "Запустити 10-секундну діагностику",
         "running": "Прослуховування… натисніть свою комбінацію кілька разів (наприклад, Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "Миша",
         "verdictBlocked": "Secure Input блокує події клавіш — комбінації зі звичайною клавішею не працюватимуть, доки це не буде усунуто.",
         "verdictSuspicious": "Події модифікаторів надходять, а події клавіш — ні: щось пригнічує клавіші, хоча Secure Input позначено як вимкнений. Будь ласка, повідомте про це на GitHub.",
-        "verdictOk": "Події клавіш надходять до Unmute нормально.",
+        "verdictOk": "Події клавіш надходять до Unwrite нормально.",
         "verdictNoEvents": "Подій не зафіксовано — ви натискали клавіші під час тесту?",
         "failed": "Не вдалося виконати діагностику: {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "Інфо",
       "version": {
         "title": "Версія",
-        "description": "Поточна версія Unmute"
+        "description": "Поточна версія Unwrite"
       },
       "whatsNewUpdates": {
         "label": "Показувати новини",
-        "description": "Показувати примітки до випуску після оновлень Unmute"
+        "description": "Показувати примітки до випуску після оновлень Unwrite"
       },
       "appDataDirectory": {
         "title": "Папка даних програми",
-        "description": "Розташування даних Unmute"
+        "description": "Розташування даних Unwrite"
       },
       "sourceCode": {
         "title": "Вихідний код",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Високопродуктивний інференс моделі автоматичного розпізнавання мовлення Whisper від OpenAI",
-          "details": "Unmute використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
+          "details": "Unwrite використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "Відкрити GitHub Releases"
   },
   "whatsNew": {
-    "title": "Нове в Unmute v{{version}}"
+    "title": "Нове в Unwrite v{{version}}"
   },
   "common": {
     "playbackPosition": "Позиція відтворення",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "Мікрофон мовчить",
     "microphoneSilent": "Мікрофон передає лише тишу. Перевірте, чи не вимкнено звук, або виберіть інший мікрофон у Налаштуваннях.",
     "recordingFailedTitle": "Не вдалося розпочати запис",
-    "modelLoadFailed": "Unmute не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
+    "modelLoadFailed": "Unwrite не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
     "modelLoadFailedTitle": "Не вдалося завантажити модель",
     "noModelSelected": "Завантажте або виберіть модель у розділі Налаштування > Моделі.",
     "noModelSelectedTitle": "Модель не вибрано",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "Не вдалося вставити текст",
     "pasteFailed": "Не вдалося вставити текст до активної програми.",
     "pasteBlockedElevatedTitle": "Вставлення заблоковано",
-    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Unmute не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
+    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Unwrite не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
     "postProcessFailedTitle": "Вставлено без постобробки",
     "postProcessFailed": "Постобробка не завершилася, тому розшифровку вставлено як є.",
     "filePostProcessFailedTitle": "Розшифровано без постобробки",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Мова інтерфейсу",
-    "description": "Змінити мову інтерфейсу Unmute"
+    "description": "Змінити мову інтерфейсу Unwrite"
   },
   "theme": {
     "title": "Тема застосунку",
-    "description": "Виберіть, чи має Unmute слідувати темі системи, чи залишатися світлою або темною",
+    "description": "Виберіть, чи має Unwrite слідувати темі системи, чи залишатися світлою або темною",
     "options": {
       "system": "Системна",
       "light": "Світла",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

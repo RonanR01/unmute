@@ -61,6 +61,22 @@ pub async fn delete_history_entry(
         .map_err(|e| e.to_string())
 }
 
+/// Deletes an entry's recording and keeps its text.
+#[tauri::command]
+#[specta::specta]
+pub async fn delete_history_entry_audio(
+    history_manager: State<'_, Arc<HistoryManager>>,
+    jobs: State<'_, Arc<TranscriptionJobManager>>,
+    id: i64,
+) -> Result<(), String> {
+    // A transcription still reading the file would fail halfway.
+    jobs.cancel(id);
+    history_manager
+        .delete_entry_audio(id)
+        .await
+        .map_err(|e| e.to_string())
+}
+
 /// Queues the entry to be transcribed again with the current model. Its
 /// progress and outcome arrive as `TranscriptionJob` events.
 #[tauri::command]

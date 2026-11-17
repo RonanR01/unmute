@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { PenLine, RefreshCw } from "lucide-react";
+import { PenLine, RefreshCw, Share2 } from "lucide-react";
 import { Trans, useTranslation } from "react-i18next";
 import {
   commands,
@@ -13,6 +13,8 @@ import {
 import { notify } from "@/stores/noticeStore";
 import { formatCount, formatDuration } from "@/lib/utils/measures";
 import { TopoLines } from "../shared/TopoLines";
+import type { ShareCard } from "@/lib/shareCard";
+import { ShareDialog } from "../share/ShareDialog";
 import { Heatmap, HeatmapLegend } from "./Heatmap";
 
 const KeyNumber: React.FC<{
@@ -25,7 +27,7 @@ const KeyNumber: React.FC<{
     className={`flex-[1_1_200px] flex flex-col gap-2 p-7 ${first ? "" : "border-s border-edge"}`}
   >
     <span className="text-sm text-ink-3">{label}</span>
-    <span className="text-[42px] leading-none font-bold tracking-tight text-signal tabular-nums">
+    <span className="text-[42px] leading-none font-bold tracking-tight measure tabular-nums">
       {value}
       {unit && (
         <span className="ms-2 text-[15px] font-medium tracking-normal text-ink-3">
@@ -45,7 +47,7 @@ const ProfileCard: React.FC<{
   <div className="flex flex-col gap-2.5 p-6 bg-surface border border-edge rounded-2xl">
     <span className="text-sm text-ink-3">{label}</span>
     <span
-      className={`text-[28px] leading-tight font-bold tracking-tight break-words ${measured ? "text-signal" : ""}`}
+      className={`text-[28px] leading-tight font-bold tracking-tight break-words ${measured ? "self-start measure" : ""}`}
     >
       {value}
     </span>
@@ -161,7 +163,7 @@ const PortraitCard: React.FC<{
 };
 
 const Measured: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
-  <span className="text-signal font-semibold tabular-nums">{children}</span>
+  <span className="measure font-semibold tabular-nums">{children}</span>
 );
 
 export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
@@ -173,6 +175,7 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
   const [activity, setActivity] = useState<DailyActivity[]>([]);
   const [profile, setProfile] = useState<VoiceProfile | null>(null);
   const [refreshing, setRefreshing] = useState(false);
+  const [sharing, setSharing] = useState<ShareCard | null>(null);
 
   const load = useCallback(async () => {
     const [statsResult, activityResult] = await Promise.all([
@@ -210,6 +213,45 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
     }
   };
 
+  const share = async () => {
+    if (!stats) return;
+    const board = await commands.getBadgeBoard();
+    const standing = board.status === "ok" ? board.data.standing : null;
+    const figures = [
+      {
+        label: t("dictations.words"),
+        value: formatCount(stats.word_count, locale),
+      },
+      {
+        label: t("insights.pace"),
+        value:
+          stats.words_per_minute != null
+            ? formatCount(Math.round(stats.words_per_minute), locale)
+            : "–",
+        unit: t("dictations.wordsPerMinute"),
+      },
+      {
+        label: t("dictations.duration"),
+        value: formatDuration(stats.duration_ms),
+      },
+    ];
+    const phrase = profile?.catchphrases[0];
+    setSharing({
+      kind: "insights",
+      title: t("share.insightsTitle"),
+      figures,
+      catchphrase: phrase
+        ? { label: t("insights.catchphrase"), text: phrase.text }
+        : undefined,
+      standing: standing
+        ? t("share.dictatedWith", {
+            belt: t(`badges.belts.${standing.belt}`),
+            words: formatCount(standing.lifetime_words, locale),
+          })
+        : "",
+    });
+  };
+
   const placeholder = "–";
   const catchphrase = profile?.catchphrases[0];
   const topWord = profile?.top_words[0];
@@ -222,15 +264,32 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
 
   return (
     <div className="flex flex-col w-full gap-8 px-8 py-8">
-      <div className="flex flex-col gap-1.5">
-        <h1 className="text-[28px] font-bold tracking-tight">
-          {t("insights.title")}
-        </h1>
-        <p className="text-[15px] text-ink-3">{t("insights.subtitle")}</p>
+      <ShareDialog
+        card={sharing}
+        fileName="unwrite-insights"
+        onClose={() => setSharing(null)}
+      />
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="flex flex-col gap-1.5">
+          <h1 className="text-[28px] font-bold tracking-tight">
+            {t("insights.title")}
+          </h1>
+          <p className="text-[15px] text-ink-3">{t("insights.subtitle")}</p>
+        </div>
+        <button
+          type="button"
+          onClick={share}
+          disabled={!stats}
+          className="min-h-11 px-4 flex items-center gap-2 rounded-[10px] border border-line-strong text-sm font-medium cursor-pointer transition-colors hover:bg-surface-raised disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-text"
+        >
+          <Share2 size={16} />
+          {t("share.shareInsights")}
+        </button>
       </div>
 
       <section
         aria-label={t("insights.keyNumbers")}
+        data-theme="fir"
         className="relative overflow-hidden bg-surface border border-edge rounded-2xl"
       >
         <TopoLines className="h-full" />
@@ -288,7 +347,7 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
             type="button"
             onClick={refreshProfile}
             disabled={refreshing}
-            className="min-h-11 px-4 flex items-center gap-2 rounded-[10px] bg-text text-background text-sm font-semibold cursor-pointer transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+            className="min-h-11 px-4 flex items-center gap-2 rounded-[10px] bg-signal text-on-signal text-sm font-semibold cursor-pointer transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
           >
             <RefreshCw
               size={16}
@@ -369,7 +428,7 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
                   </span>
                   <span
                     aria-hidden="true"
-                    className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-surface-raised"
+                    className="h-1.5 min-w-0 flex-1 overflow-hidden rounded-full bg-gauge-track"
                   >
                     <span
                       className="block h-full rounded-full bg-signal"
@@ -378,7 +437,7 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
                       }}
                     />
                   </span>
-                  <span className="w-9 shrink-0 text-end font-semibold text-signal tabular-nums">
+                  <span className="w-9 shrink-0 text-end font-semibold text-signal-ink tabular-nums">
                     {formatCount(word.count, locale)}
                   </span>
                 </li>

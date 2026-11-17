@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionnaire",
     "settings": "Paramètres",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Réduire le menu",
+    "expand": "Agrandir le menu",
+    "today": "Aujourd'hui"
   },
   "onboarding": {
     "customModelDescription": "Non officiellement pris en charge",
     "migration": {
       "title": "Vos modèles doivent être mis à jour",
-      "description": "Unmute utilise désormais un nouveau type de modèle. Téléchargez la nouvelle version pour continuer à transcrire. Les anciennes versions seront supprimées.",
+      "description": "Unwrite utilise désormais un nouveau type de modèle. Téléchargez la nouvelle version pour continuer à transcrire. Les anciennes versions seront supprimées.",
       "replaces": "Remplace {{name}}",
       "oldFormat": "Ancien format",
       "failed": "Échec du téléchargement",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Microphone",
-        "why": "Pour que Unmute puisse vous entendre. L'audio est converti en texte sur cet ordinateur et n'est jamais envoyé ailleurs."
+        "why": "Pour que Unwrite puisse vous entendre. L'audio est converti en texte sur cet ordinateur et n'est jamais envoyé ailleurs."
       },
       "accessibility": {
         "name": "Accessibilité",
-        "why": "Pour que votre raccourci fonctionne dans toutes les apps et que Unmute puisse saisir le texte là où se trouve votre curseur."
+        "why": "Pour que votre raccourci fonctionne dans toutes les apps et que Unwrite puisse saisir le texte là où se trouve votre curseur."
       },
       "errors": {
         "checkFailed": "Échec de la vérification des autorisations. Veuillez réessayer.",
@@ -86,12 +89,12 @@
       "openSettings": "Ouvrir les réglages",
       "allowed": "Autorisé",
       "waiting": "En attente",
-      "turnOnMac": "Activez Unmute dans Réglages Système, puis revenez ici.",
+      "turnOnMac": "Activez Unwrite dans Réglages Système, puis revenez ici.",
       "turnOnWindows": "Activez l'accès au microphone dans les Paramètres Windows, puis revenez ici.",
       "hintBoth": "Autorisez les deux pour continuer",
       "hintMicrophone": "Autorisez le microphone pour continuer",
       "welcomeBack": "Content de vous revoir. On reprend là où vous en étiez.",
-      "relaunch": "Le raccourci ne répond pas après ça ? <relaunch>Relancez Unmute</relaunch> et vous reviendrez directement ici."
+      "relaunch": "Le raccourci ne répond pas après ça ? <relaunch>Relancez Unwrite</relaunch> et vous reviendrez directement ici."
     },
     "shell": {
       "back": "Retour",
@@ -102,11 +105,11 @@
       "title": "Parlez au lieu de taper, dans n'importe quelle app",
       "subtitle": "Choisissez les langues que vous allez dicter",
       "languagesLabel": "Langues",
-      "noMatch": "Aucune langue ne correspond à « {{query}} ». Les modèles de Unmute couvrent environ 100 langues ; d'autres sont disponibles dans les paramètres.",
+      "noMatch": "Aucune langue ne correspond à « {{query}} ». Les modèles de Unwrite couvrent environ 100 langues ; d'autres sont disponibles dans les paramètres.",
       "appLanguage": "Langue de l'app",
       "menusIn": "Menus en <b>{{language}}</b>",
       "chinese": {
-        "question": "Vous parlez {{languages}}. Quels caractères Unmute doit-il écrire ?",
+        "question": "Vous parlez {{languages}}. Quels caractères Unwrite doit-il écrire ?",
         "label": "Caractères chinois",
         "zh-Hans": "Simplifié",
         "zh-Hant": "Taïwan",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "À vous de jouer !",
-      "subtitle": "Unmute est dans le coin pour vous guider",
+      "subtitle": "Unwrite est dans le coin pour vous guider",
       "noteLabel": "Note",
       "placeholder": "Nouvelle note",
       "hold": "Maintenez <keys/> et parlez.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "Tout est prêt",
-      "subMac": "Unmute est dans la barre des menus. Appuyez sur <keys/> pour dicter partout.",
-      "subTray": "Unmute est dans la zone de notification. Appuyez sur <keys/> pour dicter partout.",
+      "subMac": "Unwrite est dans la barre des menus. Appuyez sur <keys/> pour dicter partout.",
+      "subTray": "Unwrite est dans la zone de notification. Appuyez sur <keys/> pour dicter partout.",
       "hint": "Vous pourrez modifier tout cela plus tard dans les Paramètres",
       "highFiveLabel": "Tope là",
-      "atLogin": "Lancer Unmute à l'ouverture de ma session",
+      "atLogin": "Lancer Unwrite à l'ouverture de ma session",
       "finish": "Terminé",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "Prêt",
         "languages": "Langues",
         "model": "Modèle vocal",
@@ -336,7 +339,7 @@
     "general": {
       "title": "Général",
       "shortcut": {
-        "title": "Raccourcis Unmute",
+        "title": "Raccourcis Unwrite",
         "description": "Configurer les raccourcis clavier pour déclencher l'enregistrement de la reconnaissance vocale",
         "loading": "Chargement des raccourcis...",
         "none": "Aucun raccourci configuré",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Langues préférées",
-        "description": "Les langues que vous parlez. Unmute s'en sert pour recommander des modèles.",
+        "description": "Les langues que vous parlez. Unwrite s'en sert pour recommander des modèles.",
         "noMatch": "Aucune langue ne correspond à « {{query}} »",
         "weak": "Aucun modèle ne reconnaît bien {{languages}} pour l'instant."
       },
@@ -405,17 +408,17 @@
         "fits": "Pour vos langues",
         "untested": "Non testés"
       },
-      "untestedNote": "Non testés avec Unmute. Ils peuvent être plus lents ou faire plus d'erreurs.",
+      "untestedNote": "Non testés avec Unwrite. Ils peuvent être plus lents ou faire plus d'erreurs.",
       "untestedHidden_one": "{{count}} autre modèle n'est pas adapté à la dictée. Utilisez la recherche pour le trouver.",
       "untestedHidden_other": "{{count}} autres modèles ne sont pas adaptés à la dictée. Utilisez la recherche pour en trouver un.",
-      "emptyYours": "Aucun modèle pour l'instant. Choisissez-en un ci-dessous : il se télécharge, puis Unmute l'utilise.",
+      "emptyYours": "Aucun modèle pour l'instant. Choisissez-en un ci-dessous : il se télécharge, puis Unwrite l'utilise.",
       "showMore": "Afficher {{count}} de plus",
       "showFewer": "Afficher moins",
       "download": "Télécharger et utiliser",
       "downloadingThenUse": "{{percent}} % sur {{total}}, puis bascule",
       "loading": "Chargement…",
       "deleteAsk": "Supprimer {{name}} ? Cela libère {{size}}.",
-      "deleteAskActive": "Supprimer {{name}} ? Unmute ne pourra plus transcrire tant que vous n'en aurez pas choisi un autre.",
+      "deleteAskActive": "Supprimer {{name}} ? Unwrite ne pourra plus transcrire tant que vous n'en aurez pas choisi un autre.",
       "cancel": "Annuler",
       "deleteModel": "Supprimer {{name}}",
       "cancelDownload": "Arrêter le téléchargement de {{name}}",
@@ -429,14 +432,14 @@
         "marks": "? n'a pas encore été mesuré. — ne comprend pas cette langue."
       },
       "retiredNotice": {
-        "title": "Les anciens modèles ne fonctionnent plus avec Unmute",
+        "title": "Les anciens modèles ne fonctionnent plus avec Unwrite",
         "description": "Ils occupent {{size}} sur votre ordinateur.",
         "delete": "Supprimer les modèles",
         "deleteFailed": "Certains anciens modèles n'ont pas pu être supprimés. Consultez le journal pour plus de détails."
       },
       "rescan": {
         "label": "Réanalyser",
-        "tooltip": "Réanalyser pour détecter les modèles ajoutés au dossier des modèles ou au cache Hugging Face en dehors de Unmute"
+        "tooltip": "Réanalyser pour détecter les modèles ajoutés au dossier des modèles ou au cache Hugging Face en dehors de Unwrite"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "Lancer au démarrage",
-        "description": "Démarrer automatiquement Unmute lorsque vous vous connectez à votre ordinateur."
+        "description": "Démarrer automatiquement Unwrite lorsque vous vous connectez à votre ordinateur."
       },
       "showTrayIcon": {
         "label": "Afficher l'icône de la barre",
-        "description": "Afficher l'icône de Unmute dans la barre système."
+        "description": "Afficher l'icône de Unwrite dans la barre système."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Vérifier les mises à jour",
-        "description": "Vérifier automatiquement les nouvelles versions de Unmute",
+        "description": "Vérifier automatiquement les nouvelles versions de Unwrite",
         "lockedDescription": "Désactivé par la configuration système (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnostic du clavier",
-        "description": "Vérifie si les événements clavier atteignent Unmute. Seul le nombre d'événements est enregistré, jamais les touches sur lesquelles vous appuyez.",
+        "description": "Vérifie si les événements clavier atteignent Unwrite. Seul le nombre d'événements est enregistré, jamais les touches sur lesquelles vous appuyez.",
         "run": "Lancer un diagnostic de 10 s",
         "running": "Écoute en cours… appuyez plusieurs fois sur votre raccourci (par ex. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "Souris",
         "verdictBlocked": "Secure Input bloque les événements clavier : les raccourcis contenant une touche normale ne peuvent pas fonctionner tant que ce n'est pas résolu.",
         "verdictSuspicious": "Des événements de modificateurs sont arrivés, mais aucun événement de touche : quelque chose supprime les touches alors que Secure Input est signalé comme désactivé. Merci de le signaler sur GitHub.",
-        "verdictOk": "Les événements clavier atteignent Unmute normalement.",
+        "verdictOk": "Les événements clavier atteignent Unwrite normalement.",
         "verdictNoEvents": "Aucun événement capturé : avez-vous appuyé sur des touches pendant le test ?",
         "failed": "Échec du diagnostic : {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "À propos",
       "version": {
         "title": "Version",
-        "description": "Version actuelle de Unmute"
+        "description": "Version actuelle de Unwrite"
       },
       "whatsNewUpdates": {
         "label": "Afficher les nouveautés",
-        "description": "Afficher les notes de version après les mises à jour de Unmute"
+        "description": "Afficher les notes de version après les mises à jour de Unwrite"
       },
       "appDataDirectory": {
         "title": "Emplacement des données de l'application",
-        "description": "Emplacement où Unmute stocke ses données"
+        "description": "Emplacement où Unwrite stocke ses données"
       },
       "sourceCode": {
         "title": "Code source",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Inférence haute performance du modèle de reconnaissance vocale automatique Whisper d'OpenAI",
-          "details": "Unmute utilise ggml pour un traitement rapide et local de la parole en texte. Merci au travail incroyable de Georgi Gerganov et des contributeurs."
+          "details": "Unwrite utilise ggml pour un traitement rapide et local de la parole en texte. Merci au travail incroyable de Georgi Gerganov et des contributeurs."
         },
         "handy": {
           "title": "Handy",
-          "description": "L'application open source de dictée sur laquelle Unmute est construit",
-          "details": "Unmute est un fork de Handy, de CJ Pais et ses contributeurs, publié sous licence MIT. Le moteur de transcription est le leur.",
+          "description": "L'application open source de dictée sur laquelle Unwrite est construit",
+          "details": "Unwrite est un fork de Handy, de CJ Pais et ses contributeurs, publié sous licence MIT. Le moteur de transcription est le leur.",
           "button": "Voir Handy sur GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "Ouvrir GitHub Releases"
   },
   "whatsNew": {
-    "title": "Nouveautés de Unmute v{{version}}"
+    "title": "Nouveautés de Unwrite v{{version}}"
   },
   "common": {
     "playbackPosition": "Position de lecture",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "Le microphone est muet",
     "microphoneSilent": "Votre microphone n'envoie que du silence. Vérifiez qu'il n'est pas coupé, ou choisissez un autre microphone dans Paramètres.",
     "recordingFailedTitle": "Échec de l'enregistrement",
-    "modelLoadFailed": "Unmute n'a pas pu charger ce modèle. Réessayez ou choisissez-en un autre.",
+    "modelLoadFailed": "Unwrite n'a pas pu charger ce modèle. Réessayez ou choisissez-en un autre.",
     "modelLoadFailedTitle": "Échec du chargement du modèle",
     "noModelSelected": "Téléchargez ou choisissez un modèle dans Paramètres > Modèles.",
     "noModelSelectedTitle": "Aucun modèle sélectionné",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "Échec du collage du texte",
     "pasteFailed": "Le texte n'a pas pu être collé dans l'application active.",
     "pasteBlockedElevatedTitle": "Collage bloqué par une app admin",
-    "pasteBlockedElevated": "L'application active s'exécute en tant qu'administrateur, Unmute ne peut donc pas y coller de texte. Vous pouvez copier la transcription depuis Historique.",
+    "pasteBlockedElevated": "L'application active s'exécute en tant qu'administrateur, Unwrite ne peut donc pas y coller de texte. Vous pouvez copier la transcription depuis Historique.",
     "postProcessFailedTitle": "Collé sans post-traitement",
     "postProcessFailed": "Le post-traitement n'a pas abouti, la transcription a donc été collée telle quelle.",
     "filePostProcessFailedTitle": "Transcrit sans post-traitement",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Langue de l'application",
-    "description": "Changer la langue de l'interface de Unmute"
+    "description": "Changer la langue de l'interface de Unwrite"
   },
   "theme": {
     "title": "Thème de l'application",
-    "description": "Choisissez si Unmute suit le thème du système ou reste clair ou sombre",
+    "description": "Choisissez si Unwrite suit le thème du système ou reste clair ou sombre",
     "options": {
       "system": "Système",
       "light": "Clair",
@@ -1023,7 +1026,11 @@
     "duration": "Durée d'usage",
     "play": "Réécouter l'enregistrement",
     "pause": "Mettre en pause",
-    "audioUnavailable": "Cet enregistrement n'est plus disponible"
+    "audioUnavailable": "Cet enregistrement n'est plus disponible",
+    "deleteAudio": "Supprimer l'enregistrement audio",
+    "confirmDeleteAudio": "Cliquez encore pour supprimer l'audio",
+    "deleteAudioFailed": "Enregistrement non supprimé",
+    "confirmDelete": "Supprimer l'audio"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionnaire",
-    "subtitle": "Les noms propres, le jargon et les marques qu'Unmute doit écrire à votre façon.",
+    "subtitle": "Les noms propres, le jargon et les marques qu'Unwrite doit écrire à votre façon.",
     "newWord": "Nouveau mot",
     "empty": "Aucun mot pour l'instant. Ajoutez les noms et les termes mal transcrits.",
     "edit": "Modifier {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter egg",
-        "description": "Vous avez dit « Unmute » trois fois dans une dictée."
+        "description": "Vous avez dit « Unwrite » trois fois dans une dictée."
       }
     }
+  },
+  "share": {
+    "title": "Partager",
+    "description": "Une image verticale, prête pour LinkedIn, Instagram ou tout autre réseau.",
+    "save": "Enregistrer l'image",
+    "linkedin": "Publier sur LinkedIn",
+    "hint": "« Publier sur LinkedIn » enregistre l'image dans Téléchargements et ouvre un nouveau post : il ne reste qu'à y joindre l'image.",
+    "saved": "Image enregistrée dans Téléchargements. Joignez-la à votre post.",
+    "previewAlt": "Aperçu de l'image à partager",
+    "drawFailed": "Image impossible à générer",
+    "saveFailed": "Image impossible à enregistrer",
+    "share": "Partager",
+    "shareBadge": "Partager le badge {{name}}",
+    "shareInsights": "Partager mes insights",
+    "shareStanding": "Partager mon statut",
+    "badgeEarned": "Badge obtenu",
+    "insightsTitle": "Ma voix en chiffres",
+    "dictatedWith": "{{belt}} · {{words}} mots dictés"
+  },
+  "today": {
+    "title": "Aujourd'hui",
+    "figures": "Chiffres du jour",
+    "wordsToday": "Mots dictés aujourd'hui",
+    "durationToday": "Temps de dictée",
+    "welcome": "Bienvenue dans Unwrite",
+    "recent": "Dernières dictées",
+    "noRecent": "Rien de dicté pour l'instant.",
+    "allDictations": "Toutes les dictées",
+    "nextUp": "Prochain cap",
+    "allBadges": "Tous les badges",
+    "hintBefore": "Votre raccourci",
+    "hintAfter": "lance une dictée dans n'importe quelle app."
   }
 }

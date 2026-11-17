@@ -35,6 +35,7 @@ import {
   type SidebarSection,
 } from "./components/Sidebar";
 import { DictationsScreen } from "./components/dictations/DictationsScreen";
+import { TodayScreen } from "./components/today/TodayScreen";
 import { InsightsScreen } from "./components/insights/InsightsScreen";
 import { DictionaryScreen } from "./components/dictionary/DictionaryScreen";
 import { BadgesScreen } from "./components/badges/BadgesScreen";
@@ -92,7 +93,7 @@ function App() {
   // Set when a returning user's selected model is a retired (ONNX) model that
   // is still on disk: they must update it before the app can transcribe.
   const [migrationModelId, setMigrationModelId] = useState<string | null>(null);
-  const [currentScreen, setCurrentScreen] = useState<Screen>("dictations");
+  const [currentScreen, setCurrentScreen] = useState<Screen>("today");
   const [currentSection, setCurrentSection] =
     useState<SidebarSection>("general");
   // Files and failed takes live in the full history, a Settings tab.
@@ -358,6 +359,9 @@ function App() {
               <div className="empty:hidden px-4 pt-4">
                 <SecureInputWarning />
               </div>
+              {currentScreen === "today" && (
+                <TodayScreen onNavigate={setCurrentScreen} />
+              )}
               {currentScreen === "dictations" && <DictationsScreen />}
               {currentScreen === "insights" && (
                 <InsightsScreen

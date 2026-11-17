@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { convertFileSrc } from "@tauri-apps/api/core";
 import { readFile } from "@tauri-apps/plugin-fs";
-import { Check, Copy, Pause, Play } from "lucide-react";
+import { Check, Copy, Pause, Play, Trash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   commands,
@@ -24,12 +24,14 @@ import { copyToClipboard } from "../settings/history/clipboard";
 const PAGE_SIZE = 50;
 /** How long "Copied" stays on a button. */
 const COPIED_MS = 1600;
+/** How long the delete button waits for its second click. */
+const CONFIRM_MS = 4000;
 
 /** What the user dictated; transcribed files and failed takes aren't shown. */
-const isDictation = (entry: HistoryEntry) =>
+export const isDictation = (entry: HistoryEntry) =>
   !entry.source_name && entry.transcription_text.trim() !== "";
 
-const entryText = (entry: HistoryEntry) =>
+export const entryText = (entry: HistoryEntry) =>
   entry.post_processed_text?.trim() || entry.transcription_text;
 
 const StatCard: React.FC<{ label: string; value: string; unit?: string }> = ({
@@ -39,8 +41,8 @@ const StatCard: React.FC<{ label: string; value: string; unit?: string }> = ({
 }) => (
   <div className="flex flex-col gap-1.5 p-5 bg-surface border border-edge rounded-[14px]">
     <span className="text-sm text-ink-3">{label}</span>
-    <span className="text-[32px] leading-tight font-bold tracking-tight text-signal tabular-nums">
-      {value}
+    <span className="text-[32px] leading-tight font-bold tracking-tight tabular-nums">
+      <span className="measure">{value}</span>
       {unit && (
         <span className="ms-2 text-sm font-medium tracking-normal text-ink-3">
           {unit}
@@ -58,11 +60,35 @@ const DictationRow: React.FC<{
   locale: string;
   playing: boolean;
   onTogglePlay: () => void;
-}> = ({ entry, locale, playing, onTogglePlay }) => {
+  onDeleteAudio: () => void;
+}> = ({ entry, locale, playing, onTogglePlay, onDeleteAudio }) => {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
+  // Deleting a recording can't be undone, so it takes a second click.
+  const [confirming, setConfirming] = useState(false);
   const timer = useRef<number | undefined>(undefined);
-  useEffect(() => () => window.clearTimeout(timer.current), []);
+  const confirmTimer = useRef<number | undefined>(undefined);
+  useEffect(
+    () => () => {
+      window.clearTimeout(timer.current);
+      window.clearTimeout(confirmTimer.current);
+    },
+    [],
+  );
+
+  const deleteAudio = () => {
+    window.clearTimeout(confirmTimer.current);
+    if (confirming) {
+      setConfirming(false);
+      onDeleteAudio();
+      return;
+    }
+    setConfirming(true);
+    confirmTimer.current = window.setTimeout(
+      () => setConfirming(false),
+      CONFIRM_MS,
+    );
+  };
 
   const text = entryText(entry);
   const time = new Intl.DateTimeFormat(locale, {
@@ -82,6 +108,9 @@ const DictationRow: React.FC<{
 
   const playLabel = playing ? t("dictations.pause") : t("dictations.play");
   const copyLabel = copied ? t("dictations.copied") : t("dictations.copy");
+  const deleteLabel = confirming
+    ? t("dictations.confirmDeleteAudio")
+    : t("dictations.deleteAudio");
 
   return (
     <article className="flex items-start gap-4 ps-5 pe-3 py-3.5 border-t border-edge first:border-t-0">
@@ -92,15 +121,39 @@ const DictationRow: React.FC<{
         {text}
       </p>
       <div className="flex shrink-0">
-        <button
-          type="button"
-          onClick={onTogglePlay}
-          aria-label={playLabel}
-          title={playLabel}
-          className={`${ICON_BUTTON} ${playing ? "text-text bg-surface-raised" : ""}`}
-        >
-          {playing ? <Pause size={17} /> : <Play size={17} />}
-        </button>
+        {entry.has_audio && (
+          <>
+            <button
+              type="button"
+              onClick={onTogglePlay}
+              aria-label={playLabel}
+              title={playLabel}
+              className={`${ICON_BUTTON} ${playing ? "text-text bg-surface-raised" : ""}`}
+            >
+              {playing ? <Pause size={17} /> : <Play size={17} />}
+            </button>
+            {confirming ? (
+              <button
+                type="button"
+                onClick={deleteAudio}
+                title={deleteLabel}
+                className="h-9 shrink-0 px-3 rounded-[10px] bg-error text-background text-[13px] font-semibold whitespace-nowrap cursor-pointer transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-text"
+              >
+                {t("dictations.confirmDelete")}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={deleteAudio}
+                aria-label={deleteLabel}
+                title={deleteLabel}
+                className={ICON_BUTTON}
+              >
+                <Trash2 size={17} />
+              </button>
+            )}
+          </>
+        )}
         <button
           type="button"
           onClick={copy}
@@ -112,6 +165,7 @@ const DictationRow: React.FC<{
         </button>
         <span aria-live="polite" className="sr-only">
           {copied ? t("dictations.copied") : ""}
+          {confirming ? t("dictations.confirmDeleteAudio") : ""}
         </span>
       </div>
     </article>
@@ -218,6 +272,19 @@ export const DictationsScreen: React.FC = () => {
 
   useEffect(() => stopPlayback, [stopPlayback]);
 
+  // The text stays; the row loses its play button when the update comes back.
+  const deleteAudio = useCallback(
+    async (entry: HistoryEntry) => {
+      if (playingId === entry.id) stopPlayback();
+      const result = await commands.deleteHistoryEntryAudio(entry.id);
+      if (result.status === "error") {
+        console.error("Failed to delete the recording:", result.error);
+        notify({ title: t("dictations.deleteAudioFailed") });
+      }
+    },
+    [playingId, stopPlayback, t],
+  );
+
   const togglePlay = useCallback(
     async (entry: HistoryEntry) => {
       const wasPlaying = audioRef.current && playingId === entry.id;
@@ -321,6 +388,7 @@ export const DictationsScreen: React.FC = () => {
                   locale={locale}
                   playing={playingId === entry.id}
                   onTogglePlay={() => togglePlay(entry)}
+                  onDeleteAudio={() => deleteAudio(entry)}
                 />
               ))}
             </div>

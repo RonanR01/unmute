@@ -8,7 +8,7 @@ interface TopoLinesProps {
   className?: string;
 }
 
-const FLOWS = [
+export const FLOWS = [
   "M-20 22c90-30 150 16 236 6s128-40 222-20 140 44 232 22 160-40 250-14 90 20 140 6",
   "M-20 52c70-18 140 28 226 14s134-46 224-24 132 50 226 26 166-34 248-14 84 12 136 2",
   "M-20 84c96-34 152 20 232 8s118-30 210-10 160 46 242 22 144-48 232-20 98 28 164 12",
@@ -26,7 +26,7 @@ const HILL = [
 
 const FADE = "linear-gradient(to bottom, #000 35%, transparent 100%)";
 
-/** Unmute's motif: thin, irregular topographic lines. Decoration only. */
+/** Unwrite's motif: thin, irregular topographic lines. Decoration only. */
 export const TopoLines: React.FC<TopoLinesProps> = ({
   hill = false,
   fade = false,

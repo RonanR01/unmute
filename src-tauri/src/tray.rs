@@ -218,7 +218,7 @@ pub fn get_icon_path(theme: AppTheme, state: TrayIconState, badge: bool) -> &'st
         return match theme {
             AppTheme::Dark => "resources/tray_idle_warning.png",
             AppTheme::Light => "resources/tray_idle_warning_dark.png",
-            AppTheme::Colored => "resources/unmute_warning.png",
+            AppTheme::Colored => "resources/unwrite_warning.png",
         };
     }
     match (theme, state) {
@@ -231,7 +231,7 @@ pub fn get_icon_path(theme: AppTheme, state: TrayIconState, badge: bool) -> &'st
         (AppTheme::Light, TrayIconState::Recording) => "resources/tray_recording_dark.png",
         (AppTheme::Light, TrayIconState::Transcribing) => "resources/tray_transcribing_dark.png",
         // Colored theme uses pink icons (for Linux)
-        (AppTheme::Colored, TrayIconState::Idle) => "resources/unmute.png",
+        (AppTheme::Colored, TrayIconState::Idle) => "resources/unwrite.png",
         (AppTheme::Colored, TrayIconState::Recording) => "resources/recording.png",
         (AppTheme::Colored, TrayIconState::Transcribing) => "resources/transcribing.png",
     }
@@ -980,6 +980,7 @@ mod tests {
             word_count: None,
             model_id: None,
             latency_ms: None,
+            has_audio: true,
         }
     }
 

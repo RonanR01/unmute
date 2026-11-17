@@ -45,7 +45,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
                 onClick={() => onSectionChange(id)}
                 className={`min-h-9 px-3 rounded-[10px] text-sm cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-text ${
                   isActive
-                    ? "bg-surface-raised text-text font-semibold"
+                    ? "bg-nav-active text-text font-semibold"
                     : "text-ink-3 font-medium hover:text-text hover:bg-surface"
                 }`}
               >

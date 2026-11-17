@@ -71,7 +71,7 @@ fn set_mute(mute: bool) {
         use std::process::Command;
 
         let mute_val = if mute { "1" } else { "0" };
-        let amixer_state = if mute { "mute" } else { "unmute" };
+        let amixer_state = if mute { "mute" } else { "unwrite" };
 
         // Try multiple backends to increase compatibility
         // 1. PipeWire (wpctl)
@@ -222,7 +222,7 @@ fn get_mute() -> Option<bool> {
 }
 
 /// Restores the system mute state after our forced mute, given the state
-/// captured just before we muted. We only ever need to unmute — and only when
+/// captured just before we muted. We only ever need to unwrite — and only when
 /// the system was NOT already muted beforehand. If the prior state was muted,
 /// we leave it muted (the user's own state). If it's unknown (`None`), we
 /// default to unmuting so audio is never left stranded muted by us.
@@ -252,7 +252,7 @@ pub enum MicrophoneMode {
 /// Tracks our forced "mute while recording" so we can restore the user's audio
 /// exactly as it was. `did_mute` is true while our mute is active; `prev_muted`
 /// is the system mute state captured just before we muted, used to decide
-/// whether to unmute on stop (so a system that was already muted stays muted).
+/// whether to unwrite on stop (so a system that was already muted stays muted).
 #[derive(Debug, Default, Clone, Copy)]
 struct MuteState {
     did_mute: bool,

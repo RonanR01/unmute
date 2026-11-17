@@ -105,7 +105,7 @@ export const DictionaryScreen: React.FC = () => {
           type="button"
           onClick={add}
           disabled={busy || !normalizeWord(newWord)}
-          className="min-h-11 px-5 rounded-[10px] bg-text text-background text-sm font-semibold cursor-pointer transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
+          className="min-h-11 px-5 rounded-[10px] bg-signal text-on-signal text-sm font-semibold cursor-pointer transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-default focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
         >
           {t("settings.advanced.customWords.add")}
         </button>

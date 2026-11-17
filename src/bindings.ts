@@ -995,6 +995,17 @@ async deleteHistoryEntry(id: number) : Promise<Result<null, string>> {
 }
 },
 /**
+ * Deletes an entry's recording and keeps its text.
+ */
+async deleteHistoryEntryAudio(id: number) : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("delete_history_entry_audio", { id }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
  * Queues the entry to be transcribed again with the current model. Its
  * progress and outcome arrive as `TranscriptionJob` events.
  */
@@ -1051,6 +1062,22 @@ async updateAudioRetentionPeriod(period: AudioRetentionPeriod) : Promise<Result<
 async getBadgeBoard() : Promise<Result<BadgeBoard, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("get_badge_board") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async saveShareCard(png: number[], name: string) : Promise<Result<string, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("save_share_card", { png, name }) };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+async recordCardShared() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("record_card_shared") };
 } catch (e) {
     if(e instanceof Error) throw e;
     else return { status: "error", error: e  as any };
@@ -1373,7 +1400,12 @@ model_id: string | null;
 /**
  * From the end of the recording to the text being pasted.
  */
-latency_ms: number | null }
+latency_ms: number | null; 
+/**
+ * Whether the recording is still on disk. It goes when the retention
+ * period ends or when the user deletes it; the text stays.
+ */
+has_audio: boolean }
 export type HistoryUpdatePayload = { action: "added"; entry: HistoryEntry } | { action: "updated"; entry: HistoryEntry } | { action: "deleted"; id: number } | { action: "toggled"; id: number }
 /**
  * Result of changing keyboard implementation

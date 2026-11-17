@@ -25,13 +25,16 @@
     "insights": "Insights",
     "dictionary": "Dictionary",
     "settings": "Settings",
-    "badges": "Badges"
+    "badges": "Badges",
+    "collapse": "Collapse the Menu",
+    "expand": "Expand the Menu",
+    "today": "Today"
   },
   "onboarding": {
     "customModelDescription": "आधिकारिक रूप से समर्थित नहीं",
     "migration": {
       "title": "आपके मॉडल को अपडेट की ज़रूरत है",
-      "description": "Unmute अब एक नए प्रकार के मॉडल का उपयोग करता है. ट्रांसक्राइब करना जारी रखने के लिए नया संस्करण डाउनलोड करें. पुराने संस्करण हटा दिए जाएंगे.",
+      "description": "Unwrite अब एक नए प्रकार के मॉडल का उपयोग करता है. ट्रांसक्राइब करना जारी रखने के लिए नया संस्करण डाउनलोड करें. पुराने संस्करण हटा दिए जाएंगे.",
       "replaces": "{{name}} की जगह लेता है",
       "oldFormat": "पुराना फ़ॉर्मेट",
       "failed": "डाउनलोड विफल रहा",
@@ -68,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "माइक्रोफ़ोन",
-        "why": "ताकि Unmute आपको सुन सके. ऑडियो इसी कंप्यूटर पर टेक्स्ट में बदलता है और कभी अपलोड नहीं होता."
+        "why": "ताकि Unwrite आपको सुन सके. ऑडियो इसी कंप्यूटर पर टेक्स्ट में बदलता है और कभी अपलोड नहीं होता."
       },
       "accessibility": {
         "name": "एक्सेसिबिलिटी",
-        "why": "ताकि आपका शॉर्टकट हर ऐप में चले और Unmute टेक्स्ट वहीं टाइप कर सके जहां आपका कर्सर है."
+        "why": "ताकि आपका शॉर्टकट हर ऐप में चले और Unwrite टेक्स्ट वहीं टाइप कर सके जहां आपका कर्सर है."
       },
       "errors": {
         "checkFailed": "अनुमतियां जांची नहीं जा सकीं. कृपया फिर से कोशिश करें.",
@@ -86,12 +89,12 @@
       "openSettings": "सेटिंग्स खोलें",
       "allowed": "अनुमति मिल गई",
       "waiting": "प्रतीक्षा में",
-      "turnOnMac": "सिस्टम सेटिंग्स में Unmute को चालू करें, फिर यहां लौट आएं.",
+      "turnOnMac": "सिस्टम सेटिंग्स में Unwrite को चालू करें, फिर यहां लौट आएं.",
       "turnOnWindows": "Windows सेटिंग्स में माइक्रोफ़ोन एक्सेस चालू करें, फिर यहां लौट आएं.",
       "hintBoth": "आगे बढ़ने के लिए दोनों की अनुमति दें",
       "hintMicrophone": "आगे बढ़ने के लिए माइक्रोफ़ोन की अनुमति दें",
       "welcomeBack": "वापसी पर स्वागत है. जहां छोड़ा था, वहीं से शुरू करते हैं.",
-      "relaunch": "इसके बाद शॉर्टकट जवाब नहीं दे रहा? <relaunch>Unmute को दोबारा शुरू करें</relaunch> और आप सीधे यहीं लौट आएंगे."
+      "relaunch": "इसके बाद शॉर्टकट जवाब नहीं दे रहा? <relaunch>Unwrite को दोबारा शुरू करें</relaunch> और आप सीधे यहीं लौट आएंगे."
     },
     "shell": {
       "back": "वापस",
@@ -102,11 +105,11 @@
       "title": "टाइप करने की जगह बोलिए, किसी भी ऐप में",
       "subtitle": "वे भाषाएं चुनें जिनमें आप बोलेंगे",
       "languagesLabel": "भाषाएं",
-      "noMatch": "“{{query}}” से कोई भाषा मेल नहीं खाती. Unmute के मॉडल करीब 100 भाषाओं को कवर करते हैं; बाकी सेटिंग्स में हैं.",
+      "noMatch": "“{{query}}” से कोई भाषा मेल नहीं खाती. Unwrite के मॉडल करीब 100 भाषाओं को कवर करते हैं; बाकी सेटिंग्स में हैं.",
       "appLanguage": "ऐप की भाषा",
       "menusIn": "मेन्यू <b>{{language}}</b> में",
       "chinese": {
-        "question": "आप {{languages}} बोलते हैं. Unmute कौन-से अक्षर लिखे?",
+        "question": "आप {{languages}} बोलते हैं. Unwrite कौन-से अक्षर लिखे?",
         "label": "चीनी अक्षर",
         "zh-Hans": "सरलीकृत",
         "zh-Hant": "ताइवान",
@@ -176,7 +179,7 @@
     },
     "try": {
       "title": "ज़रा आज़माकर देखिए!",
-      "subtitle": "Unmute कोने में है, आपको राह दिखाने के लिए",
+      "subtitle": "Unwrite कोने में है, आपको राह दिखाने के लिए",
       "noteLabel": "नोट",
       "placeholder": "नया नोट",
       "hold": "<keys/> दबाए रखें और बोलें.",
@@ -204,14 +207,14 @@
     },
     "done": {
       "title": "सब तैयार है",
-      "subMac": "Unmute अब आपके मेन्यू बार में है. बोलने के लिए किसी भी ऐप में <keys/> दबाए रखें या टैप करें.",
-      "subTray": "Unmute अब आपके सिस्टम ट्रे में है. बोलने के लिए किसी भी ऐप में <keys/> दबाए रखें या टैप करें.",
+      "subMac": "Unwrite अब आपके मेन्यू बार में है. बोलने के लिए किसी भी ऐप में <keys/> दबाए रखें या टैप करें.",
+      "subTray": "Unwrite अब आपके सिस्टम ट्रे में है. बोलने के लिए किसी भी ऐप में <keys/> दबाए रखें या टैप करें.",
       "hint": "इन्हें आप बाद में सेटिंग्स में बदल सकते हैं",
       "highFiveLabel": "हाई फ़ाइव",
-      "atLogin": "लॉग इन करने पर Unmute शुरू करें",
+      "atLogin": "लॉग इन करने पर Unwrite शुरू करें",
       "finish": "हो गया",
       "panel": {
-        "name": "Unmute",
+        "name": "Unwrite",
         "ready": "तैयार",
         "languages": "भाषाएं",
         "model": "स्पीच मॉडल",
@@ -336,7 +339,7 @@
     "general": {
       "title": "सामान्य",
       "shortcut": {
-        "title": "Unmute शॉर्टकट",
+        "title": "Unwrite शॉर्टकट",
         "description": "स्पीच-टू-टेक्स्ट रिकॉर्डिंग शुरू करने के लिए कीबोर्ड शॉर्टकट सेट करें",
         "loading": "शॉर्टकट लोड हो रहे हैं...",
         "none": "कोई शॉर्टकट सेट नहीं है",
@@ -378,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "पसंदीदा भाषाएं",
-        "description": "वे भाषाएं जो आप बोलते हैं. Unmute इनके आधार पर मॉडल सुझाता है.",
+        "description": "वे भाषाएं जो आप बोलते हैं. Unwrite इनके आधार पर मॉडल सुझाता है.",
         "noMatch": "“{{query}}” से कोई भाषा मेल नहीं खाती",
         "weak": "कोई मॉडल {{languages}} को अभी अच्छी तरह नहीं पहचानता."
       },
@@ -405,17 +408,17 @@
         "fits": "आपकी भाषाओं के लिए",
         "untested": "अपरीक्षित"
       },
-      "untestedNote": "Unmute के साथ परखे नहीं गए हैं. ये धीमे हो सकते हैं या ज़्यादा गलतियां कर सकते हैं.",
+      "untestedNote": "Unwrite के साथ परखे नहीं गए हैं. ये धीमे हो सकते हैं या ज़्यादा गलतियां कर सकते हैं.",
       "untestedHidden_one": "{{count}} और मॉडल डिक्टेशन के लिए ट्यून नहीं है. उसे ढूंढने के लिए खोजें.",
       "untestedHidden_other": "{{count}} और मॉडल डिक्टेशन के लिए ट्यून नहीं हैं. उन्हें ढूंढने के लिए खोजें.",
-      "emptyYours": "अभी कोई मॉडल नहीं है. नीचे से कोई चुनें: वह डाउनलोड होगा, फिर Unmute उसका उपयोग करेगा.",
+      "emptyYours": "अभी कोई मॉडल नहीं है. नीचे से कोई चुनें: वह डाउनलोड होगा, फिर Unwrite उसका उपयोग करेगा.",
       "showMore": "{{count}} और दिखाएं",
       "showFewer": "कम दिखाएं",
       "download": "डाउनलोड करें और उपयोग करें",
       "downloadingThenUse": "{{total}} में से {{percent}}%, फिर यही चालू होगा",
       "loading": "लोड हो रहा है…",
       "deleteAsk": "{{name}} हटाएं? इससे {{size}} जगह खाली होगी.",
-      "deleteAskActive": "{{name}} हटाएं? दूसरा मॉडल चुनने तक Unmute ट्रांसक्राइब नहीं कर पाएगा.",
+      "deleteAskActive": "{{name}} हटाएं? दूसरा मॉडल चुनने तक Unwrite ट्रांसक्राइब नहीं कर पाएगा.",
       "cancel": "रद्द करें",
       "deleteModel": "{{name}} हटाएं",
       "cancelDownload": "{{name}} का डाउनलोड रोकें",
@@ -429,14 +432,14 @@
         "marks": "? अभी मापा नहीं गया है. — वह भाषा नहीं सुनता."
       },
       "retiredNotice": {
-        "title": "पुराने मॉडल अब Unmute के साथ काम नहीं करते",
+        "title": "पुराने मॉडल अब Unwrite के साथ काम नहीं करते",
         "description": "ये आपके कंप्यूटर पर {{size}} जगह घेर रहे हैं.",
         "delete": "मॉडल हटाएं",
         "deleteFailed": "कुछ पुराने मॉडल हटाए नहीं जा सके. विवरण के लिए लॉग देखें."
       },
       "rescan": {
         "label": "फिर से स्कैन करें",
-        "tooltip": "Unmute के बाहर, मॉडल फ़ोल्डर या Hugging Face कैश में जोड़े गए मॉडल के लिए फिर से स्कैन करें"
+        "tooltip": "Unwrite के बाहर, मॉडल फ़ोल्डर या Hugging Face कैश में जोड़े गए मॉडल के लिए फिर से स्कैन करें"
       }
     },
     "languages": {
@@ -506,11 +509,11 @@
       },
       "autostart": {
         "label": "स्टार्टअप पर लॉन्च करें",
-        "description": "कंप्यूटर में लॉग इन करने पर Unmute अपने आप शुरू हो जाए."
+        "description": "कंप्यूटर में लॉग इन करने पर Unwrite अपने आप शुरू हो जाए."
       },
       "showTrayIcon": {
         "label": "ट्रे आइकन दिखाएं",
-        "description": "सिस्टम ट्रे में Unmute का आइकन दिखाएं."
+        "description": "सिस्टम ट्रे में Unwrite का आइकन दिखाएं."
       },
       "overlay": {
         "style": {
@@ -747,7 +750,7 @@
       },
       "updateChecks": {
         "label": "अपडेट जांचें",
-        "description": "Unmute के नए वर्शन की अपने आप जांच करें",
+        "description": "Unwrite के नए वर्शन की अपने आप जांच करें",
         "lockedDescription": "सिस्टम कॉन्फ़िगरेशन द्वारा अक्षम (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -853,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "कीबोर्ड डायग्नोस्टिक",
-        "description": "जाँचता है कि कीबोर्ड इवेंट Unmute तक पहुँच रहे हैं या नहीं. सिर्फ़ इवेंट की गिनती रिकॉर्ड होती है — कभी नहीं कि आपने कौन-सी कुंजियाँ दबाईं.",
+        "description": "जाँचता है कि कीबोर्ड इवेंट Unwrite तक पहुँच रहे हैं या नहीं. सिर्फ़ इवेंट की गिनती रिकॉर्ड होती है — कभी नहीं कि आपने कौन-सी कुंजियाँ दबाईं.",
         "run": "10 सेकंड का डायग्नोस्टिक चलाएँ",
         "running": "सुन रहे हैं… अपना शॉर्टकट कुछ बार दबाएँ (जैसे Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -867,7 +870,7 @@
         "mouse": "माउस",
         "verdictBlocked": "Secure Input कुंजी इवेंट ब्लॉक कर रहा है — जब तक यह हल नहीं होता, सामान्य कुंजी वाले शॉर्टकट काम नहीं कर सकते.",
         "verdictSuspicious": "मॉडिफ़ायर इवेंट आए, लेकिन कोई कुंजी इवेंट नहीं — Secure Input के बंद दिखने के बावजूद कुछ कुंजियों को दबा रहा है. कृपया इसकी रिपोर्ट GitHub पर करें.",
-        "verdictOk": "कुंजी इवेंट Unmute तक सामान्य रूप से पहुँच रहे हैं.",
+        "verdictOk": "कुंजी इवेंट Unwrite तक सामान्य रूप से पहुँच रहे हैं.",
         "verdictNoEvents": "कोई इवेंट कैप्चर नहीं हुआ — क्या आपने टेस्ट के दौरान कोई कुंजी दबाई थी?",
         "failed": "डायग्नोस्टिक विफल: {{error}}"
       },
@@ -881,15 +884,15 @@
       "title": "के बारे में",
       "version": {
         "title": "वर्शन",
-        "description": "Unmute का मौजूदा वर्शन"
+        "description": "Unwrite का मौजूदा वर्शन"
       },
       "whatsNewUpdates": {
         "label": "'नया क्या है' दिखाएं",
-        "description": "Unmute अपडेट होने के बाद रिलीज़ नोट दिखाएं"
+        "description": "Unwrite अपडेट होने के बाद रिलीज़ नोट दिखाएं"
       },
       "appDataDirectory": {
         "title": "ऐप डेटा फ़ोल्डर",
-        "description": "वह जगह जहां Unmute अपना डेटा सेव करता है"
+        "description": "वह जगह जहां Unwrite अपना डेटा सेव करता है"
       },
       "sourceCode": {
         "title": "सोर्स कोड",
@@ -901,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "डिवाइस पर ही मशीन लर्निंग इन्फ़रेंस के लिए हाई-परफ़ॉर्मेंस टेंसर लाइब्रेरी",
-          "details": "Unmute का लोकल स्पीच-टू-टेक्स्ट transcribe.cpp और ggml पर आधारित है. Georgi Gerganov और योगदान देने वालों के शानदार काम के लिए धन्यवाद."
+          "details": "Unwrite का लोकल स्पीच-टू-टेक्स्ट transcribe.cpp और ggml पर आधारित है. Georgi Gerganov और योगदान देने वालों के शानदार काम के लिए धन्यवाद."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unmute is built on",
-          "details": "Unmute is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Unwrite is built on",
+          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -928,7 +931,7 @@
     "portableUpdateBrowseButton": "GitHub Releases खोलें"
   },
   "whatsNew": {
-    "title": "Unmute v{{version}} में नया क्या है"
+    "title": "Unwrite v{{version}} में नया क्या है"
   },
   "common": {
     "playbackPosition": "प्लेबैक का स्थान",
@@ -955,7 +958,7 @@
     "microphoneSilentTitle": "माइक्रोफ़ोन शांत है",
     "microphoneSilent": "आपके माइक्रोफ़ोन से केवल खामोशी आई। देखें कि वह म्यूट तो नहीं है, या सेटिंग में कोई दूसरा माइक्रोफ़ोन चुनें।",
     "recordingFailedTitle": "रिकॉर्डिंग शुरू नहीं हो सकी",
-    "modelLoadFailed": "Unmute इस मॉडल को लोड नहीं कर सका। फिर से कोशिश करें या कोई दूसरा मॉडल चुनें।",
+    "modelLoadFailed": "Unwrite इस मॉडल को लोड नहीं कर सका। फिर से कोशिश करें या कोई दूसरा मॉडल चुनें।",
     "modelLoadFailedTitle": "मॉडल लोड नहीं हो सका",
     "noModelSelected": "सेटिंग > मॉडल में कोई मॉडल डाउनलोड करें या चुनें।",
     "noModelSelectedTitle": "कोई मॉडल नहीं चुना गया",
@@ -963,7 +966,7 @@
     "pasteFailedTitle": "टेक्स्ट पेस्ट नहीं हो सका",
     "pasteFailed": "खुले हुए ऐप्लिकेशन में टेक्स्ट पेस्ट नहीं किया जा सका.",
     "pasteBlockedElevatedTitle": "एडमिन ऐप में पेस्ट नहीं हो सकता",
-    "pasteBlockedElevated": "खुला हुआ ऐप्लिकेशन एडमिनिस्ट्रेटर के रूप में चल रहा है, इसलिए Unmute उसमें पेस्ट नहीं कर सकता। आप इतिहास से ट्रांसक्रिप्ट कॉपी कर सकते हैं।",
+    "pasteBlockedElevated": "खुला हुआ ऐप्लिकेशन एडमिनिस्ट्रेटर के रूप में चल रहा है, इसलिए Unwrite उसमें पेस्ट नहीं कर सकता। आप इतिहास से ट्रांसक्रिप्ट कॉपी कर सकते हैं।",
     "postProcessFailedTitle": "पोस्ट प्रोसेस के बिना पेस्ट किया गया",
     "postProcessFailed": "पोस्ट प्रोसेस पूरा नहीं हुआ, इसलिए ट्रांसक्रिप्ट जैसा था वैसा ही पेस्ट किया गया।",
     "filePostProcessFailedTitle": "पोस्ट प्रोसेस के बिना ट्रांसक्राइब किया गया",
@@ -980,11 +983,11 @@
   },
   "appLanguage": {
     "title": "ऐप्लिकेशन की भाषा",
-    "description": "Unmute इंटरफ़ेस की भाषा बदलें"
+    "description": "Unwrite इंटरफ़ेस की भाषा बदलें"
   },
   "theme": {
     "title": "ऐप्लिकेशन थीम",
-    "description": "चुनें कि Unmute आपकी सिस्टम थीम के हिसाब से चले या हमेशा लाइट या डार्क रहे",
+    "description": "चुनें कि Unwrite आपकी सिस्टम थीम के हिसाब से चले या हमेशा लाइट या डार्क रहे",
     "options": {
       "system": "सिस्टम",
       "light": "लाइट",
@@ -1023,7 +1026,11 @@
     "duration": "Time dictating",
     "play": "Play the recording",
     "pause": "Pause",
-    "audioUnavailable": "This Recording Is No Longer Available"
+    "audioUnavailable": "This Recording Is No Longer Available",
+    "deleteAudio": "Delete the Recording",
+    "confirmDeleteAudio": "Click Again to Delete the Recording",
+    "deleteAudioFailed": "Recording Not Deleted",
+    "confirmDelete": "Delete Recording"
   },
   "insights": {
     "title": "Insights",
@@ -1074,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unmute should spell your way.",
+    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1228,8 +1235,40 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unmute” three times in one dictation."
+        "description": "You said “Unwrite” three times in one dictation."
       }
     }
+  },
+  "share": {
+    "title": "Share",
+    "description": "A portrait image, ready for LinkedIn, Instagram or any other network.",
+    "save": "Save the image",
+    "linkedin": "Post on LinkedIn",
+    "hint": "“Post on LinkedIn” saves the image to Downloads and opens a new post: all that's left is to attach it.",
+    "saved": "Image saved to Downloads. Attach it to your post.",
+    "previewAlt": "Preview of the image to share",
+    "drawFailed": "Couldn't Draw the Image",
+    "saveFailed": "Couldn't Save the Image",
+    "share": "Share",
+    "shareBadge": "Share the {{name}} badge",
+    "shareInsights": "Share my insights",
+    "shareStanding": "Share my standing",
+    "badgeEarned": "Badge earned",
+    "insightsTitle": "My voice in numbers",
+    "dictatedWith": "{{belt}} · {{words}} words dictated"
+  },
+  "today": {
+    "title": "Today",
+    "figures": "Today's Figures",
+    "wordsToday": "Words Dictated Today",
+    "durationToday": "Dictation Time",
+    "welcome": "Welcome to Unwrite",
+    "recent": "Latest Dictations",
+    "noRecent": "Nothing dictated yet.",
+    "allDictations": "All Dictations",
+    "nextUp": "Next Goal",
+    "allBadges": "All Badges",
+    "hintBefore": "Your shortcut",
+    "hintAfter": "starts a dictation in any app."
   }
 }

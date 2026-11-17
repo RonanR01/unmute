@@ -731,7 +731,7 @@ impl ShortcutAction for TranscribeAction {
             show_transcribing_overlay(app);
         }
 
-        // Unmute before playing audio feedback so the stop sound is audible
+        // Unwrite before playing audio feedback so the stop sound is audible
         rm.remove_mute();
 
         // Play audio feedback for recording stop

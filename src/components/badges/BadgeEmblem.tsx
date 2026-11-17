@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 
 /** The pictogram at the heart of each badge. */
-const PICTOGRAMS: Record<string, LucideIcon> = {
+export const PICTOGRAMS: Record<string, LucideIcon> = {
   first_draft: Feather,
   big_talker: MessagesSquare,
   tour_de_france: Bike,
@@ -75,8 +75,8 @@ interface BadgeEmblemProps {
 }
 
 /**
- * A badge's medal: Unmute's ring and waves around a pictogram. Solid once
- * earned, a dashed outline until then.
+ * A badge's medal: Unwrite's ring and waves around a pictogram. A signal
+ * yellow disc once earned, a dashed outline until then.
  */
 export const BadgeEmblem: React.FC<BadgeEmblemProps> = ({
   id,
@@ -87,7 +87,7 @@ export const BadgeEmblem: React.FC<BadgeEmblemProps> = ({
   const Pictogram = hidden ? HelpCircle : (PICTOGRAMS[id] ?? HelpCircle);
   return (
     <span
-      className={`relative inline-flex shrink-0 items-center justify-center ${earned ? "text-text" : "text-ink-3"}`}
+      className={`relative inline-flex shrink-0 items-center justify-center ${earned ? "text-on-signal" : "text-ink-3"}`}
       style={{ width: size, height: size }}
       aria-hidden="true"
     >
@@ -104,7 +104,7 @@ export const BadgeEmblem: React.FC<BadgeEmblemProps> = ({
           r="30"
           strokeWidth="1.5"
           strokeDasharray={earned ? undefined : "3 5"}
-          className={earned ? "fill-surface-raised" : "fill-transparent"}
+          className={earned ? "fill-signal stroke-signal" : "fill-transparent"}
           opacity={earned ? 1 : 0.6}
         />
         {earned && (

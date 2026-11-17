@@ -18,9 +18,9 @@ const MONTH_LABEL_SPACING = 3;
 /** Signal yellow let through the surface: the stronger, the longer the day. */
 const LEVEL_COLORS = [
   "var(--color-surface-raised)",
-  "color-mix(in srgb, var(--color-signal) 25%, var(--color-surface))",
-  "color-mix(in srgb, var(--color-signal) 50%, var(--color-surface))",
-  "color-mix(in srgb, var(--color-signal) 75%, var(--color-surface))",
+  "var(--color-heat-1)",
+  "var(--color-heat-2)",
+  "var(--color-heat-3)",
   "var(--color-signal)",
 ];
 
@@ -79,7 +79,7 @@ const buildWeeks = (activity: DailyActivity[], weekCount: number): Cell[][] => {
 };
 
 /** Days in a row with a dictation, ending today or yesterday. */
-const currentStreak = (activity: DailyActivity[]): number => {
+export const currentStreak = (activity: DailyActivity[]): number => {
   const active = new Set(
     activity.filter((day) => day.dictation_count > 0).map((day) => day.date),
   );
@@ -100,7 +100,7 @@ const Figure: React.FC<{
 }> = ({ label, value, note }) => (
   <div className="flex-[1_1_140px] flex flex-col gap-1">
     <span className="text-[13px] text-ink-3">{label}</span>
-    <span className="text-[22px] leading-tight font-bold tracking-tight text-signal tabular-nums">
+    <span className="text-[22px] leading-tight font-bold tracking-tight measure tabular-nums">
       {value}
     </span>
     {note && (
@@ -212,6 +212,7 @@ export const Heatmap: React.FC<{ activity: DailyActivity[] }> = ({
   return (
     <div
       ref={panelRef}
+      data-theme="fir"
       className="relative flex flex-col gap-6 p-6 bg-surface border border-edge rounded-2xl"
     >
       <div ref={frameRef} className="w-full">
