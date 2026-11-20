@@ -38,7 +38,11 @@ bun run format            # Prettier + cargo fmt
 bun run format:check      # Check formatting without changes
 bun run format:frontend   # Prettier only
 bun run format:backend    # cargo fmt only
+bun run test:scripts      # Tests of the release scripts in scripts/
+bun run check:licenses    # npm licences against licenses-allowed.json
 ```
+
+**Releases:** `bun scripts/set-version.ts <version>` sets the version everywhere; the **Release** workflow builds a draft. See [docs/publier.md](docs/publier.md). Every dependency must have a licence listed in `licenses-allowed.json` (npm) and `src-tauri/deny.toml` (Rust, `cargo deny check licenses`); keep the two lists equal.
 
 **Model Setup (Required for Development):**
 

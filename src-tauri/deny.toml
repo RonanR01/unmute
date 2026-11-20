@@ -1,0 +1,37 @@
+# Licence check for the Rust dependencies (constitution, principle V).
+# The allow list mirrors licenses-allowed.json at the repository root, which
+# scripts/check-licenses.ts reads for the npm dependencies. Change both together.
+#
+#   cargo deny check licenses
+
+[licenses]
+confidence-threshold = 0.9
+# The list is shared with the npm check (OFL-1.1 covers a font), so an entry no
+# crate uses is expected.
+unused-allowed-license = "allow"
+# tauri-nspanel (Git dependency) declares no licence in its Cargo.toml.
+# cargo-deny reads its LICENSE_MIT and LICENSE_APACHE-2.0 files instead; the
+# exception is recorded in licenses-allowed.json.
+allow = [
+  "MIT",
+  "MIT-0",
+  "Apache-2.0",
+  "Apache-2.0 WITH LLVM-exception",
+  "BSD-2-Clause",
+  "BSD-3-Clause",
+  "ISC",
+  "Zlib",
+  "Unicode-3.0",
+  "Unicode-DFS-2016",
+  "CC0-1.0",
+  "0BSD",
+  "Unlicense",
+  "BSL-1.0",
+  "MPL-2.0",
+  "CDLA-Permissive-2.0",
+  "OFL-1.1",
+]
+
+[licenses.private]
+# The app crate itself is never published to crates.io.
+ignore = true

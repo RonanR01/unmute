@@ -1,0 +1,30 @@
+{
+  "$comment": "Licences compatibles avec un usage commercial (constitution, principe V). Lu par scripts/check-licenses.ts ; src-tauri/deny.toml reprend la même liste. Voir specs/002-build-sign-release/research.md, R7.",
+  "allowed": [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "Unicode-DFS-2016",
+    "CC0-1.0",
+    "0BSD",
+    "Unlicense",
+    "BSL-1.0",
+    "MPL-2.0",
+    "CDLA-Permissive-2.0",
+    "OFL-1.1"
+  ],
+  "exceptions": [
+    {
+      "package": "tauri-nspanel",
+      "ecosystem": "cargo",
+      "license": "MIT OR Apache-2.0",
+      "reason": "Dépendance Git (ahkohd/tauri-nspanel, branche v2.1) sans licence dans ses métadonnées ; LICENSE_MIT et LICENSE_APACHE-2.0 constatés dans le dépôt le 2026-11-20."
+    }
+  ]
+}

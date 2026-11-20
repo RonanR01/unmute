@@ -15,6 +15,12 @@ Ce que Tysta change :
 - une rétention de l'audio séparée de celle du texte ;
 - pas de mise à jour automatique, pour ne pas réinstaller Handy par-dessus.
 
+## Télécharger
+
+Les versions sont sur la [page des versions](https://github.com/RonanR01/unmute/releases) : un `.dmg` pour Mac (Apple Silicon ou Intel), un `.exe` pour Windows, et un `.deb`, un `.rpm` ou un `.AppImage` pour Linux. [La dernière version stable](https://github.com/RonanR01/unmute/releases/latest) est toujours à la même adresse. Chaque version liste ses composants (`sbom-*.cdx.json`) et l'empreinte de ses fichiers (`SHA256SUMS.txt`).
+
+Tysta est en bêta. Les préversions marquées « non signée » sont réservées à des testeurs : le système affiche une alerte à l'installation, et leurs notes expliquent comment la passer.
+
 ## Tout reste local
 
 Aucune donnée ne quitte la machine, sauf si vous activez un post-traitement par un fournisseur cloud. Les dictées sont dans `history.db` et les enregistrements dans `recordings/`, sous le dossier de données de l'app (`~/Library/Application Support/com.ronan.tysta/` sur macOS).

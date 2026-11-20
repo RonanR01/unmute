@@ -19,7 +19,7 @@ on:
       asset-prefix:
         required: false
         type: string
-        default: "handy"
+        default: "Tysta"
       asset-name-pattern:
         required: false
         type: string
@@ -47,15 +47,21 @@ on:
         required: false
         type: boolean
         default: false
-
-env:
-  TSC_VERSION: "0.9.0"
+      retention-days:
+        required: false
+        type: number
+        default: 30
+      timeout-minutes:
+        required: false
+        type: number
+        default: 120
 
 jobs:
   build:
     permissions:
       contents: write
     runs-on: ${{ inputs.platform }}
+    timeout-minutes: ${{ inputs.timeout-minutes }}
     steps:
       # Kept for git checkout and general tooling headroom. The native
       # transcribe-cpp-sys build no longer needs path help: since 0.1.3 its
@@ -85,6 +91,23 @@ jobs:
           VERSION=$(grep -o '"version": "[^"]*"' src-tauri/tauri.conf.json | cut -d'"' -f4)
           echo "Application version from tauri.conf.json: $VERSION"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      # WiX, which builds the MSI, rejects a pre-release version such as
+      # 0.1.0-beta.1, so a version with a suffix ships the NSIS installer only.
+      - name: Choose Windows installers
+        id: windows-bundles
+        if: contains(inputs.platform, 'windows')
+        shell: bash
+        env:
+          VERSION: ${{ steps.get-version.outputs.version }}
+          BUILD_ARGS: ${{ inputs.build-args }}
+        run: |
+          if [[ "$VERSION" == *-* && "$BUILD_ARGS" != *--bundles* ]]; then
+            echo "Pre-release $VERSION: NSIS only"
+            echo "args= --bundles nsis" >> "$GITHUB_OUTPUT"
+          else
+            echo "args=" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Determine build profile
         id: build-profile
@@ -162,18 +185,6 @@ jobs:
         with:
           version: 1.4.309.0
           cache: true
-
-      - name: Cache trusted-signing-cli
-        if: contains(inputs.platform, 'windows') && inputs.sign-binaries
-        id: cache-tsc
-        uses: actions/cache@v5
-        with:
-          path: ~/.cargo/bin/trusted-signing-cli*
-          key: trusted-signing-cli-${{ env.TSC_VERSION }}-${{ runner.os }}-${{ runner.arch }}
-
-      - name: Install trusted-signing-cli
-        if: contains(inputs.platform, 'windows') && inputs.sign-binaries && steps.cache-tsc.outputs.cache-hit != 'true'
-        run: cargo install --locked --force trusted-signing-cli@${{ env.TSC_VERSION }}
 
       - name: Prepare Vulkan SDK for Ubuntu 24.04
         if: contains(inputs.platform, 'ubuntu-24.04') && !contains(inputs.platform, 'arm')
@@ -385,7 +396,7 @@ jobs:
       # transcribe-cpp-sys's CMake install during the cargo build, but nothing
       # ships them. Pre-build the app so that install dir exists, then expose it
       # via LD_LIBRARY_PATH so the AppImage's linuxdeploy can resolve
-      # libtranscribe.so (a NEEDED of `handy`) while bundling. tauri-action
+      # libtranscribe.so (a NEEDED of `tysta`) while bundling. tauri-action
       # reuses this compile incrementally. build.rs stages the runtime and
       # dlopen'd modules into transcribe-libs/, which tauri.conf.json includes.
       - name: Pre-build and locate transcribe-cpp backend libs (Linux)
@@ -414,7 +425,7 @@ jobs:
           echo "Located transcribe-cpp libs in: $LIBDIR"
           ls -la "$LIBDIR"
           echo "LD_LIBRARY_PATH=$LIBDIR${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" >> "$GITHUB_ENV"
-          # linuxdeploy resolves `handy`'s NEEDED libs via `ldd` and HARD-FAILS
+          # linuxdeploy resolves `tysta`'s NEEDED libs via `ldd` and HARD-FAILS
           # on an unresolved one (it does not warn-and-skip). libtranscribe.so
           # lives only in the cargo build tree, so also publish it (and the ggml
           # libs it pulls in) to the system linker cache — belt-and-suspenders
@@ -451,17 +462,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           APPLE_ID: ${{ inputs.sign-binaries && secrets.APPLE_ID || '' }}
-          APPLE_ID_PASSWORD: ${{ inputs.sign-binaries && secrets.APPLE_ID_PASSWORD || '' }}
           APPLE_PASSWORD: ${{ inputs.sign-binaries && secrets.APPLE_PASSWORD || '' }}
           APPLE_TEAM_ID: ${{ inputs.sign-binaries && secrets.APPLE_TEAM_ID || '' }}
           APPLE_CERTIFICATE: ${{ inputs.sign-binaries && secrets.APPLE_CERTIFICATE || '' }}
           APPLE_CERTIFICATE_PASSWORD: ${{ inputs.sign-binaries && secrets.APPLE_CERTIFICATE_PASSWORD || '' }}
           APPLE_SIGNING_IDENTITY: ${{ inputs.sign-binaries && env.CERT_ID || '' }}
-          AZURE_CLIENT_ID: ${{ inputs.sign-binaries && secrets.AZURE_CLIENT_ID || '' }}
-          AZURE_CLIENT_SECRET: ${{ inputs.sign-binaries && secrets.AZURE_CLIENT_SECRET || '' }}
-          AZURE_TENANT_ID: ${{ inputs.sign-binaries && secrets.AZURE_TENANT_ID || '' }}
-          TAURI_SIGNING_PRIVATE_KEY: ${{ inputs.sign-binaries && secrets.TAURI_SIGNING_PRIVATE_KEY || '' }}
-          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ inputs.sign-binaries && secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD || '' }}
+          # Windows signing goes through scripts/ci/sign-windows.ps1 (SSL.com
+          # eSigner), called by the signCommand in tauri.sign-windows.conf.json.
+          # No updater key: Tysta publishes no updater files until feature 003.
+          ES_USERNAME: ${{ inputs.sign-binaries && contains(inputs.platform, 'windows') && secrets.ES_USERNAME || '' }}
+          ES_PASSWORD: ${{ inputs.sign-binaries && contains(inputs.platform, 'windows') && secrets.ES_PASSWORD || '' }}
+          ES_CREDENTIAL_ID: ${{ inputs.sign-binaries && contains(inputs.platform, 'windows') && secrets.ES_CREDENTIAL_ID || '' }}
+          ES_TOTP_SECRET: ${{ inputs.sign-binaries && contains(inputs.platform, 'windows') && secrets.ES_TOTP_SECRET || '' }}
           # The Vulkan loader and Wayland client library must come from the host
           # graphics stack. Bundling Ubuntu's copies ahead of the system libraries can
           # prevent a newer distro's Vulkan ICD or Mesa stack from loading.
@@ -477,7 +489,7 @@ jobs:
           releaseName: ${{ inputs.release-id && format('v{0}', steps.get-version.outputs.version) || '' }}
           releaseId: ${{ inputs.release-id }}
           assetNamePattern: ${{ steps.patch-release-name.outputs.platform }}
-          args: ${{ inputs.build-args }}
+          args: ${{ inputs.build-args }}${{ steps.windows-bundles.outputs.args }}${{ inputs.sign-binaries && contains(inputs.platform, 'windows') && format(' --config {0}/src-tauri/tauri.sign-windows.conf.json', github.workspace) || '' }}
 
       # tauri-action uploads release assets before returning. All AppImage
       # filtering therefore happens inside linuxdeploy above; this verifies the
@@ -513,6 +525,35 @@ jobs:
             fi
           )
 
+      # Launch the packaged app once, as the Linux and Windows audits do
+      # (constitution, principle VII). --list-devices registers the compute
+      # backends and exits without opening a window.
+      - name: Smoke test packaged app (macOS)
+        if: contains(inputs.platform, 'macos')
+        shell: bash
+        run: |
+          set -euo pipefail
+          APP="src-tauri/target/${{ inputs.target }}/${{ steps.build-profile.outputs.profile }}/bundle/macos/Tysta.app"
+          if [ ! -x "$APP/Contents/MacOS/tysta" ]; then
+            echo "ERROR: packaged binary not found: $APP/Contents/MacOS/tysta" >&2
+            ls -la "$(dirname "$APP")" >&2 || true
+            exit 1
+          fi
+          "$APP/Contents/MacOS/tysta" --list-devices
+          echo "macOS --list-devices smoke passed"
+
+      - name: Verify signature and notarization (macOS)
+        if: contains(inputs.platform, 'macos') && inputs.sign-binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BUNDLE="src-tauri/target/${{ inputs.target }}/${{ steps.build-profile.outputs.profile }}/bundle"
+          codesign --verify --deep --strict --verbose=2 "$BUNDLE/macos/Tysta.app"
+          spctl --assess --type exec --verbose=2 "$BUNDLE/macos/Tysta.app"
+          for dmg in "$BUNDLE"/dmg/*.dmg; do
+            xcrun stapler validate "$dmg"
+          done
+
       - name: Upload artifacts (macOS)
         if: inputs.upload-artifacts && contains(inputs.platform, 'macos')
         uses: actions/upload-artifact@v7
@@ -521,7 +562,7 @@ jobs:
           path: |
             src-tauri/target/${{ inputs.target }}/${{ steps.build-profile.outputs.profile }}/bundle/dmg/*.dmg
             src-tauri/target/${{ inputs.target }}/${{ steps.build-profile.outputs.profile }}/bundle/macos/*.app
-          retention-days: 30
+          retention-days: ${{ inputs.retention-days }}
 
       - name: Audit Linux package runtime contents
         if: contains(inputs.platform, 'ubuntu')
@@ -529,7 +570,7 @@ jobs:
         run: |
           set -euo pipefail
 
-          # The runtime smoke test launches the packaged handy binary, which links
+          # The runtime smoke test launches the packaged tysta binary, which links
           # GTK (via tao) even for the headless --list-devices path and therefore
           # needs a display to start. CI runners are headless, so provide a virtual
           # X server via xvfb-run.
@@ -566,7 +607,7 @@ jobs:
             local root="$1"
             local label="$2"
             local vulkan_icd="${3:-}"
-            # Run under a virtual X server: handy initializes GTK on startup even
+            # Run under a virtual X server: tysta initializes GTK on startup even
             # on the headless --list-devices path, which fails without a display.
             # An AppImage audit supplies Mesa's software ICD so GPU registration
             # is deterministic even on a runner without physical graphics.
@@ -575,8 +616,8 @@ jobs:
             fi
             HANDY_NO_GTK_LAYER_SHELL=1 \
             LD_LIBRARY_PATH="${root}/usr/lib/Handy:${root}/usr/lib${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" \
-              xvfb-run -a "${root}/usr/bin/handy" --list-devices \
-                >/tmp/handy-package-smoke.log 2>&1
+              xvfb-run -a "${root}/usr/bin/tysta" --list-devices \
+                >/tmp/tysta-package-smoke.log 2>&1
             echo "${label} --list-devices smoke passed"
           }
 
@@ -590,7 +631,7 @@ jobs:
               fi
               listing="$(mktemp)"
               dpkg-deb -c "$deb" > "$listing"
-              require_pattern "$listing" 'usr/bin/handy$' "handy binary"
+              require_pattern "$listing" 'usr/bin/tysta$' "tysta binary"
               require_pattern "$listing" 'usr/lib/Handy/libtranscribe\.so(\.[0-9]+)+$' "transcribe runtime library (SONAME)"
               require_pattern "$listing" 'usr/lib/Handy/libggml-cpu.*\.so' "ggml CPU backend module"
               # Handy's libs must stay out of the ldconfig-scanned /usr/lib
@@ -617,7 +658,7 @@ jobs:
               echo "Auditing rpm package: ${rpm_pkg}"
               listing="$(mktemp)"
               rpm -qpl "$rpm_pkg" > "$listing"
-              require_pattern "$listing" '/usr/bin/handy$' "handy binary"
+              require_pattern "$listing" '/usr/bin/tysta$' "tysta binary"
               require_pattern "$listing" '/usr/lib/Handy/libtranscribe\.so(\.[0-9]+)+$' "transcribe runtime library (SONAME)"
               require_pattern "$listing" '/usr/lib/Handy/libggml-cpu.*\.so' "ggml CPU backend module"
               # Same /usr/lib pollution guard as the deb audit (issue #1639).
@@ -634,12 +675,12 @@ jobs:
             for appimage in "${BUNDLE_DIR}"/appimage/*.AppImage; do
               echo "Auditing AppImage package: ${appimage}"
               workdir="$(mktemp -d)"
-              cp "$appimage" "${workdir}/Handy.AppImage"
-              chmod +x "${workdir}/Handy.AppImage"
+              cp "$appimage" "${workdir}/Tysta.AppImage"
+              chmod +x "${workdir}/Tysta.AppImage"
               (
                 cd "$workdir"
-                ./Handy.AppImage --appimage-extract >/dev/null
-                require_path "squashfs-root/usr/bin/handy" "AppImage handy binary"
+                ./Tysta.AppImage --appimage-extract >/dev/null
+                require_path "squashfs-root/usr/bin/tysta" "AppImage tysta binary"
                 # Gear Lever and other integration tools consume the root entry;
                 # appimagetool does not update the copy under usr/share/applications.
                 desktop_file="$(find squashfs-root -maxdepth 1 -type f -name '*.desktop' -print -quit)"
@@ -685,9 +726,9 @@ jobs:
                 # llvmpipe is intentionally not exposed as a compute device by
                 # ggml, but reaching this log proves the module loaded against a
                 # usable system Vulkan loader/ICD instead of failing silently.
-                if ! grep -q 'load_backend: loaded Vulkan backend' /tmp/handy-package-smoke.log; then
+                if ! grep -q 'load_backend: loaded Vulkan backend' /tmp/tysta-package-smoke.log; then
                   echo "ERROR: AppImage could not initialize its Vulkan backend with a usable system ICD" >&2
-                  cat /tmp/handy-package-smoke.log >&2
+                  cat /tmp/tysta-package-smoke.log >&2
                   exit 1
                 fi
               )
@@ -704,7 +745,7 @@ jobs:
             src-tauri/target/${{ steps.build-profile.outputs.profile }}/bundle/deb/*.deb
             src-tauri/target/${{ steps.build-profile.outputs.profile }}/bundle/appimage/*.AppImage
             src-tauri/target/${{ steps.build-profile.outputs.profile }}/bundle/rpm/*.rpm
-          retention-days: 30
+          retention-days: ${{ inputs.retention-days }}
 
       # Run on Windows releases too; upload-artifacts only controls retention.
       - name: Audit Windows package runtime contents
@@ -747,9 +788,9 @@ jobs:
           function Assert-PackageContents {
             param([string]$Root, [string]$Label)
 
-            $handy = Get-ChildItem $Root -Filter "handy.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-            if (-not $handy) {
-              throw "$Label package is missing handy.exe"
+            $tysta = Get-ChildItem $Root -Filter "tysta.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+            if (-not $tysta) {
+              throw "$Label package is missing tysta.exe"
             }
             foreach ($dll in $stagedDlls) {
               if (-not (Get-ChildItem $Root -Filter $dll.Name -Recurse -ErrorAction SilentlyContinue)) {
@@ -757,10 +798,10 @@ jobs:
               }
             }
 
-            $deviceOutput = (& $handy.FullName --list-devices | Out-String)
+            $deviceOutput = (& $tysta.FullName --list-devices | Out-String)
             $deviceOutput | Write-Host
             if ($LASTEXITCODE -ne 0) {
-              throw "$Label handy.exe --list-devices failed"
+              throw "$Label tysta.exe --list-devices failed"
             }
             if ("${{ inputs.target }}" -like "aarch64*" -and $deviceOutput -match "kind=(vulkan|cuda|metal|gpu)") {
               throw "$Label Windows ARM64 package unexpectedly exposed a GPU compute device"
@@ -788,8 +829,9 @@ jobs:
           }
 
           # Administrative install extracts the MSI payload without elevation.
+          # A pre-release builds NSIS only (WiX rejects a "-beta.N" version).
           $msiPackages = Get-ChildItem (Join-Path $bundleBase "msi") -Filter "*.msi" -ErrorAction SilentlyContinue
-          if (-not $msiPackages) {
+          if (-not $msiPackages -and -not "${{ steps.windows-bundles.outputs.args }}") {
             throw "No MSI packages found under $bundleBase for runtime DLL audit"
           }
 
@@ -809,6 +851,29 @@ jobs:
             Remove-Item -Recurse -Force $installDir
           }
 
+      - name: Verify Authenticode signatures (Windows)
+        if: contains(inputs.platform, 'windows') && inputs.sign-binaries
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $profile = "${{ steps.build-profile.outputs.profile }}"
+          $target = "${{ inputs.target }}"
+          if ($target -and $target -ne "x86_64-pc-windows-msvc") {
+            $bundleBase = "src-tauri/target/$target/$profile/bundle"
+          } else {
+            $bundleBase = "src-tauri/target/$profile/bundle"
+          }
+          $packages = @(
+            Get-ChildItem "$bundleBase/nsis" -Filter "*.exe" -ErrorAction SilentlyContinue
+            Get-ChildItem "$bundleBase/msi" -Filter "*.msi" -ErrorAction SilentlyContinue
+          ) | Where-Object { $_ }
+          if (-not $packages) { throw "No installer found under $bundleBase" }
+          foreach ($pkg in $packages) {
+            $sig = Get-AuthenticodeSignature $pkg.FullName
+            Write-Host "$($pkg.Name): $($sig.Status) ($($sig.SignerCertificate.Subject))"
+            if ($sig.Status -ne 'Valid') { throw "$($pkg.Name) is not validly signed: $($sig.Status)" }
+          }
+
       - name: Upload artifacts (Windows)
         if: inputs.upload-artifacts && contains(inputs.platform, 'windows')
         uses: actions/upload-artifact@v7
@@ -817,4 +882,4 @@ jobs:
           path: |
             src-tauri/target/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/msi/*.msi
             src-tauri/target/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/nsis/*.exe
-          retention-days: 30
+          retention-days: ${{ inputs.retention-days }}

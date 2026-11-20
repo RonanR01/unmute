@@ -1,83 +1,426 @@
 name: "Release"
 
-on: workflow_dispatch
+# Builds a Tysta release for macOS (Apple Silicon and Intel), Windows x64 and
+# Linux x64, and leaves it as a draft for the maintainer to review and publish.
+# Contract: specs/002-build-sign-release/contracts/release-workflow.md
+# How to use it: docs/publier.md
+
+on:
+  workflow_dispatch:
+    inputs:
+      channel:
+        description: "Canal : préversion non signée, bêta ou stable"
+        type: choice
+        options:
+          - prerelease-unsigned
+          - beta
+          - stable
+        default: prerelease-unsigned
+      dry-run:
+        description: "Construire et contrôler sans créer de version"
+        type: boolean
+        default: false
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
 
 jobs:
-  create-release:
-    permissions:
-      contents: write
+  preflight:
+    name: Contrôles préalables
     runs-on: ubuntu-latest
+    permissions:
+      # Listing draft releases (check 3) needs write access to contents.
+      contents: write
     outputs:
-      release-id: ${{ steps.create-release.outputs.result }}
-      version: ${{ steps.get-version.outputs.version }}
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      title: ${{ steps.channel.outputs.title }}
+      prefix: ${{ steps.channel.outputs.prefix }}
+      sign: ${{ steps.channel.outputs.sign }}
+      prerelease: ${{ steps.channel.outputs.prerelease }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Get version from tauri.conf.json
-        id: get-version
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      # 1. Same number in package.json, Cargo.toml, Cargo.lock, tauri.conf.json.
+      - name: "1. Versions concordantes"
+        id: version
         shell: bash
         run: |
-          VERSION=$(grep -o '"version": "[^"]*"' src-tauri/tauri.conf.json | cut -d'"' -f4)
-          echo "Application version from tauri.conf.json: $VERSION"
+          set -euo pipefail
+          if ! VERSION="$(bun scripts/set-version.ts --check 2>&1)"; then
+            echo "::error title=Versions divergentes::$VERSION"
+            echo "$VERSION" >&2
+            exit 1
+          fi
+          echo "Version : $VERSION"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
-      - name: Create Draft Release
+      # 2. stable has no suffix; beta and prerelease-unsigned need one.
+      - name: "2. Canal cohérent avec le numéro"
+        id: channel
+        shell: bash
+        env:
+          CHANNEL: ${{ inputs.channel }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          set -euo pipefail
+          if [[ "$CHANNEL" == "stable" && "$VERSION" == *-* ]]; then
+            echo "::error title=Canal incohérent::Une version stable ne porte pas de suffixe ($VERSION). Lance bun scripts/set-version.ts sans suffixe, ou choisis le canal beta."
+            exit 1
+          fi
+          if [[ "$CHANNEL" != "stable" && "$VERSION" != *-* ]]; then
+            echo "::error title=Canal incohérent::Le canal $CHANNEL demande un suffixe de préversion (par exemple ${VERSION}-beta.1)."
+            exit 1
+          fi
+          if [[ "$CHANNEL" == "prerelease-unsigned" ]]; then
+            {
+              echo "title=Tysta $VERSION (préversion non signée)"
+              echo "prefix=Tysta-non-signee"
+              echo "sign=false"
+            } >> "$GITHUB_OUTPUT"
+          else
+            {
+              echo "title=Tysta $VERSION"
+              echo "prefix=Tysta"
+              echo "sign=true"
+            } >> "$GITHUB_OUTPUT"
+          fi
+          if [[ "$CHANNEL" == "stable" ]]; then
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # 3. The tag must not exist, neither as a tag nor as a (draft) release.
+      - name: "3. Version inexistante"
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --tags origin "refs/tags/$TAG" >/dev/null; then
+            echo "::error title=La version existe déjà::L'étiquette $TAG existe. Augmente le numéro avec bun scripts/set-version.ts."
+            exit 1
+          fi
+          existing="$(gh api "repos/$GITHUB_REPOSITORY/releases" --paginate \
+            --jq ".[] | select(.tag_name == \"$TAG\") | (if .draft then \"brouillon\" else \"publiée\" end)")"
+          if [[ -n "$existing" ]]; then
+            if [[ "$existing" == *brouillon* ]]; then
+              echo "::error title=La version existe déjà::Un brouillon $TAG existe déjà, sans doute laissé par une exécution en échec. Supprime-le dans Releases (ainsi que son étiquette s'il y en a une), puis relance."
+            else
+              echo "::error title=La version existe déjà::La version $TAG est déjà publiée. Augmente le numéro avec bun scripts/set-version.ts."
+            fi
+            exit 1
+          fi
+          echo "$TAG est libre."
+
+      # 4. beta and stable sign, so every signing secret must be present.
+      #    Names only: a value is never printed.
+      - name: "4. Secrets de signature"
+        if: inputs.channel != 'prerelease-unsigned'
+        shell: bash
+        env:
+          APPLE_CERTIFICATE: ${{ secrets.APPLE_CERTIFICATE }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ES_USERNAME: ${{ secrets.ES_USERNAME }}
+          ES_PASSWORD: ${{ secrets.ES_PASSWORD }}
+          ES_CREDENTIAL_ID: ${{ secrets.ES_CREDENTIAL_ID }}
+          ES_TOTP_SECRET: ${{ secrets.ES_TOTP_SECRET }}
+        run: |
+          set -euo pipefail
+          # Source of truth: specs/002-build-sign-release/data-model.md and docs/publier.md
+          required=(
+            APPLE_CERTIFICATE APPLE_CERTIFICATE_PASSWORD KEYCHAIN_PASSWORD
+            APPLE_ID APPLE_PASSWORD APPLE_TEAM_ID
+            ES_USERNAME ES_PASSWORD ES_CREDENTIAL_ID ES_TOTP_SECRET
+          )
+          missing=()
+          for name in "${required[@]}"; do
+            if [[ -z "${!name:-}" ]]; then missing+=("$name"); fi
+          done
+          if (( ${#missing[@]} > 0 )); then
+            echo "::error title=Secrets de signature manquants::${missing[*]} — voir docs/publier.md, ou lance le canal prerelease-unsigned."
+            exit 1
+          fi
+          echo "Les ${#required[@]} secrets de signature sont présents."
+
+      # 5. Every shipped dependency has a licence compatible with commercial use.
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-deny
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-deny
+
+      - name: Install frontend dependencies
+        run: bun install --frozen-lockfile --ignore-scripts
+
+      - name: "5. Licences (npm)"
+        run: bun run check:licenses
+
+      - name: "5. Licences (Rust)"
+        working-directory: src-tauri
+        run: cargo deny --locked check licenses
+
+  create-release:
+    name: Brouillon de version
+    needs: preflight
+    if: ${{ !inputs.dry-run }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      release-id: ${{ steps.create-release.outputs.result }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          # Full history and tags, to list the commits since the previous tag.
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Draft release notes
+        env:
+          CHANNEL: ${{ inputs.channel }}
+        run: bun scripts/release-notes.ts --channel "$CHANNEL" > release-notes.md
+
+      - name: Create draft release
         id: create-release
         uses: actions/github-script@v9
+        env:
+          TAG: ${{ needs.preflight.outputs.tag }}
+          TITLE: ${{ needs.preflight.outputs.title }}
+          PRERELEASE: ${{ needs.preflight.outputs.prerelease }}
         with:
           script: |
+            const fs = require("fs");
+            const prerelease = process.env.PRERELEASE === "true";
             const { data } = await github.rest.repos.createRelease({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag_name: `v${{ steps.get-version.outputs.version }}`,
-              name: `v${{ steps.get-version.outputs.version }}`,
+              tag_name: process.env.TAG,
+              // The tag lands on the exact commit this run builds.
+              target_commitish: context.sha,
+              name: process.env.TITLE,
+              body: fs.readFileSync("release-notes.md", "utf8"),
               draft: true,
-              prerelease: false,
-              generate_release_notes: true
-            })
-            return data.id
+              prerelease,
+              // Only a stable version becomes /releases/latest (US4).
+              make_latest: prerelease ? "false" : "true",
+            });
+            core.info(`Brouillon créé : ${data.html_url}`);
+            return data.id;
 
-  publish-tauri:
+  build:
+    name: Construction
+    needs: [preflight, create-release]
+    # Runs after create-release, or without it in a dry run.
+    if: ${{ !cancelled() && needs.preflight.result == 'success' && (needs.create-release.result == 'success' || needs.create-release.result == 'skipped') }}
     permissions:
       contents: write
-    needs: create-release
     strategy:
       fail-fast: false
       matrix:
         include:
-          - platform: "macos-26" # for Arm based macs (M1 and above). Uses macOS 26 for Apple Intelligence SDK.
+          - platform: "macos-26" # Apple Silicon. macOS 26 for the Apple Intelligence SDK.
             args: "--target aarch64-apple-darwin"
             target: "aarch64-apple-darwin"
-          - platform: "macos-latest" # for Intel based macs.
+            # Bounds the wait on Apple's notarization service.
+            timeout: 90
+          - platform: "macos-latest" # Intel Macs.
             args: "--target x86_64-apple-darwin"
             target: "x86_64-apple-darwin"
-          - platform: "ubuntu-22.04" # Build .deb on 22.04
+            timeout: 90
+          - platform: "ubuntu-22.04" # .deb on 22.04
             args: "--bundles deb"
             target: "x86_64-unknown-linux-gnu"
-          - platform: "ubuntu-24.04" # Build AppImage and RPM on 24.04
+            timeout: 120
+          - platform: "ubuntu-24.04" # AppImage and RPM on 24.04
             args: "--bundles appimage,rpm"
             target: "x86_64-unknown-linux-gnu"
-          - platform: "ubuntu-24.04-arm" # Build for ARM64 Linux
-            args: "--bundles appimage,deb,rpm"
-            target: "aarch64-unknown-linux-gnu"
-          - platform: "windows-latest"
+            timeout: 120
+          - platform: "windows-latest" # NSIS only while the version has a suffix (WiX).
             args: ""
             target: "x86_64-pc-windows-msvc"
-          - platform: "windows-11-arm" # for ARM64 Windows runner
-            args: "--target aarch64-pc-windows-msvc"
-            target: "aarch64-pc-windows-msvc"
+            timeout: 120
 
     uses: ./.github/workflows/build.yml
     with:
       platform: ${{ matrix.platform }}
       target: ${{ matrix.target }}
       build-args: ${{ matrix.args }}
-      sign-binaries: true
-      asset-prefix: "handy"
-      upload-artifacts: false
+      sign-binaries: ${{ needs.preflight.outputs.sign == 'true' }}
+      asset-prefix: ${{ needs.preflight.outputs.prefix }}
+      # tauri-action names each file; build.yml prepends "<prefix>_".
+      asset-name-pattern: "[version]_[arch][setup][ext]"
       release-id: ${{ needs.create-release.outputs.release-id }}
+      upload-artifacts: true
+      retention-days: 7
+      timeout-minutes: ${{ matrix.timeout }}
       # Releases always build from scratch — never restore the Rust cache, so a
       # stale cached native lib can never be linked into a shipped artifact.
       no-cache: true
     secrets: inherit
+
+  sbom:
+    name: Liste des composants
+    needs: [preflight, create-release]
+    if: ${{ !cancelled() && needs.preflight.result == 'success' && (needs.create-release.result == 'success' || needs.create-release.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install cargo-cyclonedx
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-cyclonedx
+
+      - name: Rust components
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo cyclonedx --manifest-path src-tauri/Cargo.toml --format json --spec-version 1.5
+          produced="$(find src-tauri -maxdepth 1 -name '*.cdx.json' -print -quit)"
+          mv "$produced" sbom-rust.cdx.json
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      # cyclonedx-npm reads an npm lockfile; derive one from package.json.
+      # Development dependencies are left out: they are not shipped.
+      - name: Interface components
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npx --yes @cyclonedx/cyclonedx-npm@4 --omit dev --package-lock-only \
+            --output-format JSON --output-file sbom-interface.cdx.json
+
+      - name: Keep the component lists with the run
+        uses: actions/upload-artifact@v7
+        with:
+          name: sbom
+          path: "sbom-*.cdx.json"
+          retention-days: 7
+
+      - name: Attach to the draft
+        if: ${{ !inputs.dry-run }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_ID: ${{ needs.create-release.outputs.release-id }}
+        run: |
+          set -euo pipefail
+          for file in sbom-rust.cdx.json sbom-interface.cdx.json; do
+            gh api --method POST \
+              "https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID/assets?name=$file" \
+              -H "Content-Type: application/json" --input "$file" --silent
+            echo "Joint : $file"
+          done
+
+  checksums:
+    name: Noms et empreintes
+    needs: [preflight, create-release, build, sbom]
+    if: ${{ !cancelled() && needs.build.result == 'success' && needs.sbom.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      # A dry run has no draft: check the files the builds kept with the run.
+      - name: Collect the files of this run (dry run)
+        if: ${{ inputs.dry-run }}
+        uses: actions/download-artifact@v5
+        with:
+          path: run-files
+          merge-multiple: true
+
+      - name: Collect the files of this version
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_ID: ${{ needs.create-release.outputs.release-id }}
+          DRY_RUN: ${{ inputs.dry-run }}
+        run: |
+          set -euo pipefail
+          mkdir files
+          if [[ "$DRY_RUN" == "true" ]]; then
+            # A macOS .app is a folder: keep the installers and lists only.
+            find run-files -type f \( -name '*.dmg' -o -name '*.exe' -o -name '*.msi' \
+              -o -name '*.deb' -o -name '*.rpm' -o -name '*.AppImage' -o -name '*.cdx.json' \) \
+              -not -path '*.app/*' -exec mv -n {} files/ \;
+          else
+            cd files
+            gh api "repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID/assets" --paginate \
+              --jq '.[] | "\(.id) \(.name)"' |
+            while read -r id name; do
+              gh api -H "Accept: application/octet-stream" \
+                "repos/$GITHUB_REPOSITORY/releases/assets/$id" > "$name"
+            done
+          fi
+          ls -la "$GITHUB_WORKSPACE/files"
+
+      # FR-003 and SC-006: nothing Tysta publishes carries Handy's name.
+      - name: No file named after Handy
+        shell: bash
+        working-directory: files
+        run: |
+          set -euo pipefail
+          offending="$(find . -maxdepth 1 -type f -iname '*handy*' -printf '%f ')"
+          if [[ -n "$offending" ]]; then
+            echo "::error title=Nom Handy dans la version::$offending"
+            exit 1
+          fi
+          echo "Aucun fichier ne porte le nom Handy."
+
+      - name: Compute SHA256SUMS.txt
+        shell: bash
+        working-directory: files
+        run: |
+          set -euo pipefail
+          sha256sum -- * > ../SHA256SUMS.txt
+          cat ../SHA256SUMS.txt
+
+      - name: Keep the checksums with the run
+        uses: actions/upload-artifact@v7
+        with:
+          name: checksums
+          path: SHA256SUMS.txt
+          retention-days: 7
+
+      - name: Attach to the draft
+        if: ${{ !inputs.dry-run }}
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_ID: ${{ needs.create-release.outputs.release-id }}
+        run: |
+          set -euo pipefail
+          gh api --method POST \
+            "https://uploads.github.com/repos/$GITHUB_REPOSITORY/releases/$RELEASE_ID/assets?name=SHA256SUMS.txt" \
+            -H "Content-Type: text/plain" --input SHA256SUMS.txt --silent
+          echo "Brouillon prêt à relire : https://github.com/$GITHUB_REPOSITORY/releases"

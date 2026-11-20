@@ -15,6 +15,9 @@ on:
       - "tsconfig*"
       - "tailwind.config.*"
       - ".github/workflows/**"
+      - "licenses-allowed.json"
+      - "src-tauri/Cargo.lock"
+      - "src-tauri/deny.toml"
   pull_request:
     paths:
       - "src/**"
@@ -28,6 +31,9 @@ on:
       - "tsconfig*"
       - "tailwind.config.*"
       - ".github/workflows/**"
+      - "licenses-allowed.json"
+      - "src-tauri/Cargo.lock"
+      - "src-tauri/deny.toml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -58,8 +64,28 @@ jobs:
       - name: Test keyboard utilities
         run: bun run test:keyboard
 
+      - name: Test release scripts
+        run: bun run test:scripts
+
+      - name: Check npm licences
+        run: bun run check:licenses
+
       - name: Run ESLint
         run: bun run lint
 
       - name: Run prettier
         run: bun run format:check
+
+  licenses-rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install cargo-deny
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-deny
+
+      - name: Check Rust licences
+        working-directory: src-tauri
+        run: cargo deny --locked check licenses
