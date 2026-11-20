@@ -7,8 +7,8 @@
   /* Near-opaque app surface (theme.css --color-background at 98%). Auto-flips
      light/dark with --color-background, so no dark-mode override is needed. */
   --s-surface: color-mix(in srgb, var(--color-background) 98%, transparent);
-  /* Unwrite draws the overlay in its light ink; signal yellow is kept for the
-     one thing being measured here, the open microphone. */
+  /* Tysta draws the overlay in its light ink; signal yellow is kept for the
+     one thing being measured here, the voice. */
   --s-accent: var(--color-text);
   /* The rest come from theme.css, which already follows the theme setting. */
   --s-accent-soft: color-mix(in srgb, var(--color-signal) 28%, transparent);
@@ -277,8 +277,8 @@
   }
 }
 
-/* base row — dot (left) | waveform (center) | timer + cancel (right).
-   Same structure for pill & panel; the dot stays anchored left in both. */
+/* base row — spinner or nothing (left) | waveform or label (center) |
+   timer + cancel (right). Same structure for pill & panel. */
 .sbase {
   height: var(--ov-base-h);
   flex: none; /* the control row never squashes; only the text region gives */
@@ -302,35 +302,6 @@
   gap: 10px;
   justify-self: end;
 }
-.sdot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex: none;
-  box-sizing: border-box;
-  transition:
-    background-color 180ms ease,
-    opacity 180ms ease;
-}
-.sdot.ready {
-  background: var(--color-signal);
-  opacity: 1;
-  animation: sdot-pulse 1.9s infinite;
-}
-/* A quiet neutral dot while the host has not delivered its first sample yet. */
-.sdot.arming {
-  background: var(--s-muted);
-  opacity: 0.45;
-  animation: none;
-}
-@keyframes sdot-pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--s-accent-soft);
-  }
-  70% {
-    box-shadow: 0 0 0 7px transparent;
-  }
-}
 .stimer {
   font-size: 12px;
   color: var(--s-faint);
@@ -343,56 +314,45 @@
   opacity: 1;
 }
 
-/* Waveform — reactive only after the first microphone callback. While arming,
-   a muted travelling pulse acknowledges the shortcut without pretending that
-   audio levels are already being received. */
+/* Waveform — the voice as a strip chart, drawn by Waveform.tsx: what was just
+   said enters on the right and travels left. Until the first microphone
+   callback the lines lie flat and dim, so the pill doesn't pretend to hear. */
 .swave {
-  width: 76px;
+  width: 96px;
   height: 18px;
-  margin-right: 8px;
-  overflow: hidden;
   flex: none;
 }
-/* Topographic lines: three waves drifting at their own pace, as tall as the
-   voice is loud. One period is 60px, so a 60px slide loops unseen. */
 .swave svg {
   display: block;
-  width: 240px;
+  width: 96px;
   height: 18px;
   overflow: visible;
-  transform-origin: center;
-  transition:
-    transform 110ms linear,
-    opacity 180ms ease;
+  transition: opacity 180ms ease;
 }
+/* Signal yellow only reads on fir, so the light theme draws the front curve in
+   fir over a yellow highlighter stroke, as `measure` does for a value. */
 .swave path {
   fill: none;
-  stroke: var(--s-accent);
+  stroke: var(--color-signal-ink);
+  stroke-width: 1;
   stroke-linecap: round;
-  animation: swave-drift 2.4s linear infinite;
+  stroke-linejoin: round;
 }
-.swave path:nth-child(2) {
-  opacity: 0.7;
-  animation-duration: 3.6s;
-  animation-direction: reverse;
+.swave .swave-front {
+  stroke-width: 1.4;
 }
-.swave path:nth-child(3) {
-  opacity: 0.45;
-  animation-duration: 3s;
+.swave .swave-mark {
+  stroke: var(--color-signal-mark);
+  stroke-width: 4.5;
+}
+.swave .swave-back {
+  opacity: 0.6;
+}
+.swave .swave-back:first-child {
+  opacity: 0.38;
 }
 .swave.arming svg {
-  transform: scaleY(0.3) !important;
   opacity: 0.4;
-}
-@keyframes swave-drift {
-  to {
-    transform: translateX(-60px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .swave path {
-    animation: none;
-  }
 }
 .sx {
   width: 22px;
