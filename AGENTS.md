@@ -233,7 +233,7 @@ Access debug features: `Cmd+Shift+D` (macOS) or `Ctrl+Shift+D` (Windows/Linux)
 
 ## Troubleshooting
 
-See the [Dépannage](README.md#dépannage) section in README.md, which points to Handy's troubleshooting guide.
+See [docs/depannage.md](docs/depannage.md) and [docs/linux.md](docs/linux.md); the app's help links (`src/lib/constants/links.ts`) open these pages. Anything not covered there falls back to Handy's troubleshooting guide.
 
 ## GitHub workflow for AI coding assistants
 

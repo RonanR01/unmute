@@ -19,3 +19,11 @@ src-tauri/src/catalog/catalog.json
 # Misc
 .DS_Store
 *.log
+
+# Managed by the Specify CLI (Spec Kit); the constitution stays formatted
+.specify/templates
+.specify/workflows
+.specify/scripts
+.specify/integrations
+.specify/*.json
+.claude/skills/speckit-*

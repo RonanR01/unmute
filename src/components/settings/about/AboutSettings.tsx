@@ -10,6 +10,7 @@ import { AppLanguageSelector } from "../AppLanguageSelector";
 import { ThemeSelector } from "../ThemeSelector";
 import { ShowWhatsNewOnUpdate } from "../ShowWhatsNewOnUpdate";
 import { LogDirectory } from "../debug";
+import { TYSTA_REPO_URL } from "@/lib/constants/links";
 
 export const AboutSettings: React.FC = () => {
   const { t } = useTranslation();
@@ -53,7 +54,7 @@ export const AboutSettings: React.FC = () => {
           <Button
             variant="secondary"
             size="md"
-            onClick={() => openUrl("https://github.com/RonanR01/unmute")}
+            onClick={() => openUrl(TYSTA_REPO_URL)}
           >
             {t("settings.about.sourceCode.button")}
           </Button>

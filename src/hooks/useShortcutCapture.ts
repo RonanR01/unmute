@@ -4,7 +4,7 @@ import { openUrl } from "@tauri-apps/plugin-opener";
 import { useTranslation } from "react-i18next";
 import { notify } from "@/stores/noticeStore";
 import { commands } from "@/bindings";
-import { SECURE_INPUT_HELP_URL } from "@/components/SecureInputWarning";
+import { SECURE_INPUT_HELP_URL } from "@/lib/constants/links";
 import { useSettings } from "@/hooks/useSettings";
 import {
   getKeyName,

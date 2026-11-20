@@ -35,7 +35,7 @@ Le détail par plateforme est dans [BUILD.md](BUILD.md), et les consignes pour l
 
 ## Dépannage
 
-Le moteur étant celui de Handy, son [guide de dépannage](https://github.com/cjpais/Handy#troubleshooting) s'applique.
+Voir [docs/depannage.md](docs/depannage.md), et [docs/linux.md](docs/linux.md) pour l'installation sous Linux. Le moteur étant celui de Handy, son [guide de dépannage](https://github.com/cjpais/Handy#troubleshooting) couvre le reste.
 
 ## Licence
 
