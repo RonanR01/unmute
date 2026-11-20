@@ -16,7 +16,7 @@ import {
   SlidersHorizontal,
   Sparkles,
 } from "lucide-react";
-import { UnwriteLogo, UnwriteMark } from "./icons/UnwriteLogo";
+import { TystaLogo, TystaMark } from "./icons/TystaLogo";
 import {
   GeneralSettings,
   AdvancedSettings,
@@ -107,7 +107,7 @@ export const SECTIONS_CONFIG = {
 
 export type SidebarSection = keyof typeof SECTIONS_CONFIG;
 
-const COLLAPSED_KEY = "unwrite.sidebar.collapsed";
+const COLLAPSED_KEY = "tysta.sidebar.collapsed";
 
 /** Whether the menu was left reduced to its icons. */
 const readCollapsed = () => {
@@ -129,10 +129,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(readCollapsed);
+  // A reduced menu opens over the content while the pointer or the keyboard
+  // is on it, and folds back when they leave.
+  const [peek, setPeek] = useState(false);
+  const open = !collapsed || peek;
 
   const toggle = () => {
     const next = !collapsed;
     setCollapsed(next);
+    setPeek(false);
     try {
       localStorage.setItem(COLLAPSED_KEY, next ? "1" : "0");
     } catch {
@@ -144,52 +149,65 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const Toggle = collapsed ? PanelLeftOpen : PanelLeftClose;
 
   return (
-    <nav
-      aria-label={t("sidebar.navigation")}
-      data-tauri-drag-region
-      className={`flex flex-col shrink-0 h-full px-3 pb-4 pt-[calc(var(--titlebar-inset)+20px)] gap-7 transition-[width] duration-200 ${
-        collapsed ? "w-20" : "w-52"
+    // The reduced width still clears macOS's window buttons.
+    <div
+      className={`relative shrink-0 h-full transition-[width] duration-200 ${
+        collapsed ? "w-24" : "w-52"
       }`}
+      onMouseEnter={() => collapsed && setPeek(true)}
+      onMouseLeave={() => setPeek(false)}
+      onFocus={() => collapsed && setPeek(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setPeek(false);
+      }}
     >
-      {collapsed ? (
-        <UnwriteMark className="mx-auto text-text" />
-      ) : (
-        <UnwriteLogo className="px-3" />
-      )}
-      <div className="flex flex-1 flex-col gap-1">
-        {(Object.keys(SCREENS) as Screen[]).map((id) => {
-          const { labelKey, icon: Icon } = SCREENS[id];
-          const isActive = activeScreen === id;
-          return (
-            <button
-              key={id}
-              type="button"
-              aria-current={isActive ? "page" : undefined}
-              onClick={() => onScreenChange(id)}
-              aria-label={collapsed ? t(labelKey) : undefined}
-              title={collapsed ? t(labelKey) : undefined}
-              className={`flex items-center gap-3 min-h-11 px-3 rounded-[10px] text-start text-[15px] cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-text ${
-                isActive
-                  ? "bg-nav-active text-text font-semibold"
-                  : "text-ink-3 font-medium hover:text-text hover:bg-surface"
-              }`}
-            >
-              <Icon size={18} strokeWidth={1.75} className="shrink-0" />
-              {!collapsed && <span className="truncate">{t(labelKey)}</span>}
-            </button>
-          );
-        })}
-      </div>
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={toggleLabel}
-        aria-expanded={!collapsed}
-        title={toggleLabel}
-        className="flex items-center min-h-11 px-3 rounded-[10px] text-ink-3 cursor-pointer transition-colors hover:text-text hover:bg-surface focus-visible:outline-2 focus-visible:outline-text"
+      <nav
+        aria-label={t("sidebar.navigation")}
+        data-tauri-drag-region
+        className={`absolute inset-y-0 start-0 z-20 flex flex-col px-3 pb-4 pt-[calc(var(--titlebar-inset)+20px)] gap-7 bg-chrome transition-[width] duration-200 ${
+          open ? "w-52" : "w-24"
+        } ${collapsed && peek ? "border-e border-edge" : ""}`}
       >
-        <Toggle size={18} strokeWidth={1.75} className="shrink-0" />
-      </button>
-    </nav>
+        {open ? (
+          <TystaLogo className="px-3" />
+        ) : (
+          <TystaMark className="mx-auto text-text" />
+        )}
+        <div className="flex flex-1 flex-col gap-1">
+          {(Object.keys(SCREENS) as Screen[]).map((id) => {
+            const { labelKey, icon: Icon } = SCREENS[id];
+            const isActive = activeScreen === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => onScreenChange(id)}
+                aria-label={open ? undefined : t(labelKey)}
+                title={open ? undefined : t(labelKey)}
+                className={`flex items-center gap-3 min-h-11 px-3 rounded-[10px] text-start text-[15px] cursor-pointer transition-colors focus-visible:outline-2 focus-visible:outline-text ${open ? "" : "justify-center"} ${
+                  isActive
+                    ? "bg-nav-active text-text font-semibold"
+                    : "text-ink-3 font-medium hover:text-text hover:bg-surface"
+                }`}
+              >
+                <Icon size={18} strokeWidth={1.75} className="shrink-0" />
+                {open && <span className="truncate">{t(labelKey)}</span>}
+              </button>
+            );
+          })}
+        </div>
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label={toggleLabel}
+          aria-expanded={!collapsed}
+          title={toggleLabel}
+          className={`flex items-center min-h-11 px-3 rounded-[10px] text-ink-3 cursor-pointer transition-colors hover:text-text hover:bg-surface focus-visible:outline-2 focus-visible:outline-text ${open ? "" : "justify-center"}`}
+        >
+          <Toggle size={18} strokeWidth={1.75} className="shrink-0" />
+        </button>
+      </nav>
+    </div>
   );
 };

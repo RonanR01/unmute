@@ -34,7 +34,7 @@
     "customModelDescription": "Sin soporte oficial",
     "migration": {
       "title": "Tus modelos necesitan una actualización",
-      "description": "Unwrite ahora usa un tipo de modelo más nuevo. Descarga la nueva versión para seguir transcribiendo. Las versiones antiguas se eliminarán.",
+      "description": "Tysta ahora usa un tipo de modelo más nuevo. Descarga la nueva versión para seguir transcribiendo. Las versiones antiguas se eliminarán.",
       "replaces": "Reemplaza a {{name}}",
       "oldFormat": "Formato antiguo",
       "failed": "Error en la descarga",
@@ -71,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Micrófono",
-        "why": "Para que Unwrite pueda escucharte. El audio se convierte en texto en este equipo y nunca se sube a ninguna parte."
+        "why": "Para que Tysta pueda escucharte. El audio se convierte en texto en este equipo y nunca se sube a ninguna parte."
       },
       "accessibility": {
         "name": "Accesibilidad",
-        "why": "Para que tu atajo funcione en cualquier app y Unwrite pueda escribir el texto donde está tu cursor."
+        "why": "Para que tu atajo funcione en cualquier app y Tysta pueda escribir el texto donde está tu cursor."
       },
       "errors": {
         "checkFailed": "Error al verificar permisos. Por favor, inténtalo de nuevo.",
@@ -89,12 +89,12 @@
       "openSettings": "Abrir configuración",
       "allowed": "Permitido",
       "waiting": "En espera",
-      "turnOnMac": "Activa Unwrite en Ajustes del Sistema y vuelve aquí.",
+      "turnOnMac": "Activa Tysta en Ajustes del Sistema y vuelve aquí.",
       "turnOnWindows": "Activa el acceso al micrófono en Configuración de Windows y vuelve aquí.",
       "hintBoth": "Permite ambos para continuar",
       "hintMicrophone": "Permite el micrófono para continuar",
       "welcomeBack": "Te damos la bienvenida de nuevo. Seguimos donde lo dejaste.",
-      "relaunch": "¿El atajo no responde después de esto? <relaunch>Reinicia Unwrite</relaunch> y volverás justo aquí."
+      "relaunch": "¿El atajo no responde después de esto? <relaunch>Reinicia Tysta</relaunch> y volverás justo aquí."
     },
     "shell": {
       "back": "Atrás",
@@ -105,11 +105,11 @@
       "title": "Habla en lugar de escribir, en cualquier app",
       "subtitle": "Elige los idiomas en los que vas a dictar",
       "languagesLabel": "Idiomas",
-      "noMatch": "Ningún idioma coincide con «{{query}}». Los modelos de Unwrite cubren unos 100 idiomas; hay más en la configuración.",
+      "noMatch": "Ningún idioma coincide con «{{query}}». Los modelos de Tysta cubren unos 100 idiomas; hay más en la configuración.",
       "appLanguage": "Idioma de la app",
       "menusIn": "Menús en <b>{{language}}</b>",
       "chinese": {
-        "question": "Hablas {{languages}}. ¿Qué caracteres debe escribir Unwrite?",
+        "question": "Hablas {{languages}}. ¿Qué caracteres debe escribir Tysta?",
         "label": "Caracteres chinos",
         "zh-Hans": "Simplificado",
         "zh-Hant": "Taiwán",
@@ -179,7 +179,7 @@
     },
     "try": {
       "title": "¡Pruébalo!",
-      "subtitle": "Unwrite está en la esquina para guiarte",
+      "subtitle": "Tysta está en la esquina para guiarte",
       "noteLabel": "Nota",
       "placeholder": "Nueva nota",
       "hold": "Mantén pulsado <keys/> y habla.",
@@ -207,14 +207,14 @@
     },
     "done": {
       "title": "Todo listo",
-      "subMac": "Unwrite ya está en la barra de menús. Mantén pulsado o toca <keys/> en cualquier app para hablar.",
-      "subTray": "Unwrite ya está en la bandeja del sistema. Mantén pulsado o toca <keys/> en cualquier app para hablar.",
+      "subMac": "Tysta ya está en la barra de menús. Mantén pulsado o toca <keys/> en cualquier app para hablar.",
+      "subTray": "Tysta ya está en la bandeja del sistema. Mantén pulsado o toca <keys/> en cualquier app para hablar.",
       "hint": "Puedes cambiar esto más tarde en Configuración",
       "highFiveLabel": "Choca esos cinco",
-      "atLogin": "Iniciar Unwrite al iniciar sesión",
+      "atLogin": "Iniciar Tysta al iniciar sesión",
       "finish": "Listo",
       "panel": {
-        "name": "Unwrite",
+        "name": "Tysta",
         "ready": "Listo",
         "languages": "Idiomas",
         "model": "Modelo de voz",
@@ -339,7 +339,7 @@
     "general": {
       "title": "General",
       "shortcut": {
-        "title": "Atajos de Unwrite",
+        "title": "Atajos de Tysta",
         "description": "Configura atajos de teclado para activar la grabación de voz a texto",
         "loading": "Cargando atajos...",
         "none": "No hay atajos configurados",
@@ -381,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Idiomas preferidos",
-        "description": "Los idiomas que hablas. Unwrite los usa para recomendar modelos.",
+        "description": "Los idiomas que hablas. Tysta los usa para recomendar modelos.",
         "noMatch": "Ningún idioma coincide con «{{query}}»",
         "weak": "Ningún modelo reconoce bien {{languages}} todavía."
       },
@@ -408,17 +408,17 @@
         "fits": "Para tus idiomas",
         "untested": "Sin probar"
       },
-      "untestedNote": "No probados con Unwrite. Pueden ser más lentos o cometer más errores.",
+      "untestedNote": "No probados con Tysta. Pueden ser más lentos o cometer más errores.",
       "untestedHidden_one": "{{count}} modelo más no está optimizado para dictado. Búscalo para encontrarlo.",
       "untestedHidden_other": "{{count}} modelos más no están optimizados para dictado. Busca para encontrar uno.",
-      "emptyYours": "Aún no hay modelos. Elige uno abajo: se descarga y Unwrite lo usa.",
+      "emptyYours": "Aún no hay modelos. Elige uno abajo: se descarga y Tysta lo usa.",
       "showMore": "Mostrar {{count}} más",
       "showFewer": "Mostrar menos",
       "download": "Descargar y usar",
       "downloadingThenUse": "{{percent}} % de {{total}}, luego se activa",
       "loading": "Cargando…",
       "deleteAsk": "¿Eliminar {{name}}? Libera {{size}}.",
-      "deleteAskActive": "¿Eliminar {{name}}? Unwrite no podrá transcribir hasta que elijas otro.",
+      "deleteAskActive": "¿Eliminar {{name}}? Tysta no podrá transcribir hasta que elijas otro.",
       "cancel": "Cancelar",
       "deleteModel": "Eliminar {{name}}",
       "cancelDownload": "Detener la descarga de {{name}}",
@@ -432,14 +432,14 @@
         "marks": "? aún no se ha medido. — no entiende ese idioma."
       },
       "retiredNotice": {
-        "title": "Los modelos antiguos ya no funcionan con Unwrite",
+        "title": "Los modelos antiguos ya no funcionan con Tysta",
         "description": "Ocupan {{size}} en tu equipo.",
         "delete": "Eliminar modelos",
         "deleteFailed": "No se pudieron eliminar algunos modelos antiguos. Consulta el registro para más detalles."
       },
       "rescan": {
         "label": "Volver a escanear",
-        "tooltip": "Vuelve a escanear en busca de modelos añadidos a la carpeta de modelos o a la caché de Hugging Face fuera de Unwrite"
+        "tooltip": "Vuelve a escanear en busca de modelos añadidos a la carpeta de modelos o a la caché de Hugging Face fuera de Tysta"
       }
     },
     "languages": {
@@ -509,11 +509,11 @@
       },
       "autostart": {
         "label": "Iniciar al arranque",
-        "description": "Iniciar Unwrite automáticamente cuando inicies sesión en tu computadora."
+        "description": "Iniciar Tysta automáticamente cuando inicies sesión en tu computadora."
       },
       "showTrayIcon": {
         "label": "Mostrar icono de bandeja",
-        "description": "Mostrar el icono de Unwrite en la bandeja del sistema."
+        "description": "Mostrar el icono de Tysta en la bandeja del sistema."
       },
       "overlay": {
         "style": {
@@ -750,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Buscar actualizaciones",
-        "description": "Buscar automáticamente nuevas versiones de Unwrite",
+        "description": "Buscar automáticamente nuevas versiones de Tysta",
         "lockedDescription": "Deshabilitado por la configuración del sistema (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -856,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnóstico del teclado",
-        "description": "Comprueba si los eventos de teclado llegan a Unwrite. Solo se registra el número de eventos, nunca qué teclas pulsas.",
+        "description": "Comprueba si los eventos de teclado llegan a Tysta. Solo se registra el número de eventos, nunca qué teclas pulsas.",
         "run": "Ejecutar diagnóstico de 10 s",
         "running": "Escuchando… pulsa tu atajo varias veces (p. ej. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -870,7 +870,7 @@
         "mouse": "Ratón",
         "verdictBlocked": "Secure Input está bloqueando los eventos de teclado: los atajos que incluyen una tecla normal no pueden funcionar hasta que se resuelva.",
         "verdictSuspicious": "Llegaron eventos de modificadores, pero ningún evento de tecla: algo está suprimiendo las teclas aunque Secure Input aparezca como desactivado. Por favor, repórtalo en GitHub.",
-        "verdictOk": "Los eventos de teclado llegan a Unwrite con normalidad.",
+        "verdictOk": "Los eventos de teclado llegan a Tysta con normalidad.",
         "verdictNoEvents": "No se capturó ningún evento: ¿pulsaste alguna tecla durante la prueba?",
         "failed": "El diagnóstico falló: {{error}}"
       },
@@ -884,15 +884,15 @@
       "title": "Acerca de",
       "version": {
         "title": "Versión",
-        "description": "Versión actual de Unwrite"
+        "description": "Versión actual de Tysta"
       },
       "whatsNewUpdates": {
         "label": "Mostrar novedades",
-        "description": "Mostrar notas de la versión después de las actualizaciones de Unwrite"
+        "description": "Mostrar notas de la versión después de las actualizaciones de Tysta"
       },
       "appDataDirectory": {
         "title": "Directorio de datos de la aplicación",
-        "description": "Ubicación donde Unwrite almacena sus datos"
+        "description": "Ubicación donde Tysta almacena sus datos"
       },
       "sourceCode": {
         "title": "Código fuente",
@@ -904,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Biblioteca de tensores de alto rendimiento para inferencia de aprendizaje automático en el dispositivo",
-          "details": "El habla a texto local de Unwrite está construido sobre transcribe.cpp y ggml. Gracias al increíble trabajo de Georgi Gerganov y colaboradores."
+          "details": "El habla a texto local de Tysta está construido sobre transcribe.cpp y ggml. Gracias al increíble trabajo de Georgi Gerganov y colaboradores."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unwrite is built on",
-          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Tysta is built on",
+          "details": "Tysta is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -931,7 +931,7 @@
     "portableUpdateBrowseButton": "Abrir GitHub Releases"
   },
   "whatsNew": {
-    "title": "Nuevo en Unwrite v{{version}}"
+    "title": "Nuevo en Tysta v{{version}}"
   },
   "common": {
     "playbackPosition": "Posición de reproducción",
@@ -958,7 +958,7 @@
     "microphoneSilentTitle": "El micrófono está en silencio",
     "microphoneSilent": "Tu micrófono solo envió silencio. Comprueba que no esté silenciado o elige otro micrófono en Configuración.",
     "recordingFailedTitle": "Error al iniciar la grabación",
-    "modelLoadFailed": "Unwrite no pudo cargar este modelo. Inténtalo de nuevo o elige otro.",
+    "modelLoadFailed": "Tysta no pudo cargar este modelo. Inténtalo de nuevo o elige otro.",
     "modelLoadFailedTitle": "Error al cargar el modelo",
     "noModelSelected": "Descarga o elige un modelo en Configuración > Modelos.",
     "noModelSelectedTitle": "Ningún modelo seleccionado",
@@ -966,7 +966,7 @@
     "pasteFailedTitle": "Error al pegar el texto",
     "pasteFailed": "No se pudo pegar el texto en la aplicación activa.",
     "pasteBlockedElevatedTitle": "No se puede pegar en apps admin",
-    "pasteBlockedElevated": "La aplicación activa se ejecuta como administrador, así que Unwrite no puede pegar en ella. Puedes copiar la transcripción desde Historial.",
+    "pasteBlockedElevated": "La aplicación activa se ejecuta como administrador, así que Tysta no puede pegar en ella. Puedes copiar la transcripción desde Historial.",
     "postProcessFailedTitle": "Pegado sin post proceso",
     "postProcessFailed": "El post proceso no terminó, así que la transcripción se pegó tal cual.",
     "filePostProcessFailedTitle": "Transcrito sin post proceso",
@@ -983,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Idioma de la aplicación",
-    "description": "Cambia el idioma de la interfaz de Unwrite"
+    "description": "Cambia el idioma de la interfaz de Tysta"
   },
   "theme": {
     "title": "Tema de la aplicación",
-    "description": "Elige si Unwrite sigue el tema del sistema o permanece claro u oscuro",
+    "description": "Elige si Tysta sigue el tema del sistema o permanece claro u oscuro",
     "options": {
       "system": "Sistema",
       "light": "Claro",
@@ -1027,10 +1027,10 @@
     "play": "Play the recording",
     "pause": "Pause",
     "audioUnavailable": "This Recording Is No Longer Available",
-    "deleteAudio": "Delete the Recording",
-    "confirmDeleteAudio": "Click Again to Delete the Recording",
-    "deleteAudioFailed": "Recording Not Deleted",
-    "confirmDelete": "Delete Recording"
+    "confirmDelete": "Delete",
+    "deleteDictation": "Delete the Dictation",
+    "confirmDeleteDictation": "Click Again to Delete the Dictation and Its Recording",
+    "deleteFailed": "Dictation Not Deleted"
   },
   "insights": {
     "title": "Insights",
@@ -1081,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
+    "subtitle": "Names, jargon and brands Tysta should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1094,9 +1094,9 @@
     "status": "My standing",
     "lifetimeWords": "Words dictated in all",
     "earnedCount": "Badges earned",
-    "beltsLabel": "The seven belts",
-    "nextBelt": "{{words}} more words to the {{belt}}",
-    "topBelt": "You wear the highest belt.",
+    "beltsLabel": "The Seven Levels of the Climb",
+    "nextBelt": "{{words}} more words to reach {{belt}}",
+    "topBelt": "You have reached the highest level.",
     "earnedOn": "Earned on {{date}}",
     "toEarn": "To earn",
     "soon": "Soon",
@@ -1104,13 +1104,13 @@
     "secretName": "Secret badge",
     "secretDescription": "It stays hidden until you find it.",
     "belts": {
-      "0": "White belt of speech",
-      "1": "Yellow belt of speech",
-      "2": "Orange belt of speech",
-      "3": "Green belt of speech",
-      "4": "Blue belt of speech",
-      "5": "Brown belt of speech",
-      "6": "Black belt of speech"
+      "0": "Plain",
+      "1": "Hill",
+      "2": "Plateau",
+      "3": "Pass",
+      "4": "Ridge",
+      "5": "Summit",
+      "6": "Sky"
     },
     "categories": {
       "volume": "Volume and regularity",
@@ -1235,7 +1235,7 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unwrite” three times in one dictation."
+        "description": "You said “Tysta” three times in one dictation."
       }
     }
   },
@@ -1262,7 +1262,7 @@
     "figures": "Today's Figures",
     "wordsToday": "Words Dictated Today",
     "durationToday": "Dictation Time",
-    "welcome": "Welcome to Unwrite",
+    "welcome": "Welcome to Tysta",
     "recent": "Latest Dictations",
     "noRecent": "Nothing dictated yet.",
     "allDictations": "All Dictations",

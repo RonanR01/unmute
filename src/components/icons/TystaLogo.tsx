@@ -7,8 +7,8 @@ interface MarkProps {
   className?: string;
 }
 
-/** Unwrite's mark: two sound waves in a ring. Drawn in the current color. */
-export const UnwriteMark: React.FC<MarkProps> = ({
+/** Tysta's mark: two sound waves in a ring. Drawn in the current color. */
+export const TystaMark: React.FC<MarkProps> = ({
   size = 28,
   width,
   height,
@@ -32,7 +32,7 @@ export const UnwriteMark: React.FC<MarkProps> = ({
 );
 
 /** The name as the logo writes it; a brand, never translated. */
-const WORDMARK = "unwrite";
+const WORDMARK = "tysta";
 
 interface LogoProps {
   /** Height of the mark in px; the wordmark scales with it. */
@@ -41,11 +41,11 @@ interface LogoProps {
 }
 
 /** The mark beside the wordmark. */
-export const UnwriteLogo: React.FC<LogoProps> = ({ size = 28, className }) => (
+export const TystaLogo: React.FC<LogoProps> = ({ size = 28, className }) => (
   <span
     className={`inline-flex items-center gap-2.5 text-text ${className ?? ""}`}
   >
-    <UnwriteMark size={size} />
+    <TystaMark size={size} />
     <span
       className="font-bold tracking-tight"
       style={{ fontSize: size * 0.72, lineHeight: 1 }}
@@ -55,4 +55,4 @@ export const UnwriteLogo: React.FC<LogoProps> = ({ size = 28, className }) => (
   </span>
 );
 
-export default UnwriteLogo;
+export default TystaLogo;

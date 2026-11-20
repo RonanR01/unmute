@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-# Build Unwrite, sign it with a local certificate and install it in
+# Build Tysta, sign it with a local certificate and install it in
 # /Applications.
 #
 # macOS ties the Accessibility and Microphone grants to the app's signature.
 # An ad-hoc signature changes with every build, so each one had to be granted
 # again; a certificate gives every build the same identity. Create one once in
 # Keychain Access (Certificate Assistant > Create a Certificate, type "Code
-# Signing") and name it "Unmute Local Signing", or set UNWRITE_SIGNING_IDENTITY.
+# Signing") and name it "Unmute Local Signing", or set TYSTA_SIGNING_IDENTITY.
 #
 # The app is installed rather than run from the terminal: a build started from
 # a shell has its grants attributed to the terminal, and can't be authorized.
@@ -16,8 +16,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-IDENTITY="${UNWRITE_SIGNING_IDENTITY:-Unmute Local Signing}"
-APP_NAME="Unwrite.app"
+IDENTITY="${TYSTA_SIGNING_IDENTITY:-Unmute Local Signing}"
+APP_NAME="Tysta.app"
 
 if [[ "${1:-}" == "--release" ]]; then
   build_flags=()
@@ -42,7 +42,7 @@ else
   echo "macOS will ask for Accessibility again after this build." >&2
 fi
 
-osascript -e 'tell application "Unwrite" to quit' >/dev/null 2>&1 || true
+osascript -e 'tell application "Tysta" to quit' >/dev/null 2>&1 || true
 sleep 1
 pkill -f "/Applications/${APP_NAME}/Contents/MacOS/" >/dev/null 2>&1 || true
 

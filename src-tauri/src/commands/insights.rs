@@ -91,7 +91,7 @@ pub async fn save_share_card(app: AppHandle, png: Vec<u8>, name: String) -> Resu
         .filter(|c| c.is_ascii_alphanumeric() || *c == '-' || *c == '_')
         .take(60)
         .collect();
-    let stem = if stem.is_empty() { "unwrite" } else { &stem };
+    let stem = if stem.is_empty() { "tysta" } else { &stem };
 
     let folder = app.path().download_dir().map_err(|e| e.to_string())?;
     let mut path = folder.join(format!("{stem}.png"));

@@ -15,9 +15,9 @@ interface KeycapsProps {
   size?: "sm" | "screen" | "line";
   /** Draw every key as held down. */
   pressed?: boolean;
-  /** A combination still being captured: dashed, no drop. */
+  /** A combination still being captured: dashed. */
   partial?: boolean;
-  /** Raise the keys on hover/focus of a parent `group/keycaps` control. */
+  /** Light the keys on hover/focus of a parent `group/keycaps` control. */
   lift?: boolean;
   className?: string;
 }
@@ -28,7 +28,7 @@ const SIZES = {
   line: "h-[25px] min-w-[25px] px-[7px] rounded-[6px] text-[13px]",
 };
 
-/** A shortcut binding drawn as physical keycaps. */
+/** A shortcut binding drawn as keys. */
 export const Keycaps: React.FC<KeycapsProps> = ({
   binding,
   osType,
@@ -39,13 +39,15 @@ export const Keycaps: React.FC<KeycapsProps> = ({
   className = "",
 }) => {
   const labels = keycapLabels(binding, osType);
+  // Flat keys with a plain edge, like the app's other controls: a held key
+  // fills in, a combination still being captured is dashed.
   const state = pressed
-    ? "translate-y-[3px] shadow-none bg-plum text-background border-plum"
+    ? "bg-text text-background border-text"
     : partial
-      ? "translate-y-[3px] shadow-none border-dashed bg-background text-plum border-plum"
-      : `shadow-[0_3px_0_0_var(--color-plum)] bg-background text-plum border-plum ${
+      ? "border-dashed border-line-strong bg-surface text-text"
+      : `border-line-strong bg-surface text-text ${
           lift
-            ? "group-hover/keycaps:-translate-y-[2px] group-hover/keycaps:shadow-[0_5px_0_0_var(--color-plum)] group-focus-visible/keycaps:-translate-y-[2px] group-focus-visible/keycaps:shadow-[0_5px_0_0_var(--color-plum)]"
+            ? "group-hover/keycaps:bg-surface-raised group-focus-visible/keycaps:bg-surface-raised"
             : ""
         }`;
 
@@ -59,7 +61,7 @@ export const Keycaps: React.FC<KeycapsProps> = ({
         <span
           key={i}
           aria-hidden="true"
-          className={`relative inline-flex items-center justify-center border font-display font-semibold leading-none select-none transition-[transform,box-shadow,background-color] duration-[70ms] ease-out ${SIZES[size]} ${state}`}
+          className={`relative inline-flex items-center justify-center border font-display font-semibold leading-none select-none transition-colors duration-[70ms] ease-out ${SIZES[size]} ${state}`}
         >
           {label}
         </span>
@@ -80,7 +82,7 @@ export const KeySlot: React.FC<
   <span
     aria-hidden={children ? undefined : true}
     {...rest}
-    className={`inline-flex translate-y-[3px] items-center justify-center whitespace-nowrap border border-dashed border-plum-pick font-display font-semibold leading-none text-ink-2 animate-key-slot motion-reduce:animate-none ${SLOT_SIZES[size]} ${className}`}
+    className={`inline-flex items-center justify-center whitespace-nowrap border border-dashed border-line-strong font-display font-semibold leading-none text-ink-2 animate-key-slot motion-reduce:animate-none ${SLOT_SIZES[size]} ${className}`}
   >
     {children}
   </span>

@@ -51,9 +51,9 @@ For detailed platform-specific build setup, see [BUILD.md](BUILD.md).
 
 ## Architecture Overview
 
-Unwrite is a fork of [Handy](https://github.com/cjpais/Handy), a cross-platform desktop speech-to-text application built with Tauri 2.x (Rust backend + React/TypeScript frontend). The engine is Handy's and keeps its names (the `handy` crate, `HANDY_*` variables, comments) so upstream changes still merge; what the user sees is Unwrite. "Handy" below means that inherited engine.
+Tysta is a fork of [Handy](https://github.com/cjpais/Handy), a cross-platform desktop speech-to-text application built with Tauri 2.x (Rust backend + React/TypeScript frontend). The engine is Handy's and keeps its names (the `handy` crate, `HANDY_*` variables, comments) so upstream changes still merge; what the user sees is Tysta. "Handy" below means that inherited engine.
 
-Unwrite's own screens are `src/components/dictations/`, `src/components/insights/`, `src/components/dictionary/` and `src/components/settings/SettingsScreen.tsx`; its insights are computed in `src-tauri/src/managers/insights.rs`. The palette is in `src/styles/theme.css`: two themes, fir green and light, and one accent, signal yellow, for what is measured, what is earned and the main action. Data panels stay fir in both themes (`data-theme="fir"`), and a measured value uses the `measure` utility.
+Tysta's own screens are `src/components/dictations/`, `src/components/insights/`, `src/components/dictionary/` and `src/components/settings/SettingsScreen.tsx`; its insights are computed in `src-tauri/src/managers/insights.rs`. The palette is in `src/styles/theme.css`: two themes, fir green and light, and one accent, signal yellow, for what is measured, what is earned and the main action. Data panels stay fir in both themes (`data-theme="fir"`), and a measured value uses the `measure` utility.
 
 ### Backend Structure (src-tauri/src/)
 

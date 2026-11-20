@@ -17,6 +17,88 @@ import { BadgeEmblem } from "./BadgeEmblem";
 const SHARE_BUTTON =
   "self-start min-h-9 px-3 flex items-center gap-2 rounded-[10px] border border-line-strong text-[13px] font-medium cursor-pointer transition-colors hover:bg-surface-raised focus-visible:outline-2 focus-visible:outline-text";
 
+/** How high each level sits in the climb's drawing, in px from its top. */
+const CLIMB_HEIGHTS = [62, 52, 46, 34, 26, 12, 4];
+const CLIMB_HEIGHT = 72;
+
+/**
+ * The standing as a climb: one point per level on a rising profile, the way
+ * walked so far in full and the rest dashed.
+ */
+const Climb: React.FC<{ level: number; label: string; names: string[] }> = ({
+  level,
+  label,
+  names,
+}) => {
+  const points = CLIMB_HEIGHTS.map((y, index) => ({ x: 50 + index * 100, y }));
+  const line = (from: number, to: number) =>
+    points
+      .slice(from, to + 1)
+      .map((point, index) => `${index ? "L" : "M"}${point.x} ${point.y}`)
+      .join(" ");
+
+  return (
+    <div className="relative flex flex-col gap-2">
+      <div className="relative" style={{ height: CLIMB_HEIGHT }}>
+        <svg
+          viewBox={`0 0 700 ${CLIMB_HEIGHT}`}
+          preserveAspectRatio="none"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+          className="absolute inset-0 size-full overflow-visible"
+        >
+          <path
+            d={line(level, points.length - 1)}
+            strokeWidth={1.5}
+            strokeDasharray="2 6"
+            opacity={0.45}
+            vectorEffect="non-scaling-stroke"
+          />
+          <path
+            d={line(0, level)}
+            strokeWidth={2}
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+        {points.map((point, index) => (
+          <span
+            key={index}
+            aria-hidden="true"
+            className={`absolute -translate-x-1/2 -translate-y-1/2 rounded-full ${
+              index === level
+                ? "size-3.5 bg-signal ring-4 ring-surface"
+                : index < level
+                  ? "size-2 bg-text"
+                  : "size-2 border border-ink-3 bg-surface"
+            }`}
+            style={{ left: `${point.x / 7}%`, top: point.y }}
+          />
+        ))}
+      </div>
+      <ol aria-label={label} className="grid grid-cols-7 text-center">
+        {names.map((name, index) => (
+          <li
+            key={name}
+            aria-current={index === level ? "step" : undefined}
+            className={`truncate px-1 text-[12px] ${
+              index === level
+                ? "font-semibold text-text"
+                : index < level
+                  ? "text-text/70"
+                  : "text-ink-3"
+            }`}
+          >
+            {name}
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+};
+
 const CATEGORIES: BadgeCategory[] = [
   "volume",
   "style",
@@ -83,15 +165,14 @@ const BadgeTile: React.FC<{
     );
   } else if (badge.progress) {
     const { current, target } = badge.progress;
-    const count = `${formatCount(Math.floor(current), locale)} / ${formatCount(target, locale)}`;
     status = (
-      <div className="flex flex-col gap-1.5">
+      <div className="flex items-center gap-3">
         <Meter value={current / target} label={name} />
-        <span className="text-[12px] text-ink-3 tabular-nums">
-          <span className="measure font-semibold">
+        <span className="shrink-0 whitespace-nowrap text-[12px] text-ink-3 tabular-nums">
+          <span className="font-semibold text-text">
             {formatCount(Math.floor(current), locale)}
           </span>
-          {count.slice(formatCount(Math.floor(current), locale).length)}
+          {` / ${formatCount(target, locale)}`}
         </span>
       </div>
     );
@@ -213,7 +294,7 @@ export const BadgesScreen: React.FC = () => {
   const shareStanding = () => {
     if (!standing || !board) return;
     setSharing({
-      fileName: "unwrite-statut",
+      fileName: "tysta-statut",
       card: {
         kind: "insights",
         title: beltName,
@@ -237,7 +318,7 @@ export const BadgesScreen: React.FC = () => {
     <div className="flex w-full flex-col gap-8 px-8 py-8">
       <ShareDialog
         card={sharing?.card ?? null}
-        fileName={sharing?.fileName ?? "unwrite"}
+        fileName={sharing?.fileName ?? "tysta"}
         onClose={() => {
           setSharing(null);
           // Sharing a card is a badge of its own.
@@ -257,7 +338,7 @@ export const BadgesScreen: React.FC = () => {
           data-theme="fir"
           className="relative overflow-hidden flex flex-col gap-5 p-7 bg-surface border border-edge rounded-2xl"
         >
-          <TopoLines hill className="h-full" />
+          <TopoLines className="h-full" />
           <div className="relative flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
             <div className="flex flex-col gap-1.5">
               <span className="text-sm text-ink-3">{t("badges.status")}</span>
@@ -292,21 +373,13 @@ export const BadgesScreen: React.FC = () => {
             </div>
           </div>
 
-          <ol
-            aria-label={t("badges.beltsLabel")}
-            className="relative flex gap-1.5"
-          >
-            {Array.from({ length: BELTS }, (_, belt) => (
-              <li
-                key={belt}
-                title={t(`badges.belts.${belt}`)}
-                aria-current={belt === standing.belt ? "step" : undefined}
-                className={`h-2.5 flex-1 rounded-full ${
-                  belt <= standing.belt ? "bg-text" : "bg-surface-raised"
-                } ${belt === standing.belt ? "" : belt < standing.belt ? "opacity-45" : ""}`}
-              />
-            ))}
-          </ol>
+          <Climb
+            level={standing.belt}
+            label={t("badges.beltsLabel")}
+            names={Array.from({ length: BELTS }, (_, belt) =>
+              t(`badges.belts.${belt}`),
+            )}
+          />
 
           <div className="relative flex flex-col gap-2">
             {nextBelt ? (
@@ -361,7 +434,7 @@ export const BadgesScreen: React.FC = () => {
                     onShare={(card) =>
                       setSharing({
                         card: { ...card, standing: signature },
-                        fileName: `unwrite-badge-${badge.id.replace(/_/g, "-")}`,
+                        fileName: `tysta-badge-${badge.id.replace(/_/g, "-")}`,
                       })
                     }
                   />

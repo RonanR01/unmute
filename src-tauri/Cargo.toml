@@ -1,16 +1,16 @@
 [package]
 name = "handy"
 version = "0.10.1"
-description = "Unwrite"
+description = "Tysta"
 authors = ["cjpais"]
 edition = "2021"
 license = "MIT"
-default-run = "unwrite"
+default-run = "tysta"
 
 # The crate keeps Handy's name so upstream changes still merge; the program
-# the user sees, in Activity Monitor or the Accessibility list, is Unwrite.
+# the user sees, in Activity Monitor or the Accessibility list, is Tysta.
 [[bin]]
-name = "unwrite"
+name = "tysta"
 path = "src/main.rs"
 
 [profile.dev]

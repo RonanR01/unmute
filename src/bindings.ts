@@ -688,6 +688,19 @@ async resetMacosPermission(permission: MacPermission) : Promise<Result<null, str
 }
 },
 /**
+ * Opens the Accessibility list in System Settings. macOS shows its own
+ * prompt only once per app identity, so after a rename or a reinstall
+ * the request alone can leave the user with nothing on screen.
+ */
+async openAccessibilityPrivacySettings() : Promise<Result<null, string>> {
+    try {
+    return { status: "ok", data: await TAURI_INVOKE("open_accessibility_privacy_settings") };
+} catch (e) {
+    if(e instanceof Error) throw e;
+    else return { status: "error", error: e  as any };
+}
+},
+/**
  * Mark onboarding as finished; called when its last screen closes, so quitting
  * midway resumes the flow.
  */
@@ -989,17 +1002,6 @@ async getAudioFilePath(fileName: string) : Promise<Result<string, string>> {
 async deleteHistoryEntry(id: number) : Promise<Result<null, string>> {
     try {
     return { status: "ok", data: await TAURI_INVOKE("delete_history_entry", { id }) };
-} catch (e) {
-    if(e instanceof Error) throw e;
-    else return { status: "error", error: e  as any };
-}
-},
-/**
- * Deletes an entry's recording and keeps its text.
- */
-async deleteHistoryEntryAudio(id: number) : Promise<Result<null, string>> {
-    try {
-    return { status: "ok", data: await TAURI_INVOKE("delete_history_entry_audio", { id }) };
 } catch (e) {
     if(e instanceof Error) throw e;
     else return { status: "error", error: e  as any };
@@ -1402,8 +1404,8 @@ model_id: string | null;
  */
 latency_ms: number | null; 
 /**
- * Whether the recording is still on disk. It goes when the retention
- * period ends or when the user deletes it; the text stays.
+ * Whether the recording is still on disk. It goes when the audio
+ * retention period ends; the text stays.
  */
 has_audio: boolean }
 export type HistoryUpdatePayload = { action: "added"; entry: HistoryEntry } | { action: "updated"; entry: HistoryEntry } | { action: "deleted"; id: number } | { action: "toggled"; id: number }

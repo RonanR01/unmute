@@ -114,7 +114,7 @@ const drawLogo = (ctx: Context) => {
   ctx.font = font(700, 48);
   ctx.textAlign = "left";
   ctx.textBaseline = "middle";
-  ctx.fillText("unwrite", MARGIN + size + 20, MARGIN + size / 2 + 2);
+  ctx.fillText("tysta", MARGIN + size + 20, MARGIN + size / 2 + 2);
 };
 
 const drawFooter = (ctx: Context, standing: string) => {

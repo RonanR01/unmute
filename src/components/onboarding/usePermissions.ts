@@ -220,7 +220,10 @@ export const usePermissions = (preview: boolean): Permissions => {
     if (preview) return;
     try {
       await commands.resetMacosPermission("accessibility");
+      // The request adds Handy to the list; Settings is opened as well, since
+      // macOS may not show its prompt again.
       await requestAccessibilityPermission();
+      await commands.openAccessibilityPrivacySettings();
       setAccessibility("waiting");
       startPolling();
     } catch (error) {

@@ -75,7 +75,7 @@ interface BadgeEmblemProps {
 }
 
 /**
- * A badge's medal: Unwrite's ring and waves around a pictogram. A signal
+ * A badge's medal: Tysta's ring and waves around a pictogram. A signal
  * yellow disc once earned, a dashed outline until then.
  */
 export const BadgeEmblem: React.FC<BadgeEmblemProps> = ({

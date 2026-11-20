@@ -40,9 +40,9 @@ const Figure: React.FC<{ label: string; value: string; note?: string }> = ({
   value,
   note,
 }) => (
-  <div className="relative flex-[1_1_200px] flex flex-col gap-2 p-7 border-s border-edge first:border-s-0">
+  <div className="relative min-w-0 flex flex-col gap-2 p-5 lg:p-7 border-s border-edge first:border-s-0">
     <span className="text-sm text-ink-3">{label}</span>
-    <span className="text-[42px] leading-none font-bold tracking-tight measure tabular-nums">
+    <span className="text-[clamp(28px,4.4vw,42px)] leading-none font-bold tracking-tight measure tabular-nums">
       {value}
     </span>
     {note && <span className="text-[13px] text-ink-3">{note}</span>}
@@ -219,7 +219,7 @@ export const TodayScreen: React.FC<TodayScreenProps> = ({ onNavigate }) => {
         data-theme="fir"
         className="relative overflow-hidden bg-surface border border-edge rounded-2xl"
       >
-        <TopoLines hill className="h-full" />
+        <TopoLines className="h-full" />
         {firstTime ? (
           <div className="relative flex flex-col gap-3 p-7">
             <span className="text-[28px] leading-tight font-bold tracking-tight">
@@ -230,7 +230,7 @@ export const TodayScreen: React.FC<TodayScreenProps> = ({ onNavigate }) => {
             </p>
           </div>
         ) : (
-          <div className="relative flex flex-wrap">
+          <div className="relative grid grid-cols-3">
             <Figure
               label={t("today.wordsToday")}
               value={formatCount(today?.word_count ?? 0, locale)}
@@ -289,13 +289,13 @@ export const TodayScreen: React.FC<TodayScreenProps> = ({ onNavigate }) => {
                   <span className="text-[13px] leading-snug text-ink-3">
                     {t(`badges.items.${next.id}.description`)}
                   </span>
-                  <div className="flex flex-col gap-1.5 pt-1">
+                  <div className="flex items-center gap-3 pt-1">
                     <Meter
                       value={next.progress.current / next.progress.target}
                       label={t(`badges.items.${next.id}.name`)}
                     />
-                    <span className="text-[12px] text-ink-3 tabular-nums">
-                      <span className="measure font-semibold">
+                    <span className="shrink-0 whitespace-nowrap text-[12px] text-ink-3 tabular-nums">
+                      <span className="font-semibold text-text">
                         {formatCount(Math.floor(next.progress.current), locale)}
                       </span>
                       {` / ${formatCount(next.progress.target, locale)}`}

@@ -247,3 +247,23 @@ pub fn reset_macos_permission(app: AppHandle, permission: MacPermission) -> Resu
     let _ = (app, permission);
     Ok(())
 }
+
+/// Opens the Accessibility list in System Settings. macOS shows its own
+/// prompt only once per app identity, so after a rename or a reinstall
+/// the request alone can leave the user with nothing on screen.
+#[tauri::command]
+#[specta::specta]
+pub fn open_accessibility_privacy_settings() -> Result<(), String> {
+    #[cfg(target_os = "macos")]
+    {
+        std::process::Command::new("open")
+            .arg("x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")
+            .spawn()
+            .map_err(|e| format!("Failed to open macOS accessibility settings: {e}"))?;
+        Ok(())
+    }
+    #[cfg(not(target_os = "macos"))]
+    {
+        Err("Accessibility settings only exist on macOS".to_string())
+    }
+}

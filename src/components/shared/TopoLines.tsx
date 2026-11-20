@@ -1,8 +1,6 @@
 import React from "react";
 
 interface TopoLinesProps {
-  /** Adds a small hill of contour lines on the right. */
-  hill?: boolean;
   /** Fades the lines out toward the bottom, for use above content. */
   fade?: boolean;
   className?: string;
@@ -18,17 +16,10 @@ export const FLOWS = [
   "M-20 224c92-30 146 18 228 8s126-32 216-12 146 38 232 18 158-40 244-14 94 20 160 6",
 ];
 
-const HILL = [
-  "M812 96c22-34 78-40 112-18s44 66 18 96-82 36-116 12-36-56-14-90z",
-  "M836 110c16-22 54-26 78-12s30 44 12 64-56 24-80 8-26-38-10-60z",
-  "M860 124c10-12 30-14 44-6s16 24 6 34-30 14-44 4-14-20-6-32z",
-];
-
 const FADE = "linear-gradient(to bottom, #000 35%, transparent 100%)";
 
-/** Unwrite's motif: thin, irregular topographic lines. Decoration only. */
+/** Tysta's motif: thin, irregular topographic lines. Decoration only. */
 export const TopoLines: React.FC<TopoLinesProps> = ({
-  hill = false,
   fade = false,
   className = "",
 }) => (
@@ -45,6 +36,5 @@ export const TopoLines: React.FC<TopoLinesProps> = ({
     {FLOWS.map((d) => (
       <path key={d} d={d} />
     ))}
-    {hill && HILL.map((d) => <path key={d} d={d} />)}
   </svg>
 );

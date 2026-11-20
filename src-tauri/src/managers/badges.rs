@@ -48,7 +48,7 @@ const DIESEL_SIDE_DICTATIONS: usize = 3;
 const DIESEL_GAIN: f64 = 1.2;
 const PHOENIX_PERIOD_DAYS: i64 = 30;
 const PHOENIX_PERIOD_WORDS: i64 = 1_000;
-const SECRET_WORD: &str = "unwrite";
+const SECRET_WORD: &str = "tysta";
 /// The badge for sharing a card.
 const SHARED_BADGE: &str = "influencer";
 const SECRET_TIMES: usize = 3;
@@ -140,7 +140,7 @@ pub enum BadgeCategory {
 struct Definition {
     id: &'static str,
     category: BadgeCategory,
-    /// `false` for badges that wait on a feature Unwrite doesn't have yet.
+    /// `false` for badges that wait on a feature Tysta doesn't have yet.
     available: bool,
 }
 
@@ -894,8 +894,8 @@ mod tests {
 
     #[test]
     fn the_secret_is_the_name_said_three_times() {
-        let found = fact(1, 10 * 3600, "Unwrite, unwrite et encore Unwrite !");
-        let twice = fact(2, 11 * 3600, "Unwrite et unwrite.");
+        let found = fact(1, 10 * 3600, "Tysta, tysta et encore Tysta !");
+        let twice = fact(2, 11 * 3600, "Tysta et tysta.");
 
         assert!(earned_ids(&[found]).contains(&"easter_egg"));
         assert!(!earned_ids(&[twice]).contains(&"easter_egg"));

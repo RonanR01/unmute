@@ -34,7 +34,7 @@
     "customModelDescription": "Oficiálně nepodporováno",
     "migration": {
       "title": "Vaše modely potřebují aktualizaci",
-      "description": "Unwrite nyní používá novější typ modelů. Stáhněte si novou verzi, abyste mohli dál přepisovat. Staré verze budou odstraněny.",
+      "description": "Tysta nyní používá novější typ modelů. Stáhněte si novou verzi, abyste mohli dál přepisovat. Staré verze budou odstraněny.",
       "replaces": "Nahrazuje {{name}}",
       "oldFormat": "Starý formát",
       "failed": "Stahování selhalo",
@@ -71,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Aby vás Unwrite slyšel. Zvuk se mění na text přímo v tomto počítači a nikam se neodesílá."
+        "why": "Aby vás Tysta slyšel. Zvuk se mění na text přímo v tomto počítači a nikam se neodesílá."
       },
       "accessibility": {
         "name": "Zpřístupnění",
-        "why": "Aby vaše zkratka fungovala v každé aplikaci a Unwrite mohl psát text tam, kde máte kurzor."
+        "why": "Aby vaše zkratka fungovala v každé aplikaci a Tysta mohl psát text tam, kde máte kurzor."
       },
       "errors": {
         "checkFailed": "Nepodařilo se zkontrolovat oprávnění. Zkuste to prosím znovu.",
@@ -89,12 +89,12 @@
       "openSettings": "Otevřít nastavení",
       "allowed": "Povoleno",
       "waiting": "Čeká se",
-      "turnOnMac": "Zapněte Unwrite v Nastavení systému a pak se vraťte sem.",
+      "turnOnMac": "Zapněte Tysta v Nastavení systému a pak se vraťte sem.",
       "turnOnWindows": "Zapněte přístup k mikrofonu v Nastavení Windows a pak se vraťte sem.",
       "hintBoth": "Pro pokračování povolte obojí",
       "hintMicrophone": "Pro pokračování povolte mikrofon",
       "welcomeBack": "Vítejte zpět. Pokračujeme tam, kde jste skončili.",
-      "relaunch": "Zkratka po tomhle nereaguje? <relaunch>Restartujte Unwrite</relaunch> a skončíte hned zase tady."
+      "relaunch": "Zkratka po tomhle nereaguje? <relaunch>Restartujte Tysta</relaunch> a skončíte hned zase tady."
     },
     "shell": {
       "back": "Zpět",
@@ -105,11 +105,11 @@
       "title": "Mluvte místo psaní, v jakékoli aplikaci",
       "subtitle": "Vyberte jazyky, ve kterých budete diktovat",
       "languagesLabel": "Jazyky",
-      "noMatch": "Žádný jazyk neodpovídá „{{query}}“. Modely Unwrite pokrývají zhruba 100 jazyků, další najdete v nastavení.",
+      "noMatch": "Žádný jazyk neodpovídá „{{query}}“. Modely Tysta pokrývají zhruba 100 jazyků, další najdete v nastavení.",
       "appLanguage": "Jazyk aplikace",
       "menusIn": "Nabídky v jazyce: <b>{{language}}</b>",
       "chinese": {
-        "question": "Mluvíte jazykem: {{languages}}. Jaké znaky má Unwrite psát?",
+        "question": "Mluvíte jazykem: {{languages}}. Jaké znaky má Tysta psát?",
         "label": "Čínské znaky",
         "zh-Hans": "Zjednodušené",
         "zh-Hant": "Tchaj-wan",
@@ -179,7 +179,7 @@
     },
     "try": {
       "title": "Zkuste to!",
-      "subtitle": "Unwrite je v rohu a provede vás tím",
+      "subtitle": "Tysta je v rohu a provede vás tím",
       "noteLabel": "Poznámka",
       "placeholder": "Nová poznámka",
       "hold": "Podržte <keys/> a mluvte.",
@@ -207,14 +207,14 @@
     },
     "done": {
       "title": "Hotovo",
-      "subMac": "Unwrite je teď na řádku nabídek. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
-      "subTray": "Unwrite je teď v oznamovací oblasti. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
+      "subMac": "Tysta je teď na řádku nabídek. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
+      "subTray": "Tysta je teď v oznamovací oblasti. Podržte nebo klepněte na <keys/> v jakékoli aplikaci a mluvte.",
       "hint": "Tohle můžete později změnit v Nastavení",
       "highFiveLabel": "Plácnout si",
-      "atLogin": "Spustit Unwrite po přihlášení",
+      "atLogin": "Spustit Tysta po přihlášení",
       "finish": "Hotovo",
       "panel": {
-        "name": "Unwrite",
+        "name": "Tysta",
         "ready": "Připraveno",
         "languages": "Jazyky",
         "model": "Model řeči",
@@ -339,7 +339,7 @@
     "general": {
       "title": "Obecné",
       "shortcut": {
-        "title": "Zkratky Unwrite",
+        "title": "Zkratky Tysta",
         "description": "Nastavte klávesové zkratky pro spuštění nahrávání řeči na text",
         "loading": "Načítám zkratky...",
         "none": "Žádné zkratky nejsou nastavené",
@@ -381,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Preferované jazyky",
-        "description": "Jazyky, kterými mluvíte. Unwrite podle nich doporučuje modely.",
+        "description": "Jazyky, kterými mluvíte. Tysta podle nich doporučuje modely.",
         "noMatch": "Žádný jazyk neodpovídá „{{query}}“",
         "weak": "Zatím žádný model dobře nerozpoznává: {{languages}}."
       },
@@ -408,17 +408,17 @@
         "fits": "Pro vaše jazyky",
         "untested": "Netestováno"
       },
-      "untestedNote": "Netestováno s Unwrite. Mohou být pomalejší nebo dělat více chyb.",
+      "untestedNote": "Netestováno s Tysta. Mohou být pomalejší nebo dělat více chyb.",
       "untestedHidden_one": "Další {{count}} model není vyladěn pro diktování. Najdete ho hledáním.",
       "untestedHidden_other": "Dalších {{count}} modelů není vyladěno pro diktování. Najdete je hledáním.",
-      "emptyYours": "Zatím žádné modely. Vyberte některý níže: stáhne se a Unwrite ho začne používat.",
+      "emptyYours": "Zatím žádné modely. Vyberte některý níže: stáhne se a Tysta ho začne používat.",
       "showMore": "Zobrazit další ({{count}})",
       "showFewer": "Zobrazit méně",
       "download": "Stáhnout a použít",
       "downloadingThenUse": "{{percent}} % z {{total}}, poté se přepne",
       "loading": "Načítání…",
       "deleteAsk": "Smazat {{name}}? Uvolní se {{size}}.",
-      "deleteAskActive": "Smazat {{name}}? Unwrite nebude moci přepisovat, dokud nevyberete jiný model.",
+      "deleteAskActive": "Smazat {{name}}? Tysta nebude moci přepisovat, dokud nevyberete jiný model.",
       "cancel": "Zrušit",
       "deleteModel": "Smazat {{name}}",
       "cancelDownload": "Zastavit stahování {{name}}",
@@ -432,14 +432,14 @@
         "marks": "? zatím nebylo změřeno. — tomuto jazyku nerozumí."
       },
       "retiredNotice": {
-        "title": "Staré modely už s Unwrite nefungují",
+        "title": "Staré modely už s Tysta nefungují",
         "description": "Zabírají {{size}} na vašem počítači.",
         "delete": "Smazat modely",
         "deleteFailed": "Některé staré modely se nepodařilo smazat. Podrobnosti najdete v protokolu."
       },
       "rescan": {
         "label": "Znovu prohledat",
-        "tooltip": "Znovu prohledat modely přidané do složky modelů nebo mezipaměti Hugging Face mimo Unwrite"
+        "tooltip": "Znovu prohledat modely přidané do složky modelů nebo mezipaměti Hugging Face mimo Tysta"
       }
     },
     "languages": {
@@ -509,11 +509,11 @@
       },
       "autostart": {
         "label": "Spouštět při startu",
-        "description": "Automaticky spustit Unwrite po přihlášení do počítače."
+        "description": "Automaticky spustit Tysta po přihlášení do počítače."
       },
       "showTrayIcon": {
         "label": "Zobrazit ikonu v systémové liště",
-        "description": "Zobrazit ikonu Unwrite v systémové liště."
+        "description": "Zobrazit ikonu Tysta v systémové liště."
       },
       "overlay": {
         "style": {
@@ -750,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Kontrolovat aktualizace",
-        "description": "Automaticky kontrolovat nové verze Unwrite",
+        "description": "Automaticky kontrolovat nové verze Tysta",
         "lockedDescription": "Zakázáno systémovou konfigurací (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -856,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnostika klávesnice",
-        "description": "Ověří, zda události klávesnice dorazí do Unwrite. Zaznamenává se pouze počet událostí — nikdy to, které klávesy stisknete.",
+        "description": "Ověří, zda události klávesnice dorazí do Tysta. Zaznamenává se pouze počet událostí — nikdy to, které klávesy stisknete.",
         "run": "Spustit 10s diagnostiku",
         "running": "Naslouchání… několikrát stiskněte svou zkratku (např. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -870,7 +870,7 @@
         "mouse": "Myš",
         "verdictBlocked": "Secure Input blokuje události kláves — zkratky obsahující běžnou klávesu nemohou fungovat, dokud se to nevyřeší.",
         "verdictSuspicious": "Dorazily události modifikátorů, ale žádné události kláves — něco klávesy potlačuje, přestože Secure Input hlásí, že je vypnutý. Nahlaste to prosím na GitHubu.",
-        "verdictOk": "Události kláves dorazí do Unwrite normálně.",
+        "verdictOk": "Události kláves dorazí do Tysta normálně.",
         "verdictNoEvents": "Nebyly zachyceny žádné události — stiskli jste během testu nějaké klávesy?",
         "failed": "Diagnostika selhala: {{error}}"
       },
@@ -884,15 +884,15 @@
       "title": "O aplikaci",
       "version": {
         "title": "Verze",
-        "description": "Aktuální verze Unwrite"
+        "description": "Aktuální verze Tysta"
       },
       "whatsNewUpdates": {
         "label": "Zobrazovat novinky",
-        "description": "Zobrazovat poznámky k vydání po aktualizacích Unwrite"
+        "description": "Zobrazovat poznámky k vydání po aktualizacích Tysta"
       },
       "appDataDirectory": {
         "title": "Adresář dat aplikace",
-        "description": "Umístění, kde Unwrite ukládá data"
+        "description": "Umístění, kde Tysta ukládá data"
       },
       "sourceCode": {
         "title": "Zdrojový kód",
@@ -904,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Vysoce výkonné inferenční zpracování modelu automatického rozpoznávání řeči Whisper od OpenAI",
-          "details": "Unwrite používá ggml pro rychlé lokální zpracování řeči na text. Díky skvělé práci Georgiho Gerganova a přispěvatelů."
+          "details": "Tysta používá ggml pro rychlé lokální zpracování řeči na text. Díky skvělé práci Georgiho Gerganova a přispěvatelů."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unwrite is built on",
-          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Tysta is built on",
+          "details": "Tysta is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -931,7 +931,7 @@
     "portableUpdateBrowseButton": "Otevřít GitHub Releases"
   },
   "whatsNew": {
-    "title": "Novinky v Unwrite v{{version}}"
+    "title": "Novinky v Tysta v{{version}}"
   },
   "common": {
     "playbackPosition": "Pozice přehrávání",
@@ -958,7 +958,7 @@
     "microphoneSilentTitle": "Mikrofon je tichý",
     "microphoneSilent": "Mikrofon posílá jen ticho. Zkontrolujte, že není ztlumený, nebo vyberte jiný mikrofon v Nastavení.",
     "recordingFailedTitle": "Nepodařilo se spustit nahrávání",
-    "modelLoadFailed": "Unwrite nemohl načíst tento model. Zkuste to znovu nebo vyberte jiný.",
+    "modelLoadFailed": "Tysta nemohl načíst tento model. Zkuste to znovu nebo vyberte jiný.",
     "modelLoadFailedTitle": "Nepodařilo se načíst model",
     "noModelSelected": "Stáhněte nebo vyberte model v Nastavení > Modely.",
     "noModelSelectedTitle": "Není vybrán žádný model",
@@ -966,7 +966,7 @@
     "pasteFailedTitle": "Vložení textu se nezdařilo",
     "pasteFailed": "Text nebylo možné vložit do aktivní aplikace.",
     "pasteBlockedElevatedTitle": "Nelze vložit do aplikace správce",
-    "pasteBlockedElevated": "Aktivní aplikace běží jako správce, takže do ní Unwrite nemůže vkládat. Přepis můžete zkopírovat z Historie.",
+    "pasteBlockedElevated": "Aktivní aplikace běží jako správce, takže do ní Tysta nemůže vkládat. Přepis můžete zkopírovat z Historie.",
     "postProcessFailedTitle": "Vloženo bez následného zpracování",
     "postProcessFailed": "Následné zpracování se nedokončilo, takže byl přepis vložen beze změn.",
     "filePostProcessFailedTitle": "Přepsáno bez následného zpracování",
@@ -983,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Jazyk aplikace",
-    "description": "Změňte jazyk rozhraní Unwrite"
+    "description": "Změňte jazyk rozhraní Tysta"
   },
   "theme": {
     "title": "Motiv aplikace",
-    "description": "Zvolte, zda má Unwrite sledovat motiv systému, nebo zůstat světlý či tmavý",
+    "description": "Zvolte, zda má Tysta sledovat motiv systému, nebo zůstat světlý či tmavý",
     "options": {
       "system": "Systém",
       "light": "Světlý",
@@ -1027,10 +1027,10 @@
     "play": "Play the recording",
     "pause": "Pause",
     "audioUnavailable": "This Recording Is No Longer Available",
-    "deleteAudio": "Delete the Recording",
-    "confirmDeleteAudio": "Click Again to Delete the Recording",
-    "deleteAudioFailed": "Recording Not Deleted",
-    "confirmDelete": "Delete Recording"
+    "confirmDelete": "Delete",
+    "deleteDictation": "Delete the Dictation",
+    "confirmDeleteDictation": "Click Again to Delete the Dictation and Its Recording",
+    "deleteFailed": "Dictation Not Deleted"
   },
   "insights": {
     "title": "Insights",
@@ -1081,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
+    "subtitle": "Names, jargon and brands Tysta should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1094,9 +1094,9 @@
     "status": "My standing",
     "lifetimeWords": "Words dictated in all",
     "earnedCount": "Badges earned",
-    "beltsLabel": "The seven belts",
-    "nextBelt": "{{words}} more words to the {{belt}}",
-    "topBelt": "You wear the highest belt.",
+    "beltsLabel": "The Seven Levels of the Climb",
+    "nextBelt": "{{words}} more words to reach {{belt}}",
+    "topBelt": "You have reached the highest level.",
     "earnedOn": "Earned on {{date}}",
     "toEarn": "To earn",
     "soon": "Soon",
@@ -1104,13 +1104,13 @@
     "secretName": "Secret badge",
     "secretDescription": "It stays hidden until you find it.",
     "belts": {
-      "0": "White belt of speech",
-      "1": "Yellow belt of speech",
-      "2": "Orange belt of speech",
-      "3": "Green belt of speech",
-      "4": "Blue belt of speech",
-      "5": "Brown belt of speech",
-      "6": "Black belt of speech"
+      "0": "Plain",
+      "1": "Hill",
+      "2": "Plateau",
+      "3": "Pass",
+      "4": "Ridge",
+      "5": "Summit",
+      "6": "Sky"
     },
     "categories": {
       "volume": "Volume and regularity",
@@ -1235,7 +1235,7 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unwrite” three times in one dictation."
+        "description": "You said “Tysta” three times in one dictation."
       }
     }
   },
@@ -1262,7 +1262,7 @@
     "figures": "Today's Figures",
     "wordsToday": "Words Dictated Today",
     "durationToday": "Dictation Time",
-    "welcome": "Welcome to Unwrite",
+    "welcome": "Welcome to Tysta",
     "recent": "Latest Dictations",
     "noRecent": "Nothing dictated yet.",
     "allDictations": "All Dictations",

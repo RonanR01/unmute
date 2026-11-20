@@ -185,8 +185,8 @@ fn build_headers(provider: &PostProcessProvider, api_key: &str) -> Result<Header
 
     // Common headers
     headers.insert(CONTENT_TYPE, HeaderValue::from_static("application/json"));
-    headers.insert(USER_AGENT, HeaderValue::from_static("Unwrite/1.0"));
-    headers.insert("X-Title", HeaderValue::from_static("Unwrite"));
+    headers.insert(USER_AGENT, HeaderValue::from_static("Tysta/1.0"));
+    headers.insert("X-Title", HeaderValue::from_static("Tysta"));
 
     // Provider-specific auth headers
     if !api_key.is_empty() {

@@ -34,7 +34,7 @@
     "customModelDescription": "Офіційно не підтримується",
     "migration": {
       "title": "Ваші моделі потребують оновлення",
-      "description": "Unwrite тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
+      "description": "Tysta тепер використовує моделі нового типу. Завантажте нову версію, щоб і далі транскрибувати. Старі версії буде видалено.",
       "replaces": "Замінює {{name}}",
       "oldFormat": "Старий формат",
       "failed": "Помилка завантаження",
@@ -71,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Мікрофон",
-        "why": "Щоб Unwrite міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
+        "why": "Щоб Tysta міг вас чути. Звук перетворюється на текст на цьому комп'ютері й нікуди не надсилається."
       },
       "accessibility": {
         "name": "Універсальний доступ",
-        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Unwrite міг вводити текст там, де стоїть курсор."
+        "why": "Щоб ваша комбінація клавіш працювала в усіх програмах, а Tysta міг вводити текст там, де стоїть курсор."
       },
       "errors": {
         "checkFailed": "Не вдалося перевірити дозволи. Будь ласка, спробуйте ще раз.",
@@ -89,12 +89,12 @@
       "openSettings": "Відкрити налаштування",
       "allowed": "Дозволено",
       "waiting": "Очікування",
-      "turnOnMac": "Увімкніть Unwrite в Системних налаштуваннях і поверніться сюди.",
+      "turnOnMac": "Увімкніть Tysta в Системних налаштуваннях і поверніться сюди.",
       "turnOnWindows": "Увімкніть доступ до мікрофона в Параметрах Windows і поверніться сюди.",
       "hintBoth": "Дозвольте обидва, щоб продовжити",
       "hintMicrophone": "Дозвольте мікрофон, щоб продовжити",
       "welcomeBack": "З поверненням. Продовжуємо з того місця, де ви зупинилися.",
-      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Unwrite</relaunch>, і ви повернетеся просто сюди."
+      "relaunch": "Комбінація клавіш після цього не реагує? <relaunch>Перезапустіть Tysta</relaunch>, і ви повернетеся просто сюди."
     },
     "shell": {
       "back": "Назад",
@@ -105,11 +105,11 @@
       "title": "Говоріть замість друку, в будь-якій програмі",
       "subtitle": "Оберіть мови, якими ви диктуватимете",
       "languagesLabel": "Мови",
-      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Unwrite охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
+      "noMatch": "Жодна мова не відповідає «{{query}}». Моделі Tysta охоплюють близько 100 мов; решту можна знайти в налаштуваннях.",
       "appLanguage": "Мова застосунку",
       "menusIn": "Меню мовою: <b>{{language}}</b>",
       "chinese": {
-        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Unwrite має писати?",
+        "question": "Ви говорите такими мовами: {{languages}}. Якими ієрогліфами Tysta має писати?",
         "label": "Китайські ієрогліфи",
         "zh-Hans": "Спрощені",
         "zh-Hant": "Тайвань",
@@ -179,7 +179,7 @@
     },
     "try": {
       "title": "Спробуйте!",
-      "subtitle": "Unwrite в кутку допоможе вам пройти цей шлях",
+      "subtitle": "Tysta в кутку допоможе вам пройти цей шлях",
       "noteLabel": "Нотатка",
       "placeholder": "Нова нотатка",
       "hold": "Утримуйте <keys/> і говоріть.",
@@ -207,14 +207,14 @@
     },
     "done": {
       "title": "Усе готово",
-      "subMac": "Unwrite тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
-      "subTray": "Unwrite тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subMac": "Tysta тепер у рядку меню. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
+      "subTray": "Tysta тепер у системному треї. Утримуйте або натискайте <keys/> у будь-якій програмі, щоб говорити.",
       "hint": "Ви можете змінити це пізніше в налаштуваннях",
       "highFiveLabel": "Дай п'ять",
-      "atLogin": "Запускати Unwrite під час входу в систему",
+      "atLogin": "Запускати Tysta під час входу в систему",
       "finish": "Готово",
       "panel": {
-        "name": "Unwrite",
+        "name": "Tysta",
         "ready": "Готово",
         "languages": "Мови",
         "model": "Модель розпізнавання мовлення",
@@ -381,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Бажані мови",
-        "description": "Мови, якими ви говорите. Unwrite використовує їх, щоб рекомендувати моделі.",
+        "description": "Мови, якими ви говорите. Tysta використовує їх, щоб рекомендувати моделі.",
         "noMatch": "Жодна мова не відповідає «{{query}}»",
         "weak": "Жодна модель поки що не розпізнає добре: {{languages}}."
       },
@@ -408,17 +408,17 @@
         "fits": "Для ваших мов",
         "untested": "Не перевірені"
       },
-      "untestedNote": "Не перевірені з Unwrite. Вони можуть працювати повільніше або робити більше помилок.",
+      "untestedNote": "Не перевірені з Tysta. Вони можуть працювати повільніше або робити більше помилок.",
       "untestedHidden_one": "Ще {{count}} модель не налаштована для диктування. Скористайтеся пошуком, щоб її знайти.",
       "untestedHidden_other": "Ще {{count}} моделей не налаштовано для диктування. Скористайтеся пошуком, щоб знайти потрібну.",
-      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Unwrite її використає.",
+      "emptyYours": "Моделей поки немає. Оберіть одну нижче: вона завантажиться, і Tysta її використає.",
       "showMore": "Показати ще {{count}}",
       "showFewer": "Показати менше",
       "download": "Завантажити й використовувати",
       "downloadingThenUse": "{{percent}}% з {{total}}, потім перемкнеться",
       "loading": "Завантаження…",
       "deleteAsk": "Видалити {{name}}? Це звільнить {{size}}.",
-      "deleteAskActive": "Видалити {{name}}? Unwrite не зможе транскрибувати, доки ви не оберете іншу модель.",
+      "deleteAskActive": "Видалити {{name}}? Tysta не зможе транскрибувати, доки ви не оберете іншу модель.",
       "cancel": "Скасувати",
       "deleteModel": "Видалити {{name}}",
       "cancelDownload": "Зупинити завантаження {{name}}",
@@ -432,14 +432,14 @@
         "marks": "? ще не виміряно. — не розпізнає цю мову."
       },
       "retiredNotice": {
-        "title": "Старі моделі більше не працюють з Unwrite",
+        "title": "Старі моделі більше не працюють з Tysta",
         "description": "Вони займають {{size}} на вашому комп'ютері.",
         "delete": "Видалити моделі",
         "deleteFailed": "Не вдалося видалити деякі старі моделі. Подробиці дивіться в журналі."
       },
       "rescan": {
         "label": "Пересканувати",
-        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Unwrite"
+        "tooltip": "Пересканувати моделі, додані до папки моделей або кешу Hugging Face поза межами Tysta"
       }
     },
     "languages": {
@@ -509,11 +509,11 @@
       },
       "autostart": {
         "label": "Запуск при старті системи",
-        "description": "Автоматично запускати Unwrite при вході в систему"
+        "description": "Автоматично запускати Tysta при вході в систему"
       },
       "showTrayIcon": {
         "label": "Показати значок у треї",
-        "description": "Відображати значок Unwrite у системному треї."
+        "description": "Відображати значок Tysta у системному треї."
       },
       "overlay": {
         "style": {
@@ -750,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Перевірка оновлень",
-        "description": "Автоматично перевіряти наявність нових версій Unwrite",
+        "description": "Автоматично перевіряти наявність нових версій Tysta",
         "lockedDescription": "Вимкнено системною конфігурацією (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -856,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Діагностика клавіатури",
-        "description": "Перевіряє, чи доходять події клавіатури до Unwrite. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
+        "description": "Перевіряє, чи доходять події клавіатури до Tysta. Записується лише кількість подій — ніколи те, які клавіші ви натискаєте.",
         "run": "Запустити 10-секундну діагностику",
         "running": "Прослуховування… натисніть свою комбінацію кілька разів (наприклад, Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -870,7 +870,7 @@
         "mouse": "Миша",
         "verdictBlocked": "Secure Input блокує події клавіш — комбінації зі звичайною клавішею не працюватимуть, доки це не буде усунуто.",
         "verdictSuspicious": "Події модифікаторів надходять, а події клавіш — ні: щось пригнічує клавіші, хоча Secure Input позначено як вимкнений. Будь ласка, повідомте про це на GitHub.",
-        "verdictOk": "Події клавіш надходять до Unwrite нормально.",
+        "verdictOk": "Події клавіш надходять до Tysta нормально.",
         "verdictNoEvents": "Подій не зафіксовано — ви натискали клавіші під час тесту?",
         "failed": "Не вдалося виконати діагностику: {{error}}"
       },
@@ -884,15 +884,15 @@
       "title": "Інфо",
       "version": {
         "title": "Версія",
-        "description": "Поточна версія Unwrite"
+        "description": "Поточна версія Tysta"
       },
       "whatsNewUpdates": {
         "label": "Показувати новини",
-        "description": "Показувати примітки до випуску після оновлень Unwrite"
+        "description": "Показувати примітки до випуску після оновлень Tysta"
       },
       "appDataDirectory": {
         "title": "Папка даних програми",
-        "description": "Розташування даних Unwrite"
+        "description": "Розташування даних Tysta"
       },
       "sourceCode": {
         "title": "Вихідний код",
@@ -904,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Високопродуктивний інференс моделі автоматичного розпізнавання мовлення Whisper від OpenAI",
-          "details": "Unwrite використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
+          "details": "Tysta використовує ggml для швидкої локальної обробки мовлення в текст. Дякуємо за чудову роботу Георгію Герганову та контриб'юторам."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unwrite is built on",
-          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Tysta is built on",
+          "details": "Tysta is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -931,7 +931,7 @@
     "portableUpdateBrowseButton": "Відкрити GitHub Releases"
   },
   "whatsNew": {
-    "title": "Нове в Unwrite v{{version}}"
+    "title": "Нове в Tysta v{{version}}"
   },
   "common": {
     "playbackPosition": "Позиція відтворення",
@@ -958,7 +958,7 @@
     "microphoneSilentTitle": "Мікрофон мовчить",
     "microphoneSilent": "Мікрофон передає лише тишу. Перевірте, чи не вимкнено звук, або виберіть інший мікрофон у Налаштуваннях.",
     "recordingFailedTitle": "Не вдалося розпочати запис",
-    "modelLoadFailed": "Unwrite не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
+    "modelLoadFailed": "Tysta не вдалося завантажити цю модель. Спробуйте ще раз або виберіть іншу.",
     "modelLoadFailedTitle": "Не вдалося завантажити модель",
     "noModelSelected": "Завантажте або виберіть модель у розділі Налаштування > Моделі.",
     "noModelSelectedTitle": "Модель не вибрано",
@@ -966,7 +966,7 @@
     "pasteFailedTitle": "Не вдалося вставити текст",
     "pasteFailed": "Не вдалося вставити текст до активної програми.",
     "pasteBlockedElevatedTitle": "Вставлення заблоковано",
-    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Unwrite не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
+    "pasteBlockedElevated": "Активна програма запущена від імені адміністратора, тому Tysta не може вставити в неї текст. Розшифровку можна скопіювати з Історії.",
     "postProcessFailedTitle": "Вставлено без постобробки",
     "postProcessFailed": "Постобробка не завершилася, тому розшифровку вставлено як є.",
     "filePostProcessFailedTitle": "Розшифровано без постобробки",
@@ -983,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Мова інтерфейсу",
-    "description": "Змінити мову інтерфейсу Unwrite"
+    "description": "Змінити мову інтерфейсу Tysta"
   },
   "theme": {
     "title": "Тема застосунку",
-    "description": "Виберіть, чи має Unwrite слідувати темі системи, чи залишатися світлою або темною",
+    "description": "Виберіть, чи має Tysta слідувати темі системи, чи залишатися світлою або темною",
     "options": {
       "system": "Системна",
       "light": "Світла",
@@ -1027,10 +1027,10 @@
     "play": "Play the recording",
     "pause": "Pause",
     "audioUnavailable": "This Recording Is No Longer Available",
-    "deleteAudio": "Delete the Recording",
-    "confirmDeleteAudio": "Click Again to Delete the Recording",
-    "deleteAudioFailed": "Recording Not Deleted",
-    "confirmDelete": "Delete Recording"
+    "confirmDelete": "Delete",
+    "deleteDictation": "Delete the Dictation",
+    "confirmDeleteDictation": "Click Again to Delete the Dictation and Its Recording",
+    "deleteFailed": "Dictation Not Deleted"
   },
   "insights": {
     "title": "Insights",
@@ -1081,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
+    "subtitle": "Names, jargon and brands Tysta should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1094,9 +1094,9 @@
     "status": "My standing",
     "lifetimeWords": "Words dictated in all",
     "earnedCount": "Badges earned",
-    "beltsLabel": "The seven belts",
-    "nextBelt": "{{words}} more words to the {{belt}}",
-    "topBelt": "You wear the highest belt.",
+    "beltsLabel": "The Seven Levels of the Climb",
+    "nextBelt": "{{words}} more words to reach {{belt}}",
+    "topBelt": "You have reached the highest level.",
     "earnedOn": "Earned on {{date}}",
     "toEarn": "To earn",
     "soon": "Soon",
@@ -1104,13 +1104,13 @@
     "secretName": "Secret badge",
     "secretDescription": "It stays hidden until you find it.",
     "belts": {
-      "0": "White belt of speech",
-      "1": "Yellow belt of speech",
-      "2": "Orange belt of speech",
-      "3": "Green belt of speech",
-      "4": "Blue belt of speech",
-      "5": "Brown belt of speech",
-      "6": "Black belt of speech"
+      "0": "Plain",
+      "1": "Hill",
+      "2": "Plateau",
+      "3": "Pass",
+      "4": "Ridge",
+      "5": "Summit",
+      "6": "Sky"
     },
     "categories": {
       "volume": "Volume and regularity",
@@ -1235,7 +1235,7 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unwrite” three times in one dictation."
+        "description": "You said “Tysta” three times in one dictation."
       }
     }
   },
@@ -1262,7 +1262,7 @@
     "figures": "Today's Figures",
     "wordsToday": "Words Dictated Today",
     "durationToday": "Dictation Time",
-    "welcome": "Welcome to Unwrite",
+    "welcome": "Welcome to Tysta",
     "recent": "Latest Dictations",
     "noRecent": "Nothing dictated yet.",
     "allDictations": "All Dictations",

@@ -1,4 +1,4 @@
-/* Unwrite Colors: every color the app uses comes from here. Unwrite has two
+/* Tysta Colors: every color the app uses comes from here. Tysta has two
  * themes: fir green (the dark set) and a light one with fir text. The OS
  * picks, unless the `theme` setting forces one.
  * Pick by job:
@@ -129,7 +129,7 @@
   /* Tokens that do not change between light and dark */
   --color-background-ui: #2e6450;
 
-  /* Unwrite's surfaces, as light/dark pairs. `chrome` is the window itself,
+  /* Tysta's surfaces, as light/dark pairs. `chrome` is the window itself,
      behind the sidebar and around the content panel. */
   --light-color-mid-gray: #4a6359;
   --dark-color-mid-gray: #a8c0b6;

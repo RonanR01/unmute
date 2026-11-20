@@ -34,7 +34,7 @@
     "customModelDescription": "Tidak didukung secara resmi",
     "migration": {
       "title": "Model Anda perlu diperbarui",
-      "description": "Unwrite kini menggunakan jenis model yang lebih baru. Unduh versi baru untuk terus mentranskripsi. Versi lama akan dihapus.",
+      "description": "Tysta kini menggunakan jenis model yang lebih baru. Unduh versi baru untuk terus mentranskripsi. Versi lama akan dihapus.",
       "replaces": "Menggantikan {{name}}",
       "oldFormat": "Format lama",
       "failed": "Unduhan gagal",
@@ -71,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Agar Unwrite dapat mendengar Anda. Audio diubah menjadi teks di komputer ini dan tidak pernah diunggah."
+        "why": "Agar Tysta dapat mendengar Anda. Audio diubah menjadi teks di komputer ini dan tidak pernah diunggah."
       },
       "accessibility": {
         "name": "Aksesibilitas",
-        "why": "Agar pintasan Anda berfungsi di semua aplikasi, dan Unwrite dapat mengetik teks di tempat kursor Anda berada."
+        "why": "Agar pintasan Anda berfungsi di semua aplikasi, dan Tysta dapat mengetik teks di tempat kursor Anda berada."
       },
       "errors": {
         "checkFailed": "Gagal memeriksa izin. Silakan coba lagi.",
@@ -89,12 +89,12 @@
       "openSettings": "Buka pengaturan",
       "allowed": "Diizinkan",
       "waiting": "Menunggu",
-      "turnOnMac": "Aktifkan Unwrite di Pengaturan Sistem, lalu kembali ke sini.",
+      "turnOnMac": "Aktifkan Tysta di Pengaturan Sistem, lalu kembali ke sini.",
       "turnOnWindows": "Aktifkan akses mikrofon di Setelan Windows, lalu kembali ke sini.",
       "hintBoth": "Izinkan keduanya untuk melanjutkan",
       "hintMicrophone": "Izinkan mikrofon untuk melanjutkan",
       "welcomeBack": "Selamat datang kembali. Kita lanjutkan dari tadi.",
-      "relaunch": "Pintasan tidak merespons setelah ini? <relaunch>Luncurkan ulang Unwrite</relaunch> dan Anda akan kembali tepat ke sini."
+      "relaunch": "Pintasan tidak merespons setelah ini? <relaunch>Luncurkan ulang Tysta</relaunch> dan Anda akan kembali tepat ke sini."
     },
     "shell": {
       "back": "Kembali",
@@ -105,11 +105,11 @@
       "title": "Bicara, bukan mengetik, di aplikasi apa pun",
       "subtitle": "Pilih bahasa yang akan Anda gunakan untuk mendikte",
       "languagesLabel": "Bahasa",
-      "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”. Model Unwrite mencakup sekitar 100 bahasa; sisanya ada di pengaturan.",
+      "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”. Model Tysta mencakup sekitar 100 bahasa; sisanya ada di pengaturan.",
       "appLanguage": "Bahasa aplikasi",
       "menusIn": "Menu dalam <b>{{language}}</b>",
       "chinese": {
-        "question": "Anda berbicara {{languages}}. Aksara mana yang harus ditulis Unwrite?",
+        "question": "Anda berbicara {{languages}}. Aksara mana yang harus ditulis Tysta?",
         "label": "Aksara Mandarin",
         "zh-Hans": "Sederhana",
         "zh-Hant": "Taiwan",
@@ -179,7 +179,7 @@
     },
     "try": {
       "title": "Coba sekarang!",
-      "subtitle": "Unwrite ada di pojok untuk memandu Anda",
+      "subtitle": "Tysta ada di pojok untuk memandu Anda",
       "noteLabel": "Catatan",
       "placeholder": "Catatan baru",
       "hold": "Tahan <keys/> dan bicara.",
@@ -207,14 +207,14 @@
     },
     "done": {
       "title": "Semua siap",
-      "subMac": "Unwrite kini ada di bilah menu Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
-      "subTray": "Unwrite kini ada di baki sistem Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
+      "subMac": "Tysta kini ada di bilah menu Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
+      "subTray": "Tysta kini ada di baki sistem Anda. Tahan atau ketuk <keys/> di aplikasi apa pun untuk bicara.",
       "hint": "Anda dapat mengubahnya nanti di Pengaturan",
       "highFiveLabel": "Tos",
-      "atLogin": "Jalankan Unwrite saat saya masuk",
+      "atLogin": "Jalankan Tysta saat saya masuk",
       "finish": "Selesai",
       "panel": {
-        "name": "Unwrite",
+        "name": "Tysta",
         "ready": "Siap",
         "languages": "Bahasa",
         "model": "Model ucapan",
@@ -339,7 +339,7 @@
     "general": {
       "title": "Umum",
       "shortcut": {
-        "title": "Pintasan Unwrite",
+        "title": "Pintasan Tysta",
         "description": "Atur pintasan keyboard untuk memulai perekaman ucapan-ke-teks",
         "loading": "Memuat pintasan...",
         "none": "Belum ada pintasan yang diatur",
@@ -381,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Bahasa Pilihan",
-        "description": "Bahasa yang Anda gunakan. Unwrite memakainya untuk merekomendasikan model.",
+        "description": "Bahasa yang Anda gunakan. Tysta memakainya untuk merekomendasikan model.",
         "noMatch": "Tidak ada bahasa yang cocok dengan “{{query}}”",
         "weak": "Belum ada model yang mengenali {{languages}} dengan baik."
       },
@@ -408,17 +408,17 @@
         "fits": "Untuk bahasa Anda",
         "untested": "Belum diuji"
       },
-      "untestedNote": "Belum diuji dengan Unwrite. Mungkin lebih lambat atau lebih banyak salah.",
+      "untestedNote": "Belum diuji dengan Tysta. Mungkin lebih lambat atau lebih banyak salah.",
       "untestedHidden_one": "{{count}} model lagi tidak disetel untuk dikte. Cari untuk menemukannya.",
       "untestedHidden_other": "{{count}} model lagi tidak disetel untuk dikte. Cari untuk menemukannya.",
-      "emptyYours": "Belum ada model. Pilih satu di bawah: model diunduh, lalu Unwrite menggunakannya.",
+      "emptyYours": "Belum ada model. Pilih satu di bawah: model diunduh, lalu Tysta menggunakannya.",
       "showMore": "Tampilkan {{count}} lagi",
       "showFewer": "Tampilkan lebih sedikit",
       "download": "Unduh dan gunakan",
       "downloadingThenUse": "{{percent}}% dari {{total}}, lalu beralih",
       "loading": "Memuat…",
       "deleteAsk": "Hapus {{name}}? Ini membebaskan {{size}}.",
-      "deleteAskActive": "Hapus {{name}}? Unwrite tidak dapat mentranskripsi sampai Anda memilih model lain.",
+      "deleteAskActive": "Hapus {{name}}? Tysta tidak dapat mentranskripsi sampai Anda memilih model lain.",
       "cancel": "Batal",
       "deleteModel": "Hapus {{name}}",
       "cancelDownload": "Hentikan unduhan {{name}}",
@@ -432,14 +432,14 @@
         "marks": "? belum diukur. — tidak mengenali bahasa itu."
       },
       "retiredNotice": {
-        "title": "Model lama tidak lagi berfungsi dengan Unwrite",
+        "title": "Model lama tidak lagi berfungsi dengan Tysta",
         "description": "Model tersebut memakan {{size}} di komputer Anda.",
         "delete": "Hapus model",
         "deleteFailed": "Beberapa model lama tidak dapat dihapus. Periksa log untuk detailnya."
       },
       "rescan": {
         "label": "Pindai Ulang",
-        "tooltip": "Pindai ulang model yang ditambahkan ke folder model atau cache Hugging Face dari luar Unwrite"
+        "tooltip": "Pindai ulang model yang ditambahkan ke folder model atau cache Hugging Face dari luar Tysta"
       }
     },
     "languages": {
@@ -509,11 +509,11 @@
       },
       "autostart": {
         "label": "Jalankan saat Komputer Dinyalakan",
-        "description": "Mulai Unwrite secara otomatis saat Anda masuk ke komputer."
+        "description": "Mulai Tysta secara otomatis saat Anda masuk ke komputer."
       },
       "showTrayIcon": {
         "label": "Tampilkan Ikon Baki Sistem",
-        "description": "Tampilkan ikon Unwrite di baki sistem."
+        "description": "Tampilkan ikon Tysta di baki sistem."
       },
       "overlay": {
         "style": {
@@ -750,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Periksa Pembaruan",
-        "description": "Periksa versi baru Unwrite secara otomatis",
+        "description": "Periksa versi baru Tysta secara otomatis",
         "lockedDescription": "Dinonaktifkan oleh konfigurasi sistem (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -856,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Diagnostik Keyboard",
-        "description": "Memeriksa apakah peristiwa keyboard mencapai Unwrite. Hanya jumlah peristiwa yang dicatat — bukan tombol yang Anda tekan.",
+        "description": "Memeriksa apakah peristiwa keyboard mencapai Tysta. Hanya jumlah peristiwa yang dicatat — bukan tombol yang Anda tekan.",
         "run": "Jalankan diagnostik 10 dtk",
         "running": "Mendengarkan… tekan pintasan Anda beberapa kali (mis. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -870,7 +870,7 @@
         "mouse": "Mouse",
         "verdictBlocked": "Secure Input memblokir peristiwa tombol — pintasan keyboard tidak dapat berfungsi sampai masalah ini diselesaikan.",
         "verdictSuspicious": "Peristiwa tombol pengubah diterima, tetapi tidak ada peristiwa tombol — sesuatu memblokir input tombol meskipun Secure Input dilaporkan nonaktif. Harap laporkan ini di GitHub.",
-        "verdictOk": "Peristiwa tombol mencapai Unwrite secara normal.",
+        "verdictOk": "Peristiwa tombol mencapai Tysta secara normal.",
         "verdictNoEvents": "Tidak ada peristiwa yang tertangkap — apakah Anda menekan tombol selama pengujian?",
         "failed": "Diagnostik gagal: {{error}}"
       },
@@ -884,15 +884,15 @@
       "title": "Tentang",
       "version": {
         "title": "Versi",
-        "description": "Versi Unwrite saat ini"
+        "description": "Versi Tysta saat ini"
       },
       "whatsNewUpdates": {
         "label": "Tampilkan Yang Baru",
-        "description": "Tampilkan catatan rilis setelah Unwrite diperbarui"
+        "description": "Tampilkan catatan rilis setelah Tysta diperbarui"
       },
       "appDataDirectory": {
         "title": "Direktori Data Aplikasi",
-        "description": "Lokasi Unwrite menyimpan datanya"
+        "description": "Lokasi Tysta menyimpan datanya"
       },
       "sourceCode": {
         "title": "Kode Sumber",
@@ -904,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Pustaka tensor berkinerja tinggi untuk inferensi pembelajaran mesin di perangkat",
-          "details": "Fitur ucapan-ke-teks lokal Unwrite dibangun menggunakan transcribe.cpp dan ggml. Terima kasih kepada Georgi Gerganov dan para kontributor atas karya luar biasa mereka."
+          "details": "Fitur ucapan-ke-teks lokal Tysta dibangun menggunakan transcribe.cpp dan ggml. Terima kasih kepada Georgi Gerganov dan para kontributor atas karya luar biasa mereka."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unwrite is built on",
-          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Tysta is built on",
+          "details": "Tysta is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -931,7 +931,7 @@
     "portableUpdateBrowseButton": "Buka GitHub Releases"
   },
   "whatsNew": {
-    "title": "Baru di Unwrite v{{version}}"
+    "title": "Baru di Tysta v{{version}}"
   },
   "common": {
     "playbackPosition": "Posisi pemutaran",
@@ -958,7 +958,7 @@
     "microphoneSilentTitle": "Mikrofon Senyap",
     "microphoneSilent": "Mikrofon Anda hanya mengirim keheningan. Pastikan mikrofon tidak dibisukan, atau pilih mikrofon lain di Pengaturan.",
     "recordingFailedTitle": "Gagal Memulai Perekaman",
-    "modelLoadFailed": "Unwrite tidak dapat memuat model ini. Coba lagi atau pilih model lain.",
+    "modelLoadFailed": "Tysta tidak dapat memuat model ini. Coba lagi atau pilih model lain.",
     "modelLoadFailedTitle": "Gagal Memuat Model",
     "noModelSelected": "Unduh atau pilih model di Pengaturan > Model.",
     "noModelSelectedTitle": "Tidak Ada Model Dipilih",
@@ -966,7 +966,7 @@
     "pasteFailedTitle": "Gagal Menempelkan Teks",
     "pasteFailed": "Teks tidak dapat ditempelkan ke aplikasi aktif.",
     "pasteBlockedElevatedTitle": "Gagal Tempel ke Aplikasi Admin",
-    "pasteBlockedElevated": "Aplikasi aktif berjalan sebagai administrator, jadi Unwrite tidak dapat menempel ke dalamnya. Anda dapat menyalin transkrip dari Riwayat.",
+    "pasteBlockedElevated": "Aplikasi aktif berjalan sebagai administrator, jadi Tysta tidak dapat menempel ke dalamnya. Anda dapat menyalin transkrip dari Riwayat.",
     "postProcessFailedTitle": "Ditempel Tanpa Pascaproses",
     "postProcessFailed": "Pascaproses tidak selesai, jadi transkrip ditempelkan apa adanya.",
     "filePostProcessFailedTitle": "Ditranskripsi Tanpa Pascaproses",
@@ -983,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Bahasa Aplikasi",
-    "description": "Ubah bahasa antarmuka Unwrite"
+    "description": "Ubah bahasa antarmuka Tysta"
   },
   "theme": {
     "title": "Tema Aplikasi",
-    "description": "Pilih apakah Unwrite mengikuti tema sistem atau selalu menggunakan tema terang atau gelap",
+    "description": "Pilih apakah Tysta mengikuti tema sistem atau selalu menggunakan tema terang atau gelap",
     "options": {
       "system": "Sistem",
       "light": "Terang",
@@ -1027,10 +1027,10 @@
     "play": "Play the recording",
     "pause": "Pause",
     "audioUnavailable": "This Recording Is No Longer Available",
-    "deleteAudio": "Delete the Recording",
-    "confirmDeleteAudio": "Click Again to Delete the Recording",
-    "deleteAudioFailed": "Recording Not Deleted",
-    "confirmDelete": "Delete Recording"
+    "confirmDelete": "Delete",
+    "deleteDictation": "Delete the Dictation",
+    "confirmDeleteDictation": "Click Again to Delete the Dictation and Its Recording",
+    "deleteFailed": "Dictation Not Deleted"
   },
   "insights": {
     "title": "Insights",
@@ -1081,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
+    "subtitle": "Names, jargon and brands Tysta should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1094,9 +1094,9 @@
     "status": "My standing",
     "lifetimeWords": "Words dictated in all",
     "earnedCount": "Badges earned",
-    "beltsLabel": "The seven belts",
-    "nextBelt": "{{words}} more words to the {{belt}}",
-    "topBelt": "You wear the highest belt.",
+    "beltsLabel": "The Seven Levels of the Climb",
+    "nextBelt": "{{words}} more words to reach {{belt}}",
+    "topBelt": "You have reached the highest level.",
     "earnedOn": "Earned on {{date}}",
     "toEarn": "To earn",
     "soon": "Soon",
@@ -1104,13 +1104,13 @@
     "secretName": "Secret badge",
     "secretDescription": "It stays hidden until you find it.",
     "belts": {
-      "0": "White belt of speech",
-      "1": "Yellow belt of speech",
-      "2": "Orange belt of speech",
-      "3": "Green belt of speech",
-      "4": "Blue belt of speech",
-      "5": "Brown belt of speech",
-      "6": "Black belt of speech"
+      "0": "Plain",
+      "1": "Hill",
+      "2": "Plateau",
+      "3": "Pass",
+      "4": "Ridge",
+      "5": "Summit",
+      "6": "Sky"
     },
     "categories": {
       "volume": "Volume and regularity",
@@ -1235,7 +1235,7 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unwrite” three times in one dictation."
+        "description": "You said “Tysta” three times in one dictation."
       }
     }
   },
@@ -1262,7 +1262,7 @@
     "figures": "Today's Figures",
     "wordsToday": "Words Dictated Today",
     "durationToday": "Dictation Time",
-    "welcome": "Welcome to Unwrite",
+    "welcome": "Welcome to Tysta",
     "recent": "Latest Dictations",
     "noRecent": "Nothing dictated yet.",
     "allDictations": "All Dictations",

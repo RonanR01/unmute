@@ -34,7 +34,7 @@
     "customModelDescription": "Stöds inte officiellt",
     "migration": {
       "title": "Dina modeller behöver uppdateras",
-      "description": "Unwrite använder nu en nyare typ av modell. Ladda ner den nya versionen för att fortsätta transkribera. Gamla versioner kommer att tas bort.",
+      "description": "Tysta använder nu en nyare typ av modell. Ladda ner den nya versionen för att fortsätta transkribera. Gamla versioner kommer att tas bort.",
       "replaces": "Ersätter {{name}}",
       "oldFormat": "Gammalt format",
       "failed": "Nedladdningen misslyckades",
@@ -71,11 +71,11 @@
     "permissions": {
       "microphone": {
         "name": "Mikrofon",
-        "why": "Så att Unwrite kan höra dig. Ljudet omvandlas till text på den här datorn och laddas aldrig upp."
+        "why": "Så att Tysta kan höra dig. Ljudet omvandlas till text på den här datorn och laddas aldrig upp."
       },
       "accessibility": {
         "name": "Hjälpmedel",
-        "why": "Så att din genväg fungerar i alla appar och Unwrite kan skriva texten där markören står."
+        "why": "Så att din genväg fungerar i alla appar och Tysta kan skriva texten där markören står."
       },
       "errors": {
         "checkFailed": "Misslyckades med att kontrollera behörigheter. Försök igen.",
@@ -89,12 +89,12 @@
       "openSettings": "Öppna inställningar",
       "allowed": "Tillåten",
       "waiting": "Väntar",
-      "turnOnMac": "Slå på Unwrite i Systeminställningar och kom sedan tillbaka hit.",
+      "turnOnMac": "Slå på Tysta i Systeminställningar och kom sedan tillbaka hit.",
       "turnOnWindows": "Slå på mikrofonåtkomst i Inställningar i Windows och kom sedan tillbaka hit.",
       "hintBoth": "Tillåt båda för att fortsätta",
       "hintMicrophone": "Tillåt mikrofonen för att fortsätta",
       "welcomeBack": "Välkommen tillbaka. Vi fortsätter där du slutade.",
-      "relaunch": "Svarar inte genvägen efter detta? <relaunch>Starta om Unwrite</relaunch> så hamnar du direkt här igen."
+      "relaunch": "Svarar inte genvägen efter detta? <relaunch>Starta om Tysta</relaunch> så hamnar du direkt här igen."
     },
     "shell": {
       "back": "Tillbaka",
@@ -109,7 +109,7 @@
       "appLanguage": "Appspråk",
       "menusIn": "Menyer på <b>{{language}}</b>",
       "chinese": {
-        "question": "Du talar {{languages}}. Vilka tecken ska Unwrite skriva?",
+        "question": "Du talar {{languages}}. Vilka tecken ska Tysta skriva?",
         "label": "Kinesiska tecken",
         "zh-Hans": "Förenklad",
         "zh-Hant": "Taiwan",
@@ -179,7 +179,7 @@
     },
     "try": {
       "title": "Testa nu!",
-      "subtitle": "Unwrite finns i hörnet och guidar dig",
+      "subtitle": "Tysta finns i hörnet och guidar dig",
       "noteLabel": "Anteckning",
       "placeholder": "Ny anteckning",
       "hold": "Håll in <keys/> och tala.",
@@ -207,14 +207,14 @@
     },
     "done": {
       "title": "Nu är allt klart",
-      "subMac": "Unwrite finns nu i menyraden. Håll in eller tryck på <keys/> i valfri app för att tala.",
-      "subTray": "Unwrite finns nu i systemfältet. Håll in eller tryck på <keys/> i valfri app för att tala.",
+      "subMac": "Tysta finns nu i menyraden. Håll in eller tryck på <keys/> i valfri app för att tala.",
+      "subTray": "Tysta finns nu i systemfältet. Håll in eller tryck på <keys/> i valfri app för att tala.",
       "hint": "Du kan ändra detta senare i Inställningar",
       "highFiveLabel": "Femman",
-      "atLogin": "Starta Unwrite när jag loggar in",
+      "atLogin": "Starta Tysta när jag loggar in",
       "finish": "Klar",
       "panel": {
-        "name": "Unwrite",
+        "name": "Tysta",
         "ready": "Redo",
         "languages": "Språk",
         "model": "Talmodell",
@@ -339,7 +339,7 @@
     "general": {
       "title": "Allmänt",
       "shortcut": {
-        "title": "Unwrite-kortkommandon",
+        "title": "Tysta-kortkommandon",
         "description": "Konfigurera kortkommandon för att starta tal-till-text-inspelning",
         "loading": "Laddar kortkommandon...",
         "none": "Inga kortkommandon konfigurerade",
@@ -381,7 +381,7 @@
       },
       "preferredLanguages": {
         "title": "Föredragna språk",
-        "description": "Språken du talar. Unwrite använder dem för att rekommendera modeller.",
+        "description": "Språken du talar. Tysta använder dem för att rekommendera modeller.",
         "noMatch": "Inget språk matchar ”{{query}}”",
         "weak": "Ingen modell känner igen {{languages}} bra ännu."
       },
@@ -408,17 +408,17 @@
         "fits": "För dina språk",
         "untested": "Ej testade"
       },
-      "untestedNote": "Inte testade med Unwrite. De kan vara långsammare eller göra fler fel.",
+      "untestedNote": "Inte testade med Tysta. De kan vara långsammare eller göra fler fel.",
       "untestedHidden_one": "{{count}} modell till är inte anpassad för diktering. Sök för att hitta den.",
       "untestedHidden_other": "{{count}} modeller till är inte anpassade för diktering. Sök för att hitta en.",
-      "emptyYours": "Inga modeller ännu. Välj en nedan: den laddas ner och sedan använder Unwrite den.",
+      "emptyYours": "Inga modeller ännu. Välj en nedan: den laddas ner och sedan använder Tysta den.",
       "showMore": "Visa {{count}} till",
       "showFewer": "Visa färre",
       "download": "Ladda ner och använd",
       "downloadingThenUse": "{{percent}} % av {{total}}, sedan byts modell",
       "loading": "Laddar…",
       "deleteAsk": "Ta bort {{name}}? Det frigör {{size}}.",
-      "deleteAskActive": "Ta bort {{name}}? Unwrite kan inte transkribera förrän du väljer en annan.",
+      "deleteAskActive": "Ta bort {{name}}? Tysta kan inte transkribera förrän du väljer en annan.",
       "cancel": "Avbryt",
       "deleteModel": "Ta bort {{name}}",
       "cancelDownload": "Stoppa nedladdningen av {{name}}",
@@ -432,14 +432,14 @@
         "marks": "? har inte mätts ännu. — hör inte det språket."
       },
       "retiredNotice": {
-        "title": "Gamla modeller fungerar inte längre med Unwrite",
+        "title": "Gamla modeller fungerar inte längre med Tysta",
         "description": "De tar upp {{size}} på din dator.",
         "delete": "Ta bort modeller",
         "deleteFailed": "Vissa gamla modeller kunde inte tas bort. Se loggen för mer information."
       },
       "rescan": {
         "label": "Skanna om",
-        "tooltip": "Skanna om efter modeller som lagts till i modellmappen eller Hugging Face-cachen utanför Unwrite"
+        "tooltip": "Skanna om efter modeller som lagts till i modellmappen eller Hugging Face-cachen utanför Tysta"
       }
     },
     "languages": {
@@ -509,11 +509,11 @@
       },
       "autostart": {
         "label": "Starta vid uppstart",
-        "description": "Starta Unwrite automatiskt när du loggar in på din dator."
+        "description": "Starta Tysta automatiskt när du loggar in på din dator."
       },
       "showTrayIcon": {
         "label": "Visa ikon i systemfältet",
-        "description": "Visa Unwrite-ikonen i systemfältet."
+        "description": "Visa Tysta-ikonen i systemfältet."
       },
       "overlay": {
         "style": {
@@ -750,7 +750,7 @@
       },
       "updateChecks": {
         "label": "Sök efter uppdateringar",
-        "description": "Sök automatiskt efter nya versioner av Unwrite",
+        "description": "Sök automatiskt efter nya versioner av Tysta",
         "lockedDescription": "Inaktiverad av systemkonfiguration (HANDY_DISABLE_UPDATER)"
       },
       "whatsNewPreview": {
@@ -856,7 +856,7 @@
       },
       "keyboardDiagnostic": {
         "title": "Tangentbordsdiagnostik",
-        "description": "Kontrollerar om tangentbordshändelser når Unwrite. Endast antalet händelser registreras — aldrig vilka tangenter du trycker på.",
+        "description": "Kontrollerar om tangentbordshändelser når Tysta. Endast antalet händelser registreras — aldrig vilka tangenter du trycker på.",
         "run": "Kör 10 s diagnostik",
         "running": "Lyssnar… tryck på ditt kortkommando några gånger (t.ex. Option+Space)",
         "secureInputLabel": "Secure Input",
@@ -870,7 +870,7 @@
         "mouse": "Mus",
         "verdictBlocked": "Secure Input blockerar tangenthändelser — kortkommandon med en vanlig tangent kan inte fungera förrän det är löst.",
         "verdictSuspicious": "Modifierarhändelser kom fram men inga tangenthändelser — något undertrycker tangenter trots att Secure Input rapporteras som inaktiverat. Rapportera gärna detta på GitHub.",
-        "verdictOk": "Tangenthändelser når Unwrite som vanligt.",
+        "verdictOk": "Tangenthändelser når Tysta som vanligt.",
         "verdictNoEvents": "Inga händelser fångades — tryckte du på några tangenter under testet?",
         "failed": "Diagnostiken misslyckades: {{error}}"
       },
@@ -884,15 +884,15 @@
       "title": "Om",
       "version": {
         "title": "Version",
-        "description": "Nuvarande version av Unwrite"
+        "description": "Nuvarande version av Tysta"
       },
       "whatsNewUpdates": {
         "label": "Visa nyheter",
-        "description": "Visa versionsinformation efter Unwrite-uppdateringar"
+        "description": "Visa versionsinformation efter Tysta-uppdateringar"
       },
       "appDataDirectory": {
         "title": "Mapp för appdata",
-        "description": "Plats där Unwrite lagrar sina data"
+        "description": "Plats där Tysta lagrar sina data"
       },
       "sourceCode": {
         "title": "Källkod",
@@ -904,12 +904,12 @@
         "ggml": {
           "title": "ggml",
           "description": "Högpresterande inferens av OpenAI:s Whisper-modell för automatisk taligenkänning",
-          "details": "Unwrite använder ggml för snabb, lokal tal-till-text-behandling. Tack till det fantastiska arbete som utförts av Georgi Gerganov med medarbetare."
+          "details": "Tysta använder ggml för snabb, lokal tal-till-text-behandling. Tack till det fantastiska arbete som utförts av Georgi Gerganov med medarbetare."
         },
         "handy": {
           "title": "Handy",
-          "description": "The open source speech-to-text app Unwrite is built on",
-          "details": "Unwrite is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
+          "description": "The open source speech-to-text app Tysta is built on",
+          "details": "Tysta is a fork of Handy by CJ Pais and its contributors, released under the MIT license. The transcription engine is theirs.",
           "button": "View Handy on GitHub"
         }
       }
@@ -931,7 +931,7 @@
     "portableUpdateBrowseButton": "Öppna GitHub Releases"
   },
   "whatsNew": {
-    "title": "Nytt i Unwrite v{{version}}"
+    "title": "Nytt i Tysta v{{version}}"
   },
   "common": {
     "playbackPosition": "Uppspelningsposition",
@@ -958,7 +958,7 @@
     "microphoneSilentTitle": "Mikrofonen är tyst",
     "microphoneSilent": "Mikrofonen skickade bara tystnad. Kontrollera att den inte är avstängd, eller välj en annan mikrofon under Inställningar.",
     "recordingFailedTitle": "Inspelningen kunde inte starta",
-    "modelLoadFailed": "Unwrite kunde inte läsa in den här modellen. Försök igen eller välj en annan.",
+    "modelLoadFailed": "Tysta kunde inte läsa in den här modellen. Försök igen eller välj en annan.",
     "modelLoadFailedTitle": "Misslyckades med att ladda modell",
     "noModelSelected": "Ladda ned eller välj en modell under Inställningar > Modeller.",
     "noModelSelectedTitle": "Ingen modell vald",
@@ -966,7 +966,7 @@
     "pasteFailedTitle": "Det gick inte att klistra in texten",
     "pasteFailed": "Texten kunde inte klistras in i det aktiva programmet.",
     "pasteBlockedElevatedTitle": "Kan inte klistra in i admin-appar",
-    "pasteBlockedElevated": "Det aktiva programmet körs som administratör, så Unwrite kan inte klistra in i det. Du kan kopiera transkriptionen från Historik.",
+    "pasteBlockedElevated": "Det aktiva programmet körs som administratör, så Tysta kan inte klistra in i det. Du kan kopiera transkriptionen från Historik.",
     "postProcessFailedTitle": "Inklistrat utan efterbearbetning",
     "postProcessFailed": "Efterbearbetningen slutfördes inte, så transkriptionen klistrades in som den är.",
     "filePostProcessFailedTitle": "Transkriberat utan efterbearbetning",
@@ -983,11 +983,11 @@
   },
   "appLanguage": {
     "title": "Applikationsspråk",
-    "description": "Ändra språket i Unwrite-gränssnittet"
+    "description": "Ändra språket i Tysta-gränssnittet"
   },
   "theme": {
     "title": "Apptema",
-    "description": "Välj om Unwrite ska följa systemets tema eller förbli ljust eller mörkt",
+    "description": "Välj om Tysta ska följa systemets tema eller förbli ljust eller mörkt",
     "options": {
       "system": "System",
       "light": "Ljust",
@@ -1027,10 +1027,10 @@
     "play": "Play the recording",
     "pause": "Pause",
     "audioUnavailable": "This Recording Is No Longer Available",
-    "deleteAudio": "Delete the Recording",
-    "confirmDeleteAudio": "Click Again to Delete the Recording",
-    "deleteAudioFailed": "Recording Not Deleted",
-    "confirmDelete": "Delete Recording"
+    "confirmDelete": "Delete",
+    "deleteDictation": "Delete the Dictation",
+    "confirmDeleteDictation": "Click Again to Delete the Dictation and Its Recording",
+    "deleteFailed": "Dictation Not Deleted"
   },
   "insights": {
     "title": "Insights",
@@ -1081,7 +1081,7 @@
   },
   "dictionary": {
     "title": "Dictionary",
-    "subtitle": "Names, jargon and brands Unwrite should spell your way.",
+    "subtitle": "Names, jargon and brands Tysta should spell your way.",
     "newWord": "New word",
     "empty": "No words yet. Add the names and terms that come out wrong.",
     "edit": "Edit {{word}}",
@@ -1094,9 +1094,9 @@
     "status": "My standing",
     "lifetimeWords": "Words dictated in all",
     "earnedCount": "Badges earned",
-    "beltsLabel": "The seven belts",
-    "nextBelt": "{{words}} more words to the {{belt}}",
-    "topBelt": "You wear the highest belt.",
+    "beltsLabel": "The Seven Levels of the Climb",
+    "nextBelt": "{{words}} more words to reach {{belt}}",
+    "topBelt": "You have reached the highest level.",
     "earnedOn": "Earned on {{date}}",
     "toEarn": "To earn",
     "soon": "Soon",
@@ -1104,13 +1104,13 @@
     "secretName": "Secret badge",
     "secretDescription": "It stays hidden until you find it.",
     "belts": {
-      "0": "White belt of speech",
-      "1": "Yellow belt of speech",
-      "2": "Orange belt of speech",
-      "3": "Green belt of speech",
-      "4": "Blue belt of speech",
-      "5": "Brown belt of speech",
-      "6": "Black belt of speech"
+      "0": "Plain",
+      "1": "Hill",
+      "2": "Plateau",
+      "3": "Pass",
+      "4": "Ridge",
+      "5": "Summit",
+      "6": "Sky"
     },
     "categories": {
       "volume": "Volume and regularity",
@@ -1235,7 +1235,7 @@
       },
       "easter_egg": {
         "name": "Easter Egg",
-        "description": "You said “Unwrite” three times in one dictation."
+        "description": "You said “Tysta” three times in one dictation."
       }
     }
   },
@@ -1262,7 +1262,7 @@
     "figures": "Today's Figures",
     "wordsToday": "Words Dictated Today",
     "durationToday": "Dictation Time",
-    "welcome": "Welcome to Unwrite",
+    "welcome": "Welcome to Tysta",
     "recent": "Latest Dictations",
     "noRecent": "Nothing dictated yet.",
     "allDictations": "All Dictations",

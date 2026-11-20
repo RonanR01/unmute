@@ -774,6 +774,7 @@ pub fn run(cli_args: CliArgs) {
             commands::initialize_enigo,
             commands::initialize_shortcuts,
             commands::reset_macos_permission,
+            commands::open_accessibility_privacy_settings,
             commands::complete_onboarding,
             commands::models::get_available_models,
             commands::models::get_model_info,
@@ -815,7 +816,6 @@ pub fn run(cli_args: CliArgs) {
             commands::history::toggle_history_entry_saved,
             commands::history::get_audio_file_path,
             commands::history::delete_history_entry,
-            commands::history::delete_history_entry_audio,
             commands::history::retry_history_entry_transcription,
             commands::history::cancel_history_entry_transcription,
             commands::history::transcribe_file,
@@ -892,11 +892,11 @@ pub fn run(cli_args: CliArgs) {
                     Target::new(if let Some(data_dir) = portable::data_dir() {
                         TargetKind::Folder {
                             path: data_dir.join("logs"),
-                            file_name: Some("unwrite".into()),
+                            file_name: Some("tysta".into()),
                         }
                     } else {
                         TargetKind::LogDir {
-                            file_name: Some("unwrite".into()),
+                            file_name: Some("tysta".into()),
                         }
                     })
                     .filter(|metadata| {
@@ -1034,14 +1034,14 @@ pub fn run(cli_args: CliArgs) {
             // for portable mode (redirects WebView2 cache to portable Data dir)
             let mut win_builder =
                 tauri::WebviewWindowBuilder::new(app, "main", tauri::WebviewUrl::App("/".into()))
-                    .title("Unwrite")
+                    .title("Tysta")
                     .inner_size(utils::MAIN_WINDOW_SIZE.0, utils::MAIN_WINDOW_SIZE.1)
                     .min_inner_size(utils::MAIN_WINDOW_SIZE.0, utils::MAIN_WINDOW_SIZE.1)
                     .resizable(true)
                     .maximizable(true)
                     .visible(false);
 
-            // Unwrite draws under the title bar: no title, no separate strip,
+            // Tysta draws under the title bar: no title, no separate strip,
             // the window buttons sit on the app's own chrome.
             #[cfg(target_os = "macos")]
             let mut win_builder = win_builder

@@ -24,13 +24,13 @@ const KeyNumber: React.FC<{
   first?: boolean;
 }> = ({ label, value, unit, first }) => (
   <div
-    className={`flex-[1_1_200px] flex flex-col gap-2 p-7 ${first ? "" : "border-s border-edge"}`}
+    className={`min-w-0 flex flex-col gap-2 p-5 lg:p-7 ${first ? "" : "border-s border-edge"}`}
   >
     <span className="text-sm text-ink-3">{label}</span>
-    <span className="text-[42px] leading-none font-bold tracking-tight measure tabular-nums">
+    <span className="text-[clamp(28px,4.4vw,42px)] leading-none font-bold tracking-tight measure tabular-nums">
       {value}
       {unit && (
-        <span className="ms-2 text-[15px] font-medium tracking-normal text-ink-3">
+        <span className="block mt-2 lg:inline lg:mt-0 lg:ms-2 text-[15px] leading-tight font-medium tracking-normal text-ink-3">
           {unit}
         </span>
       )}
@@ -107,7 +107,7 @@ const PortraitCard: React.FC<{
 
   return (
     <div className="relative overflow-hidden flex flex-col gap-3 p-7 bg-surface border border-edge rounded-2xl">
-      <TopoLines hill className="h-full" />
+      <TopoLines className="h-full" />
       <span className="relative text-sm text-ink-3">
         {t("insights.portrait.label")}
       </span>
@@ -266,7 +266,7 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
     <div className="flex flex-col w-full gap-8 px-8 py-8">
       <ShareDialog
         card={sharing}
-        fileName="unwrite-insights"
+        fileName="tysta-insights"
         onClose={() => setSharing(null)}
       />
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -293,7 +293,8 @@ export const InsightsScreen: React.FC<{ onChooseModel: () => void }> = ({
         className="relative overflow-hidden bg-surface border border-edge rounded-2xl"
       >
         <TopoLines className="h-full" />
-        <div className="relative flex flex-wrap">
+        {/* Always one row: the three figures read together. */}
+        <div className="relative grid grid-cols-3">
           <KeyNumber
             first
             label={t("dictations.duration")}

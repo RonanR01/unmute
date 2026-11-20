@@ -714,7 +714,7 @@ fn default_history_limit() -> usize {
 }
 
 fn default_recording_retention_period() -> RecordingRetentionPeriod {
-    // Unwrite's insights are computed from the history, so it keeps a season
+    // Tysta's insights are computed from the history, so it keeps a season
     // of it. Handy kept the latest few.
     RecordingRetentionPeriod::Months3
 }
@@ -1487,7 +1487,7 @@ fn self_update_possible() -> bool {
     true
 }
 
-/// Unwrite is a fork of Handy: the updater would fetch upstream's release and
+/// Tysta is a fork of Handy: the updater would fetch upstream's release and
 /// install it over this build, so it stays off for good.
 const FORK_DISABLES_UPDATER: bool = true;
 
