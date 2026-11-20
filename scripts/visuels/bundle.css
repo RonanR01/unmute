@@ -1,0 +1,760 @@
+@import url("https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400..800&display=swap");
+
+/* Tysta — classes statiques relevées dans les composants React de l'app.
+   Toutes les couleurs, rayons et espacements viennent de tokens.css. */
+
+.uw-ground {
+  margin: 0;
+  padding: var(--space-6);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+}
+.uw-ground--chrome {
+  background: var(--color-chrome);
+}
+.uw-ground *,
+.uw-ground *::before {
+  box-sizing: border-box;
+}
+.uw-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+}
+.uw-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.uw-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Logo */
+.uw-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+}
+.uw-logo svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+.uw-logo span {
+  font-size: 20.16px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.uw-logo--lg svg {
+  width: 56px;
+  height: 56px;
+}
+.uw-logo--lg span {
+  font-size: 40.32px;
+}
+
+/* Boutons */
+.uw-btn {
+  min-height: var(--control-height);
+  padding: 0 var(--space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-text);
+  font: 500 14px/20px var(--font-ui);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    opacity 150ms;
+}
+.uw-btn:hover {
+  background: var(--color-surface-raised);
+}
+.uw-btn:focus-visible,
+.uw-nav-item:focus-visible,
+.uw-icon-btn:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+.uw-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.uw-btn svg,
+.uw-icon-btn svg,
+.uw-nav-item svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+.uw-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
+.uw-btn--primary {
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  color: var(--color-on-signal);
+  font-weight: 600;
+}
+.uw-btn--primary:hover {
+  background: var(--color-signal);
+  opacity: 0.9;
+}
+.uw-btn--sm {
+  min-height: 36px;
+  padding: 0 var(--space-3);
+  font-size: 13px;
+}
+.uw-icon-btn {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-ink-3);
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
+.uw-icon-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.75;
+}
+.uw-icon-btn:hover,
+.uw-icon-btn[aria-pressed="true"] {
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+}
+
+/* Navigation */
+.uw-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  width: var(--sidebar-width);
+  padding: 0 var(--space-3);
+}
+.uw-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--control-height);
+  padding: 0 var(--space-3);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--color-ink-3);
+  font: 500 15px/24px var(--font-ui);
+  text-align: start;
+  cursor: pointer;
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
+.uw-nav-item svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.75;
+}
+.uw-nav-item:hover {
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+.uw-nav-item[aria-current="page"] {
+  color: var(--color-text);
+  background: var(--color-nav-active);
+  font-weight: 600;
+}
+
+/* Cartes et mesures */
+.uw-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-panel);
+}
+.uw-card--row {
+  border-radius: var(--radius-row);
+  padding: 20px;
+  gap: 6px;
+}
+.uw-label {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-ink-3);
+}
+.uw-note {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-ink-3);
+}
+.uw-measure {
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+.uw-measure--signal,
+.uw-mark,
+.uw-keynumber strong,
+.uw-rank .c,
+.uw-share .val {
+  width: fit-content;
+  color: var(--color-signal-ink);
+  background-image: linear-gradient(
+    transparent 60%,
+    var(--color-signal-mark) 60%
+  );
+}
+.uw-mark {
+  padding: 0 0.08em;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+/* Un panneau qui reste vert sapin dans les deux thèmes : ajouter data-theme="fir". */
+.uw-fir {
+  color: var(--color-text);
+}
+.uw-band-signal {
+  background: var(--color-signal);
+  color: var(--color-on-signal);
+}
+.uw-measure--lg {
+  font-size: 32px;
+}
+.uw-measure--md {
+  font-size: 28px;
+}
+.uw-measure--sm {
+  font-size: 22px;
+}
+.uw-unit {
+  margin-inline-start: var(--space-2);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-ink-3);
+}
+
+.uw-keynumbers {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-panel);
+}
+.uw-keynumber {
+  position: relative;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-7);
+}
+.uw-keynumber + .uw-keynumber {
+  border-inline-start: 1px solid var(--color-edge);
+}
+.uw-keynumber strong {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Motif topographique */
+.uw-topo {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.uw-topo--fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+}
+
+/* Carte d'activité */
+.uw-heat {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 16px);
+  gap: var(--space-1);
+  width: max-content;
+}
+.uw-heat i {
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-cell);
+  background: var(--color-surface-raised);
+}
+.uw-heat .l1 {
+  background: var(--color-heat-1);
+}
+.uw-heat .l2 {
+  background: var(--color-heat-2);
+}
+.uw-heat .l3 {
+  background: var(--color-heat-3);
+}
+.uw-heat .l4 {
+  background: var(--color-signal);
+}
+.uw-heat-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 13px;
+  color: var(--color-ink-3);
+}
+.uw-heat-legend i {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: var(--color-surface-raised);
+}
+
+/* Jauges et rangs */
+.uw-gauge {
+  height: 6px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-gauge-track);
+}
+.uw-gauge b {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-signal);
+}
+.uw-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: 4px;
+}
+.uw-progress .count {
+  flex: none;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.uw-progress .count b {
+  font-weight: 600;
+  color: var(--color-text);
+}
+.uw-rank {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 14px;
+}
+.uw-rank .n {
+  width: 20px;
+  flex: none;
+  text-align: end;
+  font-size: 12px;
+  color: var(--color-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.uw-rank .w {
+  width: 112px;
+  flex: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.uw-rank .c {
+  background-image: none;
+  min-width: 36px;
+  flex: none;
+  text-align: end;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ascension : le statut en paliers d'altitude */
+.uw-climb {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.uw-climb .track {
+  position: relative;
+  height: 72px;
+}
+.uw-climb svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.uw-climb path {
+  vector-effect: non-scaling-stroke;
+}
+.uw-climb .ahead {
+  stroke-width: 1.5;
+  stroke-dasharray: 2 6;
+  opacity: 0.45;
+}
+.uw-climb i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-ink-3);
+  background: var(--color-surface);
+}
+.uw-climb i.done {
+  border: 0;
+  background: var(--color-text);
+}
+.uw-climb i.here {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  background: var(--color-signal);
+  box-shadow: 0 0 0 4px var(--color-surface);
+}
+.uw-climb ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-ink-3);
+}
+.uw-climb li.done {
+  color: var(--color-text);
+  opacity: 0.7;
+}
+.uw-climb li.here {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Médailles et badges */
+.uw-emblem {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-on-signal);
+}
+.uw-emblem > svg:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+}
+.uw-emblem .disc {
+  fill: var(--color-signal);
+  stroke: var(--color-signal);
+  stroke-width: 1.5;
+}
+.uw-emblem .picto {
+  position: relative;
+  width: 38%;
+  height: 38%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.uw-emblem--locked {
+  color: var(--color-ink-3);
+}
+.uw-emblem--locked .disc {
+  fill: transparent;
+  stroke: currentColor;
+  stroke-dasharray: 3 5;
+  opacity: 0.6;
+}
+.uw-emblem--locked .picto {
+  opacity: 0.7;
+}
+.uw-emblem--lg {
+  width: 120px;
+  height: 120px;
+}
+.uw-badge {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-row);
+  max-width: 360px;
+}
+.uw-badge--earned {
+  background: var(--color-surface);
+}
+.uw-badge--new {
+  outline: 2px solid var(--color-text);
+}
+.uw-badge h3 {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.375;
+  font-weight: 600;
+}
+.uw-badge p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.375;
+  color: var(--color-ink-3);
+}
+.uw-badge > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+}
+
+/* Étiquettes */
+.uw-tag {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 0 7px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  line-height: 17px;
+  font-weight: 600;
+  color: var(--color-ink-2);
+}
+.uw-tag--solid {
+  padding: 2px 8px;
+  border: 0;
+  background: var(--color-text);
+  color: var(--color-background);
+  line-height: 16px;
+}
+.uw-tag--quiet {
+  padding: 2px 10px;
+  border-color: var(--color-edge);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-ink-3);
+}
+
+/* Dictées */
+.uw-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-edge);
+  border-radius: var(--radius-row);
+}
+.uw-dictation {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: 14px 12px 14px 20px;
+}
+.uw-dictation + .uw-dictation {
+  border-top: 1px solid var(--color-edge);
+}
+.uw-dictation time {
+  width: 44px;
+  flex: none;
+  padding-top: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.uw-dictation p {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding-top: 6px;
+  font-size: 15px;
+  line-height: 1.625;
+}
+.uw-dictation div {
+  display: flex;
+  flex: none;
+}
+
+/* Visuel de partage, 1080 × 1350 réduit au tiers */
+.uw-share {
+  position: relative;
+  overflow: hidden;
+  width: 360px;
+  height: 450px;
+  padding: 29px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-background);
+  color: var(--color-text);
+  text-align: center;
+}
+.uw-share .uw-topo {
+  opacity: 0.09;
+}
+.uw-share .uw-logo {
+  position: relative;
+  align-self: flex-start;
+}
+.uw-share .uw-logo svg {
+  width: 20px;
+  height: 20px;
+}
+.uw-share .uw-logo span {
+  font-size: 16px;
+}
+.uw-share .mid > * {
+  margin-inline: auto;
+}
+.uw-share .mid {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.uw-share .lbl {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-ink-3);
+}
+.uw-share .ttl {
+  font-size: 26.6px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.uw-share .val {
+  font-size: 38.6px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}
+.uw-share .val small {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--color-ink-3);
+}
+.uw-share .foot {
+  position: relative;
+  font-size: 11.3px;
+  font-weight: 600;
+}
+
+/* Site corporate */
+.uw-site {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.uw-site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: 14px;
+}
+.uw-site-nav a {
+  color: var(--color-ink-3);
+  text-decoration: none;
+}
+.uw-site-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-8);
+}
+.uw-site-hero h1 {
+  margin: 0;
+  font-size: 52px;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.uw-site-hero p {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--color-ink-3);
+}
+.uw-band-signal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
+  padding: var(--space-6) var(--space-7);
+  border-radius: var(--radius-panel);
+}
+.uw-band-signal strong {
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+}

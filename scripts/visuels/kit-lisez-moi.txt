@@ -1,0 +1,8 @@
+Tysta — kit média
+
+logos/     Le signe de Tysta en clair (pour fonds sombres) et en vert sapin (pour fonds clairs), et l'icône d'application.
+           Le nom « tysta » se compose en Rethink Sans gras, en minuscules, à côté du signe.
+captures/  Écrans de l'application, en thème sapin et en thème clair. Données d'exemple.
+partage/   Visuels de partage (1080 × 1350) et image d'aperçu du site (1200 × 630). Données d'exemple.
+
+Couleurs : vert sapin #0e2a22, jaune signal #ffd60a, fond clair #f3f6f2.
